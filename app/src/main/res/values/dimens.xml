@@ -24,6 +24,10 @@
     <dimen name="fun_set_text_size">18sp</dimen>
     <dimen name="fun_set_spinner_vertical_offset">53dp</dimen>
 
+    <!-- 字体大小 -->
+    <dimen name="text_size_l">16sp</dimen>
+    <dimen name="text_size_m">14sp</dimen>
+    <dimen name="text_size_s">12sp</dimen>
 
     <dimen name="splite_line_height">0.8dp</dimen>
 </resources>

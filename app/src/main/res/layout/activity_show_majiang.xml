@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/prot_eye_green">
+
+    <RelativeLayout
+        android:id="@+id/relative_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/action_bar_bg">
+        <ImageButton
+            android:id="@+id/ibtn_back"
+            android:layout_width="@dimen/ibtn_back_width"
+            android:layout_height="match_parent"
+            android:src="@drawable/back"
+            android:scaleType="centerInside"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/ibtn_back_bg"
+            android:contentDescription="back"/>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="20dp"
+            android:background="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/ibtn_back"/>
+
+        <TextView
+            android:id="@+id/tv_position"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_centerInParent="true"/>
+
+        <ImageButton
+            android:id="@+id/ibtn_moreFun"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/more_fun"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ibtn_more_fun_bg"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+        <LinearLayout
+            android:id="@+id/linear_north"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/player_height"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/linear_northBottom"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="left|center_vertical">
+                <!--<ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/unknown"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/unknown"/>-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_northTop"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:gravity="left|center_vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_south"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/player_height"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/linear_southTop"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="left|center_vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_southBottom"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:gravity="left|center_vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_west"
+            android:layout_width="@dimen/player_height"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_below="@id/linear_north"
+            android:layout_above="@id/linear_south"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linear_westBottom"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="top|center_horizontal">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_westTop"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical"
+                android:gravity="top|center_horizontal">
+                <!--<ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/unknown"
+                    android:rotation="90"
+
+                    android:scaleType="fitCenter"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/unknown"/>-->
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_east"
+            android:layout_width="@dimen/player_height"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_below="@id/linear_north"
+            android:layout_above="@id/linear_south"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/linear_eastTop"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="top|center_horizontal">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_eastBottom"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical"
+                android:gravity="top|center_horizontal">
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/direction"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/prot_eye_green">
+    <RelativeLayout
+        android:id="@+id/relative_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/action_bar_bg">
+        <ImageButton
+            android:id="@+id/ibtn_back"
+            android:layout_width="@dimen/ibtn_back_width"
+            android:layout_height="match_parent"
+            android:src="@drawable/back"
+            android:scaleType="centerInside"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/ibtn_back_bg"
+            android:contentDescription="back"/>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="20dp"
+            android:background="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/ibtn_back"/>
+
+        <TextView
+            android:id="@+id/tv_position"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="方位识别"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_tip"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/relative_header"
+        android:gravity="center"
+        android:textSize="@dimen/tv_recog_tip"
+        android:textColor="@color/black"/>
+
+    <RelativeLayout
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_centerInParent="true"
+        android:padding="10dp">
+        <Button
+            android:id="@+id/btn_north"
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:text="北"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btn_recog_dire_text_size"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_recognize_direction_bg"/>
+
+        <Button
+            android:id="@+id/btn_south"
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:text="南"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btn_recog_dire_text_size"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_recognize_direction_bg"/>
+
+        <Button
+            android:id="@+id/btn_west"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:text="西"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btn_recog_dire_text_size"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_recognize_direction_bg"/>
+
+        <Button
+            android:id="@+id/btn_east"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:text="东"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btn_recog_dire_text_size"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_recognize_direction_bg"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

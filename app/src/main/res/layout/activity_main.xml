@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/relative_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/action_bar_bg">
+        <ImageButton
+            android:id="@+id/ibtn_account"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/account"
+            android:background="@drawable/ibtn_search_bg"
+            android:clickable="false"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/ibtn_account"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="蓝牙状态"
+                android:textColor="@color/white"
+                android:gravity="bottom|center"/>
+            <TextView
+                android:id="@+id/tv_btState"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="未连接"
+                android:textColor="@color/white"
+                android:gravity="top|center"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/ibtn_search"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/search"
+            android:background="@drawable/ibtn_search_bg"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <!--<Button
+        android:id="@+id/ibtn_aboveTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="桌上"/>
+
+    <Button
+        android:id="@+id/ibtn_belowTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="桌下"/>
+
+    <Button
+        android:id="@+id/ibtn_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置"/>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="@dimen/main_btn_width"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:background="@drawable/linear_main_btns_bg">
+            <Button
+                android:id="@+id/ibtn_aboveTable"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_btn_height"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="桌上"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_btn_text_size"
+                android:drawableLeft="@drawable/above_table"
+                android:background="@drawable/btn_main_fun_bg"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black" />
+
+            <Button
+                android:id="@+id/ibtn_belowTable"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_btn_height"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="桌下"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_btn_text_size"
+                android:drawableLeft="@drawable/below_table"
+                android:background="@drawable/btn_main_fun_bg"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black" />
+
+            <Button
+                android:id="@+id/ibtn_hand"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_btn_height"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="手上"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_btn_text_size"
+                android:drawableLeft="@drawable/hand"
+                android:background="@drawable/btn_main_fun_bg"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black" />
+
+            <Button
+                android:id="@+id/ibtn_baopai"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_btn_height"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="报牌"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_btn_text_size"
+                android:drawableLeft="@drawable/baopai"
+                android:background="@drawable/btn_main_fun_bg"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black" />
+
+            <Button
+                android:id="@+id/ibtn_recoDire"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_btn_height"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="方位"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_btn_text_size"
+                android:drawableLeft="@drawable/direction_recognize"
+                android:background="@drawable/btn_main_fun_bg"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black" />
+
+            <Button
+                android:id="@+id/ibtn_setting"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_btn_height"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="设置"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_btn_text_size"
+                android:drawableLeft="@drawable/setting"
+                android:background="@drawable/btn_main_fun_bg"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

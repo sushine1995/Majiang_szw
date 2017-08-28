@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/prot_eye_green">
+
+    <RelativeLayout
+        android:id="@+id/relative_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/action_bar_bg">
+        <ImageButton
+            android:id="@+id/ibtn_back"
+            android:layout_width="@dimen/ibtn_back_width"
+            android:layout_height="match_parent"
+            android:src="@drawable/back"
+            android:scaleType="centerInside"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/ibtn_back_bg"
+            android:contentDescription="back"/>
+
+        <View
+            android:id="@+id/v_spliteLine"
+            android:layout_width="0.5dp"
+            android:layout_height="20dp"
+            android:background="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/ibtn_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="手上牌"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_centerInParent="true"/>
+
+        <ImageButton
+            android:id="@+id/ibtn_moreFun"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/more_fun"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ibtn_more_fun_bg"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+        <LinearLayout
+            android:id="@+id/linear_north"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/player_height_half"
+            android:orientation="horizontal"
+            android:gravity="center">
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_south"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/player_height_half"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_west"
+            android:layout_width="@dimen/player_height_half"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_below="@id/linear_north"
+            android:layout_above="@id/linear_south"
+            android:orientation="vertical"
+            android:gravity="center">
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_east"
+            android:layout_width="@dimen/player_height_half"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_below="@id/linear_north"
+            android:layout_above="@id/linear_south"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical"
+            android:gravity="center">
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/direction"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+</LinearLayout>

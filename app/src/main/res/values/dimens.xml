@@ -1,0 +1,29 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="main_btn_width">240dp</dimen>
+    <dimen name="main_btn_height">80dp</dimen>
+    <dimen name="main_btn_text_size">25sp</dimen>
+    <dimen name="main_btn_vertical_margin">25sp</dimen>
+
+    <dimen name="ibtn_back_width">50dp</dimen>
+    <dimen name="player_height">60dp</dimen>
+    <dimen name="player_height_half">30dp</dimen>
+
+    <dimen name="a_majiang_width">19dp</dimen>
+    <dimen name="a_majiang_height">26dp</dimen>
+
+    <!-- 方位识别 -->
+    <dimen name="btn_recog_dire_text_size">20sp</dimen>
+    <dimen name="tv_recog_tip">18sp</dimen>
+
+    <!-- 功能设置 -->
+    <dimen name="fun_set_height">60dp</dimen>
+    <dimen name="fun_set_text_size">18sp</dimen>
+    <dimen name="fun_set_spinner_vertical_offset">53dp</dimen>
+
+
+    <dimen name="splite_line_height">0.8dp</dimen>
+</resources>

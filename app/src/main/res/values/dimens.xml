@@ -30,4 +30,12 @@
     <dimen name="text_size_s">12sp</dimen>
 
     <dimen name="splite_line_height">0.8dp</dimen>
+    <dimen name="separator_line_height2">16dp</dimen>
+
+    <!--  基本方式 -->
+    <dimen name="tv_tip_height">30dp</dimen>
+    <dimen name="btn_option_height">30dp</dimen>
+    <dimen name="basic_method_horizontal_interval_1">16dp</dimen>
+    <dimen name="basic_method_horizontal_interval_2">40dp</dimen>
+
 </resources>

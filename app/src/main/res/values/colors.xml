@@ -22,4 +22,6 @@
     <color name="popupwindow_bg">#484E61</color>
 
     <color name="splite_line_color">#484E61</color>
+
+    <color name="separator_line_color">#e4e4e4</color>
 </resources>

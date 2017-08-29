@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import wzp.project.majiang.R;
+import wzp.project.majiang.fragment.BasicMethodFragment;
 import wzp.project.majiang.fragment.ShowPlayMethodFragment;
 import wzp.project.majiang.helper.adapter.PlayMethodVpAdapter;
 
@@ -40,10 +41,12 @@ public class PlayMethodDesignActivity extends AppCompatActivity {
 
     private void initData() {
         fragmentList = new ArrayList<>();
-        Fragment fragment1 = new ShowPlayMethodFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt("method", 1);
-        fragment1.setArguments(bundle);
+//        Fragment fragment1 = new ShowPlayMethodFragment();
+//        Bundle bundle = new Bundle();
+//        bundle.putInt("method", 1);
+//        fragment1.setArguments(bundle);
+//        fragmentList.add(fragment1);
+        Fragment fragment1 = new BasicMethodFragment();
         fragmentList.add(fragment1);
 
         Fragment fragment2 = new ShowPlayMethodFragment();

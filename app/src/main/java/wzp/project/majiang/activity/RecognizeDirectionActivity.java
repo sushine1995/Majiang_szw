@@ -2,23 +2,16 @@ package wzp.project.majiang.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.util.Arrays;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.base.BaseActivity;
 import wzp.project.majiang.helper.constant.ProjectConstants;
-import wzp.project.majiang.helper.widget.MyApplication;
+import wzp.project.majiang.widget.MyApplication;
 import wzp.project.majiang.util.CRC16;
 import wzp.project.majiang.util.CalculateUtil;
 

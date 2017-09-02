@@ -20,7 +20,7 @@ import java.util.Arrays;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.base.BaseActivity;
-import wzp.project.majiang.helper.widget.MyApplication;
+import wzp.project.majiang.widget.MyApplication;
 import wzp.project.majiang.util.CalculateUtil;
 
 public class ShowMajiangActivity extends BaseActivity {

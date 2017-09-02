@@ -18,7 +18,7 @@ import wzp.project.majiang.widget.ShowFunctionTipPopupWindow;
  * Created by wzp on 2017/8/29.
  */
 
-public class BasicMethodFragment extends Fragment {
+public class SetDiceFragment extends Fragment {
 
     private TextView tvPlayerNum;
     private Button btnChoosePlayerNum;
@@ -55,7 +55,7 @@ public class BasicMethodFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_basic_method, container, false);
+        View view = inflater.inflate(R.layout.fragment_set_dice, container, false);
 
         initWidget(view);
 
@@ -63,20 +63,8 @@ public class BasicMethodFragment extends Fragment {
     }
 
     private void initWidget(View view) {
-        tvPlayerNum = (TextView) view.findViewById(R.id.tv_playerNum);
-        btnChoosePlayerNum = (Button) view.findViewById(R.id.btn_choosePlayerNum);
-        btnChooseMajiangNum = (ListOptionButton) view.findViewById(R.id.btn_chooseMajiangNum);
-        btnEastTop = (Button) view.findViewById(R.id.btn_eastTop);
 
-        pwShowFunTip = new ShowFunctionTipPopupWindow(getContext());
-        pwListOption = new ListOptionPopupWindow(getContext());
-        pwListOption.setListViewItems(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"});
 
-        btnChooseMajiangNum.setListViewItems(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"});
-
-        tvPlayerNum.setOnClickListener(listener);
-        btnChoosePlayerNum.setOnClickListener(listener);
-        btnEastTop.setOnClickListener(listener);
     }
 
 

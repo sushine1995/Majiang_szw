@@ -15,8 +15,8 @@ import android.widget.Spinner;
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.base.BaseActivity;
 import wzp.project.majiang.helper.constant.ProjectConstants;
-import wzp.project.majiang.helper.widget.AddSubWidget;
-import wzp.project.majiang.helper.widget.MyApplication;
+import wzp.project.majiang.widget.AddSubWidget;
+import wzp.project.majiang.widget.MyApplication;
 import wzp.project.majiang.util.CRC16;
 import wzp.project.majiang.util.CalculateUtil;
 

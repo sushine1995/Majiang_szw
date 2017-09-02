@@ -19,7 +19,7 @@ import wzp.project.majiang.activity.base.BaseActivity;
 import wzp.project.majiang.util.BluetoothClientHelper;
 import wzp.project.majiang.helper.constant.BluetoothState;
 import wzp.project.majiang.helper.constant.ProjectConstants;
-import wzp.project.majiang.helper.widget.MyApplication;
+import wzp.project.majiang.widget.MyApplication;
 
 public class MainActivity extends BaseActivity implements IBluetoothConnect {
 

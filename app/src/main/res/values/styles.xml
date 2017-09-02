@@ -22,4 +22,16 @@
         <item name="android:textSize">@dimen/text_size_m</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <!-- 缩放的效果 -->
+    <style name="popWinScaleTheme" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_win_scale_show</item>
+        <item name="android:windowExitAnimation">@anim/pop_win_scale_disappear</item>
+    </style>
+
+    <!-- 缩放的效果2 -->
+    <style name="popWinScaleTheme2" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_win_scale_show2</item>
+        <item name="android:windowExitAnimation">@anim/pop_win_scale_disappear2</item>
+    </style>
 </resources>

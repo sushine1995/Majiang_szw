@@ -15,7 +15,7 @@ import java.util.UUID;
 
 import wzp.project.majiang.activity.IBluetoothConnect;
 import wzp.project.majiang.helper.constant.BluetoothState;
-import wzp.project.majiang.helper.widget.MyApplication;
+import wzp.project.majiang.widget.MyApplication;
 
 import static wzp.project.majiang.helper.constant.ProjectConstants.CRC_HIGH;
 import static wzp.project.majiang.helper.constant.ProjectConstants.CRC_LOW;

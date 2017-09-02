@@ -14,6 +14,7 @@ import java.util.List;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.fragment.BasicMethodFragment;
+import wzp.project.majiang.fragment.SetDiceFragment;
 import wzp.project.majiang.fragment.ShowPlayMethodFragment;
 import wzp.project.majiang.helper.adapter.PlayMethodVpAdapter;
 
@@ -49,7 +50,7 @@ public class PlayMethodDesignActivity extends AppCompatActivity {
         Fragment fragment1 = new BasicMethodFragment();
         fragmentList.add(fragment1);
 
-        Fragment fragment2 = new ShowPlayMethodFragment();
+        Fragment fragment2 = new SetDiceFragment();
         Bundle bundle2 = new Bundle();
         bundle2.putInt("method", 2);
         fragment2.setArguments(bundle2);

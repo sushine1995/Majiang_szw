@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import wzp.project.majiang.helper.widget.MyApplication;
+import wzp.project.majiang.widget.MyApplication;
 
 public abstract class BaseActivity extends AppCompatActivity {
 

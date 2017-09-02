@@ -1,4 +1,4 @@
-package wzp.project.majiang.helper.widget;
+package wzp.project.majiang.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

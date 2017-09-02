@@ -11,4 +11,7 @@
     <string name="button_scan">Scan for devices</string>-->
 
     <!-- MainActivity -->
+
+
+    <string name="player_num_fun_tip">根据参与游戏的人数设定，可设定2~4人</string>
 </resources>

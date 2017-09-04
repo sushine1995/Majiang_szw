@@ -39,5 +39,10 @@
     <dimen name="basic_method_horizontal_interval_2">40dp</dimen>
     <dimen name="basic_method_horizontal_interval_3">20dp</dimen>
 
+    <dimen name="paly_method_setting_horizontal_interval_1">16dp</dimen>
+
+    <dimen name="edit_play_method_horizontal_interval">16dp</dimen>
+    <dimen name="edit_play_method_vertical_interval">20dp</dimen>
+
     <dimen name="list_item_option_height">40dp</dimen>
 </resources>

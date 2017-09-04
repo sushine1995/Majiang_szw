@@ -49,6 +49,10 @@
         <activity android:name=".activity.PlayMethodDesignActivity">
         </activity>
 
+
+        <activity android:name=".activity.EditPlayMethodActivity">
+        </activity>
+
     </application>
 
 </manifest>

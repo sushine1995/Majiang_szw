@@ -16,7 +16,7 @@ import wzp.project.majiang.R;
 import wzp.project.majiang.fragment.BasicMethodFragment;
 import wzp.project.majiang.fragment.ChoosePlayMethodFragment;
 import wzp.project.majiang.fragment.SetDiceFragment;
-import wzp.project.majiang.helper.adapter.PlayMethodVpAdapter;
+import wzp.project.majiang.adapter.PlayMethodVpAdapter;
 
 /**
  * Created by wzp on 2017/8/28.

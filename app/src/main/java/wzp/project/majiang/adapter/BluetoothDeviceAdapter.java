@@ -1,4 +1,4 @@
-package wzp.project.majiang.helper.adapter;
+package wzp.project.majiang.adapter;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package wzp.project.majiang.helper.adapter;
+package wzp.project.majiang.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

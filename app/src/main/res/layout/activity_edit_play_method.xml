@@ -140,7 +140,6 @@
                     android:text="特殊规则" />
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_option_height"

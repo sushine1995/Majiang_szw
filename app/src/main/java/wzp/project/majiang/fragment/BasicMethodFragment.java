@@ -7,12 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.widget.ListOptionPopupWindow;
 import wzp.project.majiang.widget.ListOptionButton;
 import wzp.project.majiang.widget.ShowFunctionTipPopupWindow;
+import wzp.project.majiang.widget.ShowFunctionTipTextView;
 
 /**
  * Created by wzp on 2017/8/29.
@@ -20,14 +19,14 @@ import wzp.project.majiang.widget.ShowFunctionTipPopupWindow;
 
 public class BasicMethodFragment extends Fragment {
 
-    private TextView tvPlayerNum;
-    private Button btnChoosePlayerNum;
+    private ShowFunctionTipTextView tvPlayerNum;
+    private ListOptionButton btnChoosePlayerNum;
     private ListOptionButton btnChooseMajiangNum;
     private Button btnEastTop;
 
 
     private ShowFunctionTipPopupWindow pwShowFunTip;
-    private ListOptionPopupWindow pwListOption;
+
 
 
 
@@ -36,17 +35,10 @@ public class BasicMethodFragment extends Fragment {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.tv_playerNum:
-                    pwShowFunTip.setFunTip(R.string.player_num_fun_tip);
-                    pwShowFunTip.showAsDropDown(tvPlayerNum);
+//                    pwShowFunTip.setFunTip(R.string.player_num_fun_tip);
+//                    pwShowFunTip.showAsDropDown(tvPlayerNum);
                     break;
 
-                case R.id.btn_choosePlayerNum:
-                    pwListOption.showAsDropDown(btnChoosePlayerNum);
-                    break;
-
-                case R.id.btn_eastTop:
-                    pwListOption.showAsDropDown(btnEastTop);
-                    break;
             }
         }
     };
@@ -63,20 +55,15 @@ public class BasicMethodFragment extends Fragment {
     }
 
     private void initWidget(View view) {
-        tvPlayerNum = (TextView) view.findViewById(R.id.tv_playerNum);
-        btnChoosePlayerNum = (Button) view.findViewById(R.id.btn_choosePlayerNum);
+        tvPlayerNum = (ShowFunctionTipTextView) view.findViewById(R.id.tv_playerNum);
+        btnChoosePlayerNum = (ListOptionButton) view.findViewById(R.id.btn_choosePlayerNum);
         btnChooseMajiangNum = (ListOptionButton) view.findViewById(R.id.btn_chooseMajiangNum);
         btnEastTop = (Button) view.findViewById(R.id.btn_eastTop);
 
         pwShowFunTip = new ShowFunctionTipPopupWindow(getContext());
-        pwListOption = new ListOptionPopupWindow(getContext());
-        pwListOption.setListViewItems(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"});
 
-        btnChooseMajiangNum.setListViewItems(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"});
+//        btnChoosePlayerNum.setListViewItems(getContext().getResources().getStringArray(R.array.player_num_arr));
 
-        tvPlayerNum.setOnClickListener(listener);
-        btnChoosePlayerNum.setOnClickListener(listener);
-        btnEastTop.setOnClickListener(listener);
     }
 
 

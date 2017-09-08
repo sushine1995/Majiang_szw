@@ -19,4 +19,191 @@
     </string-array>
 
     <string name="player_num_fun_tip">根据参与游戏的人数设定，可设定2~4人</string>
+    <string name="every_hand_num_tip">根据玩法需求设置每手抓牌张数</string>
+    <string name="banker_card_num_tip">设置庄家打色上手牌的张数</string>
+    <string name="other_player_card_num_tip">如果千家为闲家，可碰牌可吃牌建议选13（总牌数17张打法则选16），可碰牌不可吃牌或不可碰不可吃建议选14（总牌数17张打法则选17）</string>
+    <string name="banker_skip_tip">庄家的跳牌方式，如无特殊玩法要求选跳拿即可</string>
+    <string name="get_card_method_tip">起牌的拿牌方式，如无特殊玩法要求，选顺拿即可</string>
+    <string name="program_start_times_tip">程序开启设定次数后自动暂停，总使用次数等于连续工作局数</string>
+    <string name="program_stop_times_tip">程序暂停设定次数后自动开启</string>
+    <string name="continuous_working_rounds_tip">每次定位开机，可连续工作多少局后自动关闭程序</string>
+    <string name="total_rounds_tip">每录入一次USB烧录盒程序后，可开机使用的局数</string>
+    <string name="broadcast_card_num_tip">语音报牌抓牌的张数</string>
+    <string name="voice_box_tip">如打钩，关闭麻将主机语音输出，通过外接语音盒接收语音；否则，麻将主机语音输出</string>
+    <string name="machine_head_position_tip">打钩则为机头定位模式，用定位卡靠近机头，第一次为定位开机，第二次为关机；定位卡对同一方位的两次操作时间间隔必须10秒以上，否则第二次操作无效。</string>
+    <string name="panel_induction_tip">如打钩，通过铝塑板感应麻将牌；如不打钩，通过便携式感应板感应麻将牌</string>
+    <string name="money_box_position_tip">打钩则为钱盒定位模式，用定位卡靠近机头，则定位开机，如果定位卡离开30秒以上则关机。注意：如果机头定位钱盒同时打钩，默认为机头定位模式。</string>
+    <string name="continuous_boradcast_card_tip">打钩，则预报牌时报连续4张牌的牌型；不打钩，则跳报千家预抓的牌型</string>
+    <string name="assign_id_card_position_tip">如打钩，只能使用测试8档学习的ID卡定位；否则可任意一张ID卡定位</string>
+    <string name="broadcast_winner_tip">打钩则面板开启报胡牌功能，不打钩则关闭</string>
+    <string name="dice_test_tip">如打钩，打色输出值在色盘上显示；用于测试与维修判断；用户正常使用不能打钩。</string>
+    <string name="peng_zhuan_broadcast_card_tip">打钩则面板开启碰转报预抓牌功能，不打钩则关闭</string>
+    <string name="reset_test_tip">如打钩，则洗完牌后即可打色输出；如果不打钩，则洗牌完毕后需按升降键托碗升到上位后方可打色输出。</string>
+    <string name="dice_panel_position_tip">定位成功后色盘上对应方位的庄位灯闪烁提示</string>
+    <string name="blood_fight_mode_tip">打钩则面板开启血战功能，不打钩则关闭</string>
+    <string name="dice_panel_trouble_tip">如打钩，洗牌出现程序相关故障时，色盘上的静音或风干会闪动，此时按任意两相邻的方位键，色盘显示故障代码</string>
+    <string name="digital_switch_tip">如打钩，档位开关改为数显档位开关；如不打钩，则使用双拨码档位开关；出厂默认为双拨码档位开关</string>
+    <string name="three_player_tip">如打钩，四方上牌3人玩，空位不算点数，打1/4/7/10庄家方位起牌</string>
+
+
+    <string-array name="player_num_arr">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="every_hand_num_arr">
+        <item>4</item>
+        <item>6</item>
+        <item>12</item>
+    </string-array>
+    <string-array name="banker_card_num_arr">
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+    </string-array>
+    <string-array name="other_player_card_num_arr">
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+    </string-array>
+    <string-array name="banker_skip_arr">
+        <item>跳拿</item>
+        <item>平拿</item>
+        <item>竖拿</item>
+    </string-array>
+    <string-array name="get_card_method_arr">
+        <item>顺拿</item>
+        <item>反拿</item>
+        <item>双向抓牌1</item>
+        <item>双向抓牌2（留1墩）</item>
+    </string-array>
+    <string-array name="program_start_times_arr">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+    </string-array>
+    <string-array name="program_stop_times_arr">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+    </string-array>
+    <string-array name="continuous_working_rounds_arr">
+        <item>3</item>
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>100</item>
+    </string-array>
+    <string-array name="total_rounds_arr">
+        <item>20</item>
+        <item>50</item>
+        <item>100</item>
+        <item>200</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>2500</item>
+        <item>5000</item>
+    </string-array>
+    <string-array name="broadcast_card_num_arr">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+
+
 </resources>

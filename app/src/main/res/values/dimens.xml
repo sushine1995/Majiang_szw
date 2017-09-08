@@ -35,6 +35,7 @@
     <!--  基本方式 -->
     <dimen name="tv_tip_height">30dp</dimen>
     <dimen name="btn_option_height">30dp</dimen>
+    <dimen name="iv_tip_width">20dp</dimen>
     <dimen name="basic_method_horizontal_interval_1">16dp</dimen>
     <dimen name="basic_method_horizontal_interval_2">40dp</dimen>
     <dimen name="basic_method_horizontal_interval_3">20dp</dimen>

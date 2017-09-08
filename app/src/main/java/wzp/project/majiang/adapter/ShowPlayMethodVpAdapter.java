@@ -10,13 +10,13 @@ import java.util.List;
  * Created by wzp on 2017/6/24.
  */
 
-public class PlayMethodVpAdapter extends FragmentPagerAdapter {
+public class ShowPlayMethodVpAdapter extends FragmentPagerAdapter {
 
     private String[] titles = new String[]{"玩法一", "玩法二", "玩法三"};
     private List<Fragment> fragmentList;
 
 
-    public PlayMethodVpAdapter(FragmentManager fm, List<Fragment> fragmentList) {
+    public ShowPlayMethodVpAdapter(FragmentManager fm, List<Fragment> fragmentList) {
         super(fm);
         this.fragmentList = fragmentList;
     }

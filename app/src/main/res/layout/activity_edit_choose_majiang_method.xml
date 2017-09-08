@@ -1,0 +1,979 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/relative_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/action_bar_bg">
+        <ImageButton
+            android:id="@+id/ibtn_back"
+            android:layout_width="@dimen/ibtn_back_width"
+            android:layout_height="match_parent"
+            android:src="@drawable/back"
+            android:scaleType="centerInside"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/ibtn_back_bg"
+            android:contentDescription="back"/>
+
+        <View
+            android:id="@+id/v_spliteLine"
+            android:layout_width="0.5dp"
+            android:layout_height="20dp"
+            android:background="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/ibtn_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="数据1"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_centerInParent="true"/>
+
+        <ImageButton
+            android:layout_width="@dimen/ibtn_back_width"
+            android:layout_height="match_parent"
+            android:src="@drawable/save"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ibtn_save_bg"
+            android:contentDescription="back"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/tv_tip_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_m"
+                android:textColor="@color/black"
+                android:text="循环次数"/>
+
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:drawableRight="@drawable/down"
+                android:drawablePadding="5dp"
+                android:textSize="@dimen/text_size_m"
+                android:textColor="@color/black"
+                android:background="@drawable/btn_options_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/separator_line_height2"
+                android:background="@color/separator_line_color2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/tv_tip_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_m"
+                android:textColor="@color/black"
+                android:text="全国玩法汇总"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:paddingRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:orientation="horizontal"
+                android:background="#BEBEBE">
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="玩法名称"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="基本张数"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="特殊规则" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="A:平胡"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="B:混一色"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="C:七小对"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="D:对对碰"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="E:清一色"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="F:风一色"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="G:十三幺"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="H:将一色"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="I:混将胡"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="J:九大坎"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_s"
+                    android:textColor="@color/black"
+                    android:text="K:缺一门-湘"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="L:三色全"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="M:板板胡"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="N:双三张"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="O:暗红"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="P:幺九"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="Q:十三烂"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="R:风牌"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_s"
+                    android:textColor="@color/black"
+                    android:text="S:穷胡-东北"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

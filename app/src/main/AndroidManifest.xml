@@ -46,12 +46,14 @@
             android:launchMode="singleTop">
         </activity>
 
-        <activity android:name=".activity.PlayMethodDesignActivity">
+        <activity android:name=".activity.ShowPlayMethodActivity">
         </activity>
 
 
-        <activity android:name=".activity.EditPlayMethodActivity">
+        <activity android:name=".activity.EditChooseMajiangMethodActivity">
         </activity>
+
+        <activity android:name=".activity.EditPlayMethodActivity" />
 
     </application>
 

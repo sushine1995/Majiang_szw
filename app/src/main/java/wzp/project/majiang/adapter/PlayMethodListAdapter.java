@@ -14,29 +14,29 @@ import android.widget.TextView;
 import java.util.List;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.activity.EditPlayMethodActivity;
-import wzp.project.majiang.entity.PlayMethod;
-import wzp.project.majiang.entity.SinglePlayMethod;
+import wzp.project.majiang.activity.EditChooseMajiangMethodActivity;
+import wzp.project.majiang.entity.ChooseMajiangMethod;
+import wzp.project.majiang.entity.SingleChooseMajiangMethod;
 
 
 public class PlayMethodListAdapter extends BaseAdapter {
 
     private Context context;
-    private List<PlayMethod> playMethodList;
+    private List<ChooseMajiangMethod> chooseMajiangMethodList;
 
-    public PlayMethodListAdapter(Context context, List<PlayMethod> playMethodList) {
+    public PlayMethodListAdapter(Context context, List<ChooseMajiangMethod> chooseMajiangMethodList) {
         this.context = context;
-        this.playMethodList = playMethodList;
+        this.chooseMajiangMethodList = chooseMajiangMethodList;
     }
 
     @Override
     public int getCount() {
-        return playMethodList.size();
+        return chooseMajiangMethodList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return playMethodList.get(position);
+        return chooseMajiangMethodList.get(position);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class PlayMethodListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        PlayMethod playMethod = (PlayMethod) getItem(position);
+        ChooseMajiangMethod chooseMajiangMethod = (ChooseMajiangMethod) getItem(position);
 
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.listitem_play_method, parent, false);
@@ -63,20 +63,21 @@ public class PlayMethodListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.cbIsSelected.setChecked(playMethod.isSelected());
+        holder.cbIsSelected.setChecked(chooseMajiangMethod.isSelected());
+        holder.cbIsSelected.setText("数据" + (position + 1) + "(循环" + chooseMajiangMethod.getLoopTimes() + "次)");
         holder.ibtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditPlayMethodActivity.myStartActivity(context);
+                EditChooseMajiangMethodActivity.myStartActivity(context);
             }
         });
-        listPlayMethod(context, holder.linearPlayMethodList, playMethod.getMethods());
+        listPlayMethod(context, holder.linearPlayMethodList, chooseMajiangMethod.getMethods());
 
         return convertView;
     }
 
-    private void listPlayMethod(Context context, LinearLayout linearPlayMethodList, List<SinglePlayMethod> methodList) {
-        for (SinglePlayMethod method : methodList) {
+    private void listPlayMethod(Context context, LinearLayout linearPlayMethodList, List<SingleChooseMajiangMethod> methodList) {
+        for (SingleChooseMajiangMethod method : methodList) {
             LinearLayout linearAdded = new LinearLayout(context);
             linearAdded.setOrientation(LinearLayout.HORIZONTAL);
             TextView tvName = new TextView(context);

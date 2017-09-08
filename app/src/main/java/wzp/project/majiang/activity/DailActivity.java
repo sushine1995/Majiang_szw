@@ -120,7 +120,7 @@ public class DailActivity extends AppCompatActivity {
                             MainActivity.myStartActivity(DailActivity.this);
                         }
                     } else if (edtNum.getText().toString().equals("123")) {
-                        PlayMethodDesignActivity.myStartActivity(DailActivity.this);
+                        ShowPlayMethodActivity.myStartActivity(DailActivity.this);
                     }
                     break;
 

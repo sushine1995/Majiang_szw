@@ -933,7 +933,9 @@
                 android:drawablePadding="5dp"
                 android:textSize="@dimen/text_size_m"
                 android:textColor="@color/black"
-                android:background="@drawable/btn_options_bg">
+                android:background="@drawable/btn_options_bg"
+                app:options="@array/machine_gear_arr"
+                app:optionWidth="280dp">
             </wzp.project.majiang.widget.ListOptionButton>
         </LinearLayout>
 
@@ -1002,7 +1004,8 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/majiang_num_arr"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1023,7 +1026,8 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg"/>
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/majiang_num_arr"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1044,7 +1048,8 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/majiang_num_arr" />
             </LinearLayout>
 
             <View
@@ -1086,7 +1091,8 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/majiang_num_arr" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1107,7 +1113,8 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg"/>
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/majiang_num_arr"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1128,7 +1135,8 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/majiang_num_arr" />
             </LinearLayout>
         </LinearLayout>
 
@@ -1176,7 +1184,8 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/majiang_num_arr" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1197,7 +1206,8 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg"/>
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/majiang_num_arr"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1218,7 +1228,8 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/majiang_num_arr" />
             </LinearLayout>
 
             <View
@@ -1259,7 +1270,8 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/majiang_num_arr" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1280,7 +1292,8 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg"/>
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/majiang_num_arr"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1301,10 +1314,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/majiang_num_arr" />
             </LinearLayout>
         </LinearLayout>
-
-
     </LinearLayout>
 </ScrollView>

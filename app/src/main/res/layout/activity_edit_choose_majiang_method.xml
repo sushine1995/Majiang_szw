@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
@@ -61,7 +62,7 @@
                 android:textColor="@color/black"
                 android:text="循环次数"/>
 
-            <Button
+            <wzp.project.majiang.widget.ListOptionButton
                 android:layout_width="160dp"
                 android:layout_height="@dimen/btn_option_height"
                 android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
@@ -73,7 +74,9 @@
                 android:drawablePadding="5dp"
                 android:textSize="@dimen/text_size_m"
                 android:textColor="@color/black"
-                android:background="@drawable/btn_options_bg" />
+                android:background="@drawable/btn_options_bg"
+                app:options="@array/loop_times_arr"
+                app:optionWidth="160dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -154,7 +157,7 @@
                     android:textColor="@color/black"
                     android:text="A:平胡"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -167,9 +170,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -180,7 +185,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -198,7 +205,7 @@
                     android:textColor="@color/black"
                     android:text="B:混一色"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -211,9 +218,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -224,7 +233,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -242,7 +253,7 @@
                     android:textColor="@color/black"
                     android:text="C:七小对"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -255,9 +266,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -268,7 +281,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -286,7 +301,7 @@
                     android:textColor="@color/black"
                     android:text="D:对对碰"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -299,9 +314,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -312,7 +329,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -330,7 +349,7 @@
                     android:textColor="@color/black"
                     android:text="E:清一色"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -343,9 +362,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -356,7 +377,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -374,7 +397,7 @@
                     android:textColor="@color/black"
                     android:text="F:风一色"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -387,9 +410,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -400,7 +425,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -418,7 +445,7 @@
                     android:textColor="@color/black"
                     android:text="G:十三幺"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -431,9 +458,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -444,7 +473,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -462,7 +493,7 @@
                     android:textColor="@color/black"
                     android:text="H:将一色"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -475,9 +506,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -488,7 +521,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -506,7 +541,7 @@
                     android:textColor="@color/black"
                     android:text="I:混将胡"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -519,9 +554,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -532,7 +569,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -550,7 +589,7 @@
                     android:textColor="@color/black"
                     android:text="J:九大坎"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -563,9 +602,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -576,7 +617,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -594,7 +637,7 @@
                     android:textColor="@color/black"
                     android:text="K:缺一门-湘"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -607,9 +650,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -620,7 +665,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -638,7 +685,7 @@
                     android:textColor="@color/black"
                     android:text="L:三色全"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -651,9 +698,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -664,7 +713,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -682,7 +733,7 @@
                     android:textColor="@color/black"
                     android:text="M:板板胡"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -695,9 +746,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -708,7 +761,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -726,7 +781,7 @@
                     android:textColor="@color/black"
                     android:text="N:双三张"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -739,9 +794,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -752,7 +809,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -770,7 +829,7 @@
                     android:textColor="@color/black"
                     android:text="O:暗红"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -783,9 +842,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -796,7 +857,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -814,7 +877,7 @@
                     android:textColor="@color/black"
                     android:text="P:幺九"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -827,9 +890,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -840,7 +905,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -858,7 +925,7 @@
                     android:textColor="@color/black"
                     android:text="Q:十三烂"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -871,9 +938,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -884,7 +953,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -902,7 +973,7 @@
                     android:textColor="@color/black"
                     android:text="R:风牌"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -915,9 +986,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -928,7 +1001,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
 
             <LinearLayout
@@ -946,7 +1021,7 @@
                     android:textColor="@color/black"
                     android:text="S:穷胡-东北"/>
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -959,9 +1034,11 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:optionWidth="@dimen/basic_num_option_width" />
 
-                <Button
+                <wzp.project.majiang.widget.ListOptionButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -972,7 +1049,9 @@
                     android:drawablePadding="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg" />
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr"
+                    app:optionWidth="@dimen/special_rule_option_width" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -24,13 +24,13 @@ public class ListOptionPopupWindow extends PopupWindow {
 	private ArrayAdapter<String> adapter;
 	private int screenHeight;
 
-	private static final int POP_WIN_WIDTH = 140;
+	public static final int DEF_POP_WIN_WIDTH_DP = 140; // 默认popwin宽度，单位dp
 
 	
 	@SuppressLint("InflateParams")
 	public ListOptionPopupWindow(Context context) {
 		this.context = context;
-		setWidth(DensityUtil.dp2px(context, POP_WIN_WIDTH));
+		setWidth(DensityUtil.dp2px(context, DEF_POP_WIN_WIDTH_DP));
 		
 		listView = (ListView) LayoutInflater.from(context).inflate(R.layout.pop_win_list, null);
 		adapter = new ArrayAdapter<>(context, R.layout.listitem_pw_list);

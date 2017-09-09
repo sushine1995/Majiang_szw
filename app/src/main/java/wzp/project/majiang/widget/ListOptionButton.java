@@ -5,15 +5,15 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 
 import wzp.project.majiang.R;
+import wzp.project.majiang.util.DensityUtil;
 
 /**
  * Created by wzp on 2017/9/2.
  */
 
-public class ListOptionButton extends Button {
+public class ListOptionButton extends android.support.v7.widget.AppCompatButton {
 
     private ListOptionPopupWindow pwListOption;
     private String[] options;
@@ -63,6 +63,10 @@ public class ListOptionButton extends Button {
         if (optionsId != -1) {
             setListViewItems(optionsId);
         }
+
+        float width = typedArray.getDimension(R.styleable.listOptionButton_optionWidth,
+                DensityUtil.dp2px(context, ListOptionPopupWindow.DEF_POP_WIN_WIDTH_DP));
+        pwListOption.setWidth((int) width);
     }
 
     public void setListViewItems(String[] options) {

@@ -12,6 +12,7 @@
 
     <declare-styleable name="listOptionButton">
         <attr name="options" format="reference" />
+        <attr name="optionWidth" format="dimension" />
     </declare-styleable>
 
 </resources>

@@ -2,6 +2,7 @@ package wzp.project.majiang.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import wzp.project.majiang.R;
 import wzp.project.majiang.activity.EditChooseMajiangMethodActivity;
 import wzp.project.majiang.entity.ChooseMajiangMethod;
 import wzp.project.majiang.entity.SingleChooseMajiangMethod;
+import wzp.project.majiang.util.DensityUtil;
 
 
 public class PlayMethodListAdapter extends BaseAdapter {
@@ -24,9 +26,17 @@ public class PlayMethodListAdapter extends BaseAdapter {
     private Context context;
     private List<ChooseMajiangMethod> chooseMajiangMethodList;
 
+    private String[] playMethodArr;
+    private String[] basicNumArr;
+    private String[] specialRuleArr;
+
     public PlayMethodListAdapter(Context context, List<ChooseMajiangMethod> chooseMajiangMethodList) {
         this.context = context;
         this.chooseMajiangMethodList = chooseMajiangMethodList;
+
+        playMethodArr = context.getResources().getStringArray(R.array.play_method_name_arr);
+        basicNumArr = context.getResources().getStringArray(R.array.basic_num_arr);
+        specialRuleArr = context.getResources().getStringArray(R.array.special_rule_arr);
     }
 
     @Override
@@ -81,15 +91,40 @@ public class PlayMethodListAdapter extends BaseAdapter {
             LinearLayout linearAdded = new LinearLayout(context);
             linearAdded.setOrientation(LinearLayout.HORIZONTAL);
             TextView tvName = new TextView(context);
+            tvName.setTextSize(14);
             tvName.setText(method.getName());
+            LinearLayout.LayoutParams paramName = new LinearLayout.LayoutParams(0, (int) DensityUtil.dp2px(context, 30), 1);
+            tvName.setLayoutParams(paramName);
             linearAdded.addView(tvName);
 
+
+            LinearLayout.LayoutParams paramSeparatorLine = new LinearLayout.LayoutParams((int) DensityUtil.dp2px(context, 1), ViewGroup.LayoutParams.MATCH_PARENT);
+            paramSeparatorLine.setMargins(0, (int) DensityUtil.dp2px(context, 5), 0, (int) DensityUtil.dp2px(context, 5));
+
+            View separatorLine1 = new View(context);
+            separatorLine1.setLayoutParams(paramSeparatorLine);
+            separatorLine1.setBackgroundColor(context.getResources().getColor(R.color.white));
+            linearAdded.addView(separatorLine1);
+
             TextView tvNum = new TextView(context);
-            tvNum.setText(" | 张数：" + method.getNumIndex());
+            tvName.setTextSize(14);
+            tvNum.setText("张数：" + basicNumArr[method.getNumIndex()]);
+            LinearLayout.LayoutParams paramNum = new LinearLayout.LayoutParams(0, (int) DensityUtil.dp2px(context, 30), 1);
+            tvNum.setLayoutParams(paramNum);
+            tvNum.setGravity(Gravity.CENTER);
             linearAdded.addView(tvNum);
 
+            View separatorLine2 = new View(context);
+            separatorLine2.setLayoutParams(paramSeparatorLine);
+            separatorLine2.setBackgroundColor(context.getResources().getColor(R.color.white));
+            linearAdded.addView(separatorLine2);
+
             TextView tvSpecialRule = new TextView(context);
-            tvSpecialRule.setText(" | " + method.getSpecialRuleIndex());
+            tvName.setTextSize(14);
+            tvSpecialRule.setText(specialRuleArr[method.getSpecialRuleIndex()]);
+            LinearLayout.LayoutParams paramSpecialRule = new LinearLayout.LayoutParams(0, (int) DensityUtil.dp2px(context, 30), 2);
+            tvSpecialRule.setLayoutParams(paramSpecialRule);
+            tvSpecialRule.setPadding((int) DensityUtil.dp2px(context, 20), 0, 0, 0);
             linearAdded.addView(tvSpecialRule);
 
             linearPlayMethodList.addView(linearAdded);

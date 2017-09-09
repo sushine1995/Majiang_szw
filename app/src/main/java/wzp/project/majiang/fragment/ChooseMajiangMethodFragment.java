@@ -51,17 +51,17 @@ public class ChooseMajiangMethodFragment extends Fragment {
         SingleChooseMajiangMethod singleChooseMajiangMethod = new SingleChooseMajiangMethod();
         singleChooseMajiangMethod.setName("A:平胡");
         singleChooseMajiangMethod.setNumIndex(4);
-        singleChooseMajiangMethod.setSpecialRuleIndex(22);
+        singleChooseMajiangMethod.setSpecialRuleIndex(5);
         singleChooseMajiangMethodList.add(singleChooseMajiangMethod);
         singleChooseMajiangMethod = new SingleChooseMajiangMethod();
         singleChooseMajiangMethod.setName("B:平胡");
         singleChooseMajiangMethod.setNumIndex(4);
-        singleChooseMajiangMethod.setSpecialRuleIndex(22);
+        singleChooseMajiangMethod.setSpecialRuleIndex(5);
         singleChooseMajiangMethodList.add(singleChooseMajiangMethod);
         singleChooseMajiangMethod = new SingleChooseMajiangMethod();
         singleChooseMajiangMethod.setName("C:平胡");
         singleChooseMajiangMethod.setNumIndex(4);
-        singleChooseMajiangMethod.setSpecialRuleIndex(22);
+        singleChooseMajiangMethod.setSpecialRuleIndex(5);
         singleChooseMajiangMethodList.add(singleChooseMajiangMethod);
         chooseMajiangMethod.setMethods(singleChooseMajiangMethodList);
         chooseMajiangMethod.setMethods(singleChooseMajiangMethodList);
@@ -74,17 +74,17 @@ public class ChooseMajiangMethodFragment extends Fragment {
         singleChooseMajiangMethod = new SingleChooseMajiangMethod();
         singleChooseMajiangMethod.setName("A:平胡");
         singleChooseMajiangMethod.setNumIndex(4);
-        singleChooseMajiangMethod.setSpecialRuleIndex(22);
+        singleChooseMajiangMethod.setSpecialRuleIndex(5);
         singleChooseMajiangMethodList.add(singleChooseMajiangMethod);
         singleChooseMajiangMethod = new SingleChooseMajiangMethod();
         singleChooseMajiangMethod.setName("B:平胡");
         singleChooseMajiangMethod.setNumIndex(4);
-        singleChooseMajiangMethod.setSpecialRuleIndex(22);
+        singleChooseMajiangMethod.setSpecialRuleIndex(5);
         singleChooseMajiangMethodList.add(singleChooseMajiangMethod);
         singleChooseMajiangMethod = new SingleChooseMajiangMethod();
         singleChooseMajiangMethod.setName("C:平胡");
         singleChooseMajiangMethod.setNumIndex(4);
-        singleChooseMajiangMethod.setSpecialRuleIndex(22);
+        singleChooseMajiangMethod.setSpecialRuleIndex(5);
         singleChooseMajiangMethodList.add(singleChooseMajiangMethod);
         chooseMajiangMethod.setMethods(singleChooseMajiangMethodList);
         chooseMajiangMethod.setMethods(singleChooseMajiangMethodList);
@@ -97,17 +97,17 @@ public class ChooseMajiangMethodFragment extends Fragment {
         singleChooseMajiangMethod = new SingleChooseMajiangMethod();
         singleChooseMajiangMethod.setName("A:平胡");
         singleChooseMajiangMethod.setNumIndex(4);
-        singleChooseMajiangMethod.setSpecialRuleIndex(22);
+        singleChooseMajiangMethod.setSpecialRuleIndex(5);
         singleChooseMajiangMethodList.add(singleChooseMajiangMethod);
         singleChooseMajiangMethod = new SingleChooseMajiangMethod();
         singleChooseMajiangMethod.setName("B:平胡");
         singleChooseMajiangMethod.setNumIndex(4);
-        singleChooseMajiangMethod.setSpecialRuleIndex(22);
+        singleChooseMajiangMethod.setSpecialRuleIndex(5);
         singleChooseMajiangMethodList.add(singleChooseMajiangMethod);
         singleChooseMajiangMethod = new SingleChooseMajiangMethod();
         singleChooseMajiangMethod.setName("C:平胡");
         singleChooseMajiangMethod.setNumIndex(4);
-        singleChooseMajiangMethod.setSpecialRuleIndex(22);
+        singleChooseMajiangMethod.setSpecialRuleIndex(5);
         singleChooseMajiangMethodList.add(singleChooseMajiangMethod);
         chooseMajiangMethod.setMethods(singleChooseMajiangMethodList);
         chooseMajiangMethod.setMethods(singleChooseMajiangMethodList);
@@ -116,15 +116,6 @@ public class ChooseMajiangMethodFragment extends Fragment {
 
 
     private void initWidget(View view) {
-//        btnEdit = (Button) view.findViewById(btn_edt);
-
-//        btnEdit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                EditChooseMajiangMethodActivity.myStartActivity(getContext());
-//            }
-//        });
-
         lvPlayMethod = (ListView) view.findViewById(R.id.lv_play_method);
 
         lvPlayMethod.setAdapter(playMethodListAdapter);

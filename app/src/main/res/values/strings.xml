@@ -499,4 +499,26 @@
         <item>三色全（不缺门）</item>
         <item>缺一色（川）</item>
     </string-array>
+    <!--玩法名称-->
+    <string-array name="play_method_name_arr">
+        <item>A:平胡</item>
+        <item>B:混一色</item>
+        <item>C:七小对</item>
+        <item>D:对对碰</item>
+        <item>E:清一色</item>
+        <item>F:风一色</item>
+        <item>G:十三幺</item>
+        <item>H:将一色</item>
+        <item>I:混将胡</item>
+        <item>J:九大坎</item>
+        <item>K:缺一门-湘</item>
+        <item>L:三色全</item>
+        <item>M:板板胡</item>
+        <item>N:双三张</item>
+        <item>O:暗红</item>
+        <item>P:幺九</item>
+        <item>Q:十三烂</item>
+        <item>R:风牌</item>
+        <item>S:穷胡-东北</item>
+    </string-array>
 </resources>

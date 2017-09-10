@@ -8,6 +8,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ import wzp.project.majiang.helper.constant.PlayMethod;
 
 public class EditPlayMethodActivity extends AppCompatActivity {
 
+    private ImageButton ibtnBack;
+
     private TextView tvTitle;
     private TabLayout tabParam;
     private ViewPager vpParam;
@@ -30,6 +34,17 @@ public class EditPlayMethodActivity extends AppCompatActivity {
     private int playMethod;
     private List<Fragment> fragmentList;
     private ModifyPlayMethodVpAdapter modifyPlayMethodVpAdapter;
+
+    private View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.ibtn_back:
+                    onBackPressed();
+                    break;
+            }
+        }
+    };
 
 
     @Override
@@ -59,6 +74,8 @@ public class EditPlayMethodActivity extends AppCompatActivity {
     }
 
     private void initWidget() {
+        ibtnBack = (ImageButton) findViewById(R.id.ibtn_back);
+
         tvTitle = (TextView) findViewById(R.id.tv_title);
         tabParam = (TabLayout) findViewById(R.id.tab_param);
         vpParam = (ViewPager) findViewById(R.id.vp_param);
@@ -67,6 +84,8 @@ public class EditPlayMethodActivity extends AppCompatActivity {
         vpParam.setAdapter(modifyPlayMethodVpAdapter);
 
         tvTitle.setText(playMethodArr[playMethod - 1]);
+
+        ibtnBack.setOnClickListener(listener);
     }
 
     public static void myStartActivity(Context context, int playMethod) {

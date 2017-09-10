@@ -8,6 +8,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +25,24 @@ import wzp.project.majiang.helper.constant.PlayMethod;
 
 public class ShowPlayMethodActivity extends AppCompatActivity {
 
+    private ImageButton ibtnBack;
+
     private TabLayout tabRecord;
     private ViewPager vpPlayMethod;
 
     private List<Fragment> fragmentList;
     private ShowPlayMethodVpAdapter playMethodVpAdapter;
 
+    private View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.ibtn_back:
+                    onBackPressed();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,11 +77,15 @@ public class ShowPlayMethodActivity extends AppCompatActivity {
     }
 
     private void initWidget() {
+        ibtnBack = (ImageButton) findViewById(R.id.ibtn_back);
+
         tabRecord = (TabLayout) findViewById(R.id.tab_record);
         vpPlayMethod = (ViewPager) findViewById(R.id.vp_playMethod);
 
         tabRecord.setupWithViewPager(vpPlayMethod);
         vpPlayMethod.setAdapter(playMethodVpAdapter);
+
+        ibtnBack.setOnClickListener(listener);
     }
 
     public static void myStartActivity(Context context) {

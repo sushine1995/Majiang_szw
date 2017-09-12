@@ -4,11 +4,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <Button
         android:id="@+id/btn_modifyPlayMethod"
         android:layout_width="match_parent"
@@ -34,6 +29,37 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="20dp"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/black"
+                android:text="选牌方式"
+                android:background="@color/white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tv_tip_height"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_m"
+                android:textColor="@color/black"
+                android:text="暂无数据"
+                android:background="@color/white"/>
+
+            <ListView
+                android:id="@+id/lv_play_method"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:divider="@color/action_bar_bg"
+                android:dividerHeight="1dp"
+                android:background="@color/white"></ListView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/separator_line_height2"
                 android:paddingTop="10dp"
                 android:paddingBottom="20dp"
                 android:gravity="center"
@@ -71,7 +97,7 @@
                         android:gravity="center"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="4"/>
+                        android:text=""/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -89,13 +115,14 @@
                         android:text="每手牌数："/>
 
                     <TextView
+                        android:id="@+id/tv_everyHandCardNum"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/tv_tip_height"
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="4"/>
+                        android:text=""/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -123,13 +150,14 @@
                         android:textSize="@dimen/text_size_m" />
 
                     <TextView
+                        android:id="@+id/tv_bankerCardNum"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/tv_tip_height"
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="4"/>
+                        android:text=""/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -147,13 +175,14 @@
                         android:text="闲家拿牌数："/>
 
                     <TextView
+                        android:id="@+id/tv_otherPlayerCardNum"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/tv_tip_height"
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="4"/>
+                        android:text=""/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -174,13 +203,14 @@
                     android:textSize="@dimen/text_size_m" />
 
                 <TextView
+                    android:id="@+id/tv_bankerSkip"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="4"/>
+                    android:text=""/>
             </LinearLayout>
 
             <LinearLayout
@@ -200,13 +230,14 @@
                     android:textSize="@dimen/text_size_m" />
 
                 <TextView
+                    android:id="@+id/tv_getCardMethod"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="4"/>
+                    android:text=""/>
             </LinearLayout>
 
             <LinearLayout
@@ -232,13 +263,14 @@
                         android:text="程序开机次数："/>
 
                     <TextView
+                        android:id="@+id/tv_programStartTimes"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/tv_tip_height"
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="4"/>
+                        android:text=""/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -256,13 +288,14 @@
                         android:text="程序关机次数："/>
 
                     <TextView
+                        android:id="@+id/tv_programStopTimes"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/tv_tip_height"
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="4"/>
+                        android:text=""/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -288,13 +321,14 @@
                         android:text="连续工作局数："/>
 
                     <TextView
+                        android:id="@+id/tv_continuousWorkRounds"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/tv_tip_height"
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="4"/>
+                        android:text=""/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -312,6 +346,7 @@
                         android:text="总共使用局数："/>
 
                     <TextView
+                        android:id="@+id/tv_totalRounds"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/tv_tip_height"
                         android:layout_marginLeft="10dp"
@@ -326,6 +361,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:paddingBottom="10dp"
                 android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
                 android:orientation="horizontal"
                 android:background="@color/white">
@@ -339,13 +375,14 @@
                     android:textSize="@dimen/text_size_m" />
 
                 <TextView
+                    android:id="@+id/tv_broadcastCardNum"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="4"/>
+                    android:text=""/>
             </LinearLayout>
 
             <LinearLayout
@@ -358,25 +395,28 @@
                 android:paddingRight="@dimen/basic_method_horizontal_interval_1"
                 android:orientation="horizontal"
                 android:background="@color/white">
-                <CheckBox
+                <TextView
                     android:layout_width="0dp"
                     android:layout_height="@dimen/tv_tip_height"
                     android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/dot"
+                    android:drawablePadding="10dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="便携式语音盒"
-                    android:checked="true"
-                    android:clickable="false"/>
+                    android:text="便携式语音盒"/>
 
-                <CheckBox
+                <TextView
                     android:layout_width="0dp"
                     android:layout_height="@dimen/tv_tip_height"
                     android:layout_weight="1"
                     android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/dot"
+                    android:drawablePadding="10dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="机头定位"
-                    android:clickable="false"/>
+                    android:text="机头定位"/>
             </LinearLayout>
 
             <LinearLayout
@@ -975,37 +1015,6 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/separator_line_height2"
-                android:paddingTop="10dp"
-                android:paddingBottom="20dp"
-                android:gravity="center"
-                android:textSize="@dimen/text_size_l"
-                android:textColor="@color/black"
-                android:text="选牌方式"
-                android:background="@color/white"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/tv_tip_height"
-                android:paddingBottom="10dp"
-                android:gravity="center"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:text="暂无数据"
-                android:background="@color/white"/>
-
-            <ListView
-                android:id="@+id/lv_play_method"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:divider="@color/action_bar_bg"
-                android:dividerHeight="1dp"
-                android:background="@color/white"></ListView>
 
             <TextView
                 android:layout_width="match_parent"

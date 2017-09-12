@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import wzp.project.majiang.util.BluetoothClientHelper;
+import wzp.project.majiang.util.MySharedPreferences;
 
 /**
  * 提供一些全局的Application属性
@@ -21,6 +22,8 @@ public class MyApplication extends Application {
 
 	// 报文队列
 	private static Queue<byte[]> messageQueue = new LinkedList<>();
+
+	private static MySharedPreferences spPlayMethod;
 	
 	private static final String LOG_TAG = "MyApplication";
 	
@@ -31,12 +34,16 @@ public class MyApplication extends Application {
 		
 		context = getApplicationContext();
 
+		spPlayMethod = new MySharedPreferences(context, "play_method_prefs");
 	}
 
 	public static Context getContext() {
 		return context;
 	}
 
+	public static MySharedPreferences getSettingPreferences() {
+		return spPlayMethod;
+	}
 
 	public static Queue<byte[]> getMessageQueue() {
 		return messageQueue;

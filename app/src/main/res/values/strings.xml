@@ -168,7 +168,7 @@
         <item>39</item>
         <item>40</item>
     </string-array>
-    <string-array name="continuous_working_rounds_arr">
+    <string-array name="continuous_work_rounds_arr">
         <item>3</item>
         <item>5</item>
         <item>10</item>

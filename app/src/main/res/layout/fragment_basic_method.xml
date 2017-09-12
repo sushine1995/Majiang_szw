@@ -326,7 +326,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <wzp.project.majiang.widget.ShowFunctionTipTextView
-                    android:id="@+id/tv_continuousWorkingRounds"
+                    android:id="@+id/tv_continuousWorkRounds"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:gravity="center"
@@ -349,7 +349,7 @@
                     android:paddingRight="5dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_m"
-                    app:options="@array/continuous_working_rounds_arr"></wzp.project.majiang.widget.ListOptionButton>
+                    app:options="@array/continuous_work_rounds_arr"></wzp.project.majiang.widget.ListOptionButton>
             </LinearLayout>
 
             <LinearLayout

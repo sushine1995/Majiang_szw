@@ -16,23 +16,23 @@ import java.util.List;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.EditChooseMajiangMethodActivity;
-import wzp.project.majiang.entity.ChooseMajiangMethod;
-import wzp.project.majiang.entity.SingleChooseMajiangMethod;
+import wzp.project.majiang.entity.ChooseCardMethod;
+import wzp.project.majiang.entity.SingleChooseCardMethod;
 import wzp.project.majiang.util.DensityUtil;
 
 
 public class PlayMethodListAdapter extends BaseAdapter {
 
     private Context context;
-    private List<ChooseMajiangMethod> chooseMajiangMethodList;
+    private List<ChooseCardMethod> chooseCardMethodList;
 
     private String[] playMethodArr;
     private String[] basicNumArr;
     private String[] specialRuleArr;
 
-    public PlayMethodListAdapter(Context context, List<ChooseMajiangMethod> chooseMajiangMethodList) {
+    public PlayMethodListAdapter(Context context, List<ChooseCardMethod> chooseCardMethodList) {
         this.context = context;
-        this.chooseMajiangMethodList = chooseMajiangMethodList;
+        this.chooseCardMethodList = chooseCardMethodList;
 
         playMethodArr = context.getResources().getStringArray(R.array.play_method_name_arr);
         basicNumArr = context.getResources().getStringArray(R.array.basic_num_arr);
@@ -41,12 +41,12 @@ public class PlayMethodListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return chooseMajiangMethodList.size();
+        return chooseCardMethodList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return chooseMajiangMethodList.get(position);
+        return chooseCardMethodList.get(position);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class PlayMethodListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        ChooseMajiangMethod chooseMajiangMethod = (ChooseMajiangMethod) getItem(position);
+        ChooseCardMethod chooseCardMethod = (ChooseCardMethod) getItem(position);
 
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.listitem_play_method, parent, false);
@@ -73,21 +73,21 @@ public class PlayMethodListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.cbIsSelected.setChecked(chooseMajiangMethod.isSelected());
-        holder.cbIsSelected.setText("数据" + (position + 1) + "(循环" + chooseMajiangMethod.getLoopTimes() + "次)");
+        holder.cbIsSelected.setChecked(chooseCardMethod.isSelected());
+        holder.cbIsSelected.setText("数据" + (position + 1) + "(循环" + chooseCardMethod.getLoopTimes() + "次)");
         holder.ibtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditChooseMajiangMethodActivity.myStartActivity(context);
             }
         });
-        listPlayMethod(context, holder.linearPlayMethodList, chooseMajiangMethod.getMethods());
+        listPlayMethod(context, holder.linearPlayMethodList, chooseCardMethod.getMethods());
 
         return convertView;
     }
 
-    private void listPlayMethod(Context context, LinearLayout linearPlayMethodList, List<SingleChooseMajiangMethod> methodList) {
-        for (SingleChooseMajiangMethod method : methodList) {
+    private void listPlayMethod(Context context, LinearLayout linearPlayMethodList, List<SingleChooseCardMethod> methodList) {
+        for (SingleChooseCardMethod method : methodList) {
             LinearLayout linearAdded = new LinearLayout(context);
             linearAdded.setOrientation(LinearLayout.HORIZONTAL);
             TextView tvName = new TextView(context);

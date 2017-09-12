@@ -4,7 +4,7 @@ package wzp.project.majiang.entity;
  * Created by zippe on 2017/9/5.
  */
 
-public class SingleChooseMajiangMethod {
+public class SingleChooseCardMethod {
 
     private String name; // 玩法名称
     private int numIndex; // 基本张数（索引值）

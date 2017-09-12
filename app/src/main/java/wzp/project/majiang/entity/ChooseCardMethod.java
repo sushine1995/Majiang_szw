@@ -6,11 +6,11 @@ import java.util.List;
  * Created by zippe on 2017/9/5.
  */
 
-public class ChooseMajiangMethod {
+public class ChooseCardMethod {
 
     private boolean isSelected; // 是否被选中
     private int loopTimes; // 循环次数
-    private List<SingleChooseMajiangMethod> methods; // 玩法集合
+    private List<SingleChooseCardMethod> methods; // 玩法集合
 
     public boolean isSelected() {
         return isSelected;
@@ -28,11 +28,11 @@ public class ChooseMajiangMethod {
         this.loopTimes = loopTimes;
     }
 
-    public List<SingleChooseMajiangMethod> getMethods() {
+    public List<SingleChooseCardMethod> getMethods() {
         return methods;
     }
 
-    public void setMethods(List<SingleChooseMajiangMethod> methods) {
+    public void setMethods(List<SingleChooseCardMethod> methods) {
         this.methods = methods;
     }
 }

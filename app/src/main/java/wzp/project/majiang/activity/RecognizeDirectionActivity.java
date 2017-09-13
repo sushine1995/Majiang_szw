@@ -9,13 +9,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.activity.base.BaseActivity;
+import wzp.project.majiang.activity.base.BluetoothBaseActivity;
 import wzp.project.majiang.helper.constant.ProjectConstants;
 import wzp.project.majiang.widget.MyApplication;
 import wzp.project.majiang.util.CRC16;
 import wzp.project.majiang.util.CalculateUtil;
 
-public class RecognizeDirectionActivity extends BaseActivity {
+public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 
 	private ImageButton ibtnBack;
 

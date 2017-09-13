@@ -15,13 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.activity.base.BaseActivity;
+import wzp.project.majiang.activity.base.BluetoothBaseActivity;
 import wzp.project.majiang.util.BluetoothClientHelper;
 import wzp.project.majiang.helper.constant.BluetoothState;
 import wzp.project.majiang.helper.constant.ProjectConstants;
 import wzp.project.majiang.widget.MyApplication;
 
-public class MainActivity extends BaseActivity implements IBluetoothConnect {
+public class MainActivity extends BluetoothBaseActivity implements IBluetoothConnect {
 
 	private TextView tvBtState;
 	private ImageButton ibtnSearch;

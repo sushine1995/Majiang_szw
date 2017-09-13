@@ -41,7 +41,7 @@ public class MyApplication extends Application {
 		return context;
 	}
 
-	public static MySharedPreferences getSettingPreferences() {
+	public static MySharedPreferences getSpPlayMethod() {
 		return spPlayMethod;
 	}
 

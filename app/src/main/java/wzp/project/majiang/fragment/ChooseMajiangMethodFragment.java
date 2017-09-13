@@ -1,5 +1,6 @@
 package wzp.project.majiang.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,12 +15,16 @@ import java.util.List;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.EditChooseMajiangMethodActivity;
+import wzp.project.majiang.activity.EditPlayMethodActivity;
 import wzp.project.majiang.adapter.PlayMethodListAdapter;
 import wzp.project.majiang.entity.ChooseCardMethod;
+import wzp.project.majiang.entity.ChooseCardParameter;
 import wzp.project.majiang.entity.SingleChooseCardMethod;
 
 
 public class ChooseMajiangMethodFragment extends Fragment {
+
+    private EditPlayMethodActivity activity;
 
     private Button btnEdit;
     private ListView lvPlayMethod;
@@ -27,7 +32,14 @@ public class ChooseMajiangMethodFragment extends Fragment {
     private List<ChooseCardMethod> methodList;
     private PlayMethodListAdapter playMethodListAdapter;
 
+    private ChooseCardParameter chooseCardParameter;
 
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        activity = (EditPlayMethodActivity) context;
+    }
 
     @Nullable
     @Override
@@ -112,6 +124,10 @@ public class ChooseMajiangMethodFragment extends Fragment {
         chooseCardMethod.setMethods(singleChooseCardMethodList);
         chooseCardMethod.setMethods(singleChooseCardMethodList);
         methodList.add(chooseCardMethod);
+
+
+        chooseCardParameter = activity.getChooseCardParameter();
+
     }
 
 
@@ -129,4 +145,5 @@ public class ChooseMajiangMethodFragment extends Fragment {
         });
         lvPlayMethod.addFooterView(btnAddData);
     }
+
 }

@@ -19,11 +19,11 @@ import android.widget.TextView;
 import java.util.Arrays;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.activity.base.BaseActivity;
+import wzp.project.majiang.activity.base.BluetoothBaseActivity;
 import wzp.project.majiang.widget.MyApplication;
 import wzp.project.majiang.util.CalculateUtil;
 
-public class ShowMajiangActivity extends BaseActivity {
+public class ShowMajiangActivity extends BluetoothBaseActivity {
 
 	private ImageButton ibtnBack;
 	private TextView tvPosition;

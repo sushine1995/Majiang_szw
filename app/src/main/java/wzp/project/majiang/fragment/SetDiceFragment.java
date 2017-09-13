@@ -1,5 +1,6 @@
 package wzp.project.majiang.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,8 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.widget.ListOptionPopupWindow;
+import wzp.project.majiang.activity.EditPlayMethodActivity;
+import wzp.project.majiang.entity.DiceParameter;
 import wzp.project.majiang.widget.ListOptionButton;
+import wzp.project.majiang.widget.ListOptionPopupWindow;
 import wzp.project.majiang.widget.ShowFunctionTipPopupWindow;
 
 /**
@@ -19,6 +22,8 @@ import wzp.project.majiang.widget.ShowFunctionTipPopupWindow;
  */
 
 public class SetDiceFragment extends Fragment {
+
+    private EditPlayMethodActivity activity;
 
     private TextView tvPlayerNum;
     private Button btnChoosePlayerNum;
@@ -28,6 +33,8 @@ public class SetDiceFragment extends Fragment {
 
     private ShowFunctionTipPopupWindow pwShowFunTip;
     private ListOptionPopupWindow pwListOption;
+
+    private DiceParameter diceParameter;
 
 
 
@@ -51,21 +58,31 @@ public class SetDiceFragment extends Fragment {
         }
     };
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        activity = (EditPlayMethodActivity) context;
+    }
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_set_dice, container, false);
 
+        initData();
         initWidget(view);
 
         return view;
+    }
+
+    private void initData() {
+        diceParameter = activity.getDiceParameter();
     }
 
     private void initWidget(View view) {
 
 
     }
-
 
 }

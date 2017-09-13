@@ -15,11 +15,11 @@ import android.widget.TextView;
 import java.util.Arrays;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.activity.base.BaseActivity;
+import wzp.project.majiang.activity.base.BluetoothBaseActivity;
 import wzp.project.majiang.widget.MyApplication;
 import wzp.project.majiang.util.CalculateUtil;
 
-public class ShowBaopaiActivity extends BaseActivity {
+public class ShowBaopaiActivity extends BluetoothBaseActivity {
 
 	private ImageButton ibtnBack;
 	private ImageButton ibtnMoreFun;

@@ -36,11 +36,21 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="功能设置"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="20sp"
             android:gravity="center"
             android:layout_centerInParent="true"/>
+
+        <ImageButton
+            android:id="@+id/ibtn_save"
+            android:layout_width="@dimen/ibtn_back_width"
+            android:layout_height="match_parent"
+            android:src="@drawable/save"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ibtn_back_bg"
+            android:contentDescription="back"/>
     </RelativeLayout>
 
     <android.support.design.widget.TabLayout

@@ -17,11 +17,11 @@ import android.widget.PopupMenu;
 import java.util.Arrays;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.activity.base.BaseActivity;
+import wzp.project.majiang.activity.base.BluetoothBaseActivity;
 import wzp.project.majiang.widget.MyApplication;
 import wzp.project.majiang.util.CalculateUtil;
 
-public class ShowHandMajiangActivity extends BaseActivity {
+public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 
 	private ImageButton ibtnBack;
 	private ImageButton ibtnMoreFun;

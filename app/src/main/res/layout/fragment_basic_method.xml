@@ -109,7 +109,7 @@
                     app:funTip="@string/banker_card_num_tip"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_chooseBankerCardNum"
+                    android:id="@+id/btn_bankerCardNum"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"

@@ -89,4 +89,17 @@ public class ListOptionButton extends android.support.v7.widget.AppCompatButton 
     public int getSelectedItemPosition() {
         return selectedItemPosition;
     }
+
+    public void setOnItemClickListener(final AdapterView.OnItemClickListener listener) {
+        pwListOption.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                setText(options[position]);
+                selectedItemPosition = position;
+                pwListOption.dismiss();
+
+                listener.onItemClick(parent, view, position, id);
+            }
+        });
+    }
 }

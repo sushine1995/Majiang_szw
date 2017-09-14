@@ -1,8 +1,11 @@
 package wzp.project.majiang.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,10 +60,27 @@ public class ShowPlayMethodFragment extends Fragment {
     private int method;
     private PlayMethodParameter parameter;
 
+    private static final int REQUEST_EDIT_PLAY_METHOD = 0x01;
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("ShowPlayMethodFragment", "onActivityResult");
+        switch (requestCode) {
+            case REQUEST_EDIT_PLAY_METHOD:
+                if (resultCode == Activity.RESULT_OK) {
+                    parameter = JSON.parseObject(data.getStringExtra("parameter"),
+                            PlayMethodParameter.class);
+                    updateParameter();
+                }
+                break;
+        }
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d("ShowPlayMethodFragment", "onCreateView");
         View view = inflater.inflate(R.layout.fragment_show_play_method, container, false);
 
         initData();
@@ -126,11 +146,18 @@ public class ShowPlayMethodFragment extends Fragment {
         btnModifyPlayMethod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditPlayMethodActivity.myStartActivity(getContext(), method);
+//                EditPlayMethodActivity.myStartActivity(getContext(), method);
+                Intent intent = new Intent(getContext(), EditPlayMethodActivity.class);
+                intent.putExtra("playMethod", method);
+                intent.putExtra("parameter", JSON.toJSONString(parameter));
+                startActivityForResult(intent, REQUEST_EDIT_PLAY_METHOD);
             }
         });
 
+        updateParameter();
+    }
 
+    private void updateParameter() {
         BasicParameter bp = parameter.getBasicParameter();
         tvPlayerNum.setText(getResources().getStringArray(R.array.player_num_arr)[bp.getPlayerNum()]);
         tvEveryHandCardNum.setText(getResources().getStringArray(R.array.every_hand_num_arr)[bp.getEveryHandCardNum()]);
@@ -145,7 +172,10 @@ public class ShowPlayMethodFragment extends Fragment {
         tvBroadcastCardNum.setText(getResources().getStringArray(R.array.broadcast_card_num_arr)[bp.getBroadcastCardNum()]);
         tvLayerNum.setText(bp.isThreeLayer() ? "三层" : "两层");
         tvMachineGear.setText(getResources().getStringArray(R.array.machine_gear_arr)[bp.getMachineGear()]);
+    }
 
-
+    public void savePlayMethod() {
+        MyApplication.getSpPlayMethod().commitString("playMethod" + method,
+                JSON.toJSONString(parameter));
     }
 }

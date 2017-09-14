@@ -34,7 +34,7 @@
                     app:funTip="@string/player_num_fun_tip"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_choosePlayerNum"
+                    android:id="@+id/btn_playerNum"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -67,7 +67,7 @@
                     app:funTip="@string/every_hand_num_tip"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_chooseEveryHandNum"
+                    android:id="@+id/btn_everyHandNum"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -143,7 +143,7 @@
                     app:funTip="@string/other_player_card_num_tip"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_chooseOtherPlayerCardNum"
+                    android:id="@+id/btn_otherPlayerCardNum"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -185,7 +185,7 @@
                     app:funTip="@string/banker_skip_tip"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_chooseBankerSkip"
+                    android:id="@+id/btn_bankerSkip"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -219,7 +219,7 @@
                     app:funTip="@string/get_card_method_tip"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_chooseGetCardMethod"
+                    android:id="@+id/btn_getCardMethod"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -263,7 +263,7 @@
                     app:funTip="@string/program_start_times_tip" />
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_chooseProgramStartTimes"
+                    android:id="@+id/btn_programStartTimes"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:background="@drawable/btn_options_bg"
@@ -296,7 +296,7 @@
                     app:funTip="@string/program_stop_times_tip"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_chooseProgramStopTimes"
+                    android:id="@+id/btn_programStopTimes"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -338,7 +338,7 @@
                     app:funTip="@string/continuous_working_rounds_tip"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_chooseContinuousWorkingRounds"
+                    android:id="@+id/btn_continuousWorkingRound"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:background="@drawable/btn_options_bg"
@@ -371,7 +371,7 @@
                     app:funTip="@string/total_rounds_tip"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_chooseTotalRounds"
+                    android:id="@+id/btn_totalUseRound"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -413,7 +413,7 @@
                     app:funTip="@string/broadcast_card_num_tip"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_chooseBroadcastCardNum"
+                    android:id="@+id/btn_broadcastCardNum"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:background="@drawable/btn_options_bg"
@@ -453,6 +453,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_voiceBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:gravity="center"
@@ -479,6 +480,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_machineHeadPosition"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:textSize="@dimen/text_size_m"

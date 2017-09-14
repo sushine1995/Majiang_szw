@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -20,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import wzp.project.majiang.R;
+import wzp.project.majiang.activity.base.BaseActivity;
 import wzp.project.majiang.adapter.ShowPlayMethodVpAdapter;
 import wzp.project.majiang.fragment.ShowPlayMethodFragment;
 import wzp.project.majiang.helper.constant.PlayMethod;
@@ -29,9 +29,10 @@ import wzp.project.majiang.util.DensityUtil;
  * Created by wzp on 2017/8/28.
  */
 
-public class ShowPlayMethodActivity extends AppCompatActivity {
+public class ShowPlayMethodActivity extends BaseActivity {
 
     private ImageButton ibtnBack;
+    private ImageButton ibtnSave;
     private ImageButton ibtnMoreFun;
 
     private TabLayout tabRecord;
@@ -52,6 +53,10 @@ public class ShowPlayMethodActivity extends AppCompatActivity {
             switch (v.getId()) {
                 case R.id.ibtn_back:
                     onBackPressed();
+                    break;
+
+                case R.id.ibtn_save:
+                    savePlayMethod();
                     break;
 
                 case R.id.ibtn_moreFun:
@@ -111,6 +116,7 @@ public class ShowPlayMethodActivity extends AppCompatActivity {
 
     private void initWidget() {
         ibtnBack = (ImageButton) findViewById(R.id.ibtn_back);
+        ibtnSave = (ImageButton) findViewById(R.id.ibtn_save);
         ibtnMoreFun = (ImageButton) findViewById(R.id.ibtn_moreFun);
 
         tabRecord = (TabLayout) findViewById(R.id.tab_record);
@@ -118,6 +124,7 @@ public class ShowPlayMethodActivity extends AppCompatActivity {
 
         tabRecord.setupWithViewPager(vpPlayMethod);
         vpPlayMethod.setAdapter(playMethodVpAdapter);
+        vpPlayMethod.setOffscreenPageLimit(2);
 
         vMoreFun = LayoutInflater.from(this).inflate(R.layout.pop_win_more_fun, null);
         tvSaveAs = (TextView) vMoreFun.findViewById(R.id.tv_saveAs);
@@ -129,10 +136,18 @@ public class ShowPlayMethodActivity extends AppCompatActivity {
         pwMoreFun.setFocusable(true);
 
         ibtnBack.setOnClickListener(listener);
+        ibtnSave.setOnClickListener(listener);
         ibtnMoreFun.setOnClickListener(listener);
         tvSaveAs.setOnClickListener(listener);
         tvReadFile.setOnClickListener(listener);
         tvDownload.setOnClickListener(listener);
+    }
+
+    private void savePlayMethod() {
+        for (Fragment fragment : fragmentList) {
+            ((ShowPlayMethodFragment) fragment).savePlayMethod();
+        }
+        showToast("参数保存成功！");
     }
 
     public static void myStartActivity(Context context) {

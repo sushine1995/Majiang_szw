@@ -43,11 +43,21 @@
 
         <ImageButton
             android:id="@+id/ibtn_moreFun"
-            android:layout_width="@dimen/ibtn_back_width"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:src="@drawable/more_fun2"
+            android:src="@drawable/more_fun"
             android:scaleType="centerInside"
             android:layout_alignParentRight="true"
+            android:background="@drawable/ibtn_back_bg"
+            android:contentDescription="back"/>
+
+        <ImageButton
+            android:id="@+id/ibtn_save"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/ibtn_moreFun"
+            android:src="@drawable/save"
+            android:scaleType="centerInside"
             android:background="@drawable/ibtn_back_bg"
             android:contentDescription="back"/>
     </RelativeLayout>

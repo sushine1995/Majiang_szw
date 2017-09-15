@@ -513,6 +513,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_panelInduction"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:gravity="center"
@@ -539,6 +540,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_moneyBoxPosition"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:textSize="@dimen/text_size_m"
@@ -571,6 +573,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_continuousBroadcastCard"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:gravity="center"
@@ -597,6 +600,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_assignedIDCardPosition"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:textSize="@dimen/text_size_m"
@@ -629,6 +633,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_broadcastWinCard"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:gravity="center"
@@ -655,6 +660,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_useDiceTest"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:textSize="@dimen/text_size_m"
@@ -687,6 +693,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_pengZhuanBroadcastCard"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:gravity="center"
@@ -713,6 +720,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_resetTest"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:textSize="@dimen/text_size_m"
@@ -745,6 +753,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_dicePanelPositionNotification"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:gravity="center"
@@ -771,6 +780,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_bloodFight"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:textSize="@dimen/text_size_m"
@@ -803,6 +813,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_dicePanelTroubleNotification"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:gravity="center"
@@ -829,6 +840,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_digitScreenSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:textSize="@dimen/text_size_m"
@@ -859,6 +871,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <CheckBox
+                    android:id="@+id/cb_threePlayer"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:gravity="center"

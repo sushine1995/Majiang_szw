@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +16,12 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.EditPlayMethodActivity;
+import wzp.project.majiang.adapter.ParamListAdapter;
 import wzp.project.majiang.entity.BasicParameter;
 import wzp.project.majiang.entity.ChooseCardParameter;
 import wzp.project.majiang.entity.DiceParameter;
@@ -55,10 +61,15 @@ public class ShowPlayMethodFragment extends Fragment {
     private TextView tvNorthMiddle;
     private TextView tvNorthBottom;
 
+    private RecyclerView rvBasicParameter;
+
     private Button btnModifyPlayMethod;
 
     private int method;
     private PlayMethodParameter parameter;
+
+    private ParamListAdapter basicParamAdapter;
+    private List<String> basicParamList = new ArrayList<>();
 
     private static final int REQUEST_EDIT_PLAY_METHOD = 0x01;
 
@@ -141,7 +152,14 @@ public class ShowPlayMethodFragment extends Fragment {
         tvNorthMiddle = (TextView) view.findViewById(R.id.tv_northMiddle);
         tvNorthBottom = (TextView) view.findViewById(R.id.tv_northBottom);
 
+        rvBasicParameter = (RecyclerView) view.findViewById(R.id.rv_basicParameter);
+
         btnModifyPlayMethod = (Button) view.findViewById(R.id.btn_modifyPlayMethod);
+
+        basicParamAdapter = new ParamListAdapter(getContext(), basicParamList);
+        rvBasicParameter.setAdapter(basicParamAdapter);
+        rvBasicParameter.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.VERTICAL, false));
 
         btnModifyPlayMethod.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,6 +188,60 @@ public class ShowPlayMethodFragment extends Fragment {
         tvContinuousWorkTimes.setText(getResources().getStringArray(R.array.continuous_work_rounds_arr)[bp.getContinuousWorkRound()]);
         tvTotalRounds.setText(getResources().getStringArray(R.array.total_rounds_arr)[bp.getTotalUseRound()]);
         tvBroadcastCardNum.setText(getResources().getStringArray(R.array.broadcast_card_num_arr)[bp.getBroadcastCardNum()]);
+
+        basicParamList.clear();
+        if (bp.isVoiceBox()) {
+            basicParamList.add("便携式语音盒");
+        }
+        if (bp.isMachineHeadPosition()) {
+            basicParamList.add("机头定位");
+        }
+        if (bp.isPanelInduction()) {
+            basicParamList.add("面板感应");
+        }
+        if (bp.isMoneyBoxPosition()) {
+            basicParamList.add("钱盒定位");
+        }
+        if (bp.isContinuousBroadcastCard()) {
+            basicParamList.add("连续报牌");
+        }
+        if (bp.isAssignedIDCardPosition()) {
+            basicParamList.add("指定ID卡定位");
+        }
+        if (bp.isBroadcastWinCard()) {
+            basicParamList.add("报胡牌");
+        }
+        if (bp.isUseDiceTest()) {
+            basicParamList.add("打色测试");
+        }
+        if (bp.isPengZhuanBroadcastCard()) {
+            basicParamList.add("碰转报牌");
+        }
+        if (bp.isResetTest()) {
+            basicParamList.add("复位测试");
+        }
+        if (bp.isDicePanelPositionNotification()) {
+            basicParamList.add("色盘定位提示");
+        }
+        if (bp.isBloodFight()) {
+            basicParamList.add("血战");
+        }
+        if (bp.isDicePanelTroubleNotification()) {
+            basicParamList.add("色盘故障提示");
+        }
+        if (bp.isDigitScreenSwitch()) {
+            basicParamList.add("数显档位开关");
+        }
+        if (bp.isThreePlayer()) {
+            basicParamList.add("三人玩法三人点数");
+        }
+        basicParamAdapter.notifyDataSetChanged();
+        if (basicParamList.size() == 0) {
+            rvBasicParameter.setVisibility(View.GONE);
+        } else {
+            rvBasicParameter.setVisibility(View.VISIBLE);
+        }
+
         tvLayerNum.setText(bp.isThreeLayer() ? "三层" : "两层");
         tvMachineGear.setText(getResources().getStringArray(R.array.machine_gear_arr)[bp.getMachineGear()]);
     }

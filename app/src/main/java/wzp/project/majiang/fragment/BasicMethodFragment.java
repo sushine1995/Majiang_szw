@@ -37,6 +37,19 @@ public class BasicMethodFragment extends Fragment {
     private ListOptionButton btnBroadcastCardNum;
     private CheckBox cbVoiceBox;
     private CheckBox cbMachineHeadPosition;
+    private CheckBox cbPanelInduction;
+    private CheckBox cbMoneyBoxPosition;
+    private CheckBox cbContinuousBroadcastCard;
+    private CheckBox cbAssignedIDCardPosition;
+    private CheckBox cbBroadcastWinCard;
+    private CheckBox cbUseDiceTest;
+    private CheckBox cbPengZhuanBroadcastCard;
+    private CheckBox cbResetTest;
+    private CheckBox cbDicePanelPositionNotification;
+    private CheckBox cbBloodFight;
+    private CheckBox cbDicePanelTroubleNotification;
+    private CheckBox cbDigitScreenSwitch;
+    private CheckBox cbThreePlayer;
 
 
     private BasicParameter basicParameter;
@@ -90,6 +103,19 @@ public class BasicMethodFragment extends Fragment {
         btnBroadcastCardNum = (ListOptionButton) view.findViewById(R.id.btn_broadcastCardNum);
         cbVoiceBox = (CheckBox) view.findViewById(R.id.cb_voiceBox);
         cbMachineHeadPosition = (CheckBox) view.findViewById(R.id.cb_machineHeadPosition);
+        cbPanelInduction = (CheckBox) view.findViewById(R.id.cb_panelInduction);
+        cbMoneyBoxPosition = (CheckBox) view.findViewById(R.id.cb_moneyBoxPosition);
+        cbContinuousBroadcastCard = (CheckBox) view.findViewById(R.id.cb_continuousBroadcastCard);
+        cbAssignedIDCardPosition = (CheckBox) view.findViewById(R.id.cb_assignedIDCardPosition);
+        cbBroadcastWinCard = (CheckBox) view.findViewById(R.id.cb_broadcastWinCard);
+        cbUseDiceTest = (CheckBox) view.findViewById(R.id.cb_useDiceTest);
+        cbPengZhuanBroadcastCard = (CheckBox) view.findViewById(R.id.cb_pengZhuanBroadcastCard);
+        cbResetTest = (CheckBox) view.findViewById(R.id.cb_resetTest);
+        cbDicePanelPositionNotification = (CheckBox) view.findViewById(R.id.cb_dicePanelPositionNotification);
+        cbBloodFight = (CheckBox) view.findViewById(R.id.cb_bloodFight);
+        cbDicePanelTroubleNotification = (CheckBox) view.findViewById(R.id.cb_dicePanelTroubleNotification);
+        cbDigitScreenSwitch = (CheckBox) view.findViewById(R.id.cb_digitScreenSwitch);
+        cbThreePlayer = (CheckBox) view.findViewById(R.id.cb_threePlayer);
 
 
         btnPlayerNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -170,6 +196,85 @@ public class BasicMethodFragment extends Fragment {
                 basicParameter.setMachineHeadPosition(isChecked);
             }
         });
+        cbPanelInduction.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setPanelInduction(isChecked);
+            }
+        });
+        cbMoneyBoxPosition.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setMoneyBoxPosition(isChecked);
+            }
+        });
+        cbContinuousBroadcastCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setContinuousBroadcastCard(isChecked);
+            }
+        });
+        cbAssignedIDCardPosition.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setAssignedIDCardPosition(isChecked);
+            }
+        });
+        cbBroadcastWinCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setBroadcastWinCard(isChecked);
+            }
+        });
+        cbUseDiceTest.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setUseDiceTest(isChecked);
+            }
+        });
+        cbPengZhuanBroadcastCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setPengZhuanBroadcastCard(isChecked);
+            }
+        });
+        cbResetTest.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setResetTest(isChecked);
+            }
+        });
+        cbDicePanelPositionNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setDicePanelPositionNotification(isChecked);
+            }
+        });
+        cbBloodFight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setBloodFight(isChecked);
+            }
+        });
+        cbDicePanelTroubleNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setDicePanelTroubleNotification(isChecked);
+            }
+        });
+        cbDigitScreenSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setDigitScreenSwitch(isChecked);
+            }
+        });
+        cbThreePlayer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                basicParameter.setThreePlayer(isChecked);
+            }
+        });
+
 
 
         // 初始化控件参数
@@ -185,6 +290,20 @@ public class BasicMethodFragment extends Fragment {
         btnTotalUseRound.setSelectedItemPosition(basicParameter.getTotalUseRound());
         btnBroadcastCardNum.setSelectedItemPosition(basicParameter.getBroadcastCardNum());
         cbVoiceBox.setChecked(basicParameter.isVoiceBox());
+        cbMachineHeadPosition.setChecked(basicParameter.isMachineHeadPosition());
+        cbPanelInduction.setChecked(basicParameter.isPanelInduction());
+        cbMoneyBoxPosition.setChecked(basicParameter.isMoneyBoxPosition());
+        cbContinuousBroadcastCard.setChecked(basicParameter.isContinuousBroadcastCard());
+        cbAssignedIDCardPosition.setChecked(basicParameter.isAssignedIDCardPosition());
+        cbBroadcastWinCard.setChecked(basicParameter.isBroadcastWinCard());
+        cbUseDiceTest.setChecked(basicParameter.isUseDiceTest());
+        cbPengZhuanBroadcastCard.setChecked(basicParameter.isPengZhuanBroadcastCard());
+        cbResetTest.setChecked(basicParameter.isResetTest());
+        cbDicePanelPositionNotification.setChecked(basicParameter.isDicePanelPositionNotification());
+        cbBloodFight.setChecked(basicParameter.isBloodFight());
+        cbDicePanelTroubleNotification.setChecked(basicParameter.isDicePanelTroubleNotification());
+        cbDigitScreenSwitch.setChecked(basicParameter.isDigitScreenSwitch());
+        cbThreePlayer.setChecked(basicParameter.isThreePlayer());
     }
 
 //    public void updateParameter() {

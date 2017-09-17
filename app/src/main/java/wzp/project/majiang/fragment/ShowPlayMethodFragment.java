@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -60,8 +61,26 @@ public class ShowPlayMethodFragment extends Fragment {
     private TextView tvNorthTop;
     private TextView tvNorthMiddle;
     private TextView tvNorthBottom;
-
     private RecyclerView rvBasicParameter;
+
+    private TextView tvDiceNum;
+    private TextView tvUseDiceTimes;
+    private TextView tvUseDiceMethod;
+    private TextView tvStartCardMethod;
+    private TextView tvStartCardSupplementFlowerMethod;
+    private RecyclerView rvDiceParameter;
+    private TextView tvWealthGodMode;
+    private LinearLayout linearWealthGodMode;
+    private TextView tvWealthGodStartCardMethod;
+    private TextView tvWealthGodUseDiceMethod;
+    private TextView tvWealthGodCondition;
+    private TextView tvWindCardWealthGodLoopMethod;
+    private TextView tvFixedWealthGod;
+    private TextView tvWealthGodLastBlockNum;
+    private TextView tvWealthGodStartCardPosition;
+    private TextView tvWealthGodPrecedenceNum;
+    private RecyclerView rvWealthGodParam;
+
 
     private Button btnModifyPlayMethod;
 
@@ -70,6 +89,10 @@ public class ShowPlayMethodFragment extends Fragment {
 
     private ParamListAdapter basicParamAdapter;
     private List<String> basicParamList = new ArrayList<>();
+    private ParamListAdapter diceParamAdapter;
+    private List<String> diceParamList = new ArrayList<>();
+    private ParamListAdapter wealthGodParamAdapter;
+    private List<String> wealthGodParamList = new ArrayList<>();
 
     private static final int REQUEST_EDIT_PLAY_METHOD = 0x01;
 
@@ -151,20 +174,47 @@ public class ShowPlayMethodFragment extends Fragment {
         tvNorthTop = (TextView) view.findViewById(R.id.tv_northTop);
         tvNorthMiddle = (TextView) view.findViewById(R.id.tv_northMiddle);
         tvNorthBottom = (TextView) view.findViewById(R.id.tv_northBottom);
-
         rvBasicParameter = (RecyclerView) view.findViewById(R.id.rv_basicParameter);
 
+        tvDiceNum = (TextView) view.findViewById(R.id.tv_diceNum);
+        tvUseDiceTimes = (TextView) view.findViewById(R.id.tv_useDiceTimes);
+        tvUseDiceMethod = (TextView) view.findViewById(R.id.tv_useDiceMethod);
+        tvStartCardMethod = (TextView) view.findViewById(R.id.tv_startCardMethod);
+        tvStartCardSupplementFlowerMethod = (TextView) view.findViewById(R.id.tv_startCardSupplementFlowerMethod);
+        rvDiceParameter = (RecyclerView) view.findViewById(R.id.rv_diceParameter);
+        tvWealthGodMode = (TextView) view.findViewById(R.id.tv_wealthGodMode);
+        linearWealthGodMode = (LinearLayout) view.findViewById(R.id.linear_wealthGodMode);
+        tvWealthGodStartCardMethod = (TextView) view.findViewById(R.id.tv_wealthGodStartCardMethod);
+        tvWealthGodUseDiceMethod = (TextView) view.findViewById(R.id.tv_wealthGodUseDiceMethod);
+        tvWealthGodCondition = (TextView) view.findViewById(R.id.tv_wealthGodCondition);
+        tvWindCardWealthGodLoopMethod = (TextView) view.findViewById(R.id.tv_windCardWealthGodLoopMethod);
+        tvFixedWealthGod = (TextView) view.findViewById(R.id.tv_fixedWealthGod);
+        tvWealthGodLastBlockNum = (TextView) view.findViewById(R.id.tv_wealthGodLastBlockNum);
+        tvWealthGodStartCardPosition = (TextView) view.findViewById(R.id.tv_wealthGodStartCardPosition);
+        tvWealthGodPrecedenceNum = (TextView) view.findViewById(R.id.tv_wealthGodPrecedenceNum);
+        rvWealthGodParam = (RecyclerView) view.findViewById(R.id.rv_wealthGodParam);
+
         btnModifyPlayMethod = (Button) view.findViewById(R.id.btn_modifyPlayMethod);
+
 
         basicParamAdapter = new ParamListAdapter(getContext(), basicParamList);
         rvBasicParameter.setAdapter(basicParamAdapter);
         rvBasicParameter.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false));
 
+        diceParamAdapter = new ParamListAdapter(getContext(), diceParamList);
+        rvDiceParameter.setAdapter(diceParamAdapter);
+        rvDiceParameter.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.VERTICAL, false));
+
+        wealthGodParamAdapter = new ParamListAdapter(getContext(), wealthGodParamList);
+        rvWealthGodParam.setAdapter(wealthGodParamAdapter);
+        rvWealthGodParam.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.VERTICAL, false));
+
         btnModifyPlayMethod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                EditPlayMethodActivity.myStartActivity(getContext(), method);
                 Intent intent = new Intent(getContext(), EditPlayMethodActivity.class);
                 intent.putExtra("playMethod", method);
                 intent.putExtra("parameter", JSON.toJSONString(parameter));
@@ -244,6 +294,86 @@ public class ShowPlayMethodFragment extends Fragment {
 
         tvLayerNum.setText(bp.isThreeLayer() ? "三层" : "两层");
         tvMachineGear.setText(getResources().getStringArray(R.array.machine_gear_arr)[bp.getMachineGear()]);
+
+
+        DiceParameter dp = parameter.getDiceParameter();
+        tvDiceNum.setText(getResources().getStringArray(R.array.dice_num_arr)[dp.getDiceNum()]);
+        tvUseDiceTimes.setText(getResources().getStringArray(R.array.use_dice_times_arr)[dp.getUseDiceTimes()]);
+        tvUseDiceMethod.setText(getResources().getStringArray(R.array.use_dice_method_arr)[dp.getUseDiceMethod()]);
+        tvStartCardMethod.setText(getResources().getStringArray(R.array.first_dice_position_send_card_method_arr)[dp.getStartCardMethod()]);
+        tvStartCardSupplementFlowerMethod.setText(getResources().getStringArray(R.array.start_card_supplement_flower_method_arr)[dp.getStartCardSupplementFlowerMethod()]);
+
+        diceParamList.clear();
+        if (dp.isOneFiveNineGetCard()) {
+            diceParamList.add("打色一、五、九对家抓牌");
+        }
+        if (dp.isEastSouthWestNorthAsColorCard()) {
+            diceParamList.add("东南西北当花牌");
+        }
+        if (dp.isZhongFaBaiAsColorCard()) {
+            diceParamList.add("中发白当花牌");
+        }
+        if (dp.isAllWindCardAsColorCard()) {
+            diceParamList.add("所有风牌当花牌");
+        }
+        if (dp.isBankerAndLastPlayerChangePosition()) {
+            diceParamList.add("胡牌庄家与上家换位置");
+        }
+        diceParamAdapter.notifyDataSetChanged();
+        if (diceParamList.size() == 0) {
+            rvDiceParameter.setVisibility(View.GONE);
+        } else {
+            rvDiceParameter.setVisibility(View.VISIBLE);
+        }
+
+        tvWealthGodMode.setText(dp.isOpenWealthGodMode() ? "开启" : "关闭");
+        linearWealthGodMode.setVisibility(dp.isOpenWealthGodMode() ? View.VISIBLE : View.GONE);
+        tvWealthGodStartCardMethod.setText(getResources().getStringArray(R.array.wealth_god_start_card_method_arr)[dp.getWealthGodStartCardMethod()]);
+        tvWealthGodUseDiceMethod.setText(getResources().getStringArray(R.array.wealth_god_use_dice_method_arr)[dp.getWealthGodUseDiceMethod()]);
+        tvWealthGodCondition.setText(getResources().getStringArray(R.array.wealth_god_condition_arr)[dp.getWealthGodCondition()]);
+        tvWindCardWealthGodLoopMethod.setText(getResources().getStringArray(R.array.wind_card_wealth_god_loop_method_arr)[dp.getWindCardWealthGodLoopMethod()]);
+        tvFixedWealthGod.setText(getResources().getStringArray(R.array.fixed_wealth_god_arr)[dp.getFixedWealthGod()]);
+        tvWealthGodLastBlockNum.setText(getResources().getStringArray(R.array.wealth_god_last_block_num_arr)[dp.getWealthGodLastBlockNum()]);
+        tvWealthGodStartCardPosition.setText(getResources().getStringArray(R.array.wealth_god_start_card_position_arr)[dp.getWealthGodStartCardPosition()]);
+        tvWealthGodPrecedenceNum.setText(getResources().getStringArray(R.array.wealth_god_precedence_num_arr)[dp.getWealthGodPrecedenceNum()]);
+
+        wealthGodParamList.clear();
+        if (dp.isZhongAsFixedWealthGod()) {
+            wealthGodParamList.add("红中为固定财神");
+        }
+        if (dp.isColorCardAsFixedWealthGod()) {
+            wealthGodParamList.add("花牌为固定财神");
+        }
+        if (dp.isYiTiaoAsFixedWealthGod()) {
+            wealthGodParamList.add("一条为固定财神");
+        }
+        if (dp.isBaiBanAsFixedWealthGod()) {
+            wealthGodParamList.add("白板为固定财神");
+        }
+        if (dp.isYaojiufeng()) {
+            wealthGodParamList.add("幺九风");
+        }
+        if (dp.isYaojiufengSuanGan()) {
+            wealthGodParamList.add("幺九风算杆");
+        }
+        if (dp.isBaibanAsWealthGodSubstitute()) {
+            wealthGodParamList.add("白板为财神替身");
+        }
+        if (dp.isFanpaifengpaiAsWealthGod()) {
+            wealthGodParamList.add("翻牌风牌自身为财神");
+        }
+        if (dp.is13579()) {
+            wealthGodParamList.add("13579任意三张");
+        }
+        if (dp.isEastSouthWestNorthOrZhongFaBaiBusuandacha()) {
+            wealthGodParamList.add("东南西北/中发白不算大岔");
+        }
+        wealthGodParamAdapter.notifyDataSetChanged();
+        if (wealthGodParamList.size() == 0) {
+            rvWealthGodParam.setVisibility(View.GONE);
+        } else {
+            rvWealthGodParam.setVisibility(View.VISIBLE);
+        }
     }
 
     public void savePlayMethod() {

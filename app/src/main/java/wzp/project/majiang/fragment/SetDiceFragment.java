@@ -2,20 +2,22 @@ package wzp.project.majiang.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.EditPlayMethodActivity;
 import wzp.project.majiang.entity.DiceParameter;
 import wzp.project.majiang.widget.ListOptionButton;
-import wzp.project.majiang.widget.ListOptionPopupWindow;
-import wzp.project.majiang.widget.ShowFunctionTipPopupWindow;
 
 /**
  * Created by wzp on 2017/8/29.
@@ -25,38 +27,40 @@ public class SetDiceFragment extends Fragment {
 
     private EditPlayMethodActivity activity;
 
-    private TextView tvPlayerNum;
-    private Button btnChoosePlayerNum;
-    private ListOptionButton btnChooseMajiangNum;
-    private Button btnEastTop;
+    private ListOptionButton btnDiceNum;
+    private ListOptionButton btnUseDiceTimes;
+    private ListOptionButton btnUseDiceMethod;
+    private ListOptionButton btnStartCardMethod;
+    private ListOptionButton btnStartCardSupplementFlowerMethod;
+    private CheckBox cbOneFiveNineGetCard;
+    private CheckBox cbEastSouthWestNorthAsColorCard;
+    private CheckBox cbZhongFaBaiAsColorCard;
+    private CheckBox cbAllWindCardAsColorCard;
+    private CheckBox cbBankerAndLastPlayerChangePosition;
+    private RadioGroup rgWealthGodMode;
+    private LinearLayout linearWealthGodMode;
+    private ListOptionButton btnWealthGodStartCardMethod;
+    private ListOptionButton btnWealthGodUseDiceMethod;
+    private ListOptionButton btnWealthGodCondition;
+    private ListOptionButton btnWindCardWealthGodLoopMethod;
+    private ListOptionButton btnFixedWealthGod;
+    private ListOptionButton btnWealthGodLastBlockNum;
+    private ListOptionButton btnWealthGodStartCardPosition;
+    private ListOptionButton btnWealthGodPrecedenceNum;
+    private CheckBox cbZhongAsFixedWealthGod;
+    private CheckBox cbColorCardAsFixedWealthGod;
+    private CheckBox cbYiTiaoAsFixedWealthGod;
+    private CheckBox cbBaiBanAsFixedWealthGod;
+    private CheckBox cbYaojiufeng;
+    private CheckBox cbYaojiufengSuanGan;
+    private CheckBox cbBaibanAsWealthGodSubstitute;
+    private CheckBox cbFanpaifengpaiAsWealthGod;
+    private CheckBox cb13579;
+    private CheckBox cbEastSouthWestNorthOrZhongFaBaiBusuandacha;
 
-
-    private ShowFunctionTipPopupWindow pwShowFunTip;
-    private ListOptionPopupWindow pwListOption;
 
     private DiceParameter diceParameter;
 
-
-
-    private View.OnClickListener listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.tv_playerNum:
-                    pwShowFunTip.setFunTip(R.string.player_num_fun_tip);
-                    pwShowFunTip.showAsDropDown(tvPlayerNum);
-                    break;
-
-                case R.id.btn_choosePlayerNum:
-                    pwListOption.showAsDropDown(btnChoosePlayerNum);
-                    break;
-
-                case R.id.btn_eastTop:
-                    pwListOption.showAsDropDown(btnEastTop);
-                    break;
-            }
-        }
-    };
 
     @Override
     public void onAttach(Context context) {
@@ -81,8 +85,250 @@ public class SetDiceFragment extends Fragment {
     }
 
     private void initWidget(View view) {
+        btnDiceNum = (ListOptionButton) view.findViewById(R.id.btn_diceNum);
+        btnUseDiceTimes = (ListOptionButton) view.findViewById(R.id.btn_useDiceTimes);
+        btnUseDiceMethod = (ListOptionButton) view.findViewById(R.id.btn_useDiceMethod);
+        btnStartCardMethod = (ListOptionButton) view.findViewById(R.id.btn_startCardMethod);
+        btnStartCardSupplementFlowerMethod = (ListOptionButton) view.findViewById(R.id.btn_startCardSupplementFlowerMethod);
+        cbOneFiveNineGetCard = (CheckBox) view.findViewById(R.id.cb_oneFiveNineGetCard);
+        cbEastSouthWestNorthAsColorCard = (CheckBox) view.findViewById(R.id.cb_eastSouthWestNorthAsColorCard);
+        cbZhongFaBaiAsColorCard = (CheckBox) view.findViewById(R.id.cb_zhongFaBaiAsColorCard);
+        cbAllWindCardAsColorCard = (CheckBox) view.findViewById(R.id.cb_allWindCardAsColorCard);
+        cbBankerAndLastPlayerChangePosition = (CheckBox) view.findViewById(R.id.cb_bankerAndLastPlayerChangePosition);
+        rgWealthGodMode = (RadioGroup) view.findViewById(R.id.rg_wealthGodMode);
+        linearWealthGodMode = (LinearLayout) view.findViewById(R.id.linear_wealthGodMode);
+        btnWealthGodStartCardMethod = (ListOptionButton) view.findViewById(R.id.btn_wealthGodStartCardMethod);
+        btnWealthGodUseDiceMethod = (ListOptionButton) view.findViewById(R.id.btn_wealthGodUseDiceMethod);
+        btnWealthGodCondition = (ListOptionButton) view.findViewById(R.id.btn_wealthGodCondition);
+        btnWindCardWealthGodLoopMethod = (ListOptionButton) view.findViewById(R.id.btn_windCardWealthGodLoopMethod);
+        btnFixedWealthGod = (ListOptionButton) view.findViewById(R.id.btn_fixedWealthGod);
+        btnWealthGodLastBlockNum = (ListOptionButton) view.findViewById(R.id.btn_wealthGodLastBlockNum);
+        btnWealthGodStartCardPosition = (ListOptionButton) view.findViewById(R.id.btn_wealthGodStartCardPosition);
+        btnWealthGodPrecedenceNum = (ListOptionButton) view.findViewById(R.id.btn_wealthGodPrecedenceNum);
+        cbZhongAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_zhongAsFixedWealthGod);
+        cbColorCardAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_colorCardAsFixedWealthGod);
+        cbYiTiaoAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_yiTiaoAsFixedWealthGod);
+        cbBaiBanAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_baiBanAsFixedWealthGod);
+        cbYaojiufeng = (CheckBox) view.findViewById(R.id.cb_yaojiufeng);
+        cbYaojiufengSuanGan = (CheckBox) view.findViewById(R.id.cb_yaojiufengSuanGan);
+        cbBaibanAsWealthGodSubstitute = (CheckBox) view.findViewById(R.id.cb_baibanAsWealthGodSubstitute);
+        cbFanpaifengpaiAsWealthGod = (CheckBox) view.findViewById(R.id.cb_fanpaifengpaiAsWealthGod);
+        cb13579 = (CheckBox) view.findViewById(R.id.cb_13579);
+        cbEastSouthWestNorthOrZhongFaBaiBusuandacha = (CheckBox) view.findViewById(R.id.cb_eastSouthWestNorthOrZhongFaBaiBusuandacha);
 
 
+        btnDiceNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setDiceNum(position);
+            }
+        });
+        btnUseDiceTimes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setUseDiceTimes(position);
+            }
+        });
+        btnUseDiceMethod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setUseDiceMethod(position);
+            }
+        });
+        btnStartCardMethod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setStartCardMethod(position);
+            }
+        });
+        btnStartCardSupplementFlowerMethod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setStartCardSupplementFlowerMethod(position);
+            }
+        });
+        cbOneFiveNineGetCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setOneFiveNineGetCard(isChecked);
+            }
+        });
+        cbEastSouthWestNorthAsColorCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setEastSouthWestNorthAsColorCard(isChecked);
+            }
+        });
+        cbZhongFaBaiAsColorCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setZhongFaBaiAsColorCard(isChecked);
+            }
+        });
+        cbAllWindCardAsColorCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setAllWindCardAsColorCard(isChecked);
+            }
+        });
+        cbBankerAndLastPlayerChangePosition.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setBankerAndLastPlayerChangePosition(isChecked);
+            }
+        });
+        rgWealthGodMode.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if (checkedId == R.id.rb_open) {
+                    linearWealthGodMode.setVisibility(View.VISIBLE);
+                    diceParameter.setOpenWealthGodMode(true);
+                } else {
+                    linearWealthGodMode.setVisibility(View.GONE);
+                    diceParameter.setOpenWealthGodMode(false);
+                }
+            }
+        });
+        btnWealthGodStartCardMethod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setWealthGodStartCardMethod(position);
+            }
+        });
+        btnWealthGodUseDiceMethod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setWealthGodUseDiceMethod(position);
+            }
+        });
+        btnWealthGodCondition.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setWealthGodCondition(position);
+            }
+        });
+        btnWindCardWealthGodLoopMethod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setWindCardWealthGodLoopMethod(position);
+            }
+        });
+        btnFixedWealthGod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setFixedWealthGod(position);
+            }
+        });
+        btnWealthGodLastBlockNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setWealthGodLastBlockNum(position);
+            }
+        });
+        btnWealthGodStartCardPosition.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setWealthGodStartCardPosition(position);
+            }
+        });
+        btnWealthGodPrecedenceNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setWealthGodPrecedenceNum(position);
+            }
+        });
+        cbZhongAsFixedWealthGod.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setZhongAsFixedWealthGod(isChecked);
+            }
+        });
+        cbColorCardAsFixedWealthGod.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setColorCardAsFixedWealthGod(isChecked);
+            }
+        });
+        cbYiTiaoAsFixedWealthGod.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setYiTiaoAsFixedWealthGod(isChecked);
+            }
+        });
+        cbBaiBanAsFixedWealthGod.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setBaiBanAsFixedWealthGod(isChecked);
+            }
+        });
+        cbYaojiufeng.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setYaojiufeng(isChecked);
+            }
+        });
+        cbYaojiufengSuanGan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setYaojiufengSuanGan(isChecked);
+            }
+        });
+        cbBaibanAsWealthGodSubstitute.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setBaibanAsWealthGodSubstitute(isChecked);
+            }
+        });
+        cbFanpaifengpaiAsWealthGod.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setFanpaifengpaiAsWealthGod(isChecked);
+            }
+        });
+        cb13579.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setIs13579(isChecked);
+            }
+        });
+        cbEastSouthWestNorthOrZhongFaBaiBusuandacha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setEastSouthWestNorthOrZhongFaBaiBusuandacha(isChecked);
+            }
+        });
+
+
+        // 初始化控件值
+        btnDiceNum.setSelectedItemPosition(diceParameter.getDiceNum());
+        btnUseDiceTimes.setSelectedItemPosition(diceParameter.getUseDiceTimes());
+        btnUseDiceMethod.setSelectedItemPosition(diceParameter.getUseDiceMethod());
+        btnStartCardMethod.setSelectedItemPosition(diceParameter.getStartCardMethod());
+        btnStartCardSupplementFlowerMethod.setSelectedItemPosition(diceParameter.getStartCardSupplementFlowerMethod());
+        cbOneFiveNineGetCard.setChecked(diceParameter.isOneFiveNineGetCard());
+        cbEastSouthWestNorthAsColorCard.setChecked(diceParameter.isEastSouthWestNorthAsColorCard());
+        cbZhongFaBaiAsColorCard.setChecked(diceParameter.isZhongFaBaiAsColorCard());
+        cbAllWindCardAsColorCard.setChecked(diceParameter.isAllWindCardAsColorCard());
+        cbBankerAndLastPlayerChangePosition.setChecked(diceParameter.isBankerAndLastPlayerChangePosition());
+        rgWealthGodMode.check(diceParameter.isOpenWealthGodMode() ? R.id.rb_open : R.id.rb_close);
+        btnWealthGodStartCardMethod.setSelectedItemPosition(diceParameter.getWealthGodStartCardMethod());
+        btnWealthGodUseDiceMethod.setSelectedItemPosition(diceParameter.getWealthGodUseDiceMethod());
+        btnWealthGodCondition.setSelectedItemPosition(diceParameter.getWealthGodCondition());
+        btnWindCardWealthGodLoopMethod.setSelectedItemPosition(diceParameter.getWindCardWealthGodLoopMethod());
+        btnFixedWealthGod.setSelectedItemPosition(diceParameter.getFixedWealthGod());
+        btnWealthGodLastBlockNum.setSelectedItemPosition(diceParameter.getWealthGodLastBlockNum());
+        btnWealthGodStartCardPosition.setSelectedItemPosition(diceParameter.getWealthGodStartCardPosition());
+        btnWealthGodPrecedenceNum.setSelectedItemPosition(diceParameter.getWealthGodPrecedenceNum());
+        cbZhongAsFixedWealthGod.setChecked(diceParameter.isZhongAsFixedWealthGod());
+        cbColorCardAsFixedWealthGod.setChecked(diceParameter.isColorCardAsFixedWealthGod());
+        cbYiTiaoAsFixedWealthGod.setChecked(diceParameter.isYiTiaoAsFixedWealthGod());
+        cbBaiBanAsFixedWealthGod.setChecked(diceParameter.isBaiBanAsFixedWealthGod());
+        cbYaojiufeng.setChecked(diceParameter.isYaojiufeng());
+        cbYaojiufengSuanGan.setChecked(diceParameter.isYaojiufengSuanGan());
+        cbBaibanAsWealthGodSubstitute.setChecked(diceParameter.isBaibanAsWealthGodSubstitute());
+        cbFanpaifengpaiAsWealthGod.setChecked(diceParameter.isFanpaifengpaiAsWealthGod());
+        cb13579.setChecked(diceParameter.is13579());
+        cbEastSouthWestNorthOrZhongFaBaiBusuandacha.setChecked(diceParameter.isEastSouthWestNorthOrZhongFaBaiBusuandacha());
     }
 
 }

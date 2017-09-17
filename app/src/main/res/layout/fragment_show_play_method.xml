@@ -1076,13 +1076,14 @@
                         android:text="色子个数："/>
 
                     <TextView
+                        android:id="@+id/tv_diceNum"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/tv_tip_height"
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="4"/>
+                        android:text=""/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -1100,13 +1101,14 @@
                         android:text="打色次数："/>
 
                     <TextView
+                        android:id="@+id/tv_useDiceTimes"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/tv_tip_height"
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="4"/>
+                        android:text=""/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -1127,6 +1129,7 @@
                     android:text="打色方式：" />
 
                 <TextView
+                    android:id="@+id/tv_useDiceMethod"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:layout_marginLeft="5dp"
@@ -1153,6 +1156,7 @@
                     android:text="第一次色定位，起牌方式：" />
 
                 <TextView
+                    android:id="@+id/tv_startCardMethod"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:layout_marginLeft="5dp"
@@ -1179,6 +1183,7 @@
                     android:text="起牌补花方式：" />
 
                 <TextView
+                    android:id="@+id/tv_startCardSupplementFlowerMethod"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:layout_marginLeft="5dp"
@@ -1188,7 +1193,7 @@
                     android:text="137" />
             </LinearLayout>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
@@ -1250,7 +1255,17 @@
                     android:text="胡牌庄家与上家换位置"
                     android:background="@color/white"
                     android:clickable="false"/>
-            </LinearLayout>
+            </LinearLayout>-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_diceParameter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/separator_line_height3"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:background="@color/white"></android.support.v7.widget.RecyclerView>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1271,368 +1286,393 @@
                     android:textSize="@dimen/text_size_m" />
 
                 <TextView
+                    android:id="@+id/tv_wealthGodMode"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:layout_marginLeft="5dp"
                     android:gravity="center_vertical|left"
-                    android:text="开启"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_m" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linear_wealthGodMode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="财神起牌方式：" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="137" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="财神打色方式：" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="137" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="财神条件：" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="137" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="风牌财神循环方式：" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="137" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="可选固定财神：" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="137" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="财神倒数墩数：" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="137" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="财神起牌位置：" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="137" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="财神优先个数：" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="center_vertical|left"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="137" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="vertical"
-                android:background="@color/white">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"                    android:orientation="horizontal"
-                    android:background="@color/white">
-                    <CheckBox
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:textSize="@dimen/text_size_m"
-                        android:textColor="@color/black"
-                        android:text="红中为固定财神"
-                        android:checked="true"
-                        android:clickable="false"/>
-
-                    <CheckBox
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                        android:gravity="center_vertical"
-                        android:textSize="@dimen/text_size_m"
-                        android:textColor="@color/black"
-                        android:text="花牌为固定财神"
-                        android:clickable="false" />
-                </LinearLayout>
-
+                android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                    android:paddingRight="@dimen/basic_method_horizontal_interval_1"
                     android:orientation="horizontal"
                     android:background="@color/white">
-                    <CheckBox
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center_vertical|left"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="一条为固定财神"
-                        android:clickable="false" />
+                        android:text="财神起牌方式：" />
 
-                    <CheckBox
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                        android:gravity="center_vertical"
+                    <TextView
+                        android:id="@+id/tv_wealthGodStartCardMethod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical|left"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="白板为固定财神"
-                        android:clickable="false" />
+                        android:text="" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                    android:paddingRight="@dimen/basic_method_horizontal_interval_1"
                     android:orientation="horizontal"
                     android:background="@color/white">
-                    <CheckBox
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center_vertical|left"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="幺九风"
-                        android:clickable="false"/>
+                        android:text="财神打色方式：" />
 
-                    <CheckBox
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                        android:gravity="center_vertical"
+                    <TextView
+                        android:id="@+id/tv_wealthGodUseDiceMethod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical|left"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="幺九风算杆"
-                        android:clickable="false" />
+                        android:text="" />
                 </LinearLayout>
 
-                <CheckBox
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:gravity="center_vertical"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="白板为财神替身"
-                    android:clickable="false" />
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                    android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                    android:orientation="horizontal"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="财神条件：" />
 
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:gravity="center_vertical"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="翻牌风牌自身为财神"
-                    android:clickable="false" />
+                    <TextView
+                        android:id="@+id/tv_wealthGodCondition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="" />
+                </LinearLayout>
 
-                <CheckBox
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:gravity="center_vertical"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="13579任意三张"
-                    android:clickable="false" />
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                    android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                    android:orientation="horizontal"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="风牌财神循环方式：" />
 
-                <CheckBox
+                    <TextView
+                        android:id="@+id/tv_windCardWealthGodLoopMethod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="137" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:gravity="center_vertical"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="东南西北/中发白不算大岔"
-                    android:clickable="false" />
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                    android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                    android:orientation="horizontal"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="可选固定财神：" />
+
+                    <TextView
+                        android:id="@+id/tv_fixedWealthGod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                    android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                    android:orientation="horizontal"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="财神倒数墩数：" />
+
+                    <TextView
+                        android:id="@+id/tv_wealthGodLastBlockNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                    android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                    android:orientation="horizontal"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="财神起牌位置：" />
+
+                    <TextView
+                        android:id="@+id/tv_wealthGodStartCardPosition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                    android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                    android:orientation="horizontal"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="财神优先个数：" />
+
+                    <TextView
+                        android:id="@+id/tv_wealthGodPrecedenceNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="137" />
+                </LinearLayout>
+
+                <!--<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                    android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"                    android:orientation="horizontal"
+                        android:background="@color/white">
+                        <CheckBox
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/text_size_m"
+                            android:textColor="@color/black"
+                            android:text="红中为固定财神"
+                            android:checked="true"
+                            android:clickable="false"/>
+
+                        <CheckBox
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/text_size_m"
+                            android:textColor="@color/black"
+                            android:text="花牌为固定财神"
+                            android:clickable="false" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/white">
+                        <CheckBox
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/text_size_m"
+                            android:textColor="@color/black"
+                            android:text="一条为固定财神"
+                            android:clickable="false" />
+
+                        <CheckBox
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/text_size_m"
+                            android:textColor="@color/black"
+                            android:text="白板为固定财神"
+                            android:clickable="false" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/white">
+                        <CheckBox
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/text_size_m"
+                            android:textColor="@color/black"
+                            android:text="幺九风"
+                            android:clickable="false"/>
+
+                        <CheckBox
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/text_size_m"
+                            android:textColor="@color/black"
+                            android:text="幺九风算杆"
+                            android:clickable="false" />
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="白板为财神替身"
+                        android:clickable="false" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="翻牌风牌自身为财神"
+                        android:clickable="false" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="13579任意三张"
+                        android:clickable="false" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="东南西北/中发白不算大岔"
+                        android:clickable="false" />
+                </LinearLayout>-->
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_wealthGodParam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/separator_line_height3"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:background="@color/white"></android.support.v7.widget.RecyclerView>
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

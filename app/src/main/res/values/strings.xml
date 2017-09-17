@@ -368,8 +368,8 @@
         <item>翻牌加一和减一为财神，风牌只加一不减一</item>
         <item>翻牌相同数字和数字加一为财神</item>
     </string-array>
-    <!--风神财神循环方式-->
-    <string-array name="wind_god_and_wealth_god_loop_method_arr">
+    <!--风牌财神循环方式-->
+    <string-array name="wind_card_wealth_god_loop_method_arr">
         <item>东南西北中发白</item>
         <item>东北西南中发白</item>
         <item>东南西北；中发白</item>

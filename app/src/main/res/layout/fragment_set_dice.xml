@@ -30,7 +30,7 @@
                     android:text="色子个数"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_choosePlayerNum"
+                    android:id="@+id/btn_diceNum"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -60,7 +60,7 @@
                     android:text="打色次数"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
-                    android:id="@+id/btn_chooseMajiangNum"
+                    android:id="@+id/btn_useDiceTimes"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -93,6 +93,7 @@
                 android:text="打色方式"/>
 
             <wzp.project.majiang.widget.ListOptionButton
+                android:id="@+id/btn_useDiceMethod"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_option_height"
                 android:paddingLeft="5dp"
@@ -125,6 +126,7 @@
                 android:text="第一次色定位，起牌方式"/>
 
             <wzp.project.majiang.widget.ListOptionButton
+                android:id="@+id/btn_startCardMethod"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_option_height"
                 android:paddingLeft="5dp"
@@ -157,6 +159,7 @@
                 android:text="起牌补花方式"/>
 
             <wzp.project.majiang.widget.ListOptionButton
+                android:id="@+id/btn_startCardSupplementFlowerMethod"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_option_height"
                 android:paddingLeft="5dp"
@@ -173,6 +176,7 @@
         </LinearLayout>
 
         <CheckBox
+            android:id="@+id/cb_oneFiveNineGetCard"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tv_tip_height"
             android:layout_marginTop="5dp"
@@ -186,6 +190,7 @@
             android:background="@color/white"/>
 
         <CheckBox
+            android:id="@+id/cb_eastSouthWestNorthAsColorCard"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tv_tip_height"
             android:layout_marginTop="5dp"
@@ -199,6 +204,7 @@
             android:background="@color/white"/>
 
         <CheckBox
+            android:id="@+id/cb_zhongFaBaiAsColorCard"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tv_tip_height"
             android:layout_marginTop="5dp"
@@ -212,6 +218,7 @@
             android:background="@color/white"/>
 
         <CheckBox
+            android:id="@+id/cb_allWindCardAsColorCard"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tv_tip_height"
             android:layout_marginTop="5dp"
@@ -225,6 +232,7 @@
             android:background="@color/white"/>
 
         <CheckBox
+            android:id="@+id/cb_bankerAndLastPlayerChangePosition"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tv_tip_height"
             android:layout_marginTop="5dp"
@@ -252,433 +260,452 @@
             android:textColor="@color/black"
             android:text="财神参数" />
 
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/rg_wealthGodMode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-            android:orientation="horizontal"
-            android:background="@color/white">
-            <RadioGroup
+            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_1"
+            android:layout_marginRight="@dimen/basic_method_horizontal_interval_1"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rb_open"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="开启财神模式"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/rb_close"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="关闭财神模式"/>
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/linear_wealthGodMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:id="@+id/rb_open"
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:orientation="vertical"
+                android:background="@color/white">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/tv_tip_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="财神起牌方式"/>
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_wealthGodStartCardMethod"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_option_height"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/wealth_god_start_card_method_arr"
+                    app:optionWidth="325dp">
+                </wzp.project.majiang.widget.ListOptionButton>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:orientation="vertical"
+                android:background="@color/white">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/tv_tip_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="财神打色方式"/>
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_wealthGodUseDiceMethod"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_option_height"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/wealth_god_use_dice_method_arr"
+                    app:optionWidth="325dp">
+                </wzp.project.majiang.widget.ListOptionButton>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:orientation="vertical"
+                android:background="@color/white">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/tv_tip_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="财神条件"/>
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_wealthGodCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_option_height"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/wealth_god_condition_arr"
+                    app:optionWidth="325dp">
+                </wzp.project.majiang.widget.ListOptionButton>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:orientation="vertical"
+                android:background="@color/white">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/tv_tip_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="风牌财神循环方式"/>
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_windCardWealthGodLoopMethod"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_option_height"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/wind_card_wealth_god_loop_method_arr"
+                    app:optionWidth="325dp">
+                </wzp.project.majiang.widget.ListOptionButton>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:orientation="horizontal"
+                android:background="@color/white">
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="开启财神模式"
-                    android:checked="true"/>
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="可选固定财神"/>
 
-                <RadioButton
-                    android:id="@+id/rb_close"
+                    <wzp.project.majiang.widget.ListOptionButton
+                        android:id="@+id/btn_fixedWealthGod"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_option_height"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:gravity="center"
+                        android:drawableRight="@drawable/down"
+                        android:drawablePadding="5dp"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:background="@drawable/btn_options_bg"
+                        app:options="@array/fixed_wealth_god_arr">
+                    </wzp.project.majiang.widget.ListOptionButton>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="关闭财神模式"/>
-            </RadioGroup>
-        </LinearLayout>
+                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="财神倒数墩数"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-            android:orientation="vertical"
-            android:background="@color/white">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/tv_tip_height"
-                android:gravity="center"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:text="财神起牌方式"/>
-
-            <wzp.project.majiang.widget.ListOptionButton
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_option_height"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:gravity="center"
-                android:drawableRight="@drawable/down"
-                android:drawablePadding="5dp"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:background="@drawable/btn_options_bg"
-                app:options="@array/wealth_god_start_card_method_arr"
-                app:optionWidth="325dp">
-            </wzp.project.majiang.widget.ListOptionButton>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-            android:orientation="vertical"
-            android:background="@color/white">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/tv_tip_height"
-                android:gravity="center"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:text="财神打色方式"/>
-
-            <wzp.project.majiang.widget.ListOptionButton
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_option_height"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:gravity="center"
-                android:drawableRight="@drawable/down"
-                android:drawablePadding="5dp"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:background="@drawable/btn_options_bg"
-                app:options="@array/wealth_god_use_dice_method_arr"
-                app:optionWidth="325dp">
-            </wzp.project.majiang.widget.ListOptionButton>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-            android:orientation="vertical"
-            android:background="@color/white">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/tv_tip_height"
-                android:gravity="center"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:text="财神条件"/>
-
-            <wzp.project.majiang.widget.ListOptionButton
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_option_height"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:gravity="center"
-                android:drawableRight="@drawable/down"
-                android:drawablePadding="5dp"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:background="@drawable/btn_options_bg"
-                app:options="@array/wealth_god_condition_arr"
-                app:optionWidth="325dp">
-            </wzp.project.majiang.widget.ListOptionButton>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-            android:orientation="vertical"
-            android:background="@color/white">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/tv_tip_height"
-                android:gravity="center"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:text="风牌财神循环方式"/>
-
-            <wzp.project.majiang.widget.ListOptionButton
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_option_height"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:gravity="center"
-                android:drawableRight="@drawable/down"
-                android:drawablePadding="5dp"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:background="@drawable/btn_options_bg"
-                app:options="@array/wind_god_and_wealth_god_loop_method_arr"
-                app:optionWidth="325dp">
-            </wzp.project.majiang.widget.ListOptionButton>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-            android:orientation="horizontal"
-            android:background="@color/white">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="可选固定财神"/>
-
-                <wzp.project.majiang.widget.ListOptionButton
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/btn_option_height"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:gravity="center"
-                    android:drawableRight="@drawable/down"
-                    android:drawablePadding="5dp"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg"
-                    app:options="@array/fixed_wealth_god_arr">
-                </wzp.project.majiang.widget.ListOptionButton>
+                    <wzp.project.majiang.widget.ListOptionButton
+                        android:id="@+id/btn_wealthGodLastBlockNum"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_option_height"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:gravity="center"
+                        android:drawableRight="@drawable/down"
+                        android:drawablePadding="5dp"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:background="@drawable/btn_options_bg"
+                        app:options="@array/wealth_god_last_block_num_arr">
+                    </wzp.project.majiang.widget.ListOptionButton>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="财神倒数墩数"/>
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:orientation="horizontal"
+                android:background="@color/white">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="财神起牌位置"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/btn_option_height"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:gravity="center"
-                    android:drawableRight="@drawable/down"
-                    android:drawablePadding="5dp"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg"
-                    app:options="@array/wealth_god_last_block_num_arr">
-                </wzp.project.majiang.widget.ListOptionButton>
+                    <wzp.project.majiang.widget.ListOptionButton
+                        android:id="@+id/btn_wealthGodStartCardPosition"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_option_height"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:gravity="center"
+                        android:drawableRight="@drawable/down"
+                        android:drawablePadding="5dp"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:background="@drawable/btn_options_bg"
+                        app:options="@array/wealth_god_start_card_position_arr">
+                    </wzp.project.majiang.widget.ListOptionButton>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="财神优先个数"/>
+
+                    <wzp.project.majiang.widget.ListOptionButton
+                        android:id="@+id/btn_wealthGodPrecedenceNum"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_option_height"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:gravity="center"
+                        android:drawableRight="@drawable/down"
+                        android:drawablePadding="5dp"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:background="@drawable/btn_options_bg"
+                        app:options="@array/wealth_god_precedence_num_arr">
+                    </wzp.project.majiang.widget.ListOptionButton>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-            android:orientation="horizontal"
-            android:background="@color/white">
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:orientation="horizontal"
+                android:background="@color/white">
+                <CheckBox
+                    android:id="@+id/cb_zhongAsFixedWealthGod"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_vertical"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="财神起牌位置"/>
+                    android:text="红中为固定财神" />
 
-                <wzp.project.majiang.widget.ListOptionButton
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/btn_option_height"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:gravity="center"
-                    android:drawableRight="@drawable/down"
-                    android:drawablePadding="5dp"
+                <CheckBox
+                    android:id="@+id/cb_colorCardAsFixedWealthGod"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
+                    android:gravity="center_vertical"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg"
-                    app:options="@array/wealth_god_start_card_position_arr">
-                </wzp.project.majiang.widget.ListOptionButton>
+                    android:text="花牌为固定财神" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:orientation="horizontal"
+                android:background="@color/white">
+                <CheckBox
+                    android:id="@+id/cb_yiTiaoAsFixedWealthGod"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_vertical"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="财神优先个数"/>
+                    android:text="一条为固定财神" />
 
-                <wzp.project.majiang.widget.ListOptionButton
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/btn_option_height"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:gravity="center"
-                    android:drawableRight="@drawable/down"
-                    android:drawablePadding="5dp"
+                <CheckBox
+                    android:id="@+id/cb_baiBanAsFixedWealthGod"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
+                    android:gravity="center_vertical"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:background="@drawable/btn_options_bg"
-                    app:options="@array/wealth_god_precedence_num_arr">
-                </wzp.project.majiang.widget.ListOptionButton>
+                    android:text="白板为固定财神" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:orientation="horizontal"
+                android:background="@color/white">
+                <CheckBox
+                    android:id="@+id/cb_yaojiufeng"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="幺九风" />
+
+                <CheckBox
+                    android:id="@+id/cb_yaojiufengSuanGan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="幺九风算杆" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/cb_baibanAsWealthGodSubstitute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/basic_method_horizontal_interval_1"
+                android:layout_marginRight="@dimen/basic_method_horizontal_interval_1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/text_size_m"
+                android:textColor="@color/black"
+                android:text="白板为财神替身" />
+
+            <CheckBox
+                android:id="@+id/cb_fanpaifengpaiAsWealthGod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/basic_method_horizontal_interval_1"
+                android:layout_marginRight="@dimen/basic_method_horizontal_interval_1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/text_size_m"
+                android:textColor="@color/black"
+                android:text="翻牌风牌自身为财神" />
+
+            <CheckBox
+                android:id="@+id/cb_13579"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/basic_method_horizontal_interval_1"
+                android:layout_marginRight="@dimen/basic_method_horizontal_interval_1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/text_size_m"
+                android:textColor="@color/black"
+                android:text="13579任意三张" />
+
+            <CheckBox
+                android:id="@+id/cb_eastSouthWestNorthOrZhongFaBaiBusuandacha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/basic_method_horizontal_interval_1"
+                android:layout_marginRight="@dimen/basic_method_horizontal_interval_1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/text_size_m"
+                android:textColor="@color/black"
+                android:text="东南西北/中发白不算大岔" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-            android:orientation="horizontal"
-            android:background="@color/white">
-            <CheckBox
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:text="红中为固定财神" />
-
-            <CheckBox
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:text="花牌为固定财神" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-            android:orientation="horizontal"
-            android:background="@color/white">
-            <CheckBox
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:text="一条为固定财神" />
-
-            <CheckBox
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:text="白板为固定财神" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-            android:orientation="horizontal"
-            android:background="@color/white">
-            <CheckBox
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:text="幺九风" />
-
-            <CheckBox
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/text_size_m"
-                android:textColor="@color/black"
-                android:text="幺九风算杆" />
-        </LinearLayout>
-
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_1"
-            android:layout_marginRight="@dimen/basic_method_horizontal_interval_1"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/text_size_m"
-            android:textColor="@color/black"
-            android:text="白板为财神替身" />
-
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_1"
-            android:layout_marginRight="@dimen/basic_method_horizontal_interval_1"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/text_size_m"
-            android:textColor="@color/black"
-            android:text="翻牌风牌自身为财神" />
-
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_1"
-            android:layout_marginRight="@dimen/basic_method_horizontal_interval_1"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/text_size_m"
-            android:textColor="@color/black"
-            android:text="13579任意三张" />
-
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_1"
-            android:layout_marginRight="@dimen/basic_method_horizontal_interval_1"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/text_size_m"
-            android:textColor="@color/black"
-            android:text="东南西北/中发白不算大岔" />
     </LinearLayout>
 </ScrollView>

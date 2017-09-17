@@ -20,7 +20,7 @@ public class DiceParameter {
     private int wealthGodStartCardMethod;
     private int wealthGodUseDiceMethod;
     private int wealthGodCondition;
-    private int windAndWealthGodLoopMethod;
+    private int windCardWealthGodLoopMethod;
     private int fixedWealthGod;
     private int wealthGodLastBlockNum;
     private int wealthGodStartCardPosition;
@@ -148,12 +148,12 @@ public class DiceParameter {
         this.wealthGodCondition = wealthGodCondition;
     }
 
-    public int getWindAndWealthGodLoopMethod() {
-        return windAndWealthGodLoopMethod;
+    public int getWindCardWealthGodLoopMethod() {
+        return windCardWealthGodLoopMethod;
     }
 
-    public void setWindAndWealthGodLoopMethod(int windAndWealthGodLoopMethod) {
-        this.windAndWealthGodLoopMethod = windAndWealthGodLoopMethod;
+    public void setWindCardWealthGodLoopMethod(int windCardWealthGodLoopMethod) {
+        this.windCardWealthGodLoopMethod = windCardWealthGodLoopMethod;
     }
 
     public int getFixedWealthGod() {

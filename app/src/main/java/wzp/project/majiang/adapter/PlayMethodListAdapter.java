@@ -108,7 +108,7 @@ public class PlayMethodListAdapter extends BaseAdapter {
 
             TextView tvNum = new TextView(context);
             tvName.setTextSize(14);
-            tvNum.setText("张数：" + basicNumArr[method.getNumIndex()]);
+            tvNum.setText("张数：" + basicNumArr[method.getNum()]);
             LinearLayout.LayoutParams paramNum = new LinearLayout.LayoutParams(0, (int) DensityUtil.dp2px(context, 30), 1);
             tvNum.setLayoutParams(paramNum);
             tvNum.setGravity(Gravity.CENTER);
@@ -121,7 +121,7 @@ public class PlayMethodListAdapter extends BaseAdapter {
 
             TextView tvSpecialRule = new TextView(context);
             tvName.setTextSize(14);
-            tvSpecialRule.setText(specialRuleArr[method.getSpecialRuleIndex()]);
+            tvSpecialRule.setText(specialRuleArr[method.getSpecialRule()]);
             LinearLayout.LayoutParams paramSpecialRule = new LinearLayout.LayoutParams(0, (int) DensityUtil.dp2px(context, 30), 2);
             tvSpecialRule.setLayoutParams(paramSpecialRule);
             tvSpecialRule.setPadding((int) DensityUtil.dp2px(context, 20), 0, 0, 0);

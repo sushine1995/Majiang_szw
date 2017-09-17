@@ -37,6 +37,7 @@
             android:layout_centerInParent="true"/>
 
         <ImageButton
+            android:id="@+id/ibtn_save"
             android:layout_width="@dimen/ibtn_back_width"
             android:layout_height="match_parent"
             android:src="@drawable/save"
@@ -78,7 +79,7 @@
                 app:options="@array/loop_times_arr"
                 app:optionWidth="160dp"/>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -87,7 +88,15 @@
                 android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
                 android:orientation="vertical">
 
-            </LinearLayout>
+            </LinearLayout>-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_playMethod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"></android.support.v7.widget.RecyclerView>
 
             <View
                 android:layout_width="match_parent"
@@ -150,6 +159,7 @@
                 android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_a"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -158,6 +168,7 @@
                     android:text="A:平胡"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numA"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -175,6 +186,7 @@
                     app:optionWidth="@dimen/basic_num_option_width"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleA"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -198,6 +210,7 @@
                 android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_b"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -206,6 +219,7 @@
                     android:text="B:混一色"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numB"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -223,6 +237,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleB"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -246,6 +261,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_c"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -254,6 +270,7 @@
                     android:text="C:七小对"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numC"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -271,6 +288,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleC"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -294,6 +312,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_d"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -302,6 +321,7 @@
                     android:text="D:对对碰"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numD"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -319,6 +339,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleD"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -342,6 +363,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_e"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -350,6 +372,7 @@
                     android:text="E:清一色"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numE"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -367,6 +390,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleE"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -390,6 +414,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_f"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -398,6 +423,7 @@
                     android:text="F:风一色"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numF"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -415,6 +441,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleF"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -438,6 +465,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_g"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -446,6 +474,7 @@
                     android:text="G:十三幺"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numG"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -463,6 +492,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleG"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -486,6 +516,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_h"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -494,6 +525,7 @@
                     android:text="H:将一色"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numH"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -511,6 +543,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleH"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -534,6 +567,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_i"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -542,6 +576,7 @@
                     android:text="I:混将胡"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numI"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -559,6 +594,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleI"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -582,6 +618,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_j"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -590,6 +627,7 @@
                     android:text="J:九大坎"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numJ"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -607,6 +645,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleJ"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -630,6 +669,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_k"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -638,6 +678,7 @@
                     android:text="K:缺一门-湘"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numK"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -655,6 +696,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleK"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -678,6 +720,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_l"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -686,6 +729,7 @@
                     android:text="L:三色全"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numL"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -703,6 +747,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleL"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -726,6 +771,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_m"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -734,6 +780,7 @@
                     android:text="M:板板胡"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numM"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -751,6 +798,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleM"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -774,6 +822,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_n"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -782,6 +831,7 @@
                     android:text="N:双三张"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numN"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -799,6 +849,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleN"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -822,6 +873,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_o"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -830,6 +882,7 @@
                     android:text="O:暗红"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numO"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -847,6 +900,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleO"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -870,6 +924,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_p"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -878,6 +933,7 @@
                     android:text="P:幺九"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numP"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -895,6 +951,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleP"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -918,6 +975,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_q"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -926,6 +984,7 @@
                     android:text="Q:十三烂"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numQ"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -943,6 +1002,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleQ"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -966,6 +1026,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_r"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -974,6 +1035,7 @@
                     android:text="R:风牌"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numR"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -991,6 +1053,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleR"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -1014,6 +1077,7 @@
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/cb_s"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
@@ -1022,6 +1086,7 @@
                     android:text="S:穷胡-东北"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numS"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -1039,6 +1104,7 @@
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleS"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"

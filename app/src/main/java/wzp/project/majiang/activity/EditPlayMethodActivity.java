@@ -25,7 +25,7 @@ import wzp.project.majiang.entity.ChooseCardParameter;
 import wzp.project.majiang.entity.DiceParameter;
 import wzp.project.majiang.entity.PlayMethodParameter;
 import wzp.project.majiang.fragment.BasicMethodFragment;
-import wzp.project.majiang.fragment.ChooseMajiangMethodFragment;
+import wzp.project.majiang.fragment.ChooseCardMethodFragment;
 import wzp.project.majiang.fragment.SetDiceFragment;
 import wzp.project.majiang.helper.constant.PlayMethod;
 
@@ -77,7 +77,7 @@ public class EditPlayMethodActivity extends BaseActivity {
         Fragment fragment1 = new BasicMethodFragment();
         fragmentList.add(fragment1);
 
-        Fragment fragment2 = new ChooseMajiangMethodFragment();
+        Fragment fragment2 = new ChooseCardMethodFragment();
         fragmentList.add(fragment2);
 
         Fragment fragment3 = new SetDiceFragment();

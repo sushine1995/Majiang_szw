@@ -24,6 +24,7 @@ import wzp.project.majiang.R;
 import wzp.project.majiang.activity.EditPlayMethodActivity;
 import wzp.project.majiang.adapter.ParamListAdapter;
 import wzp.project.majiang.entity.BasicParameter;
+import wzp.project.majiang.entity.ChooseCardMethod;
 import wzp.project.majiang.entity.ChooseCardParameter;
 import wzp.project.majiang.entity.DiceParameter;
 import wzp.project.majiang.entity.PlayMethodParameter;
@@ -135,6 +136,7 @@ public class ShowPlayMethodFragment extends Fragment {
             parameter.setBasicParameter(bp);
 
             ChooseCardParameter ccp = new ChooseCardParameter();
+            ccp.setMethods(new ArrayList<ChooseCardMethod>());
             parameter.setChooseCardParameter(ccp);
 
             DiceParameter dp = new DiceParameter();

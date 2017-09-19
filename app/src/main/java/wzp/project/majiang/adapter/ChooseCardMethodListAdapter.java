@@ -2,6 +2,7 @@ package wzp.project.majiang.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,28 +13,35 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.List;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.EditChooseMajiangMethodActivity;
 import wzp.project.majiang.entity.ChooseCardMethod;
 import wzp.project.majiang.entity.SingleChooseCardMethod;
+import wzp.project.majiang.fragment.ChooseCardMethodFragment;
 import wzp.project.majiang.util.DensityUtil;
 
 
-public class PlayMethodListAdapter extends BaseAdapter {
+public class ChooseCardMethodListAdapter extends BaseAdapter {
 
     private Context context;
+    private Fragment fragment;
     private List<ChooseCardMethod> chooseCardMethodList;
 
+    private String[] loopTimesArr;
     private String[] playMethodArr;
     private String[] basicNumArr;
     private String[] specialRuleArr;
 
-    public PlayMethodListAdapter(Context context, List<ChooseCardMethod> chooseCardMethodList) {
+    public ChooseCardMethodListAdapter(Context context, Fragment fragment, List<ChooseCardMethod> chooseCardMethodList) {
         this.context = context;
+        this.fragment = fragment;
         this.chooseCardMethodList = chooseCardMethodList;
 
+        loopTimesArr = context.getResources().getStringArray(R.array.loop_times_arr);
         playMethodArr = context.getResources().getStringArray(R.array.play_method_name_arr);
         basicNumArr = context.getResources().getStringArray(R.array.basic_num_arr);
         specialRuleArr = context.getResources().getStringArray(R.array.special_rule_arr);
@@ -56,9 +64,9 @@ public class PlayMethodListAdapter extends BaseAdapter {
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        ChooseCardMethod chooseCardMethod = (ChooseCardMethod) getItem(position);
+        final ChooseCardMethod chooseCardMethod = (ChooseCardMethod) getItem(position);
 
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.listitem_play_method, parent, false);
@@ -74,11 +82,13 @@ public class PlayMethodListAdapter extends BaseAdapter {
         }
 
         holder.cbIsSelected.setChecked(chooseCardMethod.isSelected());
-        holder.cbIsSelected.setText("数据" + (position + 1) + "(循环" + chooseCardMethod.getLoopTimes() + "次)");
+        holder.cbIsSelected.setText("数据" + (position + 1) + "(循环" + loopTimesArr[chooseCardMethod.getLoopTimes()] + "次)");
         holder.ibtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditChooseMajiangMethodActivity.myStartActivity(context);
+                EditChooseMajiangMethodActivity.myStartActivityForResult(context, fragment,
+                        position, JSON.toJSONString(chooseCardMethod),
+                        ChooseCardMethodFragment.REQUEST_EDIT_CHOOSE_CARD_METHOD);
             }
         });
         listPlayMethod(context, holder.linearPlayMethodList, chooseCardMethod.getMethods());
@@ -92,7 +102,7 @@ public class PlayMethodListAdapter extends BaseAdapter {
             linearAdded.setOrientation(LinearLayout.HORIZONTAL);
             TextView tvName = new TextView(context);
             tvName.setTextSize(14);
-            tvName.setText(method.getName());
+            tvName.setText(playMethodArr[method.getName()]);
             LinearLayout.LayoutParams paramName = new LinearLayout.LayoutParams(0, (int) DensityUtil.dp2px(context, 30), 1);
             tvName.setLayoutParams(paramName);
             linearAdded.addView(tvName);

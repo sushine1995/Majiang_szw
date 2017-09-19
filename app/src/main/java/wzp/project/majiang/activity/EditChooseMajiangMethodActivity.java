@@ -4,30 +4,38 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import wzp.project.majiang.R;
+import wzp.project.majiang.activity.base.BaseActivity;
 import wzp.project.majiang.adapter.SingleChooseCardListAdapter;
+import wzp.project.majiang.entity.ChooseCardMethod;
 import wzp.project.majiang.entity.SingleChooseCardMethod;
 import wzp.project.majiang.widget.ListOptionButton;
 
 import static wzp.project.majiang.widget.MyApplication.getContext;
 
 
-public class EditChooseMajiangMethodActivity extends AppCompatActivity {
+public class EditChooseMajiangMethodActivity extends BaseActivity {
 
     private ImageButton ibtnBack;
+    private TextView tvTitle;
     private ImageButton ibtnSave;
+    private ListOptionButton btnLoopTimes;
     private RecyclerView rvPlayMethod;
     private CheckBox cbA;
     private ListOptionButton btnNumA;
@@ -87,14 +95,19 @@ public class EditChooseMajiangMethodActivity extends AppCompatActivity {
     private ListOptionButton btnNumS;
     private ListOptionButton btnSpecialRuleS;
 
-    private List<SingleChooseCardMethod> list = new ArrayList<>();
+    private List<SingleChooseCardMethod> list;
     private SingleChooseCardListAdapter adapter;
 
     private List<CheckBox> cbList = new ArrayList<>();
     private List<ListOptionButton> btnNumList = new ArrayList<>();
     private List<ListOptionButton> btnSpecialRuleList = new ArrayList<>();
 
+    private ChooseCardMethod chooseCardMethod;
+
     private String[] playMethodNameArr;
+    private String[] loopTimesArr;
+
+    private int index; // 数据索引
 
     private static final int MAX_NUM = 6;
 
@@ -108,7 +121,12 @@ public class EditChooseMajiangMethodActivity extends AppCompatActivity {
                     break;
 
                 case R.id.ibtn_save:
-
+                    showToast("保存成功");
+                    Intent intent = new Intent();
+                    intent.putExtra("index", index);
+                    intent.putExtra("chooseCardMethod", JSON.toJSONString(chooseCardMethod));
+                    setResult(RESULT_OK, intent);
+                    finish();
                     break;
             }
         }
@@ -124,15 +142,31 @@ public class EditChooseMajiangMethodActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        playMethodNameArr = getResources().getStringArray(R.array.play_method_name_arr);
+        loopTimesArr = getResources().getStringArray(R.array.loop_times_arr);
+
+        String json = getIntent().getStringExtra("chooseCardMethod");
+        if (!TextUtils.isEmpty(json)) {
+            chooseCardMethod = JSON.parseObject(json, ChooseCardMethod.class);
+        } else {
+            // 如果json为null，表示当前需要添加数据，初始化一个默认的ChooseCardMethod实例
+            chooseCardMethod = new ChooseCardMethod();
+            chooseCardMethod.setLoopTimes(0);
+            chooseCardMethod.setSelected(true);
+            chooseCardMethod.setMethods(new ArrayList<SingleChooseCardMethod>());
+        }
+
+        list = chooseCardMethod.getMethods();
         adapter = new SingleChooseCardListAdapter(this, list);
 
-        playMethodNameArr = getResources().getStringArray(R.array.play_method_name_arr);
+        index = getIntent().getIntExtra("index", -1);
     }
-
 
     private void initWidget() {
         ibtnBack = (ImageButton) findViewById(R.id.ibtn_back);
+        tvTitle = (TextView) findViewById(R.id.tv_title);
         ibtnSave = (ImageButton) findViewById(R.id.ibtn_save);
+        btnLoopTimes = (ListOptionButton) findViewById(R.id.btn_loopTimes);
         rvPlayMethod = (RecyclerView) findViewById(R.id.rv_playMethod);
         cbA = (CheckBox) findViewById(R.id.cb_a);
         btnNumA = (ListOptionButton) findViewById(R.id.btn_numA);
@@ -257,6 +291,18 @@ public class EditChooseMajiangMethodActivity extends AppCompatActivity {
                 LinearLayoutManager.VERTICAL, false));
 
 
+        // 初始化控件值
+        btnLoopTimes.setSelectedItemPosition(chooseCardMethod.getLoopTimes());
+        int name;
+        for (SingleChooseCardMethod singleChooseCardMethod :
+                chooseCardMethod.getMethods()) {
+            name = singleChooseCardMethod.getName();
+            cbList.get(name).setChecked(true);
+            btnNumList.get(name).setSelectedItemPosition(singleChooseCardMethod.getName());
+            btnSpecialRuleList.get(name).setSelectedItemPosition(singleChooseCardMethod.getSpecialRule());
+        }
+
+
         ibtnBack.setOnClickListener(listener);
         ibtnSave.setOnClickListener(listener);
         for (int i = 0; i < cbList.size(); i++) {
@@ -319,10 +365,25 @@ public class EditChooseMajiangMethodActivity extends AppCompatActivity {
                 }
             });
         }
+
+        btnLoopTimes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                chooseCardMethod.setLoopTimes(position);
+            }
+        });
     }
 
-    public static void myStartActivity(Context context) {
+    public static void myStartActivityForResult(Context context, Fragment fragment, int index, int requestCode) {
         Intent intent = new Intent(context, EditChooseMajiangMethodActivity.class);
-        context.startActivity(intent);
+        intent.putExtra("index", index);
+        fragment.startActivityForResult(intent, requestCode);
+    }
+
+    public static void myStartActivityForResult(Context context, Fragment fragment, int index, String json, int requestCode) {
+        Intent intent = new Intent(context, EditChooseMajiangMethodActivity.class);
+        intent.putExtra("index", index);
+        intent.putExtra("chooseCardMethod", json);
+        fragment.startActivityForResult(intent, requestCode);
     }
 }

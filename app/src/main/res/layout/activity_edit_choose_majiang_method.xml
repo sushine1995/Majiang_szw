@@ -28,6 +28,7 @@
             android:layout_toRightOf="@id/ibtn_back"/>
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="数据1"
@@ -64,6 +65,7 @@
                 android:text="循环次数"/>
 
             <wzp.project.majiang.widget.ListOptionButton
+                android:id="@+id/btn_loopTimes"
                 android:layout_width="160dp"
                 android:layout_height="@dimen/btn_option_height"
                 android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"

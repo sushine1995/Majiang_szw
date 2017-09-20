@@ -23,18 +23,24 @@ import java.util.List;
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.EditPlayMethodActivity;
 import wzp.project.majiang.adapter.ParamListAdapter;
+import wzp.project.majiang.adapter.ShowChooseCardMethodListAdapter;
 import wzp.project.majiang.entity.BasicParameter;
 import wzp.project.majiang.entity.ChooseCardMethod;
 import wzp.project.majiang.entity.ChooseCardParameter;
 import wzp.project.majiang.entity.DiceParameter;
 import wzp.project.majiang.entity.PlayMethodParameter;
 import wzp.project.majiang.widget.MyApplication;
+import wzp.project.majiang.widget.MyListView;
 
 /**
  * Created by wzp on 2017/8/28.
  */
 
 public class ShowPlayMethodFragment extends Fragment {
+
+    private TextView tvChooseCardMethodTip;
+    private MyListView lvShowChooseCardMethod;
+//    private RecyclerView rvShowChooseCardMethod;
 
     private TextView tvPlayerNum;
     private TextView tvEveryHandCardNum;
@@ -82,12 +88,14 @@ public class ShowPlayMethodFragment extends Fragment {
     private TextView tvWealthGodPrecedenceNum;
     private RecyclerView rvWealthGodParam;
 
-
     private Button btnModifyPlayMethod;
 
     private int method;
     private PlayMethodParameter parameter;
 
+    private ShowChooseCardMethodListAdapter showChooseCardMethodListAdapter;
+//    private ShowChooseCardMethodListAdapter2 showChooseCardMethodListAdapter;
+    private List<ChooseCardMethod> chooseCardMethodList = new ArrayList<>();
     private ParamListAdapter basicParamAdapter;
     private List<String> basicParamList = new ArrayList<>();
     private ParamListAdapter diceParamAdapter;
@@ -150,6 +158,10 @@ public class ShowPlayMethodFragment extends Fragment {
     }
 
     private void initWidget(View view) {
+        tvChooseCardMethodTip = (TextView) view.findViewById(R.id.tv_chooseCardMethodTip);
+        lvShowChooseCardMethod = (MyListView) view.findViewById(R.id.lv_showChooseCardMethod);
+//        rvShowChooseCardMethod = (RecyclerView) view.findViewById(R.id.rv_showChooseCardMethod);
+
         tvPlayerNum = (TextView) view.findViewById(R.id.tv_playerNum);
         tvEveryHandCardNum = (TextView) view.findViewById(R.id.tv_everyHandCardNum);
         tvOtherPlayerCardNum = (TextView) view.findViewById(R.id.tv_otherPlayerCardNum);
@@ -199,6 +211,11 @@ public class ShowPlayMethodFragment extends Fragment {
         btnModifyPlayMethod = (Button) view.findViewById(R.id.btn_modifyPlayMethod);
 
 
+        showChooseCardMethodListAdapter = new ShowChooseCardMethodListAdapter(getContext(), chooseCardMethodList);
+        lvShowChooseCardMethod.setAdapter(showChooseCardMethodListAdapter);
+//        rvShowChooseCardMethod.setLayoutManager(new LinearLayoutManager(getContext(),
+//                LinearLayoutManager.VERTICAL, false));
+
         basicParamAdapter = new ParamListAdapter(getContext(), basicParamList);
         rvBasicParameter.setAdapter(basicParamAdapter);
         rvBasicParameter.setLayoutManager(new LinearLayoutManager(getContext(),
@@ -228,6 +245,24 @@ public class ShowPlayMethodFragment extends Fragment {
     }
 
     private void updateParameter() {
+        ChooseCardParameter ccp = parameter.getChooseCardParameter();
+        List<ChooseCardMethod> tmpList = ccp.getMethods();
+        chooseCardMethodList.clear();
+        for (ChooseCardMethod method :
+                tmpList) {
+            if (method.isSelected()) {
+                chooseCardMethodList.add(method);
+            }
+        }
+        showChooseCardMethodListAdapter.notifyDataSetChanged();
+        if (chooseCardMethodList.size() == 0) {
+            tvChooseCardMethodTip.setText("暂无数据");
+            tvChooseCardMethodTip.setVisibility(View.VISIBLE);
+        } else {
+            tvChooseCardMethodTip.setVisibility(View.GONE);
+        }
+
+
         BasicParameter bp = parameter.getBasicParameter();
         tvPlayerNum.setText(getResources().getStringArray(R.array.player_num_arr)[bp.getPlayerNum()]);
         tvEveryHandCardNum.setText(getResources().getStringArray(R.array.every_hand_num_arr)[bp.getEveryHandCardNum()]);

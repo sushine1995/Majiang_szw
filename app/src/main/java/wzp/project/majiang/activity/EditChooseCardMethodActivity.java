@@ -1,10 +1,12 @@
 package wzp.project.majiang.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -30,7 +32,7 @@ import wzp.project.majiang.widget.ListOptionButton;
 import static wzp.project.majiang.widget.MyApplication.getContext;
 
 
-public class EditChooseMajiangMethodActivity extends BaseActivity {
+public class EditChooseCardMethodActivity extends BaseActivity {
 
     private ImageButton ibtnBack;
     private TextView tvTitle;
@@ -95,6 +97,8 @@ public class EditChooseMajiangMethodActivity extends BaseActivity {
     private ListOptionButton btnNumS;
     private ListOptionButton btnSpecialRuleS;
 
+    private AlertDialog dlgExit;
+
     private List<SingleChooseCardMethod> list;
     private SingleChooseCardListAdapter adapter;
 
@@ -131,6 +135,11 @@ public class EditChooseMajiangMethodActivity extends BaseActivity {
             }
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        dlgExit.show();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -226,6 +235,29 @@ public class EditChooseMajiangMethodActivity extends BaseActivity {
         btnNumS = (ListOptionButton) findViewById(R.id.btn_numS);
         btnSpecialRuleS = (ListOptionButton) findViewById(R.id.btn_specialRuleS);
 
+        dlgExit = new AlertDialog.Builder(this)
+                .setTitle("注意")
+                .setMessage("是否保存数据？")
+                .setPositiveButton("保存", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        showToast("保存成功");
+                        Intent intent = new Intent();
+                        intent.putExtra("index", index);
+                        intent.putExtra("chooseCardMethod", JSON.toJSONString(chooseCardMethod));
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        finish();
+                    }
+                })
+                .create();
+
         cbList.add(cbA);
         cbList.add(cbB);
         cbList.add(cbC);
@@ -292,17 +324,28 @@ public class EditChooseMajiangMethodActivity extends BaseActivity {
 
 
         // 初始化控件值
+        tvTitle.setText("数据" + (index + 1));
         btnLoopTimes.setSelectedItemPosition(chooseCardMethod.getLoopTimes());
         int name;
         for (SingleChooseCardMethod singleChooseCardMethod :
                 chooseCardMethod.getMethods()) {
             name = singleChooseCardMethod.getName();
             cbList.get(name).setChecked(true);
-            btnNumList.get(name).setSelectedItemPosition(singleChooseCardMethod.getName());
+            btnNumList.get(name).setSelectedItemPosition(singleChooseCardMethod.getNum());
             btnSpecialRuleList.get(name).setSelectedItemPosition(singleChooseCardMethod.getSpecialRule());
         }
 
+        if (list.size() == MAX_NUM) {
+            for (int k = 0; k < cbList.size(); k++) {
+                if (!cbList.get(k).isChecked()) {
+                    cbList.get(k).setClickable(false);
+                }
+            }
+            showToast("最多只能添加6条数据！");
+        }
 
+
+        // 设置监听器，注意：一定要放在初始化控件值的代码后面
         ibtnBack.setOnClickListener(listener);
         ibtnSave.setOnClickListener(listener);
         for (int i = 0; i < cbList.size(); i++) {
@@ -324,6 +367,7 @@ public class EditChooseMajiangMethodActivity extends BaseActivity {
                                         cbList.get(k).setClickable(false);
                                     }
                                 }
+                                showToast("最多只能添加6条数据！");
                             }
                         }
                     } else {
@@ -375,13 +419,13 @@ public class EditChooseMajiangMethodActivity extends BaseActivity {
     }
 
     public static void myStartActivityForResult(Context context, Fragment fragment, int index, int requestCode) {
-        Intent intent = new Intent(context, EditChooseMajiangMethodActivity.class);
+        Intent intent = new Intent(context, EditChooseCardMethodActivity.class);
         intent.putExtra("index", index);
         fragment.startActivityForResult(intent, requestCode);
     }
 
     public static void myStartActivityForResult(Context context, Fragment fragment, int index, String json, int requestCode) {
-        Intent intent = new Intent(context, EditChooseMajiangMethodActivity.class);
+        Intent intent = new Intent(context, EditChooseCardMethodActivity.class);
         intent.putExtra("index", index);
         intent.putExtra("chooseCardMethod", json);
         fragment.startActivityForResult(intent, requestCode);

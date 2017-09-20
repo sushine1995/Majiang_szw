@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -38,6 +37,7 @@
                 android:background="@color/white"/>
 
             <TextView
+                android:id="@+id/tv_chooseCardMethodTip"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/tv_tip_height"
                 android:paddingBottom="10dp"
@@ -47,15 +47,24 @@
                 android:text="暂无数据"
                 android:background="@color/white"/>
 
-            <ListView
-                android:id="@+id/lv_play_method"
+            <wzp.project.majiang.widget.MyListView
+                android:id="@+id/lv_showChooseCardMethod"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:divider="@color/separator_line_color2"
+                android:dividerHeight="1dp"
+                android:background="@color/white"></wzp.project.majiang.widget.MyListView>
+            <!--<android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_showChooseCardMethod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:divider="@color/action_bar_bg"
-                android:dividerHeight="1dp"
-                android:background="@color/white"></ListView>
-
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@color/white"></android.support.v7.widget.RecyclerView>
+-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

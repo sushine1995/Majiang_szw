@@ -50,7 +50,7 @@
         </activity>
 
 
-        <activity android:name=".activity.EditChooseMajiangMethodActivity">
+        <activity android:name=".activity.EditChooseCardMethodActivity">
         </activity>
 
         <activity android:name=".activity.EditPlayMethodActivity" />

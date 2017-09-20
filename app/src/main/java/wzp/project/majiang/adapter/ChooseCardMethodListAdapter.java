@@ -1,14 +1,17 @@
 package wzp.project.majiang.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,7 +21,7 @@ import com.alibaba.fastjson.JSON;
 import java.util.List;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.activity.EditChooseMajiangMethodActivity;
+import wzp.project.majiang.activity.EditChooseCardMethodActivity;
 import wzp.project.majiang.entity.ChooseCardMethod;
 import wzp.project.majiang.entity.SingleChooseCardMethod;
 import wzp.project.majiang.fragment.ChooseCardMethodFragment;
@@ -69,7 +72,7 @@ public class ChooseCardMethodListAdapter extends BaseAdapter {
         final ChooseCardMethod chooseCardMethod = (ChooseCardMethod) getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.listitem_play_method, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.listitem_edit_choose_card_method, parent, false);
 
             holder = new ViewHolder();
             holder.cbIsSelected = (CheckBox) convertView.findViewById(R.id.cb_isSelected);
@@ -83,20 +86,56 @@ public class ChooseCardMethodListAdapter extends BaseAdapter {
 
         holder.cbIsSelected.setChecked(chooseCardMethod.isSelected());
         holder.cbIsSelected.setText("数据" + (position + 1) + "(循环" + loopTimesArr[chooseCardMethod.getLoopTimes()] + "次)");
+        holder.cbIsSelected.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                chooseCardMethod.setSelected(isChecked);
+            }
+        });
         holder.ibtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditChooseMajiangMethodActivity.myStartActivityForResult(context, fragment,
+                EditChooseCardMethodActivity.myStartActivityForResult(context, fragment,
                         position, JSON.toJSONString(chooseCardMethod),
                         ChooseCardMethodFragment.REQUEST_EDIT_CHOOSE_CARD_METHOD);
             }
         });
         listPlayMethod(context, holder.linearPlayMethodList, chooseCardMethod.getMethods());
 
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                AlertDialog dlgDelete = new AlertDialog.Builder(context)
+                        .setTitle("注意")
+                        .setMessage("您确定删除该条记录吗？")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                chooseCardMethodList.remove(chooseCardMethod);
+                                notifyDataSetChanged();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
+
+                return false;
+            }
+        });
+
         return convertView;
     }
 
     private void listPlayMethod(Context context, LinearLayout linearPlayMethodList, List<SingleChooseCardMethod> methodList) {
+        int childCount = linearPlayMethodList.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            linearPlayMethodList.removeViewAt(0);
+        }
+
         for (SingleChooseCardMethod method : methodList) {
             LinearLayout linearAdded = new LinearLayout(context);
             linearAdded.setOrientation(LinearLayout.HORIZONTAL);

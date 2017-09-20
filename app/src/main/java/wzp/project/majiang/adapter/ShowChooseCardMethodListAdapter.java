@@ -23,6 +23,7 @@ public class ShowChooseCardMethodListAdapter extends BaseAdapter {
     private Context context;
     private List<ChooseCardMethod> chooseCardMethodList;
 
+    private String[] loopTimesArr;
     private String[] playMethodArr;
     private String[] basicNumArr;
     private String[] specialRuleArr;
@@ -31,6 +32,7 @@ public class ShowChooseCardMethodListAdapter extends BaseAdapter {
         this.context = context;
         this.chooseCardMethodList = chooseCardMethodList;
 
+        loopTimesArr = context.getResources().getStringArray(R.array.loop_times_arr);
         playMethodArr = context.getResources().getStringArray(R.array.play_method_name_arr);
         basicNumArr = context.getResources().getStringArray(R.array.basic_num_arr);
         specialRuleArr = context.getResources().getStringArray(R.array.special_rule_arr);
@@ -69,19 +71,24 @@ public class ShowChooseCardMethodListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.tvData.setText("数据" + (position + 1) + "(循环" + chooseCardMethod.getLoopTimes() + "次)");
+        holder.tvData.setText("数据" + (position + 1) + "(循环" + loopTimesArr[chooseCardMethod.getLoopTimes()] + "次)");
         listPlayMethod(context, holder.linearPlayMethodList, chooseCardMethod.getMethods());
 
         return convertView;
     }
 
     private void listPlayMethod(Context context, LinearLayout linearPlayMethodList, List<SingleChooseCardMethod> methodList) {
+        int childCount = linearPlayMethodList.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            linearPlayMethodList.removeViewAt(0);
+        }
+
         for (SingleChooseCardMethod method : methodList) {
             LinearLayout linearAdded = new LinearLayout(context);
             linearAdded.setOrientation(LinearLayout.HORIZONTAL);
             TextView tvName = new TextView(context);
             tvName.setTextSize(14);
-            tvName.setText(method.getName());
+            tvName.setText(playMethodArr[method.getName()]);
             LinearLayout.LayoutParams paramName = new LinearLayout.LayoutParams(0, (int) DensityUtil.dp2px(context, 30), 1);
             tvName.setLayoutParams(paramName);
             linearAdded.addView(tvName);

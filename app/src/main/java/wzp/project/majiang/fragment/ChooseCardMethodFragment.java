@@ -18,7 +18,7 @@ import com.alibaba.fastjson.JSON;
 import java.util.List;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.activity.EditChooseMajiangMethodActivity;
+import wzp.project.majiang.activity.EditChooseCardMethodActivity;
 import wzp.project.majiang.activity.EditPlayMethodActivity;
 import wzp.project.majiang.adapter.ChooseCardMethodListAdapter;
 import wzp.project.majiang.entity.ChooseCardMethod;
@@ -65,6 +65,7 @@ public class ChooseCardMethodFragment extends Fragment {
                     int index = data.getIntExtra("index", -1);
                     ChooseCardMethod chooseCardMethod = JSON.parseObject(data.getStringExtra("chooseCardMethod"),
                             ChooseCardMethod.class);
+                    chooseCardMethod.setSelected(true);
                     if (index < chooseCardParameter.getMethods().size()) {
                         methodList.set(index, chooseCardMethod);
                     } else {
@@ -92,8 +93,12 @@ public class ChooseCardMethodFragment extends Fragment {
         btnAddData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditChooseMajiangMethodActivity.myStartActivityForResult(getActivity(), ChooseCardMethodFragment.this,
-                        chooseCardParameter.getMethods().size(), REQUEST_EDIT_CHOOSE_CARD_METHOD);
+                if (methodList.size() >= 6) {
+                    activity.showToast("最多只能包含6条数据！");
+                } else {
+                    EditChooseCardMethodActivity.myStartActivityForResult(getActivity(), ChooseCardMethodFragment.this,
+                            chooseCardParameter.getMethods().size(), REQUEST_EDIT_CHOOSE_CARD_METHOD);
+                }
             }
         });
         lvPlayMethod.addFooterView(btnAddData);

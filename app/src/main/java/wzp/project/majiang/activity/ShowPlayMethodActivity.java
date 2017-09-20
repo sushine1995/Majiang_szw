@@ -1,6 +1,7 @@
 package wzp.project.majiang.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -37,6 +39,8 @@ public class ShowPlayMethodActivity extends BaseActivity {
 
     private TabLayout tabRecord;
     private ViewPager vpPlayMethod;
+
+    private AlertDialog dlgExit;
 
     private List<Fragment> fragmentList;
     private ShowPlayMethodVpAdapter playMethodVpAdapter;
@@ -81,6 +85,11 @@ public class ShowPlayMethodActivity extends BaseActivity {
             }
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        dlgExit.show();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -134,6 +143,25 @@ public class ShowPlayMethodActivity extends BaseActivity {
         pwMoreFun = new PopupWindow(vMoreFun, (int) DensityUtil.dp2px(this, 180), LinearLayout.LayoutParams.WRAP_CONTENT);
         pwMoreFun.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.popupwindow_bg)));
         pwMoreFun.setFocusable(true);
+
+        dlgExit = new AlertDialog.Builder(this)
+                .setTitle("注意")
+                .setMessage("是否保存数据？")
+                .setPositiveButton("保存", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        savePlayMethod();
+                        finish();
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        finish();
+                    }
+                })
+                .create();
 
         ibtnBack.setOnClickListener(listener);
         ibtnSave.setOnClickListener(listener);

@@ -417,4 +417,8 @@ public class ShowPlayMethodFragment extends Fragment {
         MyApplication.getSpPlayMethod().commitString("playMethod" + method,
                 JSON.toJSONString(parameter));
     }
+
+    public PlayMethodParameter getPlayMethodParameter() {
+        return parameter;
+    }
 }

@@ -17,15 +17,20 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.base.BaseActivity;
 import wzp.project.majiang.adapter.ShowPlayMethodVpAdapter;
+import wzp.project.majiang.entity.PlayMethodParameter;
 import wzp.project.majiang.fragment.ShowPlayMethodFragment;
 import wzp.project.majiang.helper.constant.PlayMethod;
+import wzp.project.majiang.helper.constant.ProjectConstants;
 import wzp.project.majiang.util.DensityUtil;
+import wzp.project.majiang.widget.SaveAsDialog;
 
 /**
  * Created by wzp on 2017/8/28.
@@ -51,6 +56,8 @@ public class ShowPlayMethodActivity extends BaseActivity {
     private TextView tvDownload;
     private PopupWindow pwMoreFun;
 
+    private SaveAsDialog dlgSaveAs;
+
     private View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -70,12 +77,12 @@ public class ShowPlayMethodActivity extends BaseActivity {
 
                 case R.id.tv_saveAs:
                     pwMoreFun.dismiss();
-
+                    dlgSaveAs.show();
                     break;
 
                 case R.id.tv_readFile:
                     pwMoreFun.dismiss();
-
+                    ReceiveSendFileActivity.myStartActivity(ShowPlayMethodActivity.this);
                     break;
 
                 case R.id.tv_download:
@@ -163,6 +170,20 @@ public class ShowPlayMethodActivity extends BaseActivity {
                 })
                 .create();
 
+        dlgSaveAs = new SaveAsDialog(this);
+        dlgSaveAs.setPositiveButton(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dlgSaveAs.isFilenameValidate()) {
+
+
+
+                } else {
+                    showToast("文件名只能包含数字、中英文字符、下划线！");
+                }
+            }
+        });
+
         ibtnBack.setOnClickListener(listener);
         ibtnSave.setOnClickListener(listener);
         ibtnMoreFun.setOnClickListener(listener);
@@ -176,6 +197,27 @@ public class ShowPlayMethodActivity extends BaseActivity {
             ((ShowPlayMethodFragment) fragment).savePlayMethod();
         }
         showToast("参数保存成功！");
+    }
+
+    private void savePlayMethodParameterAs(String filename) {
+        List<PlayMethodParameter> parameterList = new ArrayList<>();
+        for (Fragment fragment : fragmentList) {
+            parameterList.add(((ShowPlayMethodFragment) fragment).getPlayMethodParameter());
+        }
+
+        filename = ProjectConstants.baseFilePath + "/" + filename;
+        try {
+            FileOutputStream fos = new FileOutputStream(filename);
+
+
+
+            showToast("文件保存成功！");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+
+            showToast("文件不存在！");
+        }
+
     }
 
     public static void myStartActivity(Context context) {

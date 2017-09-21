@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <!-- 操作外部存储资源 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 
     <application
         android:name=".widget.MyApplication"
@@ -54,6 +57,8 @@
         </activity>
 
         <activity android:name=".activity.EditPlayMethodActivity" />
+
+        <activity android:name=".activity.ReceiveSendFileActivity" />
 
     </application>
 

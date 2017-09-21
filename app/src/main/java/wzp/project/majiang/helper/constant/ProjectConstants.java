@@ -1,5 +1,7 @@
 package wzp.project.majiang.helper.constant;
 
+import android.os.Environment;
+
 public interface ProjectConstants {
 
 	String EXTRA_DEVICE_ADDRESS = "device_address";
@@ -13,4 +15,10 @@ public interface ProjectConstants {
 	int SEND_MSG_LENGTH = 41;
 
 	int MAX_MAJIANG_NUM = 36;
+
+
+	String baseFilePath = Environment.getExternalStorageDirectory()
+			.getAbsolutePath() + "/Majiang";
+
+	String lettNumbUnde = "^[\\u4E00-\\u9FA5A-Za-z0-9_]+$";			// 字符(中英文)、数字、下划线
 }

@@ -4,9 +4,12 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
+import wzp.project.majiang.entity.PlayMethodParameter;
 import wzp.project.majiang.util.BluetoothClientHelper;
 import wzp.project.majiang.util.MySharedPreferences;
 
@@ -24,6 +27,8 @@ public class MyApplication extends Application {
 	private static Queue<byte[]> messageQueue = new LinkedList<>();
 
 	private static MySharedPreferences spPlayMethod;
+
+	public static List<PlayMethodParameter> parameterList = new ArrayList<>();
 	
 	private static final String LOG_TAG = "MyApplication";
 	
@@ -43,6 +48,10 @@ public class MyApplication extends Application {
 
 	public static MySharedPreferences getSpPlayMethod() {
 		return spPlayMethod;
+	}
+
+	public static List<PlayMethodParameter> getParameterList() {
+		return parameterList;
 	}
 
 	public static Queue<byte[]> getMessageQueue() {

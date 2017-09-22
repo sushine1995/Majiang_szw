@@ -112,8 +112,8 @@ public class ShowPlayMethodFragment extends Fragment {
         switch (requestCode) {
             case REQUEST_EDIT_PLAY_METHOD:
                 if (resultCode == Activity.RESULT_OK) {
-                    parameter = JSON.parseObject(data.getStringExtra("parameter"),
-                            PlayMethodParameter.class);
+//                    parameter = JSON.parseObject(data.getStringExtra("parameter"),
+//                            PlayMethodParameter.class);
                     updateParameter();
                 }
                 break;
@@ -132,10 +132,16 @@ public class ShowPlayMethodFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d("ShowPlayMethodFragment", method + "---onStart");
+    }
+
     private void initData() {
         method = getArguments().getInt("method");
 
-        String playMethod = MyApplication.getSpPlayMethod().getString("playMethod" + method, "");
+        String playMethod = MyApplication.getSpPlayMethod().getString("playMethod" + (method + 1), "");
         if (playMethod.equals("")) {
             // 设置默认的参数值
             parameter = new PlayMethodParameter();
@@ -154,6 +160,12 @@ public class ShowPlayMethodFragment extends Fragment {
                     JSON.toJSONString(parameter));
         } else {
             parameter = JSON.parseObject(playMethod, PlayMethodParameter.class);
+        }
+
+        if (MyApplication.getParameterList().size() <= method) {
+            MyApplication.getParameterList().add(parameter);
+        } else {
+            MyApplication.getParameterList().set(method, parameter);
         }
     }
 
@@ -234,10 +246,12 @@ public class ShowPlayMethodFragment extends Fragment {
         btnModifyPlayMethod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), EditPlayMethodActivity.class);
-                intent.putExtra("playMethod", method);
-                intent.putExtra("parameter", JSON.toJSONString(parameter));
-                startActivityForResult(intent, REQUEST_EDIT_PLAY_METHOD);
+//                Intent intent = new Intent(getContext(), EditPlayMethodActivity.class);
+//                intent.putExtra("playMethod", method);
+//                intent.putExtra("parameter", JSON.toJSONString(parameter));
+//                startActivityForResult(intent, REQUEST_EDIT_PLAY_METHOD);
+
+                EditPlayMethodActivity.myStartActivityForResult(ShowPlayMethodFragment.this, method, REQUEST_EDIT_PLAY_METHOD);
             }
         });
 
@@ -414,7 +428,7 @@ public class ShowPlayMethodFragment extends Fragment {
     }
 
     public void savePlayMethod() {
-        MyApplication.getSpPlayMethod().commitString("playMethod" + method,
+        MyApplication.getSpPlayMethod().commitString("playMethod" + (method + 1),
                 JSON.toJSONString(parameter));
     }
 

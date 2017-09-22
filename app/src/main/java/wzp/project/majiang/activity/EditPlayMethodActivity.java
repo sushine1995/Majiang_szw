@@ -11,9 +11,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +25,7 @@ import wzp.project.majiang.fragment.BasicMethodFragment;
 import wzp.project.majiang.fragment.ChooseCardMethodFragment;
 import wzp.project.majiang.fragment.SetDiceFragment;
 import wzp.project.majiang.helper.constant.PlayMethod;
+import wzp.project.majiang.widget.MyApplication;
 
 public class EditPlayMethodActivity extends BaseActivity {
 
@@ -58,7 +56,7 @@ public class EditPlayMethodActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.putExtra("parameter", JSON.toJSONString(parameter));
+//        intent.putExtra("parameter", JSON.toJSONString(parameter));
         setResult(RESULT_OK, intent);
         finish();
     }
@@ -88,13 +86,15 @@ public class EditPlayMethodActivity extends BaseActivity {
         playMethodArr = getResources().getStringArray(R.array.play_method_arr);
         playMethod = getIntent().getIntExtra("playMethod", PlayMethod.NO_1);
 
-        try {
-            parameter = JSON.parseObject(getIntent().getStringExtra("parameter"),
-                    PlayMethodParameter.class);
-        } catch (JSONException e) {
-            e.printStackTrace();
+//        try {
+//            parameter = JSON.parseObject(getIntent().getStringExtra("parameter"),
+//                    PlayMethodParameter.class);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//
+//        }
 
-        }
+        parameter = MyApplication.getParameterList().get(playMethod);
     }
 
     private void initWidget() {
@@ -119,6 +119,12 @@ public class EditPlayMethodActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
+    public static void myStartActivityForResult(Fragment fragment, int playMethod, int requestCode) {
+        Intent intent = new Intent(fragment.getContext(), EditPlayMethodActivity.class);
+        intent.putExtra("playMethod", playMethod);
+        fragment.startActivityForResult(intent, requestCode);
+    }
+
     public BasicParameter getBasicParameter() {
         return parameter.getBasicParameter();
     }
@@ -129,5 +135,9 @@ public class EditPlayMethodActivity extends BaseActivity {
 
     public DiceParameter getDiceParameter() {
         return parameter.getDiceParameter();
+    }
+
+    public int getPlayMethod() {
+        return playMethod;
     }
 }

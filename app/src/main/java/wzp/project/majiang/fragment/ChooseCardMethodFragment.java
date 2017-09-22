@@ -1,19 +1,14 @@
 package wzp.project.majiang.fragment;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
-
-import com.alibaba.fastjson.JSON;
 
 import java.util.List;
 
@@ -57,25 +52,32 @@ public class ChooseCardMethodFragment extends Fragment {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("ChooseCardMethod", "onActivityResult");
-        switch (requestCode) {
-            case REQUEST_EDIT_CHOOSE_CARD_METHOD:
-                if (resultCode == Activity.RESULT_OK) {
-                    int index = data.getIntExtra("index", -1);
-                    ChooseCardMethod chooseCardMethod = JSON.parseObject(data.getStringExtra("chooseCardMethod"),
-                            ChooseCardMethod.class);
-                    chooseCardMethod.setSelected(true);
-                    if (index < chooseCardParameter.getMethods().size()) {
-                        methodList.set(index, chooseCardMethod);
-                    } else {
-                        methodList.add(chooseCardMethod);
-                    }
-                    chooseCardMethodListAdapter.notifyDataSetChanged();
-                }
-                break;
-        }
+    public void onResume() {
+        super.onResume();
+
+        chooseCardMethodListAdapter.notifyDataSetChanged();
     }
+
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        Log.d("ChooseCardMethod", "onActivityResult");
+//        switch (requestCode) {
+//            case REQUEST_EDIT_CHOOSE_CARD_METHOD:
+//                if (resultCode == Activity.RESULT_OK) {
+//                    int index = data.getIntExtra("index", -1);
+//                    ChooseCardMethod chooseCardMethod = JSON.parseObject(data.getStringExtra("chooseCardMethod"),
+//                            ChooseCardMethod.class);
+//                    chooseCardMethod.setSelected(true);
+//                    if (index < chooseCardParameter.getMethods().size()) {
+//                        methodList.set(index, chooseCardMethod);
+//                    } else {
+//                        methodList.add(chooseCardMethod);
+//                    }
+//                    chooseCardMethodListAdapter.notifyDataSetChanged();
+//                }
+//                break;
+//        }
+//    }
 
     private void initData() {
         chooseCardParameter = activity.getChooseCardParameter();
@@ -96,8 +98,10 @@ public class ChooseCardMethodFragment extends Fragment {
                 if (methodList.size() >= 6) {
                     activity.showToast("最多只能包含6条数据！");
                 } else {
-                    EditChooseCardMethodActivity.myStartActivityForResult(getActivity(), ChooseCardMethodFragment.this,
-                            chooseCardParameter.getMethods().size(), REQUEST_EDIT_CHOOSE_CARD_METHOD);
+//                    EditChooseCardMethodActivity.myStartActivityForResult(getActivity(), ChooseCardMethodFragment.this,
+//                            chooseCardParameter.getMethods().size(), REQUEST_EDIT_CHOOSE_CARD_METHOD);
+                    EditChooseCardMethodActivity.myStartActivityForResult(getContext(),
+                            activity.getPlayMethod(), chooseCardParameter.getMethods().size());
                 }
             }
         });

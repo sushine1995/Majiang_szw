@@ -305,8 +305,4 @@ public class BasicMethodFragment extends Fragment {
         cbDigitScreenSwitch.setChecked(basicParameter.isDigitScreenSwitch());
         cbThreePlayer.setChecked(basicParameter.isThreePlayer());
     }
-
-//    public void updateParameter() {
-//        basicParameter.setPlayerNum(btnChoosePlayerNum.getSelectedItemPosition());
-//    }
 }

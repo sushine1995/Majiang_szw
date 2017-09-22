@@ -6,7 +6,7 @@ package wzp.project.majiang.helper.constant;
 
 public interface PlayMethod {
 
-    int NO_1 = 1;
-    int NO_2 = 2;
-    int NO_3 = 3;
+    int NO_1 = 0;
+    int NO_2 = 1;
+    int NO_3 = 2;
 }

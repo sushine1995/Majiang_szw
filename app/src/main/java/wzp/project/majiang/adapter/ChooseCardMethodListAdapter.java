@@ -16,15 +16,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
-
 import java.util.List;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.EditChooseCardMethodActivity;
+import wzp.project.majiang.activity.EditPlayMethodActivity;
 import wzp.project.majiang.entity.ChooseCardMethod;
 import wzp.project.majiang.entity.SingleChooseCardMethod;
-import wzp.project.majiang.fragment.ChooseCardMethodFragment;
 import wzp.project.majiang.util.DensityUtil;
 
 
@@ -42,6 +40,16 @@ public class ChooseCardMethodListAdapter extends BaseAdapter {
     public ChooseCardMethodListAdapter(Context context, Fragment fragment, List<ChooseCardMethod> chooseCardMethodList) {
         this.context = context;
         this.fragment = fragment;
+        this.chooseCardMethodList = chooseCardMethodList;
+
+        loopTimesArr = context.getResources().getStringArray(R.array.loop_times_arr);
+        playMethodArr = context.getResources().getStringArray(R.array.play_method_name_arr);
+        basicNumArr = context.getResources().getStringArray(R.array.basic_num_arr);
+        specialRuleArr = context.getResources().getStringArray(R.array.special_rule_arr);
+    }
+
+    public ChooseCardMethodListAdapter(Context context, List<ChooseCardMethod> chooseCardMethodList) {
+        this.context = context;
         this.chooseCardMethodList = chooseCardMethodList;
 
         loopTimesArr = context.getResources().getStringArray(R.array.loop_times_arr);
@@ -95,9 +103,13 @@ public class ChooseCardMethodListAdapter extends BaseAdapter {
         holder.ibtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditChooseCardMethodActivity.myStartActivityForResult(context, fragment,
-                        position, JSON.toJSONString(chooseCardMethod),
-                        ChooseCardMethodFragment.REQUEST_EDIT_CHOOSE_CARD_METHOD);
+//                EditChooseCardMethodActivity.myStartActivityForResult(context, fragment,
+//                        position, JSON.toJSONString(chooseCardMethod),
+//                        ChooseCardMethodFragment.REQUEST_EDIT_CHOOSE_CARD_METHOD);
+
+                EditChooseCardMethodActivity.myStartActivityForResult(context,
+                        ((EditPlayMethodActivity) context).getPlayMethod(),
+                        position);
             }
         });
         listPlayMethod(context, holder.linearPlayMethodList, chooseCardMethod.getMethods());

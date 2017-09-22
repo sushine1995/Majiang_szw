@@ -9,15 +9,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +25,7 @@ import wzp.project.majiang.adapter.SingleChooseCardListAdapter;
 import wzp.project.majiang.entity.ChooseCardMethod;
 import wzp.project.majiang.entity.SingleChooseCardMethod;
 import wzp.project.majiang.widget.ListOptionButton;
+import wzp.project.majiang.widget.MyApplication;
 
 import static wzp.project.majiang.widget.MyApplication.getContext;
 
@@ -111,7 +109,8 @@ public class EditChooseCardMethodActivity extends BaseActivity {
     private String[] playMethodNameArr;
     private String[] loopTimesArr;
 
-    private int index; // 数据索引
+    private int playMethod; // 标识当前在修改哪一种玩法
+    private int index; // 数据索引，表示当前修改的是哪一个数据
 
     private static final int MAX_NUM = 6;
 
@@ -126,10 +125,18 @@ public class EditChooseCardMethodActivity extends BaseActivity {
 
                 case R.id.ibtn_save:
                     showToast("保存成功");
-                    Intent intent = new Intent();
-                    intent.putExtra("index", index);
-                    intent.putExtra("chooseCardMethod", JSON.toJSONString(chooseCardMethod));
-                    setResult(RESULT_OK, intent);
+//                        Intent intent = new Intent();
+//                        intent.putExtra("index", index);
+//                        intent.putExtra("chooseCardMethod", JSON.toJSONString(chooseCardMethod));
+//                        setResult(RESULT_OK, intent);
+
+                    chooseCardMethod.setSelected(true);
+                    if (MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
+                            .getMethods().size() <= index) {
+                        MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
+                                .getMethods().add(chooseCardMethod);
+                    }
+
                     finish();
                     break;
             }
@@ -154,21 +161,35 @@ public class EditChooseCardMethodActivity extends BaseActivity {
         playMethodNameArr = getResources().getStringArray(R.array.play_method_name_arr);
         loopTimesArr = getResources().getStringArray(R.array.loop_times_arr);
 
-        String json = getIntent().getStringExtra("chooseCardMethod");
-        if (!TextUtils.isEmpty(json)) {
-            chooseCardMethod = JSON.parseObject(json, ChooseCardMethod.class);
-        } else {
-            // 如果json为null，表示当前需要添加数据，初始化一个默认的ChooseCardMethod实例
+        playMethod = getIntent().getIntExtra("playMethod", -1);
+        index = getIntent().getIntExtra("index", -1);
+
+//        String json = getIntent().getStringExtra("chooseCardMethod");
+//        if (!TextUtils.isEmpty(json)) {
+//            chooseCardMethod = JSON.parseObject(json, ChooseCardMethod.class);
+//        } else {
+//            // 如果json为null，表示当前需要添加数据，初始化一个默认的ChooseCardMethod实例
+//            chooseCardMethod = new ChooseCardMethod();
+//            chooseCardMethod.setLoopTimes(0);
+//            chooseCardMethod.setSelected(true);
+//            chooseCardMethod.setMethods(new ArrayList<SingleChooseCardMethod>());
+//        }
+
+        if (MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
+                .getMethods().size() <= index) {
+            // chooseCardMethod集合包含元素的个数如果小于等于index，表示当前需要添加数据，初始化一个默认的ChooseCardMethod实例
+            // 此处暂不需要添加进ChooseCardParameter中，待点击保存按钮后，再添加
             chooseCardMethod = new ChooseCardMethod();
             chooseCardMethod.setLoopTimes(0);
             chooseCardMethod.setSelected(true);
             chooseCardMethod.setMethods(new ArrayList<SingleChooseCardMethod>());
+        } else {
+            chooseCardMethod = MyApplication.getParameterList().get(playMethod)
+                    .getChooseCardParameter().getMethods().get(index);
         }
 
         list = chooseCardMethod.getMethods();
         adapter = new SingleChooseCardListAdapter(this, list);
-
-        index = getIntent().getIntExtra("index", -1);
     }
 
     private void initWidget() {
@@ -242,10 +263,17 @@ public class EditChooseCardMethodActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         showToast("保存成功");
-                        Intent intent = new Intent();
-                        intent.putExtra("index", index);
-                        intent.putExtra("chooseCardMethod", JSON.toJSONString(chooseCardMethod));
-                        setResult(RESULT_OK, intent);
+//                        Intent intent = new Intent();
+//                        intent.putExtra("index", index);
+//                        intent.putExtra("chooseCardMethod", JSON.toJSONString(chooseCardMethod));
+//                        setResult(RESULT_OK, intent);
+
+                        chooseCardMethod.setSelected(true);
+                        if (MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
+                                .getMethods().size() <= index) {
+                            MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
+                                    .getMethods().add(chooseCardMethod);
+                        }
                         finish();
                     }
                 })
@@ -429,5 +457,12 @@ public class EditChooseCardMethodActivity extends BaseActivity {
         intent.putExtra("index", index);
         intent.putExtra("chooseCardMethod", json);
         fragment.startActivityForResult(intent, requestCode);
+    }
+
+    public static void myStartActivityForResult(Context context, int playMethod, int index) {
+        Intent intent = new Intent(context, EditChooseCardMethodActivity.class);
+        intent.putExtra("playMethod", playMethod);
+        intent.putExtra("index", index);
+        context.startActivity(intent);
     }
 }

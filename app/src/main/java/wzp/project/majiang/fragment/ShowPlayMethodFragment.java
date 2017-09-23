@@ -258,7 +258,9 @@ public class ShowPlayMethodFragment extends Fragment {
         updateParameter();
     }
 
-    private void updateParameter() {
+    public void updateParameter() {
+        parameter = MyApplication.getParameterList().get(method);
+
         ChooseCardParameter ccp = parameter.getChooseCardParameter();
         List<ChooseCardMethod> tmpList = ccp.getMethods();
         chooseCardMethodList.clear();

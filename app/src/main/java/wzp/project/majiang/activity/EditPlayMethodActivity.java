@@ -108,7 +108,7 @@ public class EditPlayMethodActivity extends BaseActivity {
         vpParam.setAdapter(modifyPlayMethodVpAdapter);
         vpParam.setOffscreenPageLimit(2);
 
-        tvTitle.setText(playMethodArr[playMethod - 1]);
+        tvTitle.setText(playMethodArr[playMethod]);
 
         ibtnBack.setOnClickListener(listener);
     }

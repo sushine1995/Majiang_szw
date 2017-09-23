@@ -6,9 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -82,6 +84,8 @@ public class ShowPlayMethodActivity extends BaseActivity {
     private SaveAsDialog dlgSaveAs;
 
     private static  final int REQUEST_READ_WRITE_EXTERNAL_STORAGE = 0x02;
+    private static  final int REQUEST_RECV_SEND_FILE = 0x22;
+
 
     private View.OnClickListener listener = new View.OnClickListener() {
         @Override
@@ -107,7 +111,8 @@ public class ShowPlayMethodActivity extends BaseActivity {
 
                 case R.id.tv_readFile:
                     pwMoreFun.dismiss();
-                    ReceiveSendFileActivity.myStartActivity(ShowPlayMethodActivity.this);
+//                    ReceiveSendFileActivity.myStartActivity(ShowPlayMethodActivity.this);
+                    ReceiveSendFileActivity.myStartActivityForResult(ShowPlayMethodActivity.this, REQUEST_RECV_SEND_FILE);
                     break;
 
                 case R.id.tv_download:
@@ -123,6 +128,7 @@ public class ShowPlayMethodActivity extends BaseActivity {
         dlgExit.show();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,6 +160,18 @@ public class ShowPlayMethodActivity extends BaseActivity {
                 Toast.makeText(getContext(), "系统拒绝读写外部文件，请到系统设置-权限管理中，打开此权限", Toast.LENGTH_SHORT).show();
             }
             return;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_RECV_SEND_FILE) {
+            if (resultCode == RESULT_OK) {
+                for (int i = 0; i < fragmentList.size(); i++) {
+                    ((ShowPlayMethodFragment) fragmentList.get(i)).updateParameter();
+                }
+            }
         }
     }
 

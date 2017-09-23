@@ -1,13 +1,17 @@
 package wzp.project.majiang.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -16,11 +20,28 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.io.FileNotFoundException;
+import com.alibaba.fastjson.JSON;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.base.BaseActivity;
@@ -31,6 +52,8 @@ import wzp.project.majiang.helper.constant.PlayMethod;
 import wzp.project.majiang.helper.constant.ProjectConstants;
 import wzp.project.majiang.util.DensityUtil;
 import wzp.project.majiang.widget.SaveAsDialog;
+
+import static wzp.project.majiang.widget.MyApplication.getContext;
 
 /**
  * Created by wzp on 2017/8/28.
@@ -57,6 +80,8 @@ public class ShowPlayMethodActivity extends BaseActivity {
     private PopupWindow pwMoreFun;
 
     private SaveAsDialog dlgSaveAs;
+
+    private static  final int REQUEST_READ_WRITE_EXTERNAL_STORAGE = 0x02;
 
     private View.OnClickListener listener = new View.OnClickListener() {
         @Override
@@ -101,10 +126,35 @@ public class ShowPlayMethodActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_play_method);
+        if (ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE},
+                    REQUEST_READ_WRITE_EXTERNAL_STORAGE);
+        } else {
+            setContentView(R.layout.activity_show_play_method);
 
-        initData();
-        initWidget();
+            initData();
+            initWidget();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_READ_WRITE_EXTERNAL_STORAGE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                setContentView(R.layout.activity_show_play_method);
+
+                initData();
+                initWidget();
+            } else {
+                Toast.makeText(getContext(), "系统拒绝读写外部文件，请到系统设置-权限管理中，打开此权限", Toast.LENGTH_SHORT).show();
+            }
+            return;
+        }
     }
 
     private void initData() {
@@ -175,12 +225,12 @@ public class ShowPlayMethodActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (dlgSaveAs.isFilenameValidate()) {
-
-
-
+                    savePlayMethodParameterAs(dlgSaveAs.getFilename());
                 } else {
                     showToast("文件名只能包含数字、中英文字符、下划线！");
                 }
+
+                dlgSaveAs.dismiss();
             }
         });
 
@@ -205,19 +255,49 @@ public class ShowPlayMethodActivity extends BaseActivity {
             parameterList.add(((ShowPlayMethodFragment) fragment).getPlayMethodParameter());
         }
 
-        filename = ProjectConstants.baseFilePath + "/" + filename;
-        try {
-            FileOutputStream fos = new FileOutputStream(filename);
-
-
-
-            showToast("文件保存成功！");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-
-            showToast("文件不存在！");
+        File file = new File(ProjectConstants.baseFilePath);
+        if (!file.exists()) {
+            file.mkdirs();
         }
 
+        filename = ProjectConstants.baseFilePath + "/" + filename + ".xml";
+
+        try {
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dbBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dbBuilder.newDocument();
+            Element root = doc.createElement("map");
+
+            for (int i = 0; i < fragmentList.size(); i++) {
+                Element playMethod = doc.createElement("string");
+                playMethod.setAttribute("name", "playMethod" + (i + 1));
+                playMethod.setTextContent(JSON.toJSONString(parameterList.get(i)));
+                root.appendChild(playMethod);
+            }
+            doc.appendChild(root);
+
+            TransformerFactory transFactory = TransformerFactory.newInstance();
+            Transformer transFormer = transFactory.newTransformer();
+            transFormer.setOutputProperty("encoding", "UTF-8");
+            DOMSource domSource = new DOMSource(doc);
+            FileOutputStream out = new FileOutputStream(filename);
+            StreamResult xmlResult = new StreamResult(out);
+            transFormer.transform(domSource, xmlResult);
+
+            showToast("保存成功");
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+            showToast("保存失败");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showToast("保存失败");
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+            showToast("保存失败");
+        } catch (TransformerException e) {
+            e.printStackTrace();
+            showToast("保存失败");
+        }
     }
 
     public static void myStartActivity(Context context) {

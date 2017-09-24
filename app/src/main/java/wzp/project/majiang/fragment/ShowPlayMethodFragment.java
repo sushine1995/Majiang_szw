@@ -55,7 +55,7 @@ public class ShowPlayMethodFragment extends Fragment {
     private TextView tvBroadcastCardNum;
     private TextView tvLayerNum;
     private TextView tvMachineGear;
-    private TextView tvTotalNum;
+    private TextView tvTotalCardNum;
     private TextView tvEastTop;
     private TextView tvEastMiddle;
     private TextView tvEastBottom;
@@ -186,7 +186,7 @@ public class ShowPlayMethodFragment extends Fragment {
         tvBroadcastCardNum = (TextView) view.findViewById(R.id.tv_broadcastCardNum);
         tvLayerNum = (TextView) view.findViewById(R.id.tv_layerNum);
         tvMachineGear = (TextView) view.findViewById(R.id.tv_machineGear);
-        tvTotalNum = (TextView) view.findViewById(R.id.tv_totalNum);
+        tvTotalCardNum = (TextView) view.findViewById(R.id.tv_totalCardNum);
         tvEastTop = (TextView) view.findViewById(R.id.tv_eastTop);
         tvEastMiddle = (TextView) view.findViewById(R.id.tv_eastMiddle);
         tvEastBottom = (TextView) view.findViewById(R.id.tv_eastBottom);
@@ -346,6 +346,19 @@ public class ShowPlayMethodFragment extends Fragment {
 
         tvLayerNum.setText(bp.isThreeLayer() ? "三层" : "两层");
         tvMachineGear.setText(getResources().getStringArray(R.array.machine_gear_arr)[bp.getMachineGear()]);
+        tvTotalCardNum.setText(String.valueOf(bp.getTotalCardNum()));
+        tvEastTop.setText(String.valueOf(bp.getEastTop()));
+        tvEastMiddle.setText(String.valueOf(bp.getEastMiddle()));
+        tvEastBottom.setText(String.valueOf(bp.getEastBottom()));
+        tvNorthTop.setText(String.valueOf(bp.getNorthTop()));
+        tvNorthMiddle.setText(String.valueOf(bp.getNorthMiddle()));
+        tvNorthBottom.setText(String.valueOf(bp.getNorthBottom()));
+        tvWestTop.setText(String.valueOf(bp.getWestTop()));
+        tvWestMiddle.setText(String.valueOf(bp.getWestMiddle()));
+        tvWestBottom.setText(String.valueOf(bp.getWestBottom()));
+        tvSouthTop.setText(String.valueOf(bp.getSouthTop()));
+        tvSouthMiddle.setText(String.valueOf(bp.getSouthMiddle()));
+        tvSouthBottom.setText(String.valueOf(bp.getSouthBottom()));
 
 
         DiceParameter dp = parameter.getDiceParameter();

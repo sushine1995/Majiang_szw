@@ -694,7 +694,7 @@
                     android:text="机器总张数：" />
 
                 <TextView
-                    android:id="@+id/tv_totalNum"
+                    android:id="@+id/tv_totalCardNum"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:layout_marginLeft="5dp"
@@ -796,6 +796,7 @@
                     android:layout_marginRight="@dimen/basic_method_horizontal_interval_3"
                     android:background="@color/separator_line_color" />
 
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -808,7 +809,7 @@
                         android:gravity="center"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="南方位"/>
+                        android:text="北方位"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -845,7 +846,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                         <TextView
-                            android:id="@+id/tv_southTop"
+                            android:id="@+id/tv_northTop"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="@dimen/tv_tip_height"
@@ -854,7 +855,7 @@
                             android:textColor="@color/black"
                             android:text=""/>
                         <TextView
-                            android:id="@+id/tv_southMiddle"
+                            android:id="@+id/tv_northMiddle"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="@dimen/tv_tip_height"
@@ -863,7 +864,7 @@
                             android:textColor="@color/black"
                             android:text=""/>
                         <TextView
-                            android:id="@+id/tv_southBottom"
+                            android:id="@+id/tv_northBottom"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="@dimen/tv_tip_height"
@@ -984,7 +985,7 @@
                         android:gravity="center"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="北方位"/>
+                        android:text="南方位"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1021,7 +1022,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                         <TextView
-                            android:id="@+id/tv_northTop"
+                            android:id="@+id/tv_southTop"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="@dimen/tv_tip_height"
@@ -1030,7 +1031,7 @@
                             android:textColor="@color/black"
                             android:text=""/>
                         <TextView
-                            android:id="@+id/tv_northMiddle"
+                            android:id="@+id/tv_southMiddle"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="@dimen/tv_tip_height"
@@ -1039,7 +1040,7 @@
                             android:textColor="@color/black"
                             android:text=""/>
                         <TextView
-                            android:id="@+id/tv_northBottom"
+                            android:id="@+id/tv_southBottom"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="@dimen/tv_tip_height"

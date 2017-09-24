@@ -890,6 +890,7 @@
         </LinearLayout>
 
         <RadioGroup
+            android:id="@+id/rg_layer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/separator_line_height2"
@@ -939,6 +940,7 @@
                 android:text="机器档位"/>
 
             <wzp.project.majiang.widget.ListOptionButton
+                android:id="@+id/btn_machineGear"
                 android:layout_width="280dp"
                 android:layout_height="@dimen/btn_option_height"
                 android:paddingLeft="5dp"
@@ -970,13 +972,14 @@
                 android:text="机器总张数：" />
 
             <TextView
+                android:id="@+id/tv_totalCardNum"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/tv_tip_height"
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical|left"
                 android:textSize="@dimen/text_size_m"
                 android:textColor="@color/black"
-                android:text="137" />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -1032,6 +1035,7 @@
                     android:text="中"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_eastMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -1054,6 +1058,7 @@
                     android:text="下"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_eastBottom"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -1078,7 +1083,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -1086,7 +1090,7 @@
                     android:gravity="center"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="南方位"/>
+                    android:text="北方位"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1097,6 +1101,7 @@
                     android:text="上"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_northTop"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -1119,6 +1124,7 @@
                     android:text="中"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_northMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -1141,6 +1147,7 @@
                     android:text="下"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_northBottom"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -1190,6 +1197,7 @@
                     android:text="上"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_westTop"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -1212,6 +1220,7 @@
                     android:text="中"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_westMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -1234,6 +1243,7 @@
                     android:text="下"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_westBottom"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -1258,6 +1268,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -1265,7 +1276,7 @@
                     android:gravity="center"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="北方位"/>
+                    android:text="南方位"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1276,6 +1287,7 @@
                     android:text="上"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_southTop"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -1298,6 +1310,7 @@
                     android:text="中"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_southMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
@@ -1320,6 +1333,7 @@
                     android:text="下"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_southBottom"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"

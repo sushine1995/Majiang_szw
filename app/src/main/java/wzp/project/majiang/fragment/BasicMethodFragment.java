@@ -2,6 +2,7 @@ package wzp.project.majiang.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.EditPlayMethodActivity;
@@ -50,6 +53,21 @@ public class BasicMethodFragment extends Fragment {
     private CheckBox cbDicePanelTroubleNotification;
     private CheckBox cbDigitScreenSwitch;
     private CheckBox cbThreePlayer;
+    private RadioGroup rgLayer;
+    private ListOptionButton btnMachineGear;
+    private TextView tvTotalCardNum;
+    private ListOptionButton btnEastTop;
+    private ListOptionButton btnEastMiddle;
+    private ListOptionButton btnEastBottom;
+    private ListOptionButton btnSouthTop;
+    private ListOptionButton btnSouthMiddle;
+    private ListOptionButton btnSouthBottom;
+    private ListOptionButton btnWestTop;
+    private ListOptionButton btnWestMiddle;
+    private ListOptionButton btnWestBottom;
+    private ListOptionButton btnNorthTop;
+    private ListOptionButton btnNorthMiddle;
+    private ListOptionButton btnNorthBottom;
 
 
     private BasicParameter basicParameter;
@@ -116,6 +134,22 @@ public class BasicMethodFragment extends Fragment {
         cbDicePanelTroubleNotification = (CheckBox) view.findViewById(R.id.cb_dicePanelTroubleNotification);
         cbDigitScreenSwitch = (CheckBox) view.findViewById(R.id.cb_digitScreenSwitch);
         cbThreePlayer = (CheckBox) view.findViewById(R.id.cb_threePlayer);
+        rgLayer = (RadioGroup) view.findViewById(R.id.rg_layer);
+        btnMachineGear = (ListOptionButton) view.findViewById(R.id.btn_machineGear);
+        tvTotalCardNum = (TextView) view.findViewById(R.id.tv_totalCardNum);
+        btnEastTop = (ListOptionButton) view.findViewById(R.id.btn_eastTop);
+        btnEastMiddle = (ListOptionButton) view.findViewById(R.id.btn_eastMiddle);
+        btnEastBottom = (ListOptionButton) view.findViewById(R.id.btn_eastBottom);
+        btnSouthTop = (ListOptionButton) view.findViewById(R.id.btn_southTop);
+        btnSouthMiddle = (ListOptionButton) view.findViewById(R.id.btn_southMiddle);
+        btnSouthBottom = (ListOptionButton) view.findViewById(R.id.btn_southBottom);
+        btnWestTop = (ListOptionButton) view.findViewById(R.id.btn_westTop);
+        btnWestMiddle = (ListOptionButton) view.findViewById(R.id.btn_westMiddle);
+        btnWestBottom = (ListOptionButton) view.findViewById(R.id.btn_westBottom);
+        btnNorthTop = (ListOptionButton) view.findViewById(R.id.btn_northTop);
+        btnNorthMiddle = (ListOptionButton) view.findViewById(R.id.btn_northMiddle);
+        btnNorthBottom = (ListOptionButton) view.findViewById(R.id.btn_northBottom);
+
 
 
         btnPlayerNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -274,7 +308,107 @@ public class BasicMethodFragment extends Fragment {
                 basicParameter.setThreePlayer(isChecked);
             }
         });
-
+        rgLayer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if (checkedId == R.id.rb_double) {
+                    basicParameter.setThreeLayer(false);
+                } else {
+                    basicParameter.setThreeLayer(true);
+                }
+            }
+        });
+        btnMachineGear.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setMachineGear(position);
+                analyseCardNumFromMachineGear(position);
+        }
+        });
+        btnEastTop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setEastTop(position);
+                setTotalCardNum();
+            }
+        });
+        btnEastMiddle.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setEastMiddle(position);
+                setTotalCardNum();
+            }
+        });
+        btnEastBottom.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setEastBottom(position);
+                setTotalCardNum();
+            }
+        });
+        btnNorthTop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setNorthTop(position);
+                setTotalCardNum();
+            }
+        });
+        btnNorthMiddle.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setNorthMiddle(position);
+                setTotalCardNum();
+            }
+        });
+        btnNorthBottom.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setNorthBottom(position);
+                setTotalCardNum();
+            }
+        });
+        btnWestTop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setWestTop(position);
+                setTotalCardNum();
+            }
+        });
+        btnWestMiddle.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setWestMiddle(position);
+                setTotalCardNum();
+            }
+        });
+        btnWestBottom.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setWestBottom(position);
+                setTotalCardNum();
+            }
+        });
+        btnSouthTop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setSouthTop(position);
+                setTotalCardNum();
+            }
+        });
+        btnSouthMiddle.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setSouthMiddle(position);
+                setTotalCardNum();
+            }
+        });
+        btnSouthBottom.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setSouthBottom(position);
+                setTotalCardNum();
+            }
+        });
 
 
         // 初始化控件参数
@@ -304,5 +438,165 @@ public class BasicMethodFragment extends Fragment {
         cbDicePanelTroubleNotification.setChecked(basicParameter.isDicePanelTroubleNotification());
         cbDigitScreenSwitch.setChecked(basicParameter.isDigitScreenSwitch());
         cbThreePlayer.setChecked(basicParameter.isThreePlayer());
+        rgLayer.check(basicParameter.isThreeLayer() ? R.id.rb_tripple : R.id.rb_double);
+        btnMachineGear.setSelectedItemPosition(basicParameter.getMachineGear());
+        tvTotalCardNum.setText(String.valueOf(basicParameter.getTotalCardNum()));
+        btnEastTop.setSelectedItemPosition(basicParameter.getEastTop());
+        btnEastMiddle.setSelectedItemPosition(basicParameter.getEastMiddle());
+        btnEastBottom.setSelectedItemPosition(basicParameter.getEastBottom());
+        btnNorthTop.setSelectedItemPosition(basicParameter.getNorthTop());
+        btnNorthMiddle.setSelectedItemPosition(basicParameter.getNorthMiddle());
+        btnNorthBottom.setSelectedItemPosition(basicParameter.getNorthBottom());
+        btnWestTop.setSelectedItemPosition(basicParameter.getWestTop());
+        btnWestMiddle.setSelectedItemPosition(basicParameter.getWestMiddle());
+        btnWestBottom.setSelectedItemPosition(basicParameter.getWestBottom());
+        btnSouthTop.setSelectedItemPosition(basicParameter.getSouthTop());
+        btnSouthMiddle.setSelectedItemPosition(basicParameter.getSouthMiddle());
+        btnSouthBottom.setSelectedItemPosition(basicParameter.getSouthBottom());
+        if (basicParameter.isThreeLayer()) {
+            btnEastMiddle.setEnabled(true);
+            btnNorthMiddle.setEnabled(true);
+            btnWestMiddle.setEnabled(true);
+            btnSouthMiddle.setEnabled(true);
+        } else {
+            btnEastMiddle.setEnabled(false);
+            btnNorthMiddle.setEnabled(false);
+            btnWestMiddle.setEnabled(false);
+            btnSouthMiddle.setEnabled(false);
+        }
+    }
+
+    /**
+     * 由机器档位解析出牌数
+     * @param position
+     */
+    private void analyseCardNumFromMachineGear(int position) {
+        if (rgLayer.getCheckedRadioButtonId() == R.id.rb_double) {
+            // 双层
+            String machineGear = getResources().getStringArray(R.array.machine_gear_arr)[position];
+            basicParameter.setTotalCardNum(Integer.parseInt(machineGear.substring(machineGear.indexOf('：') + 1,
+                    machineGear.indexOf('/'))));
+            String[] numArr = machineGear.substring(machineGear.indexOf('/') + 1,
+                    machineGear.length()).split("，");
+            int eastTopNum = 0;
+            int eastMiddleNum = 0;
+            int eastBottomNum = 0;
+            int northTopNum = 0;
+            int northMiddleNum = 0;
+            int northBottomNum = 0;
+            int westTopNum = 0;
+            int westMiddleNum = 0;
+            int westBottomNum = 0;
+            int southTopNum = 0;
+            int southMiddleNum = 0;
+            int southBottomNum = 0;
+            if (position >= 42) {
+                // 特殊的几种情况，单独处理
+                if (position == 42) {
+                    eastTopNum = 17;
+                    eastMiddleNum = 0;
+                    eastBottomNum = eastTopNum;
+                    northTopNum = 17;
+                    northMiddleNum = 0;
+                    northBottomNum = northTopNum;
+                    westTopNum = 17;
+                    westMiddleNum = 0;
+                    westBottomNum = westTopNum;
+                    southTopNum = 17;
+                    southMiddleNum = 0;
+                    southBottomNum = southTopNum + 1;
+                } else if (position == 43) {
+                    eastTopNum = 8;
+                    eastMiddleNum = 0;
+                    eastBottomNum = eastTopNum + 1;
+                    northTopNum = 8;
+                    northMiddleNum = 0;
+                    northBottomNum = northTopNum + 1;
+                    westTopNum = 8;
+                    westMiddleNum = 0;
+                    westBottomNum = westTopNum + 1;
+                    southTopNum = 8;
+                    southMiddleNum = 0;
+                    southBottomNum = southTopNum + 1;
+                } else if (position <= 45) {
+                    eastTopNum = Integer.parseInt(numArr[0].substring(0, numArr[0].length() - 1));
+                    eastMiddleNum = 0;
+                    eastBottomNum = 0;
+                    northTopNum = Integer.parseInt(numArr[1].substring(0, numArr[1].length() - 1));
+                    northMiddleNum = 0;
+                    northBottomNum = 0;
+                    westTopNum = Integer.parseInt(numArr[2].substring(0, numArr[2].length() - 1));
+                    westMiddleNum = 0;
+                    westBottomNum = 0;
+                    southTopNum = Integer.parseInt(numArr[3].substring(0, numArr[3].length() - 1));
+                    southMiddleNum = 0;
+                    southBottomNum = 0;
+                }
+            } else {
+                eastTopNum = Integer.parseInt(numArr[0]);
+                eastMiddleNum = 0;
+                eastBottomNum = eastTopNum;
+                northTopNum = Integer.parseInt(numArr[1]);
+                northMiddleNum = 0;
+                northBottomNum = northTopNum;
+                westTopNum = Integer.parseInt(numArr[2]);
+                westMiddleNum = 0;
+                westBottomNum = westTopNum;
+                southTopNum = Integer.parseInt(numArr[3]);
+                southMiddleNum = 0;
+                southBottomNum = southTopNum;
+            }
+
+            basicParameter.setEastTop(eastTopNum);
+            basicParameter.setEastMiddle(eastMiddleNum);
+            basicParameter.setEastBottom(eastBottomNum);
+            basicParameter.setNorthTop(northTopNum);
+            basicParameter.setNorthMiddle(northMiddleNum);
+            basicParameter.setNorthBottom(northBottomNum);
+            basicParameter.setWestTop(westTopNum);
+            basicParameter.setWestMiddle(westMiddleNum);
+            basicParameter.setWestBottom(westBottomNum);
+            basicParameter.setSouthTop(southTopNum);
+            basicParameter.setSouthMiddle(southMiddleNum);
+            basicParameter.setSouthBottom(southBottomNum);
+
+            btnEastMiddle.setEnabled(false);
+            btnNorthMiddle.setEnabled(false);
+            btnWestMiddle.setEnabled(false);
+            btnSouthMiddle.setEnabled(false);
+        } else {
+            // 三层
+
+
+            btnEastMiddle.setEnabled(true);
+            btnNorthMiddle.setEnabled(true);
+            btnWestMiddle.setEnabled(true);
+            btnSouthMiddle.setEnabled(true);
+        }
+
+        tvTotalCardNum.setText(String.valueOf(basicParameter.getTotalCardNum()));
+        btnEastTop.setText(String.valueOf(basicParameter.getEastTop()));
+        btnEastMiddle.setText(String.valueOf(basicParameter.getEastMiddle()));
+        btnEastBottom.setText(String.valueOf(basicParameter.getEastBottom()));
+        btnNorthTop.setText(String.valueOf(basicParameter.getNorthTop()));
+        btnNorthMiddle.setText(String.valueOf(basicParameter.getNorthMiddle()));
+        btnNorthBottom.setText(String.valueOf(basicParameter.getNorthBottom()));
+        btnWestTop.setText(String.valueOf(basicParameter.getWestTop()));
+        btnWestMiddle.setText(String.valueOf(basicParameter.getWestMiddle()));
+        btnWestBottom.setText(String.valueOf(basicParameter.getWestBottom()));
+        btnSouthTop.setText(String.valueOf(basicParameter.getSouthTop()));
+        btnSouthMiddle.setText(String.valueOf(basicParameter.getSouthMiddle()));
+        btnSouthBottom.setText(String.valueOf(basicParameter.getSouthBottom()));
+    }
+
+    private void setTotalCardNum() {
+        basicParameter.setTotalCardNum(
+                basicParameter.getEastTop() + basicParameter.getEastMiddle() + basicParameter.getEastBottom() +
+                        basicParameter.getNorthTop() + basicParameter.getNorthMiddle() + basicParameter.getNorthBottom() +
+                        basicParameter.getWestTop() + basicParameter.getWestMiddle() + basicParameter.getWestBottom() +
+                        basicParameter.getSouthTop() + basicParameter.getSouthMiddle() + basicParameter.getSouthBottom()
+        );
+
+        tvTotalCardNum.setText(String.valueOf(basicParameter.getTotalCardNum()));
     }
 }

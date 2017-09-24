@@ -142,7 +142,8 @@ public class ShowPlayMethodFragment extends Fragment {
         method = getArguments().getInt("method");
 
         String playMethod = MyApplication.getSpPlayMethod().getString("playMethod" + (method + 1), "");
-        if (playMethod.equals("")) {
+        parameter = JSON.parseObject(playMethod, PlayMethodParameter.class);
+        if (parameter == null) {
             // 设置默认的参数值
             parameter = new PlayMethodParameter();
 
@@ -158,8 +159,6 @@ public class ShowPlayMethodFragment extends Fragment {
 
             MyApplication.getSpPlayMethod().commitString("playMethod" + method,
                     JSON.toJSONString(parameter));
-        } else {
-            parameter = JSON.parseObject(playMethod, PlayMethodParameter.class);
         }
 
         if (MyApplication.getParameterList().size() <= method) {

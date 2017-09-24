@@ -16,6 +16,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -33,6 +34,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -46,13 +48,21 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.activity.base.BaseActivity;
+import wzp.project.majiang.activity.base.BluetoothBaseActivity;
 import wzp.project.majiang.adapter.ShowPlayMethodVpAdapter;
+import wzp.project.majiang.entity.BasicParameter;
+import wzp.project.majiang.entity.ChooseCardMethod;
+import wzp.project.majiang.entity.ChooseCardParameter;
+import wzp.project.majiang.entity.DiceParameter;
 import wzp.project.majiang.entity.PlayMethodParameter;
+import wzp.project.majiang.entity.SingleChooseCardMethod;
 import wzp.project.majiang.fragment.ShowPlayMethodFragment;
 import wzp.project.majiang.helper.constant.PlayMethod;
 import wzp.project.majiang.helper.constant.ProjectConstants;
+import wzp.project.majiang.util.CalculateUtil;
 import wzp.project.majiang.util.DensityUtil;
+import wzp.project.majiang.widget.MyApplication;
+import wzp.project.majiang.widget.MyProgressDialog;
 import wzp.project.majiang.widget.SaveAsDialog;
 
 import static wzp.project.majiang.widget.MyApplication.getContext;
@@ -61,7 +71,7 @@ import static wzp.project.majiang.widget.MyApplication.getContext;
  * Created by wzp on 2017/8/28.
  */
 
-public class ShowPlayMethodActivity extends BaseActivity {
+public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
     private ImageButton ibtnBack;
     private ImageButton ibtnSave;
@@ -82,6 +92,7 @@ public class ShowPlayMethodActivity extends BaseActivity {
     private PopupWindow pwMoreFun;
 
     private SaveAsDialog dlgSaveAs;
+    private MyProgressDialog dlgProgress;
 
     private static  final int REQUEST_READ_WRITE_EXTERNAL_STORAGE = 0x02;
     private static  final int REQUEST_RECV_SEND_FILE = 0x22;
@@ -117,7 +128,164 @@ public class ShowPlayMethodActivity extends BaseActivity {
 
                 case R.id.tv_download:
                     pwMoreFun.dismiss();
+                    if (MyApplication.btClientHelper.isBluetoothConnected()) {
+                        dlgProgress.show("参数设置中，请稍后...");
 
+                        byte[] sendMsg = new byte[ProjectConstants.SET_PARAMETER_MSG_LENGTH];
+                        int i = 0;
+                        // 报文头，3个字节
+                        sendMsg[i++] = (byte) 0xf1;
+                        sendMsg[i++] = (byte) 0x0d;
+                        sendMsg[i++] = (byte) 0x0d;
+                        // 报文序列号，7个字节（暂定为0x00）
+                        sendMsg[i++] = (byte) 0x00;
+                        sendMsg[i++] = (byte) 0x00;
+                        sendMsg[i++] = (byte) 0x00;
+                        sendMsg[i++] = (byte) 0x00;
+                        sendMsg[i++] = (byte) 0x00;
+                        sendMsg[i++] = (byte) 0x00;
+                        sendMsg[i++] = (byte) 0x00;
+                        // 玩法参数
+                        PlayMethodParameter parameter = null;
+                        BasicParameter bp = null;
+                        ChooseCardParameter ccp = null;
+                        DiceParameter dp = null;
+                        for (int j = 0; j < MyApplication.getParameterList().size(); j++) {
+                            parameter = MyApplication.getParameterList().get(j);
+
+                            // 基本方式
+                            bp = parameter.getBasicParameter();
+                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.player_num_arr)[bp.getPlayerNum()]);
+                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.every_hand_num_arr)[bp.getEveryHandCardNum()]);
+                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.banker_card_num_arr)[bp.getBankerCardNum()]);
+                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.other_player_card_num_arr)[bp.getOtherPlayerCardNum()]);
+                            sendMsg[i++] = (byte) bp.getBankerSkip();
+                            sendMsg[i++] = (byte) bp.getGetCardMethod();
+                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.program_start_times_arr)[bp.getProgramStartTimes()]);
+                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.program_stop_times_arr)[bp.getProgramStopTimes()]);
+                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.continuous_work_rounds_arr)[bp.getContinuousWorkRound()]);
+                            sendMsg[i++] = (byte) (Integer.parseInt(getResources().getStringArray(R.array.total_rounds_arr)[bp.getTotalUseRound()]) / 256);
+                            sendMsg[i++] = (byte) (Integer.parseInt(getResources().getStringArray(R.array.total_rounds_arr)[bp.getTotalUseRound()]) % 256);
+                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.broadcast_card_num_arr)[bp.getBroadcastCardNum()]);
+                            sendMsg[i++] = bp.isVoiceBox() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isMachineHeadPosition() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isPanelInduction() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isMoneyBoxPosition() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isContinuousBroadcastCard() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isAssignedIDCardPosition() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isBroadcastWinCard() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isUseDiceTest() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isPengZhuanBroadcastCard() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isResetTest() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isDicePanelPositionNotification() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isBloodFight() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isDicePanelTroubleNotification() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isDigitScreenSwitch() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isThreePlayer() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = bp.isThreeLayer() ? (byte) 0x01 : (byte) 0x00;
+                            // 机器档位，暂时不知道如何表示
+
+
+                            // 备用，4个字节
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+
+
+                            // 选牌方式
+                            ccp = parameter.getChooseCardParameter();
+                            List<ChooseCardMethod> ccmList = ccp.getMethods();
+                            ChooseCardMethod ccm = null;
+                            List<SingleChooseCardMethod> sccmList = null;
+                            SingleChooseCardMethod sccm = null;
+                            int k = 0;
+                            for (; k < ccmList.size(); k++) {
+                                ccm = ccmList.get(k);
+
+                                sendMsg[i++] = (byte) (ccm.getLoopTimes() + 1);
+                                sccmList = ccm.getMethods();
+                                int l = 0;
+                                for (; l < sccmList.size(); l++) {
+                                    sccm = sccmList.get(l);
+
+                                    sendMsg[i++] = (byte) (sccm.getName() + 1);
+                                    sendMsg[i++] = (byte) sccm.getNum();
+                                    sendMsg[i++] = (byte) sccm.getSpecialRule();
+                                }
+                                while (l < 6) {
+                                    for (int m = 0; m < 3; m++) {
+                                        sendMsg[i++] = (byte) 0x00;
+                                    }
+
+                                    l++;
+                                }
+                            }
+                            while (k < 6) {
+                                for (int n = 0; n < 19; n++) {
+                                    sendMsg[i++] = (byte) 0x00;
+                                }
+
+                                k++;
+                            }
+                            // 备用，4个字节
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+
+
+                            // 色子参数
+                            dp = parameter.getDiceParameter();
+                            sendMsg[i++] = (byte) (dp.getDiceNum() + 1);
+                            sendMsg[i++] = (byte) (dp.getUseDiceTimes() + 1);
+                            sendMsg[i++] = (byte) dp.getUseDiceMethod();
+                            sendMsg[i++] = (byte) dp.getStartCardMethod();
+                            sendMsg[i++] = (byte) dp.getStartCardSupplementFlowerMethod();
+                            sendMsg[i++] = dp.isOneFiveNineGetCard() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isEastSouthWestNorthAsColorCard() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isZhongFaBaiAsColorCard() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isAllWindCardAsColorCard() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isBankerAndLastPlayerChangePosition() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isOpenWealthGodMode() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = (byte) dp.getWealthGodStartCardMethod();
+                            sendMsg[i++] = (byte) dp.getWealthGodUseDiceMethod();
+                            sendMsg[i++] = (byte) dp.getWealthGodCondition();
+                            sendMsg[i++] = (byte) dp.getWindCardWealthGodLoopMethod();
+                            sendMsg[i++] = (byte) dp.getFixedWealthGod();
+                            sendMsg[i++] = (byte) dp.getWealthGodLastBlockNum();
+                            sendMsg[i++] = (byte) dp.getWealthGodStartCardPosition();
+                            sendMsg[i++] = (byte) (dp.getWealthGodPrecedenceNum() + 1);
+                            sendMsg[i++] = dp.isZhongAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isColorCardAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isYiTiaoAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isBaiBanAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isYaojiufeng() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isYaojiufengSuanGan() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isBaibanAsWealthGodSubstitute() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isFanpaifengpaiAsWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.is13579() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isEastSouthWestNorthOrZhongFaBaiBusuandacha() ? (byte) 0x01 : (byte) 0x00;
+
+                            // 备用，5个字节
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                        }
+
+                        Log.d(LOG_TAG, "i = " + i + "; len = " + sendMsg.length);
+                        Log.d(LOG_TAG, Arrays.toString(sendMsg));
+
+//                        byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SEND_MSG_LENGTH - 2);
+//                        sendMsg[ProjectConstants.SEND_MSG_LENGTH - 2] = crc[0];
+//                        sendMsg[ProjectConstants.SEND_MSG_LENGTH - 1] = crc[1];
+
+                        MyApplication.btClientHelper.write(sendMsg);
+                    } else {
+                        showToast("蓝牙尚未连接，程序烧录失败！");
+                    }
                     break;
             }
         }
@@ -252,6 +420,8 @@ public class ShowPlayMethodActivity extends BaseActivity {
             }
         });
 
+        dlgProgress = new MyProgressDialog(this);
+
         ibtnBack.setOnClickListener(listener);
         ibtnSave.setOnClickListener(listener);
         ibtnMoreFun.setOnClickListener(listener);
@@ -315,6 +485,16 @@ public class ShowPlayMethodActivity extends BaseActivity {
         } catch (TransformerException e) {
             e.printStackTrace();
             showToast("保存失败");
+        }
+    }
+
+    @Override
+    protected void onBluetoothDataReceived(byte[] recvData) {
+        switch (CalculateUtil.byteToInt(recvData[1])) {
+            case 0x01:
+                showToast("参数设置成功");
+                dlgProgress.dismiss();
+                break;
         }
     }
 

@@ -70,7 +70,8 @@ public class MainActivity extends BluetoothBaseActivity implements IBluetoothCon
 					break;
 
 				case R.id.ibtn_setting:
-					SettingActivity.myStartActivity(MainActivity.this);
+//					SettingActivity.myStartActivity(MainActivity.this);
+					ShowPlayMethodActivity.myStartActivity(MainActivity.this);
 					break;
 
 				default:

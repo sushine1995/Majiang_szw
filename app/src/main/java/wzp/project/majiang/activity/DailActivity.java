@@ -119,9 +119,8 @@ public class DailActivity extends AppCompatActivity {
                             finish();
                             MainActivity.myStartActivity(DailActivity.this);
                         }
-                    } else if (edtNum.getText().toString().equals("123")) {
-                        ShowPlayMethodActivity.myStartActivity(DailActivity.this);
                     }
+
                     break;
 
                 default:

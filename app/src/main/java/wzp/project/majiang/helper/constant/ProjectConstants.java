@@ -20,5 +20,11 @@ public interface ProjectConstants {
 	String baseFilePath = Environment.getExternalStorageDirectory()
 			.getAbsolutePath() + "/Majiang";
 
+	String QQ_FILE_PATH = Environment.getExternalStorageDirectory()
+			.getAbsolutePath() + "/tencent/QQfile_recv"; // QQ接收的文件默认保存的位置
+
+	String WECHAT_FILE_PATH = Environment.getExternalStorageDirectory()
+			.getAbsolutePath() + "/tencent/MicroMsg/Download"; // 微信接收的文件默认保存的位置
+
 	String lettNumbUnde = "^[\\u4E00-\\u9FA5A-Za-z0-9_]+$";			// 字符(中英文)、数字、下划线
 }

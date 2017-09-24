@@ -278,7 +278,7 @@ public class ShowPlayMethodActivity extends BaseActivity {
             file.mkdirs();
         }
 
-        filename = ProjectConstants.baseFilePath + "/" + filename + ".xml";
+        filename = ProjectConstants.baseFilePath + "/" + filename + ".mj";
 
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

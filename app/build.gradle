@@ -30,7 +30,8 @@ dependencies {
     // material design
     compile 'com.android.support:design:24.2.1'
     // https://mvnrepository.com/artifact/com.alibaba/fastjson
-    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.38'
+    //compile group: 'com.alibaba', name: 'fastjson', version: '1.2.38'
+    compile 'com.alibaba:fastjson:1.2.38'
     // recyclerview
     compile 'com.android.support:recyclerview-v7:24.0.1'
 }

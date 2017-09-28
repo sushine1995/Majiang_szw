@@ -12,7 +12,7 @@
 
 
     <application
-        android:name=".widget.MyApplication"
+        android:name="wzp.project.majiang.widget.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/phone"
         android:label="@string/app_name"
@@ -60,6 +60,8 @@
         <activity android:name=".activity.EditPlayMethodActivity" />
 
         <activity android:name=".activity.ReceiveSendFileActivity" />
+
+        <activity android:name=".activity.ChooseFunctionActivity" />
 
     </application>
 

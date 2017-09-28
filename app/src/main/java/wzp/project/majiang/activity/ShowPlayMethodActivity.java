@@ -364,6 +364,11 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
         fragmentList.add(fragment3);
 
         playMethodVpAdapter = new ShowPlayMethodVpAdapter(getSupportFragmentManager(), fragmentList);
+
+        File basePath = new File(ProjectConstants.baseFilePath);
+        if (!basePath.exists()) {
+            basePath.mkdirs();
+        }
     }
 
     private void initWidget() {

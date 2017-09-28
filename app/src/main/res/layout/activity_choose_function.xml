@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relative_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/action_bar_bg">
+        <ImageButton
+            android:id="@+id/ibtn_account"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/account"
+            android:background="@drawable/ibtn_search_bg"
+            android:clickable="false"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/ibtn_account"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="蓝牙状态"
+                android:textColor="@color/white"
+                android:gravity="bottom|center"/>
+            <TextView
+                android:id="@+id/tv_btState"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="未连接"
+                android:textColor="@color/white"
+                android:gravity="top|center"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/ibtn_search"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/search"
+            android:background="@drawable/ibtn_search_bg"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="80dp"
+        android:paddingRight="80dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/background">
+        <Button
+            android:id="@+id/btn_designPlayMethod"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_l"
+            android:text="玩法设计"
+            android:background="@drawable/linear_main_btns_bg"/>
+
+        <Button
+            android:id="@+id/btn_showCard"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_l"
+            android:text="牌型显示"
+            android:background="@drawable/linear_main_btns_bg" />
+    </LinearLayout>
+</LinearLayout>

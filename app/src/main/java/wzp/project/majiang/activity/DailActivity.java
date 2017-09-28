@@ -117,7 +117,8 @@ public class DailActivity extends AppCompatActivity {
                         } else {
                             // 蓝牙已经打开
                             finish();
-                            MainActivity.myStartActivity(DailActivity.this);
+//                            MainActivity.myStartActivity(DailActivity.this);
+                            ChooseFunctionActivity.myStartActivity(DailActivity.this);
                         }
                     }
 
@@ -144,7 +145,7 @@ public class DailActivity extends AppCompatActivity {
             case REQUEST_ENABLE_BT:
                 if (resultCode == Activity.RESULT_OK) {
                     finish();
-                    MainActivity.myStartActivity(DailActivity.this);
+                    ChooseFunctionActivity.myStartActivity(DailActivity.this);
                 } else {
                     Log.d(LOG_TAG, "蓝牙尚未开启");
                     Toast.makeText(this, "蓝牙尚未开启，无法使用该功能", Toast.LENGTH_SHORT).show();

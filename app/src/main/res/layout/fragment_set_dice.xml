@@ -706,6 +706,19 @@
                 android:textSize="@dimen/text_size_m"
                 android:textColor="@color/black"
                 android:text="东南西北/中发白不算大岔" />
+
+            <CheckBox
+                android:id="@+id/cb_wealthGodIsEastWind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/basic_method_horizontal_interval_1"
+                android:layout_marginRight="@dimen/basic_method_horizontal_interval_1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/text_size_m"
+                android:textColor="@color/black"
+                android:text="翻花牌，财神为东风" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

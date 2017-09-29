@@ -292,8 +292,8 @@
     <!--打色方式-->
     <string-array name="use_dice_method_arr">
         <item>第一次打色定位起牌（打一次色子）</item>
-        <item>第一次色定位起牌</item>
-        <item>第一次色起财神,一次色定位，一/二次色相加起牌（打两次色子）</item>
+        <item>第一次色定位起牌，第一次色起财神</item>
+        <item>一次色定位，一/二次色相加起牌（打两次色子）</item>
         <item>第一次色定位起牌，二次色拿财神（打两次色子）</item>
         <item>一次色定位、起财神；二次色与一次色相加起牌</item>
         <item>一次色定位，一/二次色相加起牌，三次色拿财神</item>
@@ -352,6 +352,7 @@
         <item>小点翻财神</item>
         <item>总数*2翻财神</item>
         <item>大点加一倒数翻财神</item>
+        <item>小点加一倒数翻财神</item>
         <item>单数则跳牌财神，双数则倒数财神</item>
         <item>双数则跳牌财神，单数数则倒数财神</item>
         <item>倒数张数翻财神</item>
@@ -366,7 +367,8 @@
         <item>翻牌加一和减一为财神</item>
         <item>翻牌加一、加二为财神</item>
         <item>翻牌加一和减一为财神，风牌只加一不减一</item>
-        <item>翻牌相同数字和数字加一为财神</item>
+        <item>翻牌相同数字为财神</item>
+        <item>翻牌数字加一为财神</item>
     </string-array>
     <!--风牌财神循环方式-->
     <string-array name="wind_card_wealth_god_loop_method_arr">
@@ -498,6 +500,7 @@
         <item>三张风</item>
         <item>三色全（不缺门）</item>
         <item>缺一色（川）</item>
+        <item>风头，三连一句话</item>
     </string-array>
     <!--玩法名称-->
     <string-array name="play_method_name_arr">

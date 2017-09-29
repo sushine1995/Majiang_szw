@@ -32,7 +32,7 @@
                 android:paddingBottom="20dp"
                 android:gravity="center"
                 android:textSize="@dimen/text_size_l"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:text="选牌方式"
                 android:background="@color/white"/>
 
@@ -73,7 +73,7 @@
                 android:paddingBottom="20dp"
                 android:gravity="center"
                 android:textSize="@dimen/text_size_l"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:text="基本方式"
                 android:background="@color/white"/>
 
@@ -1060,7 +1060,7 @@
                 android:paddingBottom="20dp"
                 android:gravity="center"
                 android:textSize="@dimen/text_size_l"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:text="色子参数"
                 android:background="@color/white"/>
 

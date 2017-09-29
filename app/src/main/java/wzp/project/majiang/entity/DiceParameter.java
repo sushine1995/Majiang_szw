@@ -35,6 +35,7 @@ public class DiceParameter {
     private boolean isFanpaifengpaiAsWealthGod;
     private boolean is13579;
     private boolean isEastSouthWestNorthOrZhongFaBaiBusuandacha; // 东南西北/中发白不算大岔
+    private boolean isWealthGodIsEastWind; // 东南西北/中发白不算大岔
 
     public int getDiceNum() {
         return diceNum;
@@ -266,5 +267,13 @@ public class DiceParameter {
 
     public void setEastSouthWestNorthOrZhongFaBaiBusuandacha(boolean eastSouthWestNorthOrZhongFaBaiBusuandacha) {
         isEastSouthWestNorthOrZhongFaBaiBusuandacha = eastSouthWestNorthOrZhongFaBaiBusuandacha;
+    }
+
+    public boolean isWealthGodIsEastWind() {
+        return isWealthGodIsEastWind;
+    }
+
+    public void setWealthGodIsEastWind(boolean wealthGodIsEastWind) {
+        isWealthGodIsEastWind = wealthGodIsEastWind;
     }
 }

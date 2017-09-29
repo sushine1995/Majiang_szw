@@ -433,6 +433,9 @@ public class ShowPlayMethodFragment extends Fragment {
         if (dp.isEastSouthWestNorthOrZhongFaBaiBusuandacha()) {
             wealthGodParamList.add("东南西北/中发白不算大岔");
         }
+        if (dp.isWealthGodIsEastWind()) {
+            wealthGodParamList.add("翻花牌，财神为东风");
+        }
         wealthGodParamAdapter.notifyDataSetChanged();
         if (wealthGodParamList.size() == 0) {
             rvWealthGodParam.setVisibility(View.GONE);

@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +95,6 @@ public class ShowPlayMethodFragment extends Fragment {
     private PlayMethodParameter parameter;
 
     private ShowChooseCardMethodListAdapter showChooseCardMethodListAdapter;
-//    private ShowChooseCardMethodListAdapter2 showChooseCardMethodListAdapter;
     private List<ChooseCardMethod> chooseCardMethodList = new ArrayList<>();
     private ParamListAdapter basicParamAdapter;
     private List<String> basicParamList = new ArrayList<>();
@@ -112,8 +112,6 @@ public class ShowPlayMethodFragment extends Fragment {
         switch (requestCode) {
             case REQUEST_EDIT_PLAY_METHOD:
                 if (resultCode == Activity.RESULT_OK) {
-//                    parameter = JSON.parseObject(data.getStringExtra("parameter"),
-//                            PlayMethodParameter.class);
                     updateParameter();
                 }
                 break;
@@ -140,9 +138,17 @@ public class ShowPlayMethodFragment extends Fragment {
 
     private void initData() {
         method = getArguments().getInt("method");
+        if (method < 0 || method > 2) {
+            throw new IllegalArgumentException("method只能为[0, 2]");
+        }
 
         String playMethod = MyApplication.getSpPlayMethod().getString("playMethod" + (method + 1), "");
-        parameter = JSON.parseObject(playMethod, PlayMethodParameter.class);
+        try {
+            parameter = JSON.parseObject(playMethod, PlayMethodParameter.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            parameter = null;
+        }
         if (parameter == null) {
             // 设置默认的参数值
             parameter = new PlayMethodParameter();
@@ -171,7 +177,6 @@ public class ShowPlayMethodFragment extends Fragment {
     private void initWidget(View view) {
         tvChooseCardMethodTip = (TextView) view.findViewById(R.id.tv_chooseCardMethodTip);
         lvShowChooseCardMethod = (MyListView) view.findViewById(R.id.lv_showChooseCardMethod);
-//        rvShowChooseCardMethod = (RecyclerView) view.findViewById(R.id.rv_showChooseCardMethod);
 
         tvPlayerNum = (TextView) view.findViewById(R.id.tv_playerNum);
         tvEveryHandCardNum = (TextView) view.findViewById(R.id.tv_everyHandCardNum);
@@ -224,8 +229,6 @@ public class ShowPlayMethodFragment extends Fragment {
 
         showChooseCardMethodListAdapter = new ShowChooseCardMethodListAdapter(getContext(), chooseCardMethodList);
         lvShowChooseCardMethod.setAdapter(showChooseCardMethodListAdapter);
-//        rvShowChooseCardMethod.setLayoutManager(new LinearLayoutManager(getContext(),
-//                LinearLayoutManager.VERTICAL, false));
 
         basicParamAdapter = new ParamListAdapter(getContext(), basicParamList);
         rvBasicParameter.setAdapter(basicParamAdapter);
@@ -245,11 +248,6 @@ public class ShowPlayMethodFragment extends Fragment {
         btnModifyPlayMethod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getContext(), EditPlayMethodActivity.class);
-//                intent.putExtra("playMethod", method);
-//                intent.putExtra("parameter", JSON.toJSONString(parameter));
-//                startActivityForResult(intent, REQUEST_EDIT_PLAY_METHOD);
-
                 EditPlayMethodActivity.myStartActivityForResult(ShowPlayMethodFragment.this, method, REQUEST_EDIT_PLAY_METHOD);
             }
         });
@@ -447,6 +445,7 @@ public class ShowPlayMethodFragment extends Fragment {
     public void savePlayMethod() {
         MyApplication.getSpPlayMethod().commitString("playMethod" + (method + 1),
                 JSON.toJSONString(parameter));
+
     }
 
     public PlayMethodParameter getPlayMethodParameter() {

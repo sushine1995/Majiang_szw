@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +21,8 @@ import java.util.List;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.EditPlayMethodActivity;
-import wzp.project.majiang.adapter.ParamListAdapter;
 import wzp.project.majiang.adapter.ShowChooseCardMethodListAdapter;
+import wzp.project.majiang.adapter.ShowParamListAdapter;
 import wzp.project.majiang.entity.BasicParameter;
 import wzp.project.majiang.entity.ChooseCardMethod;
 import wzp.project.majiang.entity.ChooseCardParameter;
@@ -41,7 +39,6 @@ public class ShowPlayMethodFragment extends Fragment {
 
     private TextView tvChooseCardMethodTip;
     private MyListView lvShowChooseCardMethod;
-//    private RecyclerView rvShowChooseCardMethod;
 
     private TextView tvPlayerNum;
     private TextView tvEveryHandCardNum;
@@ -69,14 +66,14 @@ public class ShowPlayMethodFragment extends Fragment {
     private TextView tvNorthTop;
     private TextView tvNorthMiddle;
     private TextView tvNorthBottom;
-    private RecyclerView rvBasicParameter;
+    private MyListView lvBasicParameter;
 
     private TextView tvDiceNum;
     private TextView tvUseDiceTimes;
     private TextView tvUseDiceMethod;
     private TextView tvStartCardMethod;
     private TextView tvStartCardSupplementFlowerMethod;
-    private RecyclerView rvDiceParameter;
+    private MyListView lvDiceParameter;
     private TextView tvWealthGodMode;
     private LinearLayout linearWealthGodMode;
     private TextView tvWealthGodStartCardMethod;
@@ -87,7 +84,7 @@ public class ShowPlayMethodFragment extends Fragment {
     private TextView tvWealthGodLastBlockNum;
     private TextView tvWealthGodStartCardPosition;
     private TextView tvWealthGodPrecedenceNum;
-    private RecyclerView rvWealthGodParam;
+    private MyListView lvWealthGodParam;
 
     private Button btnModifyPlayMethod;
 
@@ -96,11 +93,11 @@ public class ShowPlayMethodFragment extends Fragment {
 
     private ShowChooseCardMethodListAdapter showChooseCardMethodListAdapter;
     private List<ChooseCardMethod> chooseCardMethodList = new ArrayList<>();
-    private ParamListAdapter basicParamAdapter;
+    private ShowParamListAdapter showBasicParamAdapter;
     private List<String> basicParamList = new ArrayList<>();
-    private ParamListAdapter diceParamAdapter;
+    private ShowParamListAdapter showDiceParamAdapter;
     private List<String> diceParamList = new ArrayList<>();
-    private ParamListAdapter wealthGodParamAdapter;
+    private ShowParamListAdapter showWealthGodParamAdapter;
     private List<String> wealthGodParamList = new ArrayList<>();
 
     private static final int REQUEST_EDIT_PLAY_METHOD = 0x01;
@@ -204,14 +201,14 @@ public class ShowPlayMethodFragment extends Fragment {
         tvNorthTop = (TextView) view.findViewById(R.id.tv_northTop);
         tvNorthMiddle = (TextView) view.findViewById(R.id.tv_northMiddle);
         tvNorthBottom = (TextView) view.findViewById(R.id.tv_northBottom);
-        rvBasicParameter = (RecyclerView) view.findViewById(R.id.rv_basicParameter);
+        lvBasicParameter = (MyListView) view.findViewById(R.id.lv_basicParameter);
 
         tvDiceNum = (TextView) view.findViewById(R.id.tv_diceNum);
         tvUseDiceTimes = (TextView) view.findViewById(R.id.tv_useDiceTimes);
         tvUseDiceMethod = (TextView) view.findViewById(R.id.tv_useDiceMethod);
         tvStartCardMethod = (TextView) view.findViewById(R.id.tv_startCardMethod);
         tvStartCardSupplementFlowerMethod = (TextView) view.findViewById(R.id.tv_startCardSupplementFlowerMethod);
-        rvDiceParameter = (RecyclerView) view.findViewById(R.id.rv_diceParameter);
+        lvDiceParameter = (MyListView) view.findViewById(R.id.lv_diceParameter);
         tvWealthGodMode = (TextView) view.findViewById(R.id.tv_wealthGodMode);
         linearWealthGodMode = (LinearLayout) view.findViewById(R.id.linear_wealthGodMode);
         tvWealthGodStartCardMethod = (TextView) view.findViewById(R.id.tv_wealthGodStartCardMethod);
@@ -222,7 +219,7 @@ public class ShowPlayMethodFragment extends Fragment {
         tvWealthGodLastBlockNum = (TextView) view.findViewById(R.id.tv_wealthGodLastBlockNum);
         tvWealthGodStartCardPosition = (TextView) view.findViewById(R.id.tv_wealthGodStartCardPosition);
         tvWealthGodPrecedenceNum = (TextView) view.findViewById(R.id.tv_wealthGodPrecedenceNum);
-        rvWealthGodParam = (RecyclerView) view.findViewById(R.id.rv_wealthGodParam);
+        lvWealthGodParam = (MyListView) view.findViewById(R.id.lv_wealthGodParam);
 
         btnModifyPlayMethod = (Button) view.findViewById(R.id.btn_modifyPlayMethod);
 
@@ -230,20 +227,14 @@ public class ShowPlayMethodFragment extends Fragment {
         showChooseCardMethodListAdapter = new ShowChooseCardMethodListAdapter(getContext(), chooseCardMethodList);
         lvShowChooseCardMethod.setAdapter(showChooseCardMethodListAdapter);
 
-        basicParamAdapter = new ParamListAdapter(getContext(), basicParamList);
-        rvBasicParameter.setAdapter(basicParamAdapter);
-        rvBasicParameter.setLayoutManager(new LinearLayoutManager(getContext(),
-                LinearLayoutManager.VERTICAL, false));
+        showBasicParamAdapter = new ShowParamListAdapter(getContext(), basicParamList);
+        lvBasicParameter.setAdapter(showBasicParamAdapter);
 
-        diceParamAdapter = new ParamListAdapter(getContext(), diceParamList);
-        rvDiceParameter.setAdapter(diceParamAdapter);
-        rvDiceParameter.setLayoutManager(new LinearLayoutManager(getContext(),
-                LinearLayoutManager.VERTICAL, false));
+        showDiceParamAdapter = new ShowParamListAdapter(getContext(), diceParamList);
+        lvDiceParameter.setAdapter(showDiceParamAdapter);
 
-        wealthGodParamAdapter = new ParamListAdapter(getContext(), wealthGodParamList);
-        rvWealthGodParam.setAdapter(wealthGodParamAdapter);
-        rvWealthGodParam.setLayoutManager(new LinearLayoutManager(getContext(),
-                LinearLayoutManager.VERTICAL, false));
+        showWealthGodParamAdapter = new ShowParamListAdapter(getContext(), wealthGodParamList);
+        lvWealthGodParam.setAdapter(showWealthGodParamAdapter);
 
         btnModifyPlayMethod.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -335,11 +326,11 @@ public class ShowPlayMethodFragment extends Fragment {
         if (bp.isThreePlayer()) {
             basicParamList.add("三人玩法三人点数");
         }
-        basicParamAdapter.notifyDataSetChanged();
+        showBasicParamAdapter.notifyDataSetChanged();
         if (basicParamList.size() == 0) {
-            rvBasicParameter.setVisibility(View.GONE);
+            lvBasicParameter.setVisibility(View.GONE);
         } else {
-            rvBasicParameter.setVisibility(View.VISIBLE);
+            lvBasicParameter.setVisibility(View.VISIBLE);
         }
 
         tvLayerNum.setText(bp.isThreeLayer() ? "三层" : "两层");
@@ -382,11 +373,11 @@ public class ShowPlayMethodFragment extends Fragment {
         if (dp.isBankerAndLastPlayerChangePosition()) {
             diceParamList.add("胡牌庄家与上家换位置");
         }
-        diceParamAdapter.notifyDataSetChanged();
+        showDiceParamAdapter.notifyDataSetChanged();
         if (diceParamList.size() == 0) {
-            rvDiceParameter.setVisibility(View.GONE);
+            lvDiceParameter.setVisibility(View.GONE);
         } else {
-            rvDiceParameter.setVisibility(View.VISIBLE);
+            lvDiceParameter.setVisibility(View.VISIBLE);
         }
 
         tvWealthGodMode.setText(dp.isOpenWealthGodMode() ? "开启" : "关闭");
@@ -434,11 +425,11 @@ public class ShowPlayMethodFragment extends Fragment {
         if (dp.isWealthGodIsEastWind()) {
             wealthGodParamList.add("翻花牌，财神为东风");
         }
-        wealthGodParamAdapter.notifyDataSetChanged();
+        showWealthGodParamAdapter.notifyDataSetChanged();
         if (wealthGodParamList.size() == 0) {
-            rvWealthGodParam.setVisibility(View.GONE);
+            lvWealthGodParam.setVisibility(View.GONE);
         } else {
-            rvWealthGodParam.setVisibility(View.VISIBLE);
+            lvWealthGodParam.setVisibility(View.VISIBLE);
         }
     }
 

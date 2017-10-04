@@ -57,14 +57,7 @@
                 android:divider="@color/separator_line_color2"
                 android:dividerHeight="1dp"
                 android:background="@color/white"></wzp.project.majiang.widget.MyListView>
-            <!--<android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_showChooseCardMethod"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:background="@color/white"></android.support.v7.widget.RecyclerView>
--->
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -395,241 +388,8 @@
                     android:text=""/>
             </LinearLayout>
 
-            <!--<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/separator_line_height3"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:drawableLeft="@drawable/dot"
-                    android:drawablePadding="10dp"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="便携式语音盒"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                    android:gravity="center_vertical"
-                    android:drawableLeft="@drawable/dot"
-                    android:drawablePadding="10dp"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="机头定位"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="面板感应"
-                    android:checked="true"
-                    android:clickable="false"/>
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="钱盒定位"
-                    android:clickable="false"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="连续报牌"
-                    android:checked="true"
-                    android:clickable="false"/>
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="指定ID卡定位"
-                    android:clickable="false"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="报胡牌"
-                    android:checked="true"
-                    android:clickable="false"/>
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="打色测试"
-                    android:clickable="false"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="碰转报牌"
-                    android:checked="true"
-                    android:clickable="false"/>
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="复位测试"
-                    android:clickable="false"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="色盘定位提示"
-                    android:checked="true"
-                    android:clickable="false"/>
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="血战"
-                    android:clickable="false"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="色盘故障提示"
-                    android:checked="true"
-                    android:clickable="false"/>
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="数显档位开关"
-                    android:clickable="false"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="三人玩法三人点数"
-                    android:clickable="false"/>
-            </LinearLayout>-->
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_basicParameter"
+            <wzp.project.majiang.widget.MyListView
+                android:id="@+id/lv_basicParameter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/separator_line_height3"
@@ -637,7 +397,9 @@
                 android:paddingBottom="5dp"
                 android:paddingLeft="40dp"
                 android:paddingRight="40dp"
-                android:background="@color/white"></android.support.v7.widget.RecyclerView>
+                android:divider="@null"
+                android:background="@color/white"></wzp.project.majiang.widget.MyListView>
+
 
             <TextView
                 android:id="@+id/tv_layerNum"
@@ -1203,71 +965,8 @@
                     android:text="137" />
             </LinearLayout>
 
-            <!--<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                android:orientation="vertical"
-                android:background="@color/white">
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"                    android:gravity="center_vertical"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="打色一、五、九对家抓牌"
-                    android:background="@color/white"
-                    android:checked="true"
-                    android:clickable="false"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"                    android:gravity="center_vertical"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="东南西北当花牌"
-                    android:background="@color/white"
-                    android:clickable="false"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"                    android:gravity="center_vertical"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="中发白当花牌"
-                    android:background="@color/white"
-                    android:clickable="false"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"                    android:gravity="center_vertical"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="所有风牌当花牌"
-                    android:background="@color/white"
-                    android:clickable="false"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"                    android:gravity="center_vertical"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="胡牌庄家与上家换位置"
-                    android:background="@color/white"
-                    android:clickable="false"/>
-            </LinearLayout>-->
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_diceParameter"
+            <wzp.project.majiang.widget.MyListView
+                android:id="@+id/lv_diceParameter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/separator_line_height3"
@@ -1275,7 +974,9 @@
                 android:paddingBottom="5dp"
                 android:paddingLeft="40dp"
                 android:paddingRight="40dp"
-                android:background="@color/white"></android.support.v7.widget.RecyclerView>
+                android:divider="@null"
+                android:background="@color/white"></wzp.project.majiang.widget.MyListView>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1527,153 +1228,8 @@
                         android:text="137" />
                 </LinearLayout>
 
-                <!--<LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-                    android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-                    android:orientation="vertical"
-                    android:background="@color/white">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"                    android:orientation="horizontal"
-                        android:background="@color/white">
-                        <CheckBox
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_m"
-                            android:textColor="@color/black"
-                            android:text="红中为固定财神"
-                            android:checked="true"
-                            android:clickable="false"/>
-
-                        <CheckBox
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                            android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_m"
-                            android:textColor="@color/black"
-                            android:text="花牌为固定财神"
-                            android:clickable="false" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:background="@color/white">
-                        <CheckBox
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_m"
-                            android:textColor="@color/black"
-                            android:text="一条为固定财神"
-                            android:clickable="false" />
-
-                        <CheckBox
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                            android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_m"
-                            android:textColor="@color/black"
-                            android:text="白板为固定财神"
-                            android:clickable="false" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:background="@color/white">
-                        <CheckBox
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_m"
-                            android:textColor="@color/black"
-                            android:text="幺九风"
-                            android:clickable="false"/>
-
-                        <CheckBox
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                            android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_m"
-                            android:textColor="@color/black"
-                            android:text="幺九风算杆"
-                            android:clickable="false" />
-                    </LinearLayout>
-
-                    <CheckBox
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:textSize="@dimen/text_size_m"
-                        android:textColor="@color/black"
-                        android:text="白板为财神替身"
-                        android:clickable="false" />
-
-                    <CheckBox
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:textSize="@dimen/text_size_m"
-                        android:textColor="@color/black"
-                        android:text="翻牌风牌自身为财神"
-                        android:clickable="false" />
-
-                    <CheckBox
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:textSize="@dimen/text_size_m"
-                        android:textColor="@color/black"
-                        android:text="13579任意三张"
-                        android:clickable="false" />
-
-                    <CheckBox
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:textSize="@dimen/text_size_m"
-                        android:textColor="@color/black"
-                        android:text="东南西北/中发白不算大岔"
-                        android:clickable="false" />
-                </LinearLayout>-->
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_wealthGodParam"
+                <wzp.project.majiang.widget.MyListView
+                    android:id="@+id/lv_wealthGodParam"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/separator_line_height3"
@@ -1681,7 +1237,8 @@
                     android:paddingBottom="5dp"
                     android:paddingLeft="40dp"
                     android:paddingRight="40dp"
-                    android:background="@color/white"></android.support.v7.widget.RecyclerView>
+                    android:divider="@null"
+                    android:background="@color/white"></wzp.project.majiang.widget.MyListView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

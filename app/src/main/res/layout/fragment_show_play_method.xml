@@ -908,7 +908,10 @@
                     android:gravity="center_vertical|left"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="137" />
+                    android:text=""
+                    android:maxLines="1"
+                    android:maxEms="18"
+                    android:ellipsize="end" />
             </LinearLayout>
 
             <LinearLayout
@@ -1090,7 +1093,10 @@
                         android:gravity="center_vertical|left"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="" />
+                        android:text=""
+                        android:maxLines="1"
+                        android:maxEms="18"
+                        android:ellipsize="end"/>
                 </LinearLayout>
 
                 <LinearLayout

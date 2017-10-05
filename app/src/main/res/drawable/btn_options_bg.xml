@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/white"/>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#bfbfbf"/>
 
-    <stroke
-        android:color="@color/splite_line_color"
-        android:width="0.8dp"/>
+            <corners android:radius="5dp"/>
+        </shape>
+    </item>
 
-    <corners android:radius="5dp"/>
-</shape>
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="@color/separator_line_color2"/>
+
+            <corners android:radius="5dp"/>
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <solid android:color="@color/white"/>
+
+            <stroke
+                android:color="@color/splite_line_color"
+                android:width="0.8dp"/>
+
+            <corners android:radius="5dp"/>
+        </shape>
+    </item>
+</selector>

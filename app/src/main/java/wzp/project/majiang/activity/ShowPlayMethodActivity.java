@@ -122,7 +122,6 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
                 case R.id.tv_readFile:
                     pwMoreFun.dismiss();
-//                    ReceiveSendFileActivity.myStartActivity(ShowPlayMethodActivity.this);
                     ReceiveSendFileActivity.myStartActivityForResult(ShowPlayMethodActivity.this, REQUEST_RECV_SEND_FILE);
                     break;
 
@@ -183,8 +182,23 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                             sendMsg[i++] = bp.isDigitScreenSwitch() ? (byte) 0x01 : (byte) 0x00;
                             sendMsg[i++] = bp.isThreePlayer() ? (byte) 0x01 : (byte) 0x00;
                             sendMsg[i++] = bp.isThreeLayer() ? (byte) 0x01 : (byte) 0x00;
-                            // 机器档位，暂时不知道如何表示
-
+                            sendMsg[i++] = (byte) bp.getTotalCardNum();
+                            sendMsg[i++] = (byte) (bp.getEastTop() + bp.getEastMiddle() + bp.getEastBottom());
+                            sendMsg[i++] = (byte) (bp.getSouthTop() + bp.getSouthMiddle() + bp.getSouthBottom());
+                            sendMsg[i++] = (byte) (bp.getWestTop() + bp.getWestMiddle() + bp.getWestBottom());
+                            sendMsg[i++] = (byte) (bp.getNorthTop() + bp.getNorthMiddle() + bp.getNorthBottom());
+                            sendMsg[i++] = (byte) bp.getEastTop();
+                            sendMsg[i++] = (byte) bp.getEastMiddle();
+                            sendMsg[i++] = (byte) bp.getEastBottom();
+                            sendMsg[i++] = (byte) bp.getSouthTop();
+                            sendMsg[i++] = (byte) bp.getSouthMiddle();
+                            sendMsg[i++] = (byte) bp.getSouthBottom();
+                            sendMsg[i++] = (byte) bp.getWestTop();
+                            sendMsg[i++] = (byte) bp.getWestMiddle();
+                            sendMsg[i++] = (byte) bp.getWestBottom();
+                            sendMsg[i++] = (byte) bp.getNorthTop();
+                            sendMsg[i++] = (byte) bp.getNorthMiddle();
+                            sendMsg[i++] = (byte) bp.getNorthBottom();
 
                             // 备用，4个字节
                             sendMsg[i++] = (byte) 0x00;
@@ -435,6 +449,9 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
         tvDownload.setOnClickListener(listener);
     }
 
+    /**
+     * 保存玩法参数
+     */
     private void savePlayMethod() {
         for (Fragment fragment : fragmentList) {
             ((ShowPlayMethodFragment) fragment).savePlayMethod();
@@ -442,10 +459,16 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
         showToast("参数保存成功！");
     }
 
+    /**
+     * 另存玩法参数
+     *
+     * @param filename
+     */
     private void savePlayMethodParameterAs(String filename) {
         List<PlayMethodParameter> parameterList = new ArrayList<>();
         for (Fragment fragment : fragmentList) {
             parameterList.add(((ShowPlayMethodFragment) fragment).getPlayMethodParameter());
+            ((ShowPlayMethodFragment) fragment).savePlayMethod();
         }
 
         File file = new File(ProjectConstants.baseFilePath);

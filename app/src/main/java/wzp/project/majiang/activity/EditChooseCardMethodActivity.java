@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -125,10 +124,6 @@ public class EditChooseCardMethodActivity extends BaseActivity {
 
                 case R.id.ibtn_save:
                     showToast("保存成功");
-//                        Intent intent = new Intent();
-//                        intent.putExtra("index", index);
-//                        intent.putExtra("chooseCardMethod", JSON.toJSONString(chooseCardMethod));
-//                        setResult(RESULT_OK, intent);
 
                     chooseCardMethod.setSelected(true);
                     if (MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
@@ -164,16 +159,12 @@ public class EditChooseCardMethodActivity extends BaseActivity {
         playMethod = getIntent().getIntExtra("playMethod", -1);
         index = getIntent().getIntExtra("index", -1);
 
-//        String json = getIntent().getStringExtra("chooseCardMethod");
-//        if (!TextUtils.isEmpty(json)) {
-//            chooseCardMethod = JSON.parseObject(json, ChooseCardMethod.class);
-//        } else {
-//            // 如果json为null，表示当前需要添加数据，初始化一个默认的ChooseCardMethod实例
-//            chooseCardMethod = new ChooseCardMethod();
-//            chooseCardMethod.setLoopTimes(0);
-//            chooseCardMethod.setSelected(true);
-//            chooseCardMethod.setMethods(new ArrayList<SingleChooseCardMethod>());
-//        }
+        if (playMethod < 0 || playMethod > 2) {
+            throw new IllegalArgumentException("playMethod只能在[0, 2]范围内");
+        }
+        if (index < 0) {
+            throw new IllegalArgumentException("index不能小于0");
+        }
 
         if (MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
                 .getMethods().size() <= index) {
@@ -263,11 +254,6 @@ public class EditChooseCardMethodActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         showToast("保存成功");
-//                        Intent intent = new Intent();
-//                        intent.putExtra("index", index);
-//                        intent.putExtra("chooseCardMethod", JSON.toJSONString(chooseCardMethod));
-//                        setResult(RESULT_OK, intent);
-
                         chooseCardMethod.setSelected(true);
                         if (MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
                                 .getMethods().size() <= index) {
@@ -372,7 +358,6 @@ public class EditChooseCardMethodActivity extends BaseActivity {
             showToast("最多只能添加6条数据！");
         }
 
-
         // 设置监听器，注意：一定要放在初始化控件值的代码后面
         ibtnBack.setOnClickListener(listener);
         ibtnSave.setOnClickListener(listener);
@@ -444,19 +429,6 @@ public class EditChooseCardMethodActivity extends BaseActivity {
                 chooseCardMethod.setLoopTimes(position);
             }
         });
-    }
-
-    public static void myStartActivityForResult(Context context, Fragment fragment, int index, int requestCode) {
-        Intent intent = new Intent(context, EditChooseCardMethodActivity.class);
-        intent.putExtra("index", index);
-        fragment.startActivityForResult(intent, requestCode);
-    }
-
-    public static void myStartActivityForResult(Context context, Fragment fragment, int index, String json, int requestCode) {
-        Intent intent = new Intent(context, EditChooseCardMethodActivity.class);
-        intent.putExtra("index", index);
-        intent.putExtra("chooseCardMethod", json);
-        fragment.startActivityForResult(intent, requestCode);
     }
 
     public static void myStartActivityForResult(Context context, int playMethod, int index) {

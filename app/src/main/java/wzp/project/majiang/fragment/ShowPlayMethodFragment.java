@@ -151,6 +151,19 @@ public class ShowPlayMethodFragment extends Fragment {
             parameter = new PlayMethodParameter();
 
             BasicParameter bp = new BasicParameter();
+            bp.setTotalCardNum(144);
+            bp.setEastTop(18);
+            bp.setEastMiddle(0);
+            bp.setEastBottom(18);
+            bp.setNorthTop(18);
+            bp.setNorthMiddle(0);
+            bp.setNorthBottom(18);
+            bp.setWestTop(18);
+            bp.setWestMiddle(0);
+            bp.setWestBottom(18);
+            bp.setSouthTop(18);
+            bp.setSouthMiddle(0);
+            bp.setSouthBottom(18);
             parameter.setBasicParameter(bp);
 
             ChooseCardParameter ccp = new ChooseCardParameter();
@@ -249,6 +262,7 @@ public class ShowPlayMethodFragment extends Fragment {
     public void updateParameter() {
         parameter = MyApplication.getParameterList().get(method);
 
+        // 选牌方式
         ChooseCardParameter ccp = parameter.getChooseCardParameter();
         List<ChooseCardMethod> tmpList = ccp.getMethods();
         chooseCardMethodList.clear();
@@ -266,7 +280,7 @@ public class ShowPlayMethodFragment extends Fragment {
             tvChooseCardMethodTip.setVisibility(View.GONE);
         }
 
-
+        // 基本参数
         BasicParameter bp = parameter.getBasicParameter();
         tvPlayerNum.setText(getResources().getStringArray(R.array.player_num_arr)[bp.getPlayerNum()]);
         tvEveryHandCardNum.setText(getResources().getStringArray(R.array.every_hand_num_arr)[bp.getEveryHandCardNum()]);
@@ -349,7 +363,7 @@ public class ShowPlayMethodFragment extends Fragment {
         tvSouthMiddle.setText(String.valueOf(bp.getSouthMiddle()));
         tvSouthBottom.setText(String.valueOf(bp.getSouthBottom()));
 
-
+        // 色子参数
         DiceParameter dp = parameter.getDiceParameter();
         tvDiceNum.setText(getResources().getStringArray(R.array.dice_num_arr)[dp.getDiceNum()]);
         tvUseDiceTimes.setText(getResources().getStringArray(R.array.use_dice_times_arr)[dp.getUseDiceTimes()]);
@@ -436,7 +450,6 @@ public class ShowPlayMethodFragment extends Fragment {
     public void savePlayMethod() {
         MyApplication.getSpPlayMethod().commitString("playMethod" + (method + 1),
                 JSON.toJSONString(parameter));
-
     }
 
     public PlayMethodParameter getPlayMethodParameter() {

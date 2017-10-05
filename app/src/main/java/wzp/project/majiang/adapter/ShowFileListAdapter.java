@@ -91,7 +91,7 @@ public class ShowFileListAdapter extends BaseAdapter {
                     ((BaseActivity) context).setResult(RESULT_OK);
                     ((BaseActivity) context).finish();
                 } else {
-                    ((BaseActivity) context).showToast("读取失败");
+                    ((BaseActivity) context).showToast("文件异常，读取失败");
                 }
             }
         });
@@ -166,5 +166,4 @@ public class ShowFileListAdapter extends BaseAdapter {
         TextView tvSend;
         TextView tvDelete;
     }
-
 }

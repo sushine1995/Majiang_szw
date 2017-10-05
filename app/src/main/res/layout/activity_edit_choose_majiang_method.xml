@@ -185,6 +185,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -236,6 +237,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -287,6 +289,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -338,6 +341,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -389,6 +393,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -440,6 +445,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -491,6 +497,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -542,6 +549,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -593,6 +601,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -644,6 +653,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -695,6 +705,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -746,6 +757,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -797,6 +809,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -848,6 +861,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -899,6 +913,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -950,6 +965,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -1001,6 +1017,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -1052,6 +1069,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton
@@ -1077,6 +1095,7 @@
                 android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
                 android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:layout_marginBottom="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
                     android:id="@+id/cb_s"
@@ -1103,6 +1122,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
+                    app:selectedIndex="1"
                     app:optionWidth="@dimen/basic_num_option_width" />
 
                 <wzp.project.majiang.widget.ListOptionButton

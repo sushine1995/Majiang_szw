@@ -34,7 +34,7 @@
             android:layout_height="match_parent"
             android:text="手上牌"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_size_l"
             android:gravity="center"
             android:layout_centerInParent="true"/>
 

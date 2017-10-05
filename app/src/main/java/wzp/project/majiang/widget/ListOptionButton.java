@@ -67,6 +67,9 @@ public class ListOptionButton extends android.support.v7.widget.AppCompatButton 
         float width = typedArray.getDimension(R.styleable.listOptionButton_optionWidth,
                 DensityUtil.dp2px(context, ListOptionPopupWindow.DEF_POP_WIN_WIDTH_DP));
         pwListOption.setWidth((int) width);
+
+        int selectedIndex = typedArray.getInt(R.styleable.listOptionButton_selectedIndex, 0);
+        setSelectedItemPosition(selectedIndex);
     }
 
     public void setListViewItems(String[] options) {

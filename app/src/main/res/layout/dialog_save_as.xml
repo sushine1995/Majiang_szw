@@ -40,7 +40,8 @@
             android:layout_marginTop="20dp"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_m"
-            android:text="确定" />
+            android:text="确定"
+            android:background="@drawable/btn_dlg_save_as_confirm_bg"/>
     </LinearLayout>
 
 </LinearLayout>

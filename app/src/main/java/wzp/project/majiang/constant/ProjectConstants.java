@@ -1,4 +1,4 @@
-package wzp.project.majiang.helper.constant;
+package wzp.project.majiang.constant;
 
 import android.os.Environment;
 

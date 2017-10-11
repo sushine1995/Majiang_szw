@@ -20,8 +20,8 @@ import java.util.List;
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.base.BaseActivity;
 import wzp.project.majiang.adapter.ShowRemoteFileListAdapter;
-import wzp.project.majiang.helper.constant.ProjectConstants;
-import wzp.project.majiang.helper.constant.RemoteFileSource;
+import wzp.project.majiang.constant.ProjectConstants;
+import wzp.project.majiang.constant.RemoteFileSource;
 
 /**
  * Created by wzp on 2017/9/23.

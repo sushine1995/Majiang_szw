@@ -28,8 +28,8 @@ import java.util.List;
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.base.BaseActivity;
 import wzp.project.majiang.adapter.ShowFileListAdapter;
-import wzp.project.majiang.helper.constant.ProjectConstants;
-import wzp.project.majiang.helper.constant.RemoteFileSource;
+import wzp.project.majiang.constant.ProjectConstants;
+import wzp.project.majiang.constant.RemoteFileSource;
 import wzp.project.majiang.util.DensityUtil;
 import wzp.project.majiang.widget.ShowRemoteFileDialog;
 
@@ -58,6 +58,10 @@ public class ReceiveSendFileActivity extends BaseActivity {
     private ShowFileListAdapter showFileListAdapter;
 
 
+
+    public int getRemoteSource() {
+        return remoteSource;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

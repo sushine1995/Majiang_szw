@@ -24,7 +24,7 @@ import java.util.Set;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.adapter.BluetoothDeviceAdapter;
-import wzp.project.majiang.helper.constant.ProjectConstants;
+import wzp.project.majiang.constant.ProjectConstants;
 
 public class DeviceListActivity extends Activity {
 

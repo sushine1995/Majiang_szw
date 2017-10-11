@@ -16,7 +16,7 @@ import android.widget.Toast;
 import java.lang.reflect.Method;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.helper.constant.ProjectConstants;
+import wzp.project.majiang.constant.ProjectConstants;
 
 public class DailActivity extends AppCompatActivity {
 

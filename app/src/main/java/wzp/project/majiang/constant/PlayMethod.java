@@ -1,4 +1,4 @@
-package wzp.project.majiang.helper.constant;
+package wzp.project.majiang.constant;
 
 /**
  * Created by zippe on 2017/9/8.

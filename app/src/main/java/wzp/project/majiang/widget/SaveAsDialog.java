@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.helper.constant.ProjectConstants;
+import wzp.project.majiang.constant.ProjectConstants;
 
 /**
  * Created by wzp on 2017/9/21.

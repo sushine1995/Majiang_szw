@@ -1,8 +1,10 @@
 package wzp.project.majiang.adapter;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.annotation.NonNull;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,8 +30,10 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import wzp.project.majiang.R;
+import wzp.project.majiang.activity.ReceiveSendFileActivity;
 import wzp.project.majiang.activity.base.BaseActivity;
 import wzp.project.majiang.entity.PlayMethodParameter;
+import wzp.project.majiang.constant.RemoteFileSource;
 import wzp.project.majiang.widget.MyApplication;
 
 import static android.app.Activity.RESULT_OK;
@@ -61,7 +65,6 @@ public class ShowFileListAdapter extends BaseAdapter {
         return position;
     }
 
-    @NonNull
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
@@ -95,6 +98,26 @@ public class ShowFileListAdapter extends BaseAdapter {
                 }
             }
         });
+        holder.tvSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent localIntent = new Intent("android.intent.action.SEND");
+
+                if (((ReceiveSendFileActivity) context).getRemoteSource()
+                        == RemoteFileSource.QQ) {
+                    // QQ
+                    localIntent.setComponent(new ComponentName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity"));
+                } else {
+                    // 微信
+                    localIntent.setComponent(new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareImgUI"));
+                }
+                localIntent.putExtra("android.intent.extra.TEXT", file.getName());
+                localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(file));
+                localIntent.setType("*/*");
+
+                context.startActivity(localIntent);
+            }
+        });
         holder.tvDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +145,6 @@ public class ShowFileListAdapter extends BaseAdapter {
                         .show();
             }
         });
-
 
         return convertView;
     }

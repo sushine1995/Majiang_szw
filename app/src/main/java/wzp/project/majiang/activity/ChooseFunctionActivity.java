@@ -16,8 +16,8 @@ import android.widget.Toast;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.base.BluetoothBaseActivity;
-import wzp.project.majiang.helper.constant.BluetoothState;
-import wzp.project.majiang.helper.constant.ProjectConstants;
+import wzp.project.majiang.constant.BluetoothState;
+import wzp.project.majiang.constant.ProjectConstants;
 import wzp.project.majiang.util.BluetoothClientHelper;
 import wzp.project.majiang.widget.MyApplication;
 

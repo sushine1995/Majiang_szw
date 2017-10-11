@@ -42,7 +42,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1.5"
             android:gravity="center"
-            android:textColor="#00fff0"
+            android:textColor="#34A946"
             android:textSize="@dimen/text_size_m"
             android:text="远程发送"/>
 

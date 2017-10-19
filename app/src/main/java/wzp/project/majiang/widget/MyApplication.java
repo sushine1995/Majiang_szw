@@ -12,11 +12,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import wzp.project.majiang.entity.PlayMethodParameter;
 import wzp.project.majiang.entity.BasicParameter;
-import wzp.project.majiang.entity.ChooseCardParameter;
 import wzp.project.majiang.entity.ChooseCardMethod;
+import wzp.project.majiang.entity.ChooseCardParameter;
 import wzp.project.majiang.entity.DiceParameter;
+import wzp.project.majiang.entity.PlayMethodParameter;
 import wzp.project.majiang.util.BluetoothClientHelper;
 import wzp.project.majiang.util.MySharedPreferences;
 

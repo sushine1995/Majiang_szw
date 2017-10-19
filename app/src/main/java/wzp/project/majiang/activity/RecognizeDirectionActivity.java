@@ -1,8 +1,10 @@
 package wzp.project.majiang.activity;
 
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -11,9 +13,9 @@ import android.widget.TextView;
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.base.BluetoothBaseActivity;
 import wzp.project.majiang.constant.ProjectConstants;
-import wzp.project.majiang.widget.MyApplication;
 import wzp.project.majiang.util.CRC16;
 import wzp.project.majiang.util.CalculateUtil;
+import wzp.project.majiang.widget.MyApplication;
 
 public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 
@@ -24,6 +26,8 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 	private Button btnSouth;
 	private Button btnWest;
 	private Button btnEast;
+
+	private Vibrator vibrator;
 
 	private View.OnClickListener listener = new View.OnClickListener() {
 		@Override
@@ -117,10 +121,14 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+
+		if (vibrator != null) {
+			vibrator.cancel();
+		}
 	}
 
 	private void initParam() {
-
+		vibrator = (Vibrator) getSystemService(Service.VIBRATOR_SERVICE);
 	}
 
 	private void initWidget() {
@@ -192,18 +200,22 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 						switch (direction) {
 							case 0xd1:
 								strTip.append("东方位");
+								btnEast.setTextColor(getResources().getColor(R.color.red));
 								break;
 
 							case 0xd2:
 								strTip.append("南方位");
+								btnSouth.setTextColor(getResources().getColor(R.color.red));
 								break;
 
 							case 0xd3:
 								strTip.append("西方位");
+								btnWest.setTextColor(getResources().getColor(R.color.red));
 								break;
 
 							case 0xd4:
 								strTip.append("北方位");
+								btnNorth.setTextColor(getResources().getColor(R.color.red));
 								break;
 
 							default:
@@ -211,6 +223,7 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 						}
 						strTip.append("识别成功!");
 						tvTip.setText(strTip);
+						vibrator.vibrate(200);
 					}
 				});
 			}

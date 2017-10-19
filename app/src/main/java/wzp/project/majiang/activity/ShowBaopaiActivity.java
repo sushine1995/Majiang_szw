@@ -16,8 +16,8 @@ import java.util.Arrays;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.base.BluetoothBaseActivity;
-import wzp.project.majiang.widget.MyApplication;
 import wzp.project.majiang.util.CalculateUtil;
+import wzp.project.majiang.widget.MyApplication;
 
 public class ShowBaopaiActivity extends BluetoothBaseActivity {
 

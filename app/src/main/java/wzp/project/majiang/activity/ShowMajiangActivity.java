@@ -20,8 +20,8 @@ import java.util.Arrays;
 
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.base.BluetoothBaseActivity;
-import wzp.project.majiang.widget.MyApplication;
 import wzp.project.majiang.util.CalculateUtil;
+import wzp.project.majiang.widget.MyApplication;
 
 public class ShowMajiangActivity extends BluetoothBaseActivity {
 
@@ -41,15 +41,6 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 	private LinearLayout linearEast;
 	private LinearLayout linearEastTop;
 	private LinearLayout linearEastBottom;
-
-	private LinearLayout linearCenterBackground;
-	private ImageView ivDice1;
-	private ImageView ivDice2;
-
-	private TextView tvPlayTypeEast;
-	private TextView tvPlayTypeSouth;
-	private TextView tvPlayTypeWest;
-	private TextView tvPlayTypeNorth;
 
 	private PopupMenu pmSelectDirection;
 	private PopupWindow pwSelectDirection;
@@ -101,14 +92,6 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 		linearEast = (LinearLayout) findViewById(R.id.linear_east);
 		linearEastTop = (LinearLayout) findViewById(R.id.linear_eastTop);
 		linearEastBottom = (LinearLayout) findViewById(R.id.linear_eastBottom);
-		linearCenterBackground = (LinearLayout) findViewById(R.id.linear_centerBackground);
-		ivDice1 = (ImageView) findViewById(R.id.iv_dice1);
-		ivDice2 = (ImageView) findViewById(R.id.iv_dice2);
-
-		tvPlayTypeEast = (TextView) findViewById(R.id.tv_playTypeEast);
-		tvPlayTypeSouth = (TextView) findViewById(R.id.tv_playTypeSouth);
-		tvPlayTypeWest = (TextView) findViewById(R.id.tv_playTypeWest);
-		tvPlayTypeNorth = (TextView) findViewById(R.id.tv_playTypeNorth);
 
 		pmSelectDirection = new PopupMenu(this, ibtnMoreFun);
 		getMenuInflater().inflate(R.menu.menu_select_direction, pmSelectDirection.getMenu());
@@ -173,14 +156,8 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 		// 控件内容初始化
 		if (isAboveTable) {
 			tvPosition.setText("桌面牌");
-			linearCenterBackground.setBackgroundResource(R.drawable.direction2);
-			ivDice1.setVisibility(View.VISIBLE);
-			ivDice2.setVisibility(View.VISIBLE);
 		} else {
 			tvPosition.setText("台下牌");
-			linearCenterBackground.setBackgroundResource(R.drawable.direction);
-			ivDice1.setVisibility(View.GONE);
-			ivDice2.setVisibility(View.GONE);
 		}
 		initMajiang(18);
 	}
@@ -408,133 +385,6 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 		});
 	}
 
-
-    /**
-     * 更新色子
-     *
-     * @param recvData
-     */
-    private void updateDice(byte[] recvData) {
-        final byte[] copyRecvData = Arrays.copyOf(recvData, recvData.length);
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                int diceRes1 = -1;
-                switch (CalculateUtil.byteToInt(copyRecvData[3])) {
-                    case 0x01:
-                        diceRes1 = R.drawable.dot1;
-                        break;
-
-                    case 0x02:
-                        diceRes1 = R.drawable.dot2;
-                        break;
-
-                    case 0x03:
-                        diceRes1 = R.drawable.dot3;
-                        break;
-
-                    case 0x04:
-                        diceRes1 = R.drawable.dot4;
-                        break;
-
-                    case 0x05:
-                        diceRes1 = R.drawable.dot5;
-                        break;
-
-                    case 0x06:
-                        diceRes1 = R.drawable.dot6;
-                        break;
-                }
-                if (diceRes1 != -1) {
-                    ivDice1.setImageResource(diceRes1);
-                }
-
-                int diceRes2 = -1;
-                switch (CalculateUtil.byteToInt(copyRecvData[4])) {
-                    case 0x01:
-						diceRes2 = R.drawable.dot1;
-                        break;
-
-                    case 0x02:
-						diceRes2 = R.drawable.dot2;
-                        break;
-
-                    case 0x03:
-						diceRes2 = R.drawable.dot3;
-                        break;
-
-                    case 0x04:
-						diceRes2 = R.drawable.dot4;
-                        break;
-
-                    case 0x05:
-						diceRes2 = R.drawable.dot5;
-                        break;
-
-                    case 0x06:
-						diceRes2 = R.drawable.dot6;
-                        break;
-                }
-                if (diceRes2 != -1) {
-                    ivDice2.setImageResource(diceRes2);
-                }
-
-				tvPlayTypeEast.setText("");
-				tvPlayTypeSouth.setText("");
-				tvPlayTypeWest.setText("");
-				tvPlayTypeNorth.setText("");
-				switch (CalculateUtil.byteToInt(copyRecvData[5])) {
-					case 0x01:
-						tvPlayTypeEast.setText("庄");
-						tvPlayTypeEast.setTextColor(getResources().getColor(R.color.red));
-						break;
-
-					case 0x02:
-						tvPlayTypeSouth.setText("庄");
-						tvPlayTypeSouth.setTextColor(getResources().getColor(R.color.red));
-						break;
-
-					case 0x03:
-						tvPlayTypeWest.setText("庄");
-						tvPlayTypeWest.setTextColor(getResources().getColor(R.color.red));
-						break;
-
-					case 0x04:
-						tvPlayTypeNorth.setText("庄");
-						tvPlayTypeNorth.setTextColor(getResources().getColor(R.color.red));
-						break;
-
-					default:
-						break;
-				}
-				switch (CalculateUtil.byteToInt(copyRecvData[6])) {
-					case 0x01:
-						tvPlayTypeEast.setText("我");
-						tvPlayTypeEast.setTextColor(getResources().getColor(R.color.blue));
-						break;
-
-					case 0x02:
-						tvPlayTypeSouth.setText("我");
-						tvPlayTypeSouth.setTextColor(getResources().getColor(R.color.blue));
-						break;
-
-					case 0x03:
-						tvPlayTypeWest.setText("我");
-						tvPlayTypeWest.setTextColor(getResources().getColor(R.color.blue));
-						break;
-
-					case 0x04:
-						tvPlayTypeNorth.setText("我");
-						tvPlayTypeNorth.setTextColor(getResources().getColor(R.color.blue));
-						break;
-
-					default:
-						break;
-				}
-            }
-        });
-    }
-
 	@Override
 	protected void onBluetoothDataReceived(byte[] recvData) {
 		if (isAboveTable) {
@@ -550,11 +400,6 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 				case 0xe4:
 					updateMajiang(recvData);
 					break;
-
-                // 色子
-                case 0xed:
-                    updateDice(recvData);
-                    break;
 
 				default:
 					break;

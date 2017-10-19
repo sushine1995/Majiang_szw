@@ -32,8 +32,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.ReceiveSendFileActivity;
 import wzp.project.majiang.activity.base.BaseActivity;
-import wzp.project.majiang.entity.PlayMethodParameter;
 import wzp.project.majiang.constant.RemoteFileSource;
+import wzp.project.majiang.entity.PlayMethodParameter;
 import wzp.project.majiang.widget.MyApplication;
 
 import static android.app.Activity.RESULT_OK;

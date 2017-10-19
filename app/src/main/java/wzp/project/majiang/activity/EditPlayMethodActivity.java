@@ -17,6 +17,7 @@ import java.util.List;
 import wzp.project.majiang.R;
 import wzp.project.majiang.activity.base.BaseActivity;
 import wzp.project.majiang.adapter.ModifyPlayMethodVpAdapter;
+import wzp.project.majiang.constant.PlayMethod;
 import wzp.project.majiang.entity.BasicParameter;
 import wzp.project.majiang.entity.ChooseCardParameter;
 import wzp.project.majiang.entity.DiceParameter;
@@ -24,7 +25,6 @@ import wzp.project.majiang.entity.PlayMethodParameter;
 import wzp.project.majiang.fragment.BasicMethodFragment;
 import wzp.project.majiang.fragment.ChooseCardMethodFragment;
 import wzp.project.majiang.fragment.SetDiceFragment;
-import wzp.project.majiang.constant.PlayMethod;
 import wzp.project.majiang.widget.MyApplication;
 
 public class EditPlayMethodActivity extends BaseActivity {

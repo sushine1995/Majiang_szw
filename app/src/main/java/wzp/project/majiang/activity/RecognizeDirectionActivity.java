@@ -201,20 +201,32 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 							case 0xd1:
 								strTip.append("东方位");
 								btnEast.setTextColor(getResources().getColor(R.color.red));
+								btnSouth.setTextColor(getResources().getColor(R.color.white));
+								btnWest.setTextColor(getResources().getColor(R.color.white));
+								btnNorth.setTextColor(getResources().getColor(R.color.white));
 								break;
 
 							case 0xd2:
 								strTip.append("南方位");
+								btnEast.setTextColor(getResources().getColor(R.color.white));
 								btnSouth.setTextColor(getResources().getColor(R.color.red));
+								btnWest.setTextColor(getResources().getColor(R.color.white));
+								btnNorth.setTextColor(getResources().getColor(R.color.white));
 								break;
 
 							case 0xd3:
 								strTip.append("西方位");
+								btnEast.setTextColor(getResources().getColor(R.color.white));
+								btnSouth.setTextColor(getResources().getColor(R.color.white));
 								btnWest.setTextColor(getResources().getColor(R.color.red));
+								btnNorth.setTextColor(getResources().getColor(R.color.white));
 								break;
 
 							case 0xd4:
 								strTip.append("北方位");
+								btnEast.setTextColor(getResources().getColor(R.color.white));
+								btnSouth.setTextColor(getResources().getColor(R.color.white));
+								btnWest.setTextColor(getResources().getColor(R.color.white));
 								btnNorth.setTextColor(getResources().getColor(R.color.red));
 								break;
 

@@ -131,187 +131,192 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                     if (MyApplication.btClientHelper.isBluetoothConnected()) {
                         dlgProgress.show("参数设置中，请稍后...");
 
-                        byte[] sendMsg = new byte[ProjectConstants.SET_PARAMETER_MSG_LENGTH];
-                        int i = 0;
-                        // 玩法参数
-                        PlayMethodParameter parameter = null;
-                        BasicParameter bp = null;
-                        ChooseCardParameter ccp = null;
-                        DiceParameter dp = null;
-                        for (int j = 0; j < MyApplication.getParameterList().size(); j++) {
-                            i = 0;
-                            Arrays.fill(sendMsg, (byte) 0x00);
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                byte[] sendMsg = new byte[ProjectConstants.SET_PARAMETER_MSG_LENGTH];
+                                int i = 0;
+                                // 玩法参数
+                                PlayMethodParameter parameter = null;
+                                BasicParameter bp = null;
+                                ChooseCardParameter ccp = null;
+                                DiceParameter dp = null;
+                                for (int j = 0; j < MyApplication.getParameterList().size(); j++) {
+                                    i = 0;
+                                    Arrays.fill(sendMsg, (byte) 0x00);
 
-                            // 报文头
-                            sendMsg[i++] = (byte) 0xf1;
-                            // 功能码
-                            sendMsg[i++] = (byte) 0x0d;
-                            // 玩法编号
-                            sendMsg[i++] = (byte) (j + 1);
-                            // 报文序列号，7个字节（暂定为0x00）
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-
-                            parameter = MyApplication.getParameterList().get(j);
-
-                            // 基本方式
-                            bp = parameter.getBasicParameter();
-                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.player_num_arr)[bp.getPlayerNum()]);
-                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.every_hand_num_arr)[bp.getEveryHandCardNum()]);
-                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.banker_card_num_arr)[bp.getBankerCardNum()]);
-                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.other_player_card_num_arr)[bp.getOtherPlayerCardNum()]);
-                            sendMsg[i++] = (byte) bp.getBankerSkip();
-                            sendMsg[i++] = (byte) bp.getGetCardMethod();
-                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.program_start_times_arr)[bp.getProgramStartTimes()]);
-                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.program_stop_times_arr)[bp.getProgramStopTimes()]);
-                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.continuous_work_rounds_arr)[bp.getContinuousWorkRound()]);
-                            sendMsg[i++] = (byte) (Integer.parseInt(getResources().getStringArray(R.array.total_rounds_arr)[bp.getTotalUseRound()]) / 256);
-                            sendMsg[i++] = (byte) (Integer.parseInt(getResources().getStringArray(R.array.total_rounds_arr)[bp.getTotalUseRound()]) % 256);
-                            sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.broadcast_card_num_arr)[bp.getBroadcastCardNum()]);
-                            sendMsg[i++] = bp.isVoiceBox() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isMachineHeadPosition() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isPanelInduction() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isMoneyBoxPosition() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isContinuousBroadcastCard() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isAssignedIDCardPosition() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isBroadcastWinCard() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isUseDiceTest() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isPengZhuanBroadcastCard() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isResetTest() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isDicePanelPositionNotification() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isBloodFight() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isDicePanelTroubleNotification() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isDigitScreenSwitch() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isThreePlayer() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = bp.isThreeLayer() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = (byte) bp.getTotalCardNum();
-                            sendMsg[i++] = (byte) (bp.getEastTop() + bp.getEastMiddle() + bp.getEastBottom());
-                            sendMsg[i++] = (byte) (bp.getSouthTop() + bp.getSouthMiddle() + bp.getSouthBottom());
-                            sendMsg[i++] = (byte) (bp.getWestTop() + bp.getWestMiddle() + bp.getWestBottom());
-                            sendMsg[i++] = (byte) (bp.getNorthTop() + bp.getNorthMiddle() + bp.getNorthBottom());
-                            sendMsg[i++] = (byte) bp.getEastTop();
-                            sendMsg[i++] = (byte) bp.getEastMiddle();
-                            sendMsg[i++] = (byte) bp.getEastBottom();
-                            sendMsg[i++] = (byte) bp.getSouthTop();
-                            sendMsg[i++] = (byte) bp.getSouthMiddle();
-                            sendMsg[i++] = (byte) bp.getSouthBottom();
-                            sendMsg[i++] = (byte) bp.getWestTop();
-                            sendMsg[i++] = (byte) bp.getWestMiddle();
-                            sendMsg[i++] = (byte) bp.getWestBottom();
-                            sendMsg[i++] = (byte) bp.getNorthTop();
-                            sendMsg[i++] = (byte) bp.getNorthMiddle();
-                            sendMsg[i++] = (byte) bp.getNorthBottom();
-
-                            // 备用，4个字节
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-
-
-                            // 选牌方式
-                            ccp = parameter.getChooseCardParameter();
-                            List<ChooseCardMethod> ccmList = ccp.getMethods();
-                            ChooseCardMethod ccm = null;
-                            List<SingleChooseCardMethod> sccmList = null;
-                            SingleChooseCardMethod sccm = null;
-                            int k = 0;
-                            for (; k < ccmList.size(); k++) {
-                                ccm = ccmList.get(k);
-
-                                sendMsg[i++] = (byte) (ccm.getLoopTimes() + 1);
-                                sccmList = ccm.getMethods();
-                                int l = 0;
-                                for (; l < sccmList.size(); l++) {
-                                    sccm = sccmList.get(l);
-
-                                    sendMsg[i++] = (byte) (sccm.getName() + 1);
-                                    sendMsg[i++] = (byte) sccm.getNum();
-                                    sendMsg[i++] = (byte) sccm.getSpecialRule();
-                                }
-                                while (l < 6) {
-                                    for (int m = 0; m < 3; m++) {
-                                        sendMsg[i++] = (byte) 0x00;
-                                    }
-
-                                    l++;
-                                }
-                            }
-                            while (k < 6) {
-                                for (int n = 0; n < 19; n++) {
+                                    // 报文头
+                                    sendMsg[i++] = (byte) 0xf1;
+                                    // 功能码
+                                    sendMsg[i++] = (byte) 0x0d;
+                                    // 玩法编号
+                                    sendMsg[i++] = (byte) (j + 1);
+                                    // 报文序列号，7个字节（暂定为0x00）
                                     sendMsg[i++] = (byte) 0x00;
-                                }
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
 
-                                k++;
-                            }
-                            // 备用，4个字节
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
+                                    parameter = MyApplication.getParameterList().get(j);
+
+                                    // 基本方式
+                                    bp = parameter.getBasicParameter();
+                                    sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.player_num_arr)[bp.getPlayerNum()]);
+                                    sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.every_hand_num_arr)[bp.getEveryHandCardNum()]);
+                                    sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.banker_card_num_arr)[bp.getBankerCardNum()]);
+                                    sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.other_player_card_num_arr)[bp.getOtherPlayerCardNum()]);
+                                    sendMsg[i++] = (byte) bp.getBankerSkip();
+                                    sendMsg[i++] = (byte) bp.getGetCardMethod();
+                                    sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.program_start_times_arr)[bp.getProgramStartTimes()]);
+                                    sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.program_stop_times_arr)[bp.getProgramStopTimes()]);
+                                    sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.continuous_work_rounds_arr)[bp.getContinuousWorkRound()]);
+                                    sendMsg[i++] = (byte) (Integer.parseInt(getResources().getStringArray(R.array.total_rounds_arr)[bp.getTotalUseRound()]) / 256);
+                                    sendMsg[i++] = (byte) (Integer.parseInt(getResources().getStringArray(R.array.total_rounds_arr)[bp.getTotalUseRound()]) % 256);
+                                    sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.broadcast_card_num_arr)[bp.getBroadcastCardNum()]);
+                                    sendMsg[i++] = bp.isVoiceBox() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isMachineHeadPosition() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isPanelInduction() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isMoneyBoxPosition() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isContinuousBroadcastCard() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isAssignedIDCardPosition() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isBroadcastWinCard() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isUseDiceTest() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isPengZhuanBroadcastCard() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isResetTest() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isDicePanelPositionNotification() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isBloodFight() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isDicePanelTroubleNotification() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isDigitScreenSwitch() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isThreePlayer() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = bp.isThreeLayer() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = (byte) bp.getTotalCardNum();
+                                    sendMsg[i++] = (byte) (bp.getEastTop() + bp.getEastMiddle() + bp.getEastBottom());
+                                    sendMsg[i++] = (byte) (bp.getSouthTop() + bp.getSouthMiddle() + bp.getSouthBottom());
+                                    sendMsg[i++] = (byte) (bp.getWestTop() + bp.getWestMiddle() + bp.getWestBottom());
+                                    sendMsg[i++] = (byte) (bp.getNorthTop() + bp.getNorthMiddle() + bp.getNorthBottom());
+                                    sendMsg[i++] = (byte) bp.getEastTop();
+                                    sendMsg[i++] = (byte) bp.getEastMiddle();
+                                    sendMsg[i++] = (byte) bp.getEastBottom();
+                                    sendMsg[i++] = (byte) bp.getSouthTop();
+                                    sendMsg[i++] = (byte) bp.getSouthMiddle();
+                                    sendMsg[i++] = (byte) bp.getSouthBottom();
+                                    sendMsg[i++] = (byte) bp.getWestTop();
+                                    sendMsg[i++] = (byte) bp.getWestMiddle();
+                                    sendMsg[i++] = (byte) bp.getWestBottom();
+                                    sendMsg[i++] = (byte) bp.getNorthTop();
+                                    sendMsg[i++] = (byte) bp.getNorthMiddle();
+                                    sendMsg[i++] = (byte) bp.getNorthBottom();
+
+                                    // 备用，4个字节
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
 
 
-                            // 色子参数
-                            dp = parameter.getDiceParameter();
-                            sendMsg[i++] = (byte) (dp.getDiceNum() + 1);
-                            sendMsg[i++] = (byte) (dp.getUseDiceTimes() + 1);
-                            sendMsg[i++] = (byte) dp.getUseDiceMethod();
-                            sendMsg[i++] = (byte) dp.getStartCardMethod();
-                            sendMsg[i++] = (byte) dp.getStartCardSupplementFlowerMethod();
-                            sendMsg[i++] = dp.isOneFiveNineGetCard() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isEastSouthWestNorthAsColorCard() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isZhongFaBaiAsColorCard() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isAllWindCardAsColorCard() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isBankerAndLastPlayerChangePosition() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isOpenWealthGodMode() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = (byte) dp.getWealthGodStartCardMethod();
-                            sendMsg[i++] = (byte) dp.getWealthGodUseDiceMethod();
-                            sendMsg[i++] = (byte) dp.getWealthGodCondition();
-                            sendMsg[i++] = (byte) dp.getWindCardWealthGodLoopMethod();
-                            sendMsg[i++] = (byte) dp.getFixedWealthGod();
-                            sendMsg[i++] = (byte) dp.getWealthGodLastBlockNum();
-                            sendMsg[i++] = (byte) dp.getWealthGodStartCardPosition();
-                            sendMsg[i++] = (byte) (dp.getWealthGodPrecedenceNum() + 1);
-                            sendMsg[i++] = dp.isZhongAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isColorCardAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isYiTiaoAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isBaiBanAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isYaojiufeng() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isYaojiufengSuanGan() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isBaibanAsWealthGodSubstitute() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isFanpaifengpaiAsWealthGod() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.is13579() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isEastSouthWestNorthOrZhongFaBaiBusuandacha() ? (byte) 0x01 : (byte) 0x00;
-                            sendMsg[i++] = dp.isWealthGodIsEastWind() ? (byte) 0x01 : (byte) 0x00;
+                                    // 选牌方式
+                                    ccp = parameter.getChooseCardParameter();
+                                    List<ChooseCardMethod> ccmList = ccp.getMethods();
+                                    ChooseCardMethod ccm = null;
+                                    List<SingleChooseCardMethod> sccmList = null;
+                                    SingleChooseCardMethod sccm = null;
+                                    int k = 0;
+                                    for (; k < ccmList.size(); k++) {
+                                        ccm = ccmList.get(k);
 
-                            // 备用，5个字节
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
-                            sendMsg[i++] = (byte) 0x00;
+                                        sendMsg[i++] = (byte) (ccm.getLoopTimes() + 1);
+                                        sccmList = ccm.getMethods();
+                                        int l = 0;
+                                        for (; l < sccmList.size(); l++) {
+                                            sccm = sccmList.get(l);
 
-                            Log.d(LOG_TAG, "i = " + i + "; len = " + sendMsg.length);
+                                            sendMsg[i++] = (byte) (sccm.getName() + 1);
+                                            sendMsg[i++] = (byte) sccm.getNum();
+                                            sendMsg[i++] = (byte) sccm.getSpecialRule();
+                                        }
+                                        while (l < 6) {
+                                            for (int m = 0; m < 3; m++) {
+                                                sendMsg[i++] = (byte) 0x00;
+                                            }
+
+                                            l++;
+                                        }
+                                    }
+                                    while (k < 6) {
+                                        for (int n = 0; n < 19; n++) {
+                                            sendMsg[i++] = (byte) 0x00;
+                                        }
+
+                                        k++;
+                                    }
+                                    // 备用，4个字节
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+
+
+                                    // 色子参数
+                                    dp = parameter.getDiceParameter();
+                                    sendMsg[i++] = (byte) (dp.getDiceNum() + 1);
+                                    sendMsg[i++] = (byte) (dp.getUseDiceTimes() + 1);
+                                    sendMsg[i++] = (byte) dp.getUseDiceMethod();
+                                    sendMsg[i++] = (byte) dp.getStartCardMethod();
+                                    sendMsg[i++] = (byte) dp.getStartCardSupplementFlowerMethod();
+                                    sendMsg[i++] = dp.isOneFiveNineGetCard() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isEastSouthWestNorthAsColorCard() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isZhongFaBaiAsColorCard() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isAllWindCardAsColorCard() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isBankerAndLastPlayerChangePosition() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isOpenWealthGodMode() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = (byte) dp.getWealthGodStartCardMethod();
+                                    sendMsg[i++] = (byte) dp.getWealthGodUseDiceMethod();
+                                    sendMsg[i++] = (byte) dp.getWealthGodCondition();
+                                    sendMsg[i++] = (byte) dp.getWindCardWealthGodLoopMethod();
+                                    sendMsg[i++] = (byte) dp.getFixedWealthGod();
+                                    sendMsg[i++] = (byte) dp.getWealthGodLastBlockNum();
+                                    sendMsg[i++] = (byte) dp.getWealthGodStartCardPosition();
+                                    sendMsg[i++] = (byte) (dp.getWealthGodPrecedenceNum() + 1);
+                                    sendMsg[i++] = dp.isZhongAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isColorCardAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isYiTiaoAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isBaiBanAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isYaojiufeng() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isYaojiufengSuanGan() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isBaibanAsWealthGodSubstitute() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isFanpaifengpaiAsWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.is13579() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isEastSouthWestNorthOrZhongFaBaiBusuandacha() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isWealthGodIsEastWind() ? (byte) 0x01 : (byte) 0x00;
+
+                                    // 备用，5个字节
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+
+                                    Log.d(LOG_TAG, "i = " + i + "; len = " + sendMsg.length);
 //                            Log.d(LOG_TAG, Arrays.toString(sendMsg));
 
-                            byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SET_PARAMETER_MSG_LENGTH - 2);
-                            sendMsg[i++] = crc[0];
-                            sendMsg[i++] = crc[1];
+                                    byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SET_PARAMETER_MSG_LENGTH - 2);
+                                    sendMsg[i++] = crc[0];
+                                    sendMsg[i++] = crc[1];
 
-                            // 发完一条报文，间隔150ms，再发另一条
-                            MyApplication.btClientHelper.write(sendMsg);
-                            try {
-                                Thread.sleep(150);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                                showToast("数据发送异常");
+                                    // 发完一条报文，间隔1000ms，再发另一条
+                                    MyApplication.btClientHelper.write(sendMsg);
+                                    try {
+                                        Thread.sleep(1000);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                        showToast("数据发送异常");
+                                    }
+                                }
                             }
-                        }
+                        }, "download thread").start();
                     } else {
                         showToast("蓝牙尚未连接，程序烧录失败！");
                     }

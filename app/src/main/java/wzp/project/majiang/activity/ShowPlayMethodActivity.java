@@ -59,6 +59,7 @@ import wzp.project.majiang.entity.DiceParameter;
 import wzp.project.majiang.entity.PlayMethodParameter;
 import wzp.project.majiang.entity.SingleChooseCardMethod;
 import wzp.project.majiang.fragment.ShowPlayMethodFragment;
+import wzp.project.majiang.util.CRC16;
 import wzp.project.majiang.util.CalculateUtil;
 import wzp.project.majiang.util.DensityUtil;
 import wzp.project.majiang.widget.MyApplication;
@@ -132,24 +133,30 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
                         byte[] sendMsg = new byte[ProjectConstants.SET_PARAMETER_MSG_LENGTH];
                         int i = 0;
-                        // 报文头，3个字节
-                        sendMsg[i++] = (byte) 0xf1;
-                        sendMsg[i++] = (byte) 0x0d;
-                        sendMsg[i++] = (byte) 0x0d;
-                        // 报文序列号，7个字节（暂定为0x00）
-                        sendMsg[i++] = (byte) 0x00;
-                        sendMsg[i++] = (byte) 0x00;
-                        sendMsg[i++] = (byte) 0x00;
-                        sendMsg[i++] = (byte) 0x00;
-                        sendMsg[i++] = (byte) 0x00;
-                        sendMsg[i++] = (byte) 0x00;
-                        sendMsg[i++] = (byte) 0x00;
                         // 玩法参数
                         PlayMethodParameter parameter = null;
                         BasicParameter bp = null;
                         ChooseCardParameter ccp = null;
                         DiceParameter dp = null;
                         for (int j = 0; j < MyApplication.getParameterList().size(); j++) {
+                            i = 0;
+                            Arrays.fill(sendMsg, (byte) 0x00);
+
+                            // 报文头
+                            sendMsg[i++] = (byte) 0xf1;
+                            // 功能码
+                            sendMsg[i++] = (byte) 0x0d;
+                            // 玩法编号
+                            sendMsg[i++] = (byte) (j + 1);
+                            // 报文序列号，7个字节（暂定为0x00）
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+                            sendMsg[i++] = (byte) 0x00;
+
                             parameter = MyApplication.getParameterList().get(j);
 
                             // 基本方式
@@ -280,6 +287,7 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                             sendMsg[i++] = dp.isFanpaifengpaiAsWealthGod() ? (byte) 0x01 : (byte) 0x00;
                             sendMsg[i++] = dp.is13579() ? (byte) 0x01 : (byte) 0x00;
                             sendMsg[i++] = dp.isEastSouthWestNorthOrZhongFaBaiBusuandacha() ? (byte) 0x01 : (byte) 0x00;
+                            sendMsg[i++] = dp.isWealthGodIsEastWind() ? (byte) 0x01 : (byte) 0x00;
 
                             // 备用，5个字节
                             sendMsg[i++] = (byte) 0x00;
@@ -287,16 +295,23 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                             sendMsg[i++] = (byte) 0x00;
                             sendMsg[i++] = (byte) 0x00;
                             sendMsg[i++] = (byte) 0x00;
+
+                            Log.d(LOG_TAG, "i = " + i + "; len = " + sendMsg.length);
+//                            Log.d(LOG_TAG, Arrays.toString(sendMsg));
+
+                            byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SET_PARAMETER_MSG_LENGTH - 2);
+                            sendMsg[i++] = crc[0];
+                            sendMsg[i++] = crc[1];
+
+                            // 发完一条报文，间隔150ms，再发另一条
+                            MyApplication.btClientHelper.write(sendMsg);
+                            try {
+                                Thread.sleep(150);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                                showToast("数据发送异常");
+                            }
                         }
-
-                        Log.d(LOG_TAG, "i = " + i + "; len = " + sendMsg.length);
-                        Log.d(LOG_TAG, Arrays.toString(sendMsg));
-
-//                        byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SEND_MSG_LENGTH - 2);
-//                        sendMsg[ProjectConstants.SEND_MSG_LENGTH - 2] = crc[0];
-//                        sendMsg[ProjectConstants.SEND_MSG_LENGTH - 1] = crc[1];
-
-                        MyApplication.btClientHelper.write(sendMsg);
                     } else {
                         showToast("蓝牙尚未连接，程序烧录失败！");
                     }

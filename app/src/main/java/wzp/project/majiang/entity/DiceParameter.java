@@ -35,7 +35,7 @@ public class DiceParameter {
     private boolean isFanpaifengpaiAsWealthGod;
     private boolean is13579;
     private boolean isEastSouthWestNorthOrZhongFaBaiBusuandacha; // 东南西北/中发白不算大岔
-    private boolean isWealthGodIsEastWind; // 东南西北/中发白不算大岔
+    private boolean isWealthGodIsEastWind; // 翻花牌，财神为东风
 
     public int getDiceNum() {
         return diceNum;

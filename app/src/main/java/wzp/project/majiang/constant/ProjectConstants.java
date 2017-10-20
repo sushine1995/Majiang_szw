@@ -13,7 +13,7 @@ public interface ProjectConstants {
 	int CRC_LOW = DATA_LENGTH - 1; // CRC校验低位
 
 	int SEND_MSG_LENGTH = 41;
-	int SET_PARAMETER_MSG_LENGTH = 800; // 设置参数的报文长度
+	int SET_PARAMETER_MSG_LENGTH = 214; // 设置参数的报文长度
 
 	int MAX_MAJIANG_NUM = 36;
 

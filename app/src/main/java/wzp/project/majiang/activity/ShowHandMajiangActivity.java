@@ -32,16 +32,35 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 	private LinearLayout linearWest;
 	private LinearLayout linearEast;
 
-	private ImageView ivDice1;
-	private ImageView ivDice2;
+//	private ImageView ivDice1;
+//	private ImageView ivDice2;
+//
+//	private TextView tvPlayTypeEast;
+//	private TextView tvPlayTypeSouth;
+//	private TextView tvPlayTypeWest;
+//	private TextView tvPlayTypeNorth;
 
-	private TextView tvPlayTypeEast;
-	private TextView tvPlayTypeSouth;
-	private TextView tvPlayTypeWest;
-	private TextView tvPlayTypeNorth;
+	private TextView tvBankerPositionEast;
+	private TextView tvMyPositionEast;
+	private ImageView ivRedDiceEast;
+	private ImageView ivBlueDiceEast;
+	private TextView tvBankerPositionSouth;
+	private TextView tvMyPositionSouth;
+	private ImageView ivRedDiceSouth;
+	private ImageView ivBlueDiceSouth;
+	private TextView tvBankerPositionWest;
+	private TextView tvMyPositionWest;
+	private ImageView ivRedDiceWest;
+	private ImageView ivBlueDiceWest;
+	private TextView tvBankerPositionNorth;
+	private TextView tvMyPositionNorth;
+	private ImageView ivRedDiceNorth;
+	private ImageView ivBlueDiceNorth;
 
 	private PopupMenu pmSelectDirection;
 
+	private static final int RED_DICE = 1;
+	private static final int BLUE_DICE = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,13 +99,22 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 		linearWest = (LinearLayout) findViewById(R.id.linear_west);
 		linearEast = (LinearLayout) findViewById(R.id.linear_east);
 
-		ivDice1 = (ImageView) findViewById(R.id.iv_dice1);
-		ivDice2 = (ImageView) findViewById(R.id.iv_dice2);
-
-		tvPlayTypeEast = (TextView) findViewById(R.id.tv_playTypeEast);
-		tvPlayTypeSouth = (TextView) findViewById(R.id.tv_playTypeSouth);
-		tvPlayTypeWest = (TextView) findViewById(R.id.tv_playTypeWest);
-		tvPlayTypeNorth = (TextView) findViewById(R.id.tv_playTypeNorth);
+		tvBankerPositionEast = (TextView) findViewById(R.id.tv_bankerPositionEast);
+		tvMyPositionEast = (TextView) findViewById(R.id.tv_myPositionEast);
+		ivRedDiceEast = (ImageView) findViewById(R.id.iv_redDiceEast);
+		ivBlueDiceEast = (ImageView) findViewById(R.id.iv_blueDiceEast);
+		tvBankerPositionSouth = (TextView) findViewById(R.id.tv_bankerPositionSouth);
+		tvMyPositionSouth = (TextView) findViewById(R.id.tv_myPositionSouth);
+		ivRedDiceSouth = (ImageView) findViewById(R.id.iv_redDiceSouth);
+		ivBlueDiceSouth = (ImageView) findViewById(R.id.iv_blueDiceSouth);
+		tvBankerPositionWest = (TextView) findViewById(R.id.tv_bankerPositionWest);
+		tvMyPositionWest = (TextView) findViewById(R.id.tv_myPositionWest);
+		ivRedDiceWest = (ImageView) findViewById(R.id.iv_redDiceWest);
+		ivBlueDiceWest = (ImageView) findViewById(R.id.iv_blueDiceWest);
+		tvBankerPositionNorth = (TextView) findViewById(R.id.tv_bankerPositionNorth);
+		tvMyPositionNorth = (TextView) findViewById(R.id.tv_myPositionNorth);
+		ivRedDiceNorth = (ImageView) findViewById(R.id.iv_redDiceNorth);
+		ivBlueDiceNorth = (ImageView) findViewById(R.id.iv_blueDiceNorth);
 
 		pmSelectDirection = new PopupMenu(this, ibtnMoreFun);
 		getMenuInflater().inflate(R.menu.menu_select_direction, pmSelectDirection.getMenu());
@@ -338,120 +366,193 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				int diceRes1 = -1;
-				switch (CalculateUtil.byteToInt(copyRecvData[3])) {
+				int bankerPosition = copyRecvData[3];
+				switch (bankerPosition) {
+					case 0x00:
+						tvBankerPositionEast.setVisibility(View.GONE);
+						tvBankerPositionSouth.setVisibility(View.GONE);
+						tvBankerPositionWest.setVisibility(View.GONE);
+						tvBankerPositionNorth.setVisibility(View.GONE);
+						break;
 					case 0x01:
-						diceRes1 = R.drawable.dot1;
+						tvBankerPositionEast.setVisibility(View.VISIBLE);
+						tvBankerPositionSouth.setVisibility(View.GONE);
+						tvBankerPositionWest.setVisibility(View.GONE);
+						tvBankerPositionNorth.setVisibility(View.GONE);
 						break;
-
 					case 0x02:
-						diceRes1 = R.drawable.dot2;
+						tvBankerPositionEast.setVisibility(View.GONE);
+						tvBankerPositionSouth.setVisibility(View.VISIBLE);
+						tvBankerPositionWest.setVisibility(View.GONE);
+						tvBankerPositionNorth.setVisibility(View.GONE);
 						break;
-
 					case 0x03:
-						diceRes1 = R.drawable.dot3;
+						tvBankerPositionEast.setVisibility(View.GONE);
+						tvBankerPositionSouth.setVisibility(View.GONE);
+						tvBankerPositionWest.setVisibility(View.VISIBLE);
+						tvBankerPositionNorth.setVisibility(View.GONE);
 						break;
-
 					case 0x04:
-						diceRes1 = R.drawable.dot4;
+						tvBankerPositionEast.setVisibility(View.GONE);
+						tvBankerPositionSouth.setVisibility(View.GONE);
+						tvBankerPositionWest.setVisibility(View.GONE);
+						tvBankerPositionNorth.setVisibility(View.VISIBLE);
 						break;
-
-					case 0x05:
-						diceRes1 = R.drawable.dot5;
-						break;
-
-					case 0x06:
-						diceRes1 = R.drawable.dot6;
-						break;
-				}
-				if (diceRes1 != -1) {
-					ivDice1.setImageResource(diceRes1);
-				}
-
-				int diceRes2 = -1;
-				switch (CalculateUtil.byteToInt(copyRecvData[4])) {
-					case 0x01:
-						diceRes2 = R.drawable.dot1;
-						break;
-
-					case 0x02:
-						diceRes2 = R.drawable.dot2;
-						break;
-
-					case 0x03:
-						diceRes2 = R.drawable.dot3;
-						break;
-
-					case 0x04:
-						diceRes2 = R.drawable.dot4;
-						break;
-
-					case 0x05:
-						diceRes2 = R.drawable.dot5;
-						break;
-
-					case 0x06:
-						diceRes2 = R.drawable.dot6;
-						break;
-				}
-				if (diceRes2 != -1) {
-					ivDice2.setImageResource(diceRes2);
-				}
-
-				tvPlayTypeEast.setText("");
-				tvPlayTypeSouth.setText("");
-				tvPlayTypeWest.setText("");
-				tvPlayTypeNorth.setText("");
-				switch (CalculateUtil.byteToInt(copyRecvData[5])) {
-					case 0x01:
-						tvPlayTypeEast.setText("庄");
-						tvPlayTypeEast.setTextColor(getResources().getColor(R.color.red));
-						break;
-
-					case 0x02:
-						tvPlayTypeSouth.setText("庄");
-						tvPlayTypeSouth.setTextColor(getResources().getColor(R.color.red));
-						break;
-
-					case 0x03:
-						tvPlayTypeWest.setText("庄");
-						tvPlayTypeWest.setTextColor(getResources().getColor(R.color.red));
-						break;
-
-					case 0x04:
-						tvPlayTypeNorth.setText("庄");
-						tvPlayTypeNorth.setTextColor(getResources().getColor(R.color.red));
-						break;
-
 					default:
 						break;
 				}
-				switch (CalculateUtil.byteToInt(copyRecvData[6])) {
+
+				int myPosition = copyRecvData[4];
+				switch (myPosition) {
+					case 0x00:
+						tvMyPositionEast.setVisibility(View.GONE);
+						tvMyPositionSouth.setVisibility(View.GONE);
+						tvMyPositionWest.setVisibility(View.GONE);
+						tvMyPositionNorth.setVisibility(View.GONE);
+						break;
 					case 0x01:
-						tvPlayTypeEast.setText("我");
-						tvPlayTypeEast.setTextColor(getResources().getColor(R.color.blue));
+						tvMyPositionEast.setVisibility(View.VISIBLE);
+						tvMyPositionSouth.setVisibility(View.GONE);
+						tvMyPositionWest.setVisibility(View.GONE);
+						tvMyPositionNorth.setVisibility(View.GONE);
 						break;
-
 					case 0x02:
-						tvPlayTypeSouth.setText("我");
-						tvPlayTypeSouth.setTextColor(getResources().getColor(R.color.blue));
+						tvMyPositionEast.setVisibility(View.GONE);
+						tvMyPositionSouth.setVisibility(View.VISIBLE);
+						tvMyPositionWest.setVisibility(View.GONE);
+						tvMyPositionNorth.setVisibility(View.GONE);
 						break;
-
 					case 0x03:
-						tvPlayTypeWest.setText("我");
-						tvPlayTypeWest.setTextColor(getResources().getColor(R.color.blue));
+						tvMyPositionEast.setVisibility(View.GONE);
+						tvMyPositionSouth.setVisibility(View.GONE);
+						tvMyPositionWest.setVisibility(View.VISIBLE);
+						tvMyPositionNorth.setVisibility(View.GONE);
 						break;
-
 					case 0x04:
-						tvPlayTypeNorth.setText("我");
-						tvPlayTypeNorth.setTextColor(getResources().getColor(R.color.blue));
+						tvMyPositionEast.setVisibility(View.GONE);
+						tvMyPositionSouth.setVisibility(View.GONE);
+						tvMyPositionWest.setVisibility(View.GONE);
+						tvMyPositionNorth.setVisibility(View.VISIBLE);
 						break;
-
 					default:
 						break;
+				}
+
+				int redDiceEast = getDiceImageResource(copyRecvData[5], RED_DICE);
+				if (redDiceEast != -1) {
+					ivRedDiceEast.setImageResource(redDiceEast);
+					ivRedDiceEast.setVisibility(View.VISIBLE);
+				} else {
+					ivRedDiceEast.setVisibility(View.GONE);
+				}
+				int blueDiceEast = getDiceImageResource(copyRecvData[6], BLUE_DICE);
+				if (blueDiceEast != -1) {
+					ivBlueDiceEast.setImageResource(blueDiceEast);
+					ivBlueDiceEast.setVisibility(View.VISIBLE);
+				} else {
+					ivBlueDiceEast.setVisibility(View.GONE);
+				}
+
+				int redDiceSouth = getDiceImageResource(copyRecvData[7], RED_DICE);
+				if (redDiceSouth != -1) {
+					ivRedDiceSouth.setImageResource(redDiceSouth);
+					ivRedDiceSouth.setVisibility(View.VISIBLE);
+				} else {
+					ivRedDiceSouth.setVisibility(View.GONE);
+				}
+				int blueDiceSouth = getDiceImageResource(copyRecvData[8], BLUE_DICE);
+				if (blueDiceSouth != -1) {
+					ivBlueDiceSouth.setImageResource(blueDiceSouth);
+					ivBlueDiceSouth.setVisibility(View.VISIBLE);
+				} else {
+					ivBlueDiceSouth.setVisibility(View.GONE);
+				}
+
+				int redDiceWest = getDiceImageResource(copyRecvData[9], RED_DICE);
+				if (redDiceWest != -1) {
+					ivRedDiceWest.setImageResource(redDiceWest);
+					ivRedDiceWest.setVisibility(View.VISIBLE);
+				} else {
+					ivRedDiceWest.setVisibility(View.GONE);
+				}
+				int blueDiceWest = getDiceImageResource(copyRecvData[10], BLUE_DICE);
+				if (blueDiceWest != -1) {
+					ivBlueDiceWest.setImageResource(blueDiceWest);
+					ivBlueDiceWest.setVisibility(View.VISIBLE);
+				} else {
+					ivBlueDiceWest.setVisibility(View.GONE);
+				}
+
+				int redDiceNorth = getDiceImageResource(copyRecvData[11], RED_DICE);
+				if (redDiceNorth != -1) {
+					ivRedDiceNorth.setImageResource(redDiceNorth);
+					ivRedDiceNorth.setVisibility(View.VISIBLE);
+				} else {
+					ivRedDiceNorth.setVisibility(View.GONE);
+				}
+				int blueDiceNorth = getDiceImageResource(copyRecvData[12], BLUE_DICE);
+				if (blueDiceNorth != -1) {
+					ivBlueDiceNorth.setImageResource(blueDiceNorth);
+					ivBlueDiceNorth.setVisibility(View.VISIBLE);
+				} else {
+					ivBlueDiceNorth.setVisibility(View.GONE);
 				}
 			}
 		});
+	}
+
+	private int getDiceImageResource(byte flag, int color) {
+		int imageResource = -1;
+
+		if (color == 1) {
+			switch (flag) {
+				case 0x01:
+					imageResource = R.drawable.red_dice1;
+					break;
+				case 0x02:
+					imageResource = R.drawable.red_dice2;
+					break;
+				case 0x03:
+					imageResource = R.drawable.red_dice3;
+					break;
+				case 0x04:
+					imageResource = R.drawable.red_dice4;
+					break;
+				case 0x05:
+					imageResource = R.drawable.red_dice5;
+					break;
+				case 0x06:
+					imageResource = R.drawable.red_dice6;
+					break;
+				default:
+					break;
+			}
+		} else {
+			switch (flag) {
+				case 0x01:
+					imageResource = R.drawable.blue_dice1;
+					break;
+				case 0x02:
+					imageResource = R.drawable.blue_dice2;
+					break;
+				case 0x03:
+					imageResource = R.drawable.blue_dice3;
+					break;
+				case 0x04:
+					imageResource = R.drawable.blue_dice4;
+					break;
+				case 0x05:
+					imageResource = R.drawable.blue_dice5;
+					break;
+				case 0x06:
+					imageResource = R.drawable.blue_dice6;
+					break;
+				default:
+					break;
+			}
+		}
+
+		return imageResource;
 	}
 
 

@@ -60,15 +60,44 @@
             android:gravity="center"
             android:orientation="horizontal"></LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_playTypeNorth"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_below="@id/linear_north"
             android:layout_centerHorizontal="true"
-            android:textSize="@dimen/text_size_l"
-            android:text="" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_bankerPositionNorth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:text="庄" />
+            <TextView
+                android:id="@+id/tv_myPositionNorth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:text="我" />
+            <ImageView
+                android:id="@+id/iv_redDiceNorth"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_blueDiceNorth"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linear_south"
@@ -80,15 +109,44 @@
             android:gravity="center"
             android:orientation="horizontal"></LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_playTypeSouth"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_above="@id/linear_south"
             android:layout_centerHorizontal="true"
-            android:textSize="@dimen/text_size_l"
-            android:text="" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_bankerPositionSouth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:text="庄" />
+            <TextView
+                android:id="@+id/tv_myPositionSouth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:text="我" />
+            <ImageView
+                android:id="@+id/iv_redDiceSouth"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_blueDiceSouth"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linear_west"
@@ -101,15 +159,44 @@
             android:gravity="center"
             android:orientation="vertical"></LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_playTypeWest"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/linear_west"
             android:layout_centerVertical="true"
-            android:textSize="@dimen/text_size_l"
-            android:text="" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_bankerPositionWest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:text="庄" />
+            <TextView
+                android:id="@+id/tv_myPositionWest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:text="我" />
+            <ImageView
+                android:id="@+id/iv_redDiceWest"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_blueDiceWest"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linear_east"
@@ -123,34 +210,49 @@
             android:gravity="center"
             android:orientation="vertical"></LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_playTypeEast"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@id/linear_east"
             android:layout_centerVertical="true"
-            android:textSize="@dimen/text_size_l"
-            android:text="" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_bankerPositionEast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:text="庄" />
+            <TextView
+                android:id="@+id/tv_myPositionEast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:text="我" />
+            <ImageView
+                android:id="@+id/iv_redDiceEast"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_blueDiceEast"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone" />
+        </LinearLayout>
 
-        <LinearLayout
+        <ImageView
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_centerInParent="true"
-            android:gravity="center"
-            android:background="@drawable/direction2">
-            <ImageView
-                android:id="@+id/iv_dice1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"/>
-
-            <ImageView
-                android:id="@+id/iv_dice2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_centerInParent="true"/>
-        </LinearLayout>
+            android:background="@drawable/direction"/>
     </RelativeLayout>
 </LinearLayout>

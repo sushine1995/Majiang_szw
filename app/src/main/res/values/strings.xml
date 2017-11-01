@@ -524,4 +524,13 @@
         <item>R:风牌</item>
         <item>S:穷胡-东北</item>
     </string-array>
+
+    <!--空位模式-->
+    <string-array name="empty_mode_arr">
+        <item>无</item>
+        <item>东</item>
+        <item>南</item>
+        <item>西</item>
+        <item>北</item>
+    </string-array>
 </resources>

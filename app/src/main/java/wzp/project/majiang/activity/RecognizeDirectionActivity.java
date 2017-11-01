@@ -15,12 +15,14 @@ import wzp.project.majiang.activity.base.BluetoothBaseActivity;
 import wzp.project.majiang.constant.ProjectConstants;
 import wzp.project.majiang.util.CRC16;
 import wzp.project.majiang.util.CalculateUtil;
+import wzp.project.majiang.widget.ListOptionButton;
 import wzp.project.majiang.widget.MyApplication;
 
 public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 
 	private ImageButton ibtnBack;
 
+	private ListOptionButton btnEmptyMode;
 	private TextView tvTip;
 	private Button btnNorth;
 	private Button btnSouth;
@@ -43,6 +45,7 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 						sendMsg[0] = (byte) 0xfe;
 						sendMsg[1] = (byte) 0xd1;
 						sendMsg[2] = (byte) 0x01;
+						sendMsg[3] = (byte) btnEmptyMode.getSelectedItemPosition();
 						byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SEND_MSG_LENGTH - 2);
 						sendMsg[ProjectConstants.CRC_HIGH] = crc[0];
 						sendMsg[ProjectConstants.CRC_LOW] = crc[1];
@@ -57,6 +60,7 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 						sendMsg[0] = (byte) 0xfe;
 						sendMsg[1] = (byte) 0xd2;
 						sendMsg[2] = (byte) 0x01;
+						sendMsg[3] = (byte) btnEmptyMode.getSelectedItemPosition();
 						byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SEND_MSG_LENGTH - 2);
 						sendMsg[ProjectConstants.CRC_HIGH] = crc[0];
 						sendMsg[ProjectConstants.CRC_LOW] = crc[1];
@@ -71,6 +75,7 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 						sendMsg[0] = (byte) 0xfe;
 						sendMsg[1] = (byte) 0xd3;
 						sendMsg[2] = (byte) 0x01;
+						sendMsg[3] = (byte) btnEmptyMode.getSelectedItemPosition();
 						byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SEND_MSG_LENGTH - 2);
 						sendMsg[ProjectConstants.CRC_HIGH] = crc[0];
 						sendMsg[ProjectConstants.CRC_LOW] = crc[1];
@@ -85,6 +90,7 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 						sendMsg[0] = (byte) 0xfe;
 						sendMsg[1] = (byte) 0xd4;
 						sendMsg[2] = (byte) 0x01;
+						sendMsg[3] = (byte) btnEmptyMode.getSelectedItemPosition();
 						byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SEND_MSG_LENGTH - 2);
 						sendMsg[ProjectConstants.CRC_HIGH] = crc[0];
 						sendMsg[ProjectConstants.CRC_LOW] = crc[1];
@@ -134,6 +140,7 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 	private void initWidget() {
 		ibtnBack = (ImageButton) findViewById(R.id.ibtn_back);
 
+		btnEmptyMode = (ListOptionButton) findViewById(R.id.btn_emptyMode);
 		tvTip = (TextView) findViewById(R.id.tv_tip);
 		btnNorth = (Button) findViewById(R.id.btn_north);
 		btnSouth = (Button) findViewById(R.id.btn_south);

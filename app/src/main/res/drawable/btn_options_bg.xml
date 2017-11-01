@@ -18,7 +18,7 @@
 
     <item>
         <shape>
-            <solid android:color="@color/white"/>
+            <solid android:color="@android:color/transparent"/>
 
             <stroke
                 android:color="@color/splite_line_color"

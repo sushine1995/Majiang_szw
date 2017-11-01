@@ -75,7 +75,8 @@
                 android:textSize="@dimen/text_size_l"
                 android:textColor="@color/red"
                 android:textStyle="bold"
-                android:text="庄" />
+                android:text="庄"
+                android:visibility="gone"/>
             <TextView
                 android:id="@+id/tv_myPositionNorth"
                 android:layout_width="wrap_content"
@@ -84,7 +85,8 @@
                 android:textSize="@dimen/text_size_l"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
-                android:text="我" />
+                android:text="我"
+                android:visibility="gone" />
             <ImageView
                 android:id="@+id/iv_redDiceNorth"
                 android:layout_width="20dp"
@@ -124,7 +126,8 @@
                 android:textSize="@dimen/text_size_l"
                 android:textColor="@color/red"
                 android:textStyle="bold"
-                android:text="庄" />
+                android:text="庄"
+                android:visibility="gone" />
             <TextView
                 android:id="@+id/tv_myPositionSouth"
                 android:layout_width="wrap_content"
@@ -133,7 +136,8 @@
                 android:textSize="@dimen/text_size_l"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
-                android:text="我" />
+                android:text="我"
+                android:visibility="gone" />
             <ImageView
                 android:id="@+id/iv_redDiceSouth"
                 android:layout_width="20dp"
@@ -174,7 +178,8 @@
                 android:textSize="@dimen/text_size_l"
                 android:textColor="@color/red"
                 android:textStyle="bold"
-                android:text="庄" />
+                android:text="庄"
+                android:visibility="gone" />
             <TextView
                 android:id="@+id/tv_myPositionWest"
                 android:layout_width="wrap_content"
@@ -183,7 +188,8 @@
                 android:textSize="@dimen/text_size_l"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
-                android:text="我" />
+                android:text="我"
+                android:visibility="gone" />
             <ImageView
                 android:id="@+id/iv_redDiceWest"
                 android:layout_width="20dp"
@@ -225,7 +231,8 @@
                 android:textSize="@dimen/text_size_l"
                 android:textColor="@color/red"
                 android:textStyle="bold"
-                android:text="庄" />
+                android:text="庄"
+                android:visibility="gone" />
             <TextView
                 android:id="@+id/tv_myPositionEast"
                 android:layout_width="wrap_content"
@@ -234,7 +241,8 @@
                 android:textSize="@dimen/text_size_l"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
-                android:text="我" />
+                android:text="我"
+                android:visibility="gone" />
             <ImageView
                 android:id="@+id/iv_redDiceEast"
                 android:layout_width="20dp"

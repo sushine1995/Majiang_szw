@@ -87,6 +87,7 @@
         <item>双向抓牌2（留1墩）</item>
     </string-array>
     <string-array name="program_start_times_arr">
+        <item>0</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
@@ -128,6 +129,7 @@
         <item>40</item>
     </string-array>
     <string-array name="program_stop_times_arr">
+        <item>0</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>

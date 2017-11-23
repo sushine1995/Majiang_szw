@@ -32,34 +32,55 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/ibtn_back"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="参数设置"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_l"
-            android:gravity="center"
-            android:layout_centerInParent="true"/>
+            android:layout_toRightOf="@id/v_spliteLine"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="保存"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_l"
+                android:gravity="center"
+                android:background="@drawable/ibtn_back_bg"/>
 
-        <ImageButton
-            android:id="@+id/ibtn_moreFun"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/more_fun"
-            android:scaleType="centerInside"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/ibtn_back_bg"
-            android:contentDescription="back"/>
+            <Button
+                android:id="@+id/btn_saveAs"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="保存为"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_l"
+                android:gravity="center"
+                android:background="@drawable/ibtn_back_bg"/>
 
-        <ImageButton
-            android:id="@+id/ibtn_save"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:layout_toLeftOf="@+id/ibtn_moreFun"
-            android:src="@drawable/save"
-            android:scaleType="centerInside"
-            android:background="@drawable/ibtn_back_bg"
-            android:contentDescription="back"/>
+            <Button
+                android:id="@+id/btn_readFile"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="读取文档"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_l"
+                android:gravity="center"
+                android:background="@drawable/ibtn_back_bg"/>
+
+            <Button
+                android:id="@+id/btn_download"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="烧录"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_l"
+                android:gravity="center"
+                android:background="@drawable/ibtn_back_bg"/>
+        </LinearLayout>
     </RelativeLayout>
 
     <android.support.design.widget.TabLayout

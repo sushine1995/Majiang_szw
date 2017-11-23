@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,12 +16,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
@@ -61,7 +57,6 @@ import wzp.project.majiang.entity.SingleChooseCardMethod;
 import wzp.project.majiang.fragment.ShowPlayMethodFragment;
 import wzp.project.majiang.util.CRC16;
 import wzp.project.majiang.util.CalculateUtil;
-import wzp.project.majiang.util.DensityUtil;
 import wzp.project.majiang.widget.MyApplication;
 import wzp.project.majiang.widget.MyProgressDialog;
 import wzp.project.majiang.widget.SaveAsDialog;
@@ -75,8 +70,10 @@ import static wzp.project.majiang.widget.MyApplication.getContext;
 public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
     private ImageButton ibtnBack;
-    private ImageButton ibtnSave;
-    private ImageButton ibtnMoreFun;
+    private Button btnSave;
+    private Button btnSaveAs;
+    private Button btnReadFile;
+    private Button btnDownload;
 
     private TabLayout tabRecord;
     private ViewPager vpPlayMethod;
@@ -85,12 +82,6 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
     private List<Fragment> fragmentList;
     private ShowPlayMethodVpAdapter playMethodVpAdapter;
-
-    private View vMoreFun;
-    private TextView tvSaveAs;
-    private TextView tvReadFile;
-    private TextView tvDownload;
-    private PopupWindow pwMoreFun;
 
     private SaveAsDialog dlgSaveAs;
     private MyProgressDialog dlgProgress;
@@ -107,27 +98,19 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                     onBackPressed();
                     break;
 
-                case R.id.ibtn_save:
+                case R.id.btn_save:
                     savePlayMethod();
                     break;
 
-                case R.id.ibtn_moreFun:
-                    pwMoreFun.showAsDropDown(ibtnMoreFun, -DensityUtil.dp2px(ShowPlayMethodActivity.this, 150)
-                            , DensityUtil.dp2px(ShowPlayMethodActivity.this, 1));
-                    break;
-
-                case R.id.tv_saveAs:
-                    pwMoreFun.dismiss();
+                case R.id.btn_saveAs:
                     dlgSaveAs.show();
                     break;
 
-                case R.id.tv_readFile:
-                    pwMoreFun.dismiss();
+                case R.id.btn_readFile:
                     ReceiveSendFileActivity.myStartActivityForResult(ShowPlayMethodActivity.this, REQUEST_RECV_SEND_FILE);
                     break;
 
-                case R.id.tv_download:
-                    pwMoreFun.dismiss();
+                case R.id.btn_download:
                     if (MyApplication.btClientHelper.isBluetoothConnected()) {
                         dlgProgress.show("参数设置中，请稍后...");
 
@@ -407,8 +390,10 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
     private void initWidget() {
         ibtnBack = (ImageButton) findViewById(R.id.ibtn_back);
-        ibtnSave = (ImageButton) findViewById(R.id.ibtn_save);
-        ibtnMoreFun = (ImageButton) findViewById(R.id.ibtn_moreFun);
+        btnSave = (Button) findViewById(R.id.btn_save);
+        btnSaveAs = (Button) findViewById(R.id.btn_saveAs);
+        btnReadFile = (Button) findViewById(R.id.btn_readFile);
+        btnDownload = (Button) findViewById(R.id.btn_download);
 
         tabRecord = (TabLayout) findViewById(R.id.tab_record);
         vpPlayMethod = (ViewPager) findViewById(R.id.vp_playMethod);
@@ -416,15 +401,6 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
         tabRecord.setupWithViewPager(vpPlayMethod);
         vpPlayMethod.setAdapter(playMethodVpAdapter);
         vpPlayMethod.setOffscreenPageLimit(2);
-
-        vMoreFun = LayoutInflater.from(this).inflate(R.layout.pop_win_more_fun, null);
-        tvSaveAs = (TextView) vMoreFun.findViewById(R.id.tv_saveAs);
-        tvReadFile = (TextView) vMoreFun.findViewById(R.id.tv_readFile);
-        tvDownload = (TextView) vMoreFun.findViewById(R.id.tv_download);
-
-        pwMoreFun = new PopupWindow(vMoreFun, (int) DensityUtil.dp2px(this, 180), LinearLayout.LayoutParams.WRAP_CONTENT);
-        pwMoreFun.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.popupwindow_bg)));
-        pwMoreFun.setFocusable(true);
 
         dlgExit = new AlertDialog.Builder(this)
                 .setTitle("注意")
@@ -462,11 +438,10 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
         dlgProgress = new MyProgressDialog(this);
 
         ibtnBack.setOnClickListener(listener);
-        ibtnSave.setOnClickListener(listener);
-        ibtnMoreFun.setOnClickListener(listener);
-        tvSaveAs.setOnClickListener(listener);
-        tvReadFile.setOnClickListener(listener);
-        tvDownload.setOnClickListener(listener);
+        btnSave.setOnClickListener(listener);
+        btnSaveAs.setOnClickListener(listener);
+        btnReadFile.setOnClickListener(listener);
+        btnDownload.setOnClickListener(listener);
     }
 
     /**

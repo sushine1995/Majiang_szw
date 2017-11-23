@@ -305,6 +305,10 @@ public class CalculateUtil {
 			case 0x9f:
 				imageId = R.drawable.zhu;
 				break;
+
+			case 0x00:
+				imageId = -1;
+				break;
 		}
 
 		return  imageId;

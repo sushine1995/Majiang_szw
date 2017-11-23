@@ -125,10 +125,18 @@ public class ShowBaopaiActivity extends BluetoothBaseActivity {
 				}
 
 				Bitmap majiangBitmap = null;
+				int imageId; // 麻将图片资源ID
 				for (int i = 0; i < num; i++) {
-					majiangBitmap = BitmapFactory.decodeResource(getResources(),
-							CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[3 + i])));
-					((ImageView) linearMajiang.getChildAt(i)).setImageBitmap(majiangBitmap);
+					imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[3 + i]));
+					if (imageId != -1) {
+						// 正常显示麻将图片
+						majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
+						((ImageView) linearMajiang.getChildAt(i)).setImageBitmap(majiangBitmap);
+						linearMajiang.getChildAt(i).setVisibility(View.VISIBLE);
+					} else {
+						// 当前位置不显示麻将
+						linearMajiang.getChildAt(i).setVisibility(View.INVISIBLE);
+					}
 				}
 			}
 		});

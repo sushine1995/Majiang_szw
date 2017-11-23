@@ -352,6 +352,7 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 
 				int index; // ImageView在父容器中的索引
 				int oddEven; // 奇偶
+				int imageId; // 麻将图片的资源ID
 				for (int i = 0; i < num; i++) {
 					if (CalculateUtil.byteToInt(copyRecvData[1]) == 0xe1
 							|| CalculateUtil.byteToInt(copyRecvData[1]) == 0xe5
@@ -366,19 +367,31 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 					}
 					oddEven = i & 0x01;
 
-					majiangBitmap = BitmapFactory.decodeResource(getResources(),
-							CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[3 + i])));
-					majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
-							majiangBitmap.getWidth(), majiangBitmap.getHeight(),
-							matrix, true);
-					if (oddEven == 0) {
-						// 偶数（上-linearTop）
-						((ImageView) linearTop.getChildAt(index)).setImageBitmap(majiangBitmap);
-						linearTop.getChildAt(index).setVisibility(View.VISIBLE);
+					imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[3 + i]));
+					if (imageId != -1) {
+						// 正常显示麻将图片
+						majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
+						majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
+								majiangBitmap.getWidth(), majiangBitmap.getHeight(),
+								matrix, true);
+						if (oddEven == 0) {
+							// 偶数（上-linearTop）
+							((ImageView) linearTop.getChildAt(index)).setImageBitmap(majiangBitmap);
+							linearTop.getChildAt(index).setVisibility(View.VISIBLE);
+						} else {
+							// 奇数（下-linearBottom）
+							((ImageView) linearBottom.getChildAt(index)).setImageBitmap(majiangBitmap);
+							linearBottom.getChildAt(index).setVisibility(View.VISIBLE);
+						}
 					} else {
-						// 奇数（下-linearBottom）
-						((ImageView) linearBottom.getChildAt(index)).setImageBitmap(majiangBitmap);
-						linearBottom.getChildAt(index).setVisibility(View.VISIBLE);
+						// 当前位置不显示麻将
+						if (oddEven == 0) {
+							// 偶数（上-linearTop）
+							linearTop.getChildAt(index).setVisibility(View.INVISIBLE);
+						} else {
+							// 奇数（下-linearBottom）
+							linearBottom.getChildAt(index).setVisibility(View.INVISIBLE);
+						}
 					}
 				}
 			}

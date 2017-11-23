@@ -335,6 +335,7 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 				}
 
 				int index; // ImageView在父容器中的索引
+				int imageId; // 麻将图片的资源ID
 				for (int i = 0; i < num; i++) {
 					if (majiangDirection == 0xe9 || majiangDirection == 0xec) {
 						// 东方位先后顺序为，从下至上
@@ -345,12 +346,19 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 						index = i;
 					}
 
-					majiangBitmap = BitmapFactory.decodeResource(getResources(),
-							CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[3 + i])));
-					majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
-							majiangBitmap.getWidth(), majiangBitmap.getHeight(),
-							matrix, true);
-					((ImageView) linearDirection.getChildAt(index)).setImageBitmap(majiangBitmap);
+					imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[3 + i]));
+					if (imageId != -1) {
+						// 正常显示麻将图片
+						majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
+						majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
+								majiangBitmap.getWidth(), majiangBitmap.getHeight(),
+								matrix, true);
+						((ImageView) linearDirection.getChildAt(index)).setImageBitmap(majiangBitmap);
+						linearDirection.getChildAt(index).setVisibility(View.VISIBLE);
+					} else {
+						// 当前位置不显示麻将
+						linearDirection.getChildAt(index).setVisibility(View.INVISIBLE);
+					}
 				}
 			}
 		});

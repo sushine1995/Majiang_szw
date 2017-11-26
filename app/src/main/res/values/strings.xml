@@ -52,7 +52,9 @@
         <item>4</item>
     </string-array>
     <string-array name="every_hand_num_arr">
+        <item>2</item>
         <item>4</item>
+        <item>5</item>
         <item>6</item>
         <item>12</item>
     </string-array>

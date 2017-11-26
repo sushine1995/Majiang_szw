@@ -171,6 +171,7 @@ public class ShowPlayMethodFragment extends Fragment {
             parameter.setChooseCardParameter(ccp);
 
             DiceParameter dp = new DiceParameter();
+            dp.setDiceNum(1); // 默认有两个色子
             parameter.setDiceParameter(dp);
 
             MyApplication.getSpPlayMethod().commitString("playMethod" + method,

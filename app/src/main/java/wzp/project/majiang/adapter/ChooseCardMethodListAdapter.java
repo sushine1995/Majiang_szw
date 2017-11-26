@@ -85,6 +85,7 @@ public class ChooseCardMethodListAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.cbIsSelected = (CheckBox) convertView.findViewById(R.id.cb_isSelected);
             holder.ibtnEdit = (ImageButton) convertView.findViewById(R.id.ibtn_edit);
+            holder.ibtnDelete = (ImageButton) convertView.findViewById(R.id.ibtn_delete);
             holder.linearPlayMethodList = (LinearLayout) convertView.findViewById(R.id.linear_playMethodList);
 
             convertView.setTag(holder);
@@ -103,21 +104,15 @@ public class ChooseCardMethodListAdapter extends BaseAdapter {
         holder.ibtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                EditChooseCardMethodActivity.myStartActivityForResult(context, fragment,
-//                        position, JSON.toJSONString(chooseCardMethod),
-//                        ChooseCardMethodFragment.REQUEST_EDIT_CHOOSE_CARD_METHOD);
-
                 EditChooseCardMethodActivity.myStartActivityForResult(context,
                         ((EditPlayMethodActivity) context).getPlayMethod(),
                         position);
             }
         });
-        listPlayMethod(context, holder.linearPlayMethodList, chooseCardMethod.getMethods());
-
-        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.ibtnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-                AlertDialog dlgDelete = new AlertDialog.Builder(context)
+            public void onClick(View v) {
+                new AlertDialog.Builder(context)
                         .setTitle("注意")
                         .setMessage("您确定删除该条记录吗？")
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -134,10 +129,34 @@ public class ChooseCardMethodListAdapter extends BaseAdapter {
                             }
                         })
                         .show();
-
-                return false;
             }
         });
+        listPlayMethod(context, holder.linearPlayMethodList, chooseCardMethod.getMethods());
+
+//        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                AlertDialog dlgDelete = new AlertDialog.Builder(context)
+//                        .setTitle("注意")
+//                        .setMessage("您确定删除该条记录吗？")
+//                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                chooseCardMethodList.remove(chooseCardMethod);
+//                                notifyDataSetChanged();
+//                            }
+//                        })
+//                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        })
+//                        .show();
+//
+//                return false;
+//            }
+//        });
 
         return convertView;
     }
@@ -195,6 +214,7 @@ public class ChooseCardMethodListAdapter extends BaseAdapter {
     class ViewHolder {
         CheckBox cbIsSelected;
         ImageButton ibtnEdit;
+        ImageButton ibtnDelete;
         LinearLayout linearPlayMethodList;
     }
 

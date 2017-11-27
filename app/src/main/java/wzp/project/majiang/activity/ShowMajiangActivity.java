@@ -298,8 +298,6 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 
 				LinearLayout linearTop = null;
 				LinearLayout linearBottom = null;
-//				Bitmap majiangBitmap = BitmapFactory.decodeResource(getResources(),
-//						R.drawable.unknown);
 				Bitmap majiangBitmap = null;
 				Matrix matrix = new Matrix();
 				switch (CalculateUtil.byteToInt(copyRecvData[1])) {
@@ -338,15 +336,11 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 					default:
 						break;
 				}
-//				majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0, majiangBitmap.getWidth(),
-//						majiangBitmap.getHeight(), matrix, true);
 
 				for (int i = 0; i < linearTop.getChildCount(); i++) {
-//					((ImageView) linearTop.getChildAt(i)).setImageBitmap(majiangBitmap);
 					linearTop.getChildAt(i).setVisibility(View.INVISIBLE);
 				}
 				for (int i = 0; i < linearBottom.getChildCount(); i++) {
-//					((ImageView) linearBottom.getChildAt(i)).setImageBitmap(majiangBitmap);
 					linearBottom.getChildAt(i).setVisibility(View.INVISIBLE);
 				}
 
@@ -374,22 +368,22 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 						majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
 								majiangBitmap.getWidth(), majiangBitmap.getHeight(),
 								matrix, true);
-						if (oddEven == 0) {
-							// 偶数（上-linearTop）
+						if (oddEven == 1) {
+							// 奇数（上-linearTop）
 							((ImageView) linearTop.getChildAt(index)).setImageBitmap(majiangBitmap);
 							linearTop.getChildAt(index).setVisibility(View.VISIBLE);
 						} else {
-							// 奇数（下-linearBottom）
+							// 偶数（下-linearBottom）
 							((ImageView) linearBottom.getChildAt(index)).setImageBitmap(majiangBitmap);
 							linearBottom.getChildAt(index).setVisibility(View.VISIBLE);
 						}
 					} else {
 						// 当前位置不显示麻将
-						if (oddEven == 0) {
-							// 偶数（上-linearTop）
+						if (oddEven == 1) {
+							// 奇数（上-linearTop）
 							linearTop.getChildAt(index).setVisibility(View.INVISIBLE);
 						} else {
-							// 奇数（下-linearBottom）
+							// 偶数（下-linearBottom）
 							linearBottom.getChildAt(index).setVisibility(View.INVISIBLE);
 						}
 					}

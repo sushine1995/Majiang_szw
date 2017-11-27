@@ -99,6 +99,30 @@
                 android:layout_height="20dp"
                 android:layout_marginLeft="5dp"
                 android:visibility="gone" />
+            <ImageView
+                android:id="@+id/iv_redDiceNorth2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_blueDiceNorth2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/iv_redDiceNorth3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_blueDiceNorth3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -146,6 +170,30 @@
                 android:visibility="gone"/>
             <ImageView
                 android:id="@+id/iv_blueDiceSouth"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/iv_redDiceSouth2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_blueDiceSouth2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/iv_redDiceSouth3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_blueDiceSouth3"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="5dp"
@@ -202,6 +250,30 @@
                 android:layout_height="20dp"
                 android:layout_marginTop="5dp"
                 android:visibility="gone" />
+            <ImageView
+                android:id="@+id/iv_redDiceWest2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_blueDiceWest2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/iv_redDiceWest3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_blueDiceWest3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -251,6 +323,30 @@
                 android:visibility="gone"/>
             <ImageView
                 android:id="@+id/iv_blueDiceEast"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/iv_redDiceEast2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_blueDiceEast2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/iv_redDiceEast3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/iv_blueDiceEast3"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="5dp"

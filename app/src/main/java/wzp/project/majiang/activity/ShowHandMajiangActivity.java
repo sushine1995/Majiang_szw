@@ -32,30 +32,38 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 	private LinearLayout linearWest;
 	private LinearLayout linearEast;
 
-//	private ImageView ivDice1;
-//	private ImageView ivDice2;
-//
-//	private TextView tvPlayTypeEast;
-//	private TextView tvPlayTypeSouth;
-//	private TextView tvPlayTypeWest;
-//	private TextView tvPlayTypeNorth;
-
 	private TextView tvBankerPositionEast;
 	private TextView tvMyPositionEast;
 	private ImageView ivRedDiceEast;
 	private ImageView ivBlueDiceEast;
+	private ImageView ivRedDiceEast2;
+	private ImageView ivBlueDiceEast2;
+	private ImageView ivRedDiceEast3;
+	private ImageView ivBlueDiceEast3;
 	private TextView tvBankerPositionSouth;
 	private TextView tvMyPositionSouth;
 	private ImageView ivRedDiceSouth;
 	private ImageView ivBlueDiceSouth;
+	private ImageView ivRedDiceSouth2;
+	private ImageView ivBlueDiceSouth2;
+	private ImageView ivRedDiceSouth3;
+	private ImageView ivBlueDiceSouth3;
 	private TextView tvBankerPositionWest;
 	private TextView tvMyPositionWest;
 	private ImageView ivRedDiceWest;
 	private ImageView ivBlueDiceWest;
+	private ImageView ivRedDiceWest2;
+	private ImageView ivBlueDiceWest2;
+	private ImageView ivRedDiceWest3;
+	private ImageView ivBlueDiceWest3;
 	private TextView tvBankerPositionNorth;
 	private TextView tvMyPositionNorth;
 	private ImageView ivRedDiceNorth;
 	private ImageView ivBlueDiceNorth;
+	private ImageView ivRedDiceNorth2;
+	private ImageView ivBlueDiceNorth2;
+	private ImageView ivRedDiceNorth3;
+	private ImageView ivBlueDiceNorth3;
 
 	private PopupMenu pmSelectDirection;
 
@@ -103,18 +111,34 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 		tvMyPositionEast = (TextView) findViewById(R.id.tv_myPositionEast);
 		ivRedDiceEast = (ImageView) findViewById(R.id.iv_redDiceEast);
 		ivBlueDiceEast = (ImageView) findViewById(R.id.iv_blueDiceEast);
+		ivRedDiceEast2 = (ImageView) findViewById(R.id.iv_redDiceEast2);
+		ivBlueDiceEast2 = (ImageView) findViewById(R.id.iv_blueDiceEast2);
+		ivRedDiceEast3 = (ImageView) findViewById(R.id.iv_redDiceEast3);
+		ivBlueDiceEast3 = (ImageView) findViewById(R.id.iv_blueDiceEast3);
 		tvBankerPositionSouth = (TextView) findViewById(R.id.tv_bankerPositionSouth);
 		tvMyPositionSouth = (TextView) findViewById(R.id.tv_myPositionSouth);
 		ivRedDiceSouth = (ImageView) findViewById(R.id.iv_redDiceSouth);
 		ivBlueDiceSouth = (ImageView) findViewById(R.id.iv_blueDiceSouth);
+		ivRedDiceSouth2 = (ImageView) findViewById(R.id.iv_redDiceSouth2);
+		ivBlueDiceSouth2 = (ImageView) findViewById(R.id.iv_blueDiceSouth2);
+		ivRedDiceSouth3 = (ImageView) findViewById(R.id.iv_redDiceSouth3);
+		ivBlueDiceSouth3 = (ImageView) findViewById(R.id.iv_blueDiceSouth3);
 		tvBankerPositionWest = (TextView) findViewById(R.id.tv_bankerPositionWest);
 		tvMyPositionWest = (TextView) findViewById(R.id.tv_myPositionWest);
 		ivRedDiceWest = (ImageView) findViewById(R.id.iv_redDiceWest);
 		ivBlueDiceWest = (ImageView) findViewById(R.id.iv_blueDiceWest);
+		ivRedDiceWest2 = (ImageView) findViewById(R.id.iv_redDiceWest2);
+		ivBlueDiceWest2 = (ImageView) findViewById(R.id.iv_blueDiceWest2);
+		ivRedDiceWest3 = (ImageView) findViewById(R.id.iv_redDiceWest3);
+		ivBlueDiceWest3 = (ImageView) findViewById(R.id.iv_blueDiceWest3);
 		tvBankerPositionNorth = (TextView) findViewById(R.id.tv_bankerPositionNorth);
 		tvMyPositionNorth = (TextView) findViewById(R.id.tv_myPositionNorth);
 		ivRedDiceNorth = (ImageView) findViewById(R.id.iv_redDiceNorth);
 		ivBlueDiceNorth = (ImageView) findViewById(R.id.iv_blueDiceNorth);
+		ivRedDiceNorth2 = (ImageView) findViewById(R.id.iv_redDiceNorth2);
+		ivBlueDiceNorth2 = (ImageView) findViewById(R.id.iv_blueDiceNorth2);
+		ivRedDiceNorth3 = (ImageView) findViewById(R.id.iv_redDiceNorth3);
+		ivBlueDiceNorth3 = (ImageView) findViewById(R.id.iv_blueDiceNorth3);
 
 		pmSelectDirection = new PopupMenu(this, ibtnMoreFun);
 		getMenuInflater().inflate(R.menu.menu_select_direction, pmSelectDirection.getMenu());
@@ -446,64 +470,37 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 						break;
 				}
 
-				int redDiceEast = getDiceImageResource(copyRecvData[5], RED_DICE);
-				if (redDiceEast != -1) {
-					ivRedDiceEast.setImageResource(redDiceEast);
-					ivRedDiceEast.setVisibility(View.VISIBLE);
-				} else {
-					ivRedDiceEast.setVisibility(View.GONE);
-				}
-				int blueDiceEast = getDiceImageResource(copyRecvData[6], BLUE_DICE);
-				if (blueDiceEast != -1) {
-					ivBlueDiceEast.setImageResource(blueDiceEast);
-					ivBlueDiceEast.setVisibility(View.VISIBLE);
-				} else {
-					ivBlueDiceEast.setVisibility(View.GONE);
-				}
-
-				int redDiceSouth = getDiceImageResource(copyRecvData[7], RED_DICE);
-				if (redDiceSouth != -1) {
-					ivRedDiceSouth.setImageResource(redDiceSouth);
-					ivRedDiceSouth.setVisibility(View.VISIBLE);
-				} else {
-					ivRedDiceSouth.setVisibility(View.GONE);
-				}
-				int blueDiceSouth = getDiceImageResource(copyRecvData[8], BLUE_DICE);
-				if (blueDiceSouth != -1) {
-					ivBlueDiceSouth.setImageResource(blueDiceSouth);
-					ivBlueDiceSouth.setVisibility(View.VISIBLE);
-				} else {
-					ivBlueDiceSouth.setVisibility(View.GONE);
-				}
-
-				int redDiceWest = getDiceImageResource(copyRecvData[9], RED_DICE);
-				if (redDiceWest != -1) {
-					ivRedDiceWest.setImageResource(redDiceWest);
-					ivRedDiceWest.setVisibility(View.VISIBLE);
-				} else {
-					ivRedDiceWest.setVisibility(View.GONE);
-				}
-				int blueDiceWest = getDiceImageResource(copyRecvData[10], BLUE_DICE);
-				if (blueDiceWest != -1) {
-					ivBlueDiceWest.setImageResource(blueDiceWest);
-					ivBlueDiceWest.setVisibility(View.VISIBLE);
-				} else {
-					ivBlueDiceWest.setVisibility(View.GONE);
-				}
-
-				int redDiceNorth = getDiceImageResource(copyRecvData[11], RED_DICE);
-				if (redDiceNorth != -1) {
-					ivRedDiceNorth.setImageResource(redDiceNorth);
-					ivRedDiceNorth.setVisibility(View.VISIBLE);
-				} else {
-					ivRedDiceNorth.setVisibility(View.GONE);
-				}
-				int blueDiceNorth = getDiceImageResource(copyRecvData[12], BLUE_DICE);
-				if (blueDiceNorth != -1) {
-					ivBlueDiceNorth.setImageResource(blueDiceNorth);
-					ivBlueDiceNorth.setVisibility(View.VISIBLE);
-				} else {
-					ivBlueDiceNorth.setVisibility(View.GONE);
+				ImageView[] ivDiceArr = new ImageView[] {
+						ivRedDiceEast, ivBlueDiceEast,
+						ivRedDiceSouth, ivBlueDiceSouth,
+						ivRedDiceWest, ivBlueDiceWest,
+						ivRedDiceNorth, ivBlueDiceNorth,
+						ivRedDiceEast2, ivBlueDiceEast2,
+						ivRedDiceSouth2, ivBlueDiceSouth2,
+						ivRedDiceWest2, ivBlueDiceWest2,
+						ivRedDiceNorth2, ivBlueDiceNorth2,
+						ivRedDiceEast3, ivBlueDiceEast3,
+						ivRedDiceSouth3, ivBlueDiceSouth3,
+						ivRedDiceWest3, ivBlueDiceWest3,
+						ivRedDiceNorth3, ivBlueDiceNorth3
+				};
+				int diceResId;
+				int redBlueFlag;
+				for (int i=0; i<ivDiceArr.length; i++) {
+					if ((i & 0x01) == 0) {
+						// 偶数
+						redBlueFlag = RED_DICE;
+					} else {
+						// 奇数
+						redBlueFlag = BLUE_DICE;
+					}
+					diceResId = getDiceImageResource(copyRecvData[5 + i], redBlueFlag);
+					if (diceResId != -1) {
+						ivDiceArr[i].setImageResource(diceResId);
+						ivDiceArr[i].setVisibility(View.VISIBLE);
+					} else {
+						ivDiceArr[i].setVisibility(View.GONE);
+					}
 				}
 			}
 		});

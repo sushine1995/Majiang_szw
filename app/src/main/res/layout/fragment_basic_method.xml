@@ -923,7 +923,7 @@
                 android:text="三层" />
         </RadioGroup>
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
@@ -954,7 +954,7 @@
                 app:options="@array/machine_gear_arr"
                 app:optionWidth="280dp">
             </wzp.project.majiang.widget.ListOptionButton>
-        </LinearLayout>
+        </LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"

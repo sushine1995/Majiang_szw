@@ -47,55 +47,6 @@ public class MyApplication extends Application {
 		context = getApplicationContext();
 
 		spPlayMethod = new MySharedPreferences(context, "play_method_prefs");
-
-		if (parameterList.size() == 0) {
-			for (int i = 0; i < 3; i++) {
-				String playMethod = MyApplication.getSpPlayMethod().getString("playMethod" + (i + 1), "");
-				PlayMethodParameter parameter = null;
-				try {
-					parameter = JSON.parseObject(playMethod, PlayMethodParameter.class);
-				} catch (JSONException e) {
-					e.printStackTrace();
-					parameter = null;
-				}
-				if (parameter == null) {
-					// 设置默认的参数值
-					parameter = new PlayMethodParameter();
-
-					BasicParameter bp = new BasicParameter();
-					bp.setTotalCardNum(144);
-					bp.setEastTop(18);
-					bp.setEastMiddle(0);
-					bp.setEastBottom(18);
-					bp.setNorthTop(18);
-					bp.setNorthMiddle(0);
-					bp.setNorthBottom(18);
-					bp.setWestTop(18);
-					bp.setWestMiddle(0);
-					bp.setWestBottom(18);
-					bp.setSouthTop(18);
-					bp.setSouthMiddle(0);
-					bp.setSouthBottom(18);
-					parameter.setBasicParameter(bp);
-
-					ChooseCardParameter ccp = new ChooseCardParameter();
-					ccp.setMethods(new ArrayList<ChooseCardMethod>());
-					parameter.setChooseCardParameter(ccp);
-
-					DiceParameter dp = new DiceParameter();
-					parameter.setDiceParameter(dp);
-
-					spPlayMethod.commitString("playMethod" + i,
-							JSON.toJSONString(parameter));
-				}
-
-				if (parameterList.size() <= i) {
-					parameterList.add(parameter);
-				} else {
-					parameterList.set(i, parameter);
-				}
-			}
-		}
 	}
 
 	public static Context getContext() {

@@ -52,7 +52,7 @@ public class ShowPlayMethodFragment extends Fragment {
     private TextView tvTotalRounds;
     private TextView tvBroadcastCardNum;
     private TextView tvLayerNum;
-    private TextView tvMachineGear;
+//    private TextView tvMachineGear;
     private TextView tvTotalCardNum;
     private TextView tvEastTop;
     private TextView tvEastMiddle;
@@ -151,19 +151,19 @@ public class ShowPlayMethodFragment extends Fragment {
             parameter = new PlayMethodParameter();
 
             BasicParameter bp = new BasicParameter();
-            bp.setTotalCardNum(144);
-            bp.setEastTop(18);
+            bp.setTotalCardNum(136);
+            bp.setEastTop(17);
             bp.setEastMiddle(0);
-            bp.setEastBottom(18);
-            bp.setNorthTop(18);
+            bp.setEastBottom(17);
+            bp.setNorthTop(17);
             bp.setNorthMiddle(0);
-            bp.setNorthBottom(18);
-            bp.setWestTop(18);
+            bp.setNorthBottom(17);
+            bp.setWestTop(17);
             bp.setWestMiddle(0);
-            bp.setWestBottom(18);
-            bp.setSouthTop(18);
+            bp.setWestBottom(17);
+            bp.setSouthTop(17);
             bp.setSouthMiddle(0);
-            bp.setSouthBottom(18);
+            bp.setSouthBottom(17);
             parameter.setBasicParameter(bp);
 
             ChooseCardParameter ccp = new ChooseCardParameter();
@@ -201,7 +201,7 @@ public class ShowPlayMethodFragment extends Fragment {
         tvTotalRounds = (TextView) view.findViewById(R.id.tv_totalRounds);
         tvBroadcastCardNum = (TextView) view.findViewById(R.id.tv_broadcastCardNum);
         tvLayerNum = (TextView) view.findViewById(R.id.tv_layerNum);
-        tvMachineGear = (TextView) view.findViewById(R.id.tv_machineGear);
+//        tvMachineGear = (TextView) view.findViewById(R.id.tv_machineGear);
         tvTotalCardNum = (TextView) view.findViewById(R.id.tv_totalCardNum);
         tvEastTop = (TextView) view.findViewById(R.id.tv_eastTop);
         tvEastMiddle = (TextView) view.findViewById(R.id.tv_eastMiddle);
@@ -349,7 +349,7 @@ public class ShowPlayMethodFragment extends Fragment {
         }
 
         tvLayerNum.setText(bp.isThreeLayer() ? "三层" : "两层");
-        tvMachineGear.setText(getResources().getStringArray(R.array.machine_gear_arr)[bp.getMachineGear()]);
+//        tvMachineGear.setText(getResources().getStringArray(R.array.machine_gear_arr)[bp.getMachineGear()]);
         tvTotalCardNum.setText(String.valueOf(bp.getTotalCardNum()));
         tvEastTop.setText(String.valueOf(bp.getEastTop()));
         tvEastMiddle.setText(String.valueOf(bp.getEastMiddle()));

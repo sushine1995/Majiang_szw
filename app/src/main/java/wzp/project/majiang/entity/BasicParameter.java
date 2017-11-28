@@ -33,7 +33,7 @@ public class BasicParameter {
     private boolean isDigitScreenSwitch;
     private boolean isThreePlayer;
     private boolean isThreeLayer;
-    private int machineGear;
+//    private int machineGear;
     private int totalCardNum;
     private int eastTop;
     private int eastMiddle;
@@ -264,13 +264,13 @@ public class BasicParameter {
         isThreeLayer = threeLayer;
     }
 
-    public int getMachineGear() {
-        return machineGear;
-    }
-
-    public void setMachineGear(int machineGear) {
-        this.machineGear = machineGear;
-    }
+//    public int getMachineGear() {
+//        return machineGear;
+//    }
+//
+//    public void setMachineGear(int machineGear) {
+//        this.machineGear = machineGear;
+//    }
 
     public int getTotalCardNum() {
         return totalCardNum;

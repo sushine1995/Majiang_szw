@@ -54,7 +54,7 @@ public class BasicMethodFragment extends Fragment {
     private CheckBox cbDigitScreenSwitch;
     private CheckBox cbThreePlayer;
     private RadioGroup rgLayer;
-    private ListOptionButton btnMachineGear;
+//    private ListOptionButton btnMachineGear;
     private TextView tvTotalCardNum;
     private ListOptionButton btnEastTop;
     private ListOptionButton btnEastMiddle;
@@ -135,7 +135,7 @@ public class BasicMethodFragment extends Fragment {
         cbDigitScreenSwitch = (CheckBox) view.findViewById(R.id.cb_digitScreenSwitch);
         cbThreePlayer = (CheckBox) view.findViewById(R.id.cb_threePlayer);
         rgLayer = (RadioGroup) view.findViewById(R.id.rg_layer);
-        btnMachineGear = (ListOptionButton) view.findViewById(R.id.btn_machineGear);
+//        btnMachineGear = (ListOptionButton) view.findViewById(R.id.btn_machineGear);
         tvTotalCardNum = (TextView) view.findViewById(R.id.tv_totalCardNum);
         btnEastTop = (ListOptionButton) view.findViewById(R.id.btn_eastTop);
         btnEastMiddle = (ListOptionButton) view.findViewById(R.id.btn_eastMiddle);
@@ -312,19 +312,35 @@ public class BasicMethodFragment extends Fragment {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 if (checkedId == R.id.rb_double) {
+                    // 两层
                     basicParameter.setThreeLayer(false);
+
+                    btnEastMiddle.setEnabled(false);
+                    btnNorthMiddle.setEnabled(false);
+                    btnWestMiddle.setEnabled(false);
+                    btnSouthMiddle.setEnabled(false);
+
+                    setTotalCardNum();
                 } else {
+                    // 三层
                     basicParameter.setThreeLayer(true);
+
+                    btnEastMiddle.setEnabled(true);
+                    btnNorthMiddle.setEnabled(true);
+                    btnWestMiddle.setEnabled(true);
+                    btnSouthMiddle.setEnabled(true);
+
+                    setTotalCardNum();
                 }
             }
         });
-        btnMachineGear.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                basicParameter.setMachineGear(position);
-                analyseCardNumFromMachineGear(position);
-        }
-        });
+//        btnMachineGear.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                basicParameter.setMachineGear(position);
+//                analyseCardNumFromMachineGear(position);
+//        }
+//        });
         btnEastTop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -439,7 +455,7 @@ public class BasicMethodFragment extends Fragment {
         cbDigitScreenSwitch.setChecked(basicParameter.isDigitScreenSwitch());
         cbThreePlayer.setChecked(basicParameter.isThreePlayer());
         rgLayer.check(basicParameter.isThreeLayer() ? R.id.rb_tripple : R.id.rb_double);
-        btnMachineGear.setSelectedItemPosition(basicParameter.getMachineGear());
+//        btnMachineGear.setSelectedItemPosition(basicParameter.getMachineGear());
         tvTotalCardNum.setText(String.valueOf(basicParameter.getTotalCardNum()));
         btnEastTop.setSelectedItemPosition(basicParameter.getEastTop());
         btnEastMiddle.setSelectedItemPosition(basicParameter.getEastMiddle());
@@ -590,13 +606,19 @@ public class BasicMethodFragment extends Fragment {
     }
 
     private void setTotalCardNum() {
-        basicParameter.setTotalCardNum(
-                basicParameter.getEastTop() + basicParameter.getEastMiddle() + basicParameter.getEastBottom() +
-                        basicParameter.getNorthTop() + basicParameter.getNorthMiddle() + basicParameter.getNorthBottom() +
-                        basicParameter.getWestTop() + basicParameter.getWestMiddle() + basicParameter.getWestBottom() +
-                        basicParameter.getSouthTop() + basicParameter.getSouthMiddle() + basicParameter.getSouthBottom()
-        );
-
-        tvTotalCardNum.setText(String.valueOf(basicParameter.getTotalCardNum()));
+        int totalCardNum = 0;
+        if (basicParameter.isThreeLayer()) {
+            totalCardNum = basicParameter.getEastTop() + basicParameter.getEastMiddle() + basicParameter.getEastBottom()
+                    + basicParameter.getNorthTop() + basicParameter.getNorthMiddle() + basicParameter.getNorthBottom()
+                    + basicParameter.getWestTop() + basicParameter.getWestMiddle() + basicParameter.getWestBottom()
+                    + basicParameter.getSouthTop() + basicParameter.getSouthMiddle() + basicParameter.getSouthBottom();
+        } else {
+            totalCardNum = basicParameter.getEastTop() + basicParameter.getEastBottom()
+                    + basicParameter.getNorthTop() + basicParameter.getNorthBottom()
+                    + basicParameter.getWestTop() + basicParameter.getWestBottom()
+                    + basicParameter.getSouthTop() + basicParameter.getSouthBottom();
+        }
+        basicParameter.setTotalCardNum(totalCardNum);
+        tvTotalCardNum.setText(String.valueOf(totalCardNum));
     }
 }

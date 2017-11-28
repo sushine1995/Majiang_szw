@@ -42,6 +42,11 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 	private LinearLayout linearEastTop;
 	private LinearLayout linearEastBottom;
 
+	private TextView tvBlockNumNorth;
+	private TextView tvBlockNumSouth;
+	private TextView tvBlockNumWest;
+	private TextView tvBlockNumEast;
+
 	private PopupMenu pmSelectDirection;
 	private PopupWindow pwSelectDirection;
 
@@ -92,6 +97,11 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 		linearEast = (LinearLayout) findViewById(R.id.linear_east);
 		linearEastTop = (LinearLayout) findViewById(R.id.linear_eastTop);
 		linearEastBottom = (LinearLayout) findViewById(R.id.linear_eastBottom);
+
+		tvBlockNumNorth = (TextView) findViewById(R.id.tv_blockNumNorth);
+		tvBlockNumSouth = (TextView) findViewById(R.id.tv_blockNumSouth);
+		tvBlockNumWest = (TextView) findViewById(R.id.tv_blockNumWest);
+		tvBlockNumEast = (TextView) findViewById(R.id.tv_blockNumEast);
 
 		pmSelectDirection = new PopupMenu(this, ibtnMoreFun);
 		getMenuInflater().inflate(R.menu.menu_select_direction, pmSelectDirection.getMenu());
@@ -300,6 +310,7 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 				LinearLayout linearBottom = null;
 				Bitmap majiangBitmap = null;
 				Matrix matrix = new Matrix();
+				TextView tvBlockNum = null;
 				switch (CalculateUtil.byteToInt(copyRecvData[1])) {
 					// 东
 					case 0xe1:
@@ -308,6 +319,7 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 
 						linearTop = linearEastTop;
 						linearBottom = linearEastBottom;
+						tvBlockNum = tvBlockNumEast;
 						break;
 
 					// 南
@@ -315,6 +327,7 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 					case 0xe6:
 						linearTop = linearSouthTop;
 						linearBottom = linearSouthBottom;
+						tvBlockNum = tvBlockNumSouth;
 						break;
 
 					// 西
@@ -324,6 +337,7 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 
 						linearTop = linearWestTop;
 						linearBottom = linearWestBottom;
+						tvBlockNum = tvBlockNumWest;
 						break;
 
 					// 北
@@ -331,6 +345,7 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 					case 0xe8:
 						linearTop = linearNorthTop;
 						linearBottom = linearNorthBottom;
+						tvBlockNum = tvBlockNumNorth;
 						break;
 
 					default:
@@ -388,6 +403,9 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 						}
 					}
 				}
+
+				int blockNum = (int) Math.ceil(num / 2.0);
+				tvBlockNum.setText(String.valueOf(blockNum));
 			}
 		});
 	}

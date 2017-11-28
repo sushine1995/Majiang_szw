@@ -77,6 +77,33 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/linear_north"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/blue"
+                android:text="下上"/>
+
+            <TextView
+                android:id="@+id/tv_blockNumNorth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/red"
+                android:text=""/>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/linear_south"
             android:layout_width="match_parent"
             android:layout_height="@dimen/player_height"
@@ -100,6 +127,33 @@
                 android:orientation="horizontal"
                 android:gravity="left|center_vertical">
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/linear_south"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/blue"
+                android:text="上下"/>
+
+            <TextView
+                android:id="@+id/tv_blockNumSouth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/red"
+                android:text=""/>
         </LinearLayout>
 
         <LinearLayout
@@ -132,6 +186,31 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/linear_west"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/blue"
+                android:text="下上"/>
+
+            <TextView
+                android:id="@+id/tv_blockNumWest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/red"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/linear_east"
             android:layout_width="@dimen/player_height"
             android:layout_height="match_parent"
@@ -159,6 +238,31 @@
                 android:orientation="vertical"
                 android:gravity="top|center_horizontal">
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/linear_east"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/blue"
+                android:text="上下"/>
+
+            <TextView
+                android:id="@+id/tv_blockNumEast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/text_size_l"
+                android:textColor="@color/red"
+                android:text="" />
         </LinearLayout>
 
         <ImageView

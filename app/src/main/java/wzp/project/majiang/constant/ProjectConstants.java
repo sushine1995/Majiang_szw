@@ -6,7 +6,9 @@ public interface ProjectConstants {
 
 	String EXTRA_DEVICE_ADDRESS = "device_address";
 
-	String CIPHER = "#*#*59#"; // 使用蓝牙功能的暗号
+	String CIPHER = "#*#*59#"; // 进入主界面的暗号
+
+	String CIPHER_OPEN_BLUETOOTH = "*#*29#*#"; // 使用蓝牙功能的暗号
 	
 	int DATA_LENGTH = 41; // 报文长度
 	int CRC_HIGH = DATA_LENGTH - 2; // CRC校验高位

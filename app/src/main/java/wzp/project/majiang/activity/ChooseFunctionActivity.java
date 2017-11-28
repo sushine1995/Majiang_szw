@@ -21,7 +21,7 @@ import wzp.project.majiang.constant.ProjectConstants;
 import wzp.project.majiang.util.BluetoothClientHelper;
 import wzp.project.majiang.widget.MyApplication;
 
-public class ChooseFunctionActivity extends BluetoothBaseActivity implements IBluetoothConnect {
+public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 	private TextView tvBtState;
 	private ImageButton ibtnSearch;
@@ -121,7 +121,51 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity implements IBl
 	}
 
 	private void initParam() {
-		MyApplication.btClientHelper = new BluetoothClientHelper(this);
+        if (MyApplication.btClientHelper == null) {
+            MyApplication.btClientHelper = new BluetoothClientHelper();
+        }
+        MyApplication.btClientHelper.setBluetoothConnect(new IBluetoothConnect() {
+            @Override
+            public void showToast(String info, int duration) {
+                ChooseFunctionActivity.this.showToast(info, duration);
+            }
+
+            @Override
+            public void showToast(String info) {
+                ChooseFunctionActivity.this.showToast(info);
+            }
+
+            @Override
+            public void showBtState(final int state) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        switch (state) {
+                            case BluetoothState.STATE_NONE:
+                                tvBtState.setText("未连接");
+                                break;
+
+                            case BluetoothState.STATE_CONNECTING:
+                                tvBtState.setText("连接中...");
+                                break;
+
+                            case BluetoothState.STATE_CONNECTED:
+                                tvBtState.setText("已连接：" + MyApplication
+                                        .btClientHelper.getRemoteDevName());
+
+                                if (readDataThread == null) {
+                                    readDataThread = new ReadDataThread();
+                                    readDataThread.start();
+                                }
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                });
+            }
+        });
 	}
 
 	private void initWidget() {
@@ -133,6 +177,12 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity implements IBl
 		ibtnSearch.setOnClickListener(listener);
 		btnDesignPlayMethod.setOnClickListener(listener);
 		btnShowCard.setOnClickListener(listener);
+
+		if (MyApplication.btClientHelper != null && MyApplication.btClientHelper.isBluetoothConnected()) {
+			tvBtState.setText("已连接: " + MyApplication.btClientHelper.getRemoteDevName());
+		} else {
+			tvBtState.setText("未连接");
+		}
 	}
 
 	/**
@@ -152,37 +202,6 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity implements IBl
 	public static void myStartActivity(Context context) {
 		Intent intent = new Intent(context, ChooseFunctionActivity.class);
 		context.startActivity(intent);
-	}
-
-	@Override
-	public void showBtState(final int state) {
-		runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				switch (state) {
-					case BluetoothState.STATE_NONE:
-						tvBtState.setText("未连接");
-						break;
-
-					case BluetoothState.STATE_CONNECTING:
-						tvBtState.setText("连接中...");
-						break;
-
-					case BluetoothState.STATE_CONNECTED:
-						tvBtState.setText("已连接：" + MyApplication
-								.btClientHelper.getRemoteDevName());
-
-						if (readDataThread == null) {
-							readDataThread = new ReadDataThread();
-							readDataThread.start();
-						}
-						break;
-
-					default:
-						break;
-				}
-			}
-		});
 	}
 
 	@Override

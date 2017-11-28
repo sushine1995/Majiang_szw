@@ -1,24 +1,36 @@
 package wzp.project.majiang.activity;
 
 import android.app.Activity;
+import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Vibrator;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.lang.reflect.Method;
 
 import wzp.project.majiang.R;
+import wzp.project.majiang.activity.base.BluetoothBaseActivity;
+import wzp.project.majiang.constant.BluetoothState;
 import wzp.project.majiang.constant.ProjectConstants;
+import wzp.project.majiang.util.BluetoothClientHelper;
+import wzp.project.majiang.util.CRC16;
+import wzp.project.majiang.util.CalculateUtil;
+import wzp.project.majiang.widget.MyApplication;
 
-public class DailActivity extends AppCompatActivity {
+import static wzp.project.majiang.constant.ProjectConstants.DATA_LENGTH;
+
+public class DailActivity extends BluetoothBaseActivity {
 
     private EditText edtNum;
     private Button btnDialDel;
@@ -35,10 +47,13 @@ public class DailActivity extends AppCompatActivity {
     private Button btnNumStar;
     private Button btnNumSharp;
     private Button btnDial;
+    private ImageView ivBtFlag;
 
     private BluetoothAdapter bluetoothAdapter;
+    private Vibrator vibrator;
 
     private static final int REQUEST_ENABLE_BT = 0x00; // 请求打开蓝牙
+    private static final int REQUEST_CONNECT_DEVICE_SECURE = 0x01; // 请求安全连接蓝牙设备
 
     private static final String LOG_TAG = "DailActivity";
 
@@ -103,7 +118,8 @@ public class DailActivity extends AppCompatActivity {
                     break;
 
                 case R.id.btn_dial:
-                    if (edtNum.getText().toString().equals(ProjectConstants.CIPHER)) {
+                    String strNum = edtNum.getText().toString();
+                    if (strNum.equals(ProjectConstants.CIPHER)) {
                         if (bluetoothAdapter == null) {
                             Toast.makeText(DailActivity.this, "当前设备不具备蓝牙功能！",
                                     Toast.LENGTH_LONG).show();
@@ -119,6 +135,49 @@ public class DailActivity extends AppCompatActivity {
                             finish();
 //                            MainActivity.myStartActivity(DailActivity.this);
                             ChooseFunctionActivity.myStartActivity(DailActivity.this);
+                        }
+                    } else if (strNum.equals(ProjectConstants.CIPHER_OPEN_BLUETOOTH)) {
+                        if (bluetoothAdapter == null) {
+                            Toast.makeText(DailActivity.this, "当前设备不具备蓝牙功能！",
+                                    Toast.LENGTH_LONG).show();
+                            break;
+                        }
+
+                        if (!bluetoothAdapter.isEnabled()) {
+                            // 蓝牙尚未打开
+                            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+                        } else {
+                            // 蓝牙已经打开
+                            Intent searchIntent = new Intent(DailActivity.this, DeviceListActivity.class);
+                            startActivityForResult(searchIntent, REQUEST_CONNECT_DEVICE_SECURE);
+                        }
+                    } else {
+                        if (!TextUtils.isEmpty(strNum)) {
+                            if (MyApplication.btClientHelper != null
+                                    && MyApplication.btClientHelper.isBluetoothConnected()) {
+                                byte[] sendMsg = new byte[DATA_LENGTH];
+                                int i = 0;
+                                sendMsg[i++] = (byte) 0xfe;
+                                sendMsg[i++] = (byte) 0xa1;
+
+                                char ch;
+                                for (int j=0; j<strNum.length(); j++) {
+                                    ch = strNum.charAt(j);
+                                    if (ch >= '0' && ch <= '9') {
+                                        sendMsg[i++] = (byte) (ch - '0');
+                                        if (i == (DATA_LENGTH - 3)) {
+                                            break;
+                                        }
+                                    }
+                                }
+                                sendMsg[i++] = (byte) 0xa1;
+                                byte[] crc = CRC16.getCrc16(sendMsg, DATA_LENGTH - 2);
+                                sendMsg[DATA_LENGTH - 2] = crc[0];
+                                sendMsg[DATA_LENGTH - 1] = crc[1];
+
+                                MyApplication.btClientHelper.write(sendMsg);
+                            }
                         }
                     }
 
@@ -140,15 +199,38 @@ public class DailActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        if (MyApplication.btClientHelper != null) {
+            MyApplication.btClientHelper.stop();
+        }
+
+        // 退出应用时，清空消息队列
+        MyApplication.getMessageQueue().clear();
+
+        super.onBackPressed();
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case REQUEST_ENABLE_BT:
                 if (resultCode == Activity.RESULT_OK) {
-                    finish();
-                    ChooseFunctionActivity.myStartActivity(DailActivity.this);
+                    if (edtNum.getText().toString().equals(ProjectConstants.CIPHER)) {
+                        finish();
+                        ChooseFunctionActivity.myStartActivity(DailActivity.this);
+                    } else if (edtNum.getText().toString().equals(ProjectConstants.CIPHER_OPEN_BLUETOOTH)) {
+                        Intent searchIntent = new Intent(DailActivity.this, DeviceListActivity.class);
+                        startActivityForResult(searchIntent, REQUEST_CONNECT_DEVICE_SECURE);
+                    }
                 } else {
                     Log.d(LOG_TAG, "蓝牙尚未开启");
                     Toast.makeText(this, "蓝牙尚未开启，无法使用该功能", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case REQUEST_CONNECT_DEVICE_SECURE:
+                if (resultCode == Activity.RESULT_OK) {
+                    connectDevice(data);
                 }
                 break;
 
@@ -159,6 +241,53 @@ public class DailActivity extends AppCompatActivity {
 
     private void initParam() {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        vibrator = (Vibrator) getSystemService(Service.VIBRATOR_SERVICE);
+
+        if (MyApplication.btClientHelper == null) {
+            MyApplication.btClientHelper = new BluetoothClientHelper();
+        }
+        MyApplication.btClientHelper.setBluetoothConnect(new IBluetoothConnect() {
+            @Override
+            public void showToast(String info, int duration) {
+                DailActivity.this.showToast(info, duration);
+            }
+
+            @Override
+            public void showToast(String info) {
+                DailActivity.this.showToast(info);
+            }
+
+            @Override
+            public void showBtState(final int state) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        switch (state) {
+                            case BluetoothState.STATE_NONE:
+                                ivBtFlag.setImageResource(R.drawable.footer_left);
+                                break;
+
+                            case BluetoothState.STATE_CONNECTING:
+                                ivBtFlag.setImageResource(R.drawable.footer_left);
+                                break;
+
+                            case BluetoothState.STATE_CONNECTED:
+                                ivBtFlag.setImageResource(R.drawable.footer_left_bt_con);
+                                edtNum.setText("");
+
+                                if (readDataThread == null) {
+                                    readDataThread = new ReadDataThread();
+                                    readDataThread.start();
+                                }
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                });
+            }
+        });
     }
 
     private void initWidget() {
@@ -177,6 +306,7 @@ public class DailActivity extends AppCompatActivity {
         btnNumStar = (Button) findViewById(R.id.btn_numStar);
         btnNumSharp = (Button) findViewById(R.id.btn_numSharp);
         btnDial = (Button) findViewById(R.id.btn_dial);
+        ivBtFlag = (ImageView) findViewById(R.id.iv_btFlag);
 
 
         if (android.os.Build.VERSION.SDK_INT <= 10) {
@@ -219,4 +349,25 @@ public class DailActivity extends AppCompatActivity {
         btnDial.setOnClickListener(listener);
     }
 
+    /**
+     * 连接蓝牙设备
+     *
+     * @param data
+     */
+    private void connectDevice(Intent data) {
+        // Get the device MAC address
+        String address = data.getExtras().getString(ProjectConstants.EXTRA_DEVICE_ADDRESS);
+        // Get the BluetoothDevice object
+        BluetoothDevice device = bluetoothAdapter.getRemoteDevice(address);
+        // Attempt to connect to the device
+        MyApplication.btClientHelper.connect(device);
+    }
+
+    @Override
+    protected void onBluetoothDataReceived(byte[] recvData) {
+        if (CalculateUtil.byteToInt(recvData[1]) == 0xa1
+                && CalculateUtil.byteToInt(recvData[2]) == 0x01) {
+            vibrator.vibrate(200);
+        }
+    }
 }

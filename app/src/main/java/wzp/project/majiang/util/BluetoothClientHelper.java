@@ -35,8 +35,8 @@ public class BluetoothClientHelper {
 	
 	
 
-	private final BluetoothAdapter bluetoothAdapterr;
-	private final IBluetoothConnect bluetoothConnect;
+	private BluetoothAdapter bluetoothAdapterr;
+	private IBluetoothConnect bluetoothConnect;
 
 	private ConnectThread connectThread;
 	private CommunicationThread communicationThread;
@@ -51,6 +51,19 @@ public class BluetoothClientHelper {
 		bluetoothAdapterr = BluetoothAdapter.getDefaultAdapter();
 		curBtState = BluetoothState.STATE_NONE;
 		this.bluetoothConnect = bluetoothConnect;
+	}
+
+	public BluetoothClientHelper() {
+		bluetoothAdapterr = BluetoothAdapter.getDefaultAdapter();
+		curBtState = BluetoothState.STATE_NONE;
+	}
+
+	public void setBluetoothConnect(IBluetoothConnect bluetoothConnect) {
+		this.bluetoothConnect = bluetoothConnect;
+	}
+
+	public IBluetoothConnect getBluetoothConnect() {
+		return bluetoothConnect;
 	}
 
 	/**

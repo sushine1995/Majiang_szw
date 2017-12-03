@@ -52,6 +52,8 @@ public class DailActivity extends BluetoothBaseActivity {
     private BluetoothAdapter bluetoothAdapter;
     private Vibrator vibrator;
 
+    private String macAddr; // 蓝牙设备的mac地址
+
     private static final int REQUEST_ENABLE_BT = 0x00; // 请求打开蓝牙
     private static final int REQUEST_CONNECT_DEVICE_SECURE = 0x01; // 请求安全连接蓝牙设备
 
@@ -279,6 +281,11 @@ public class DailActivity extends BluetoothBaseActivity {
                                     readDataThread = new ReadDataThread();
                                     readDataThread.start();
                                 }
+
+                                // 保存mac地址至SharedPreferences中
+                                if (!TextUtils.isEmpty(macAddr)) {
+                                    MyApplication.getSpSetting().commitString("macAddress", macAddr);
+                                }
                                 break;
 
                             default:
@@ -288,6 +295,8 @@ public class DailActivity extends BluetoothBaseActivity {
                 });
             }
         });
+
+        macAddr = MyApplication.getSpSetting().getString("macAddress", null);
     }
 
     private void initWidget() {
@@ -347,6 +356,11 @@ public class DailActivity extends BluetoothBaseActivity {
         btnNumStar.setOnClickListener(listener);
         btnNumSharp.setOnClickListener(listener);
         btnDial.setOnClickListener(listener);
+
+        if (macAddr != null) {
+            showToast("正在连接蓝牙设备，请稍后...");
+            connectDevice(macAddr);
+        }
     }
 
     /**
@@ -357,6 +371,11 @@ public class DailActivity extends BluetoothBaseActivity {
     private void connectDevice(Intent data) {
         // Get the device MAC address
         String address = data.getExtras().getString(ProjectConstants.EXTRA_DEVICE_ADDRESS);
+        macAddr = address; // 记录mac地址，当蓝牙连接成功后，将mac地址保存至SharedPreferences
+       connectDevice(address);
+    }
+
+    private void connectDevice(String address) {
         // Get the BluetoothDevice object
         BluetoothDevice device = bluetoothAdapter.getRemoteDevice(address);
         // Attempt to connect to the device

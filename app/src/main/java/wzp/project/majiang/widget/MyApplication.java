@@ -34,6 +34,7 @@ public class MyApplication extends Application {
 	private static Queue<byte[]> messageQueue = new LinkedList<>();
 
 	private static MySharedPreferences spPlayMethod;
+	private static MySharedPreferences spSetting;
 
 	public static List<PlayMethodParameter> parameterList = new ArrayList<>();
 	
@@ -47,6 +48,7 @@ public class MyApplication extends Application {
 		context = getApplicationContext();
 
 		spPlayMethod = new MySharedPreferences(context, "play_method_prefs");
+		spSetting = new MySharedPreferences(context, "setting_prefs");
 	}
 
 	public static Context getContext() {
@@ -55,6 +57,10 @@ public class MyApplication extends Application {
 
 	public static MySharedPreferences getSpPlayMethod() {
 		return spPlayMethod;
+	}
+
+	public static MySharedPreferences getSpSetting() {
+		return spSetting;
 	}
 
 	public static List<PlayMethodParameter> getParameterList() {

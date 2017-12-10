@@ -87,42 +87,57 @@
                 android:textStyle="bold"
                 android:text="我"
                 android:visibility="gone" />
-            <ImageView
-                android:id="@+id/iv_redDiceNorth"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/iv_blueDiceNorth"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/iv_redDiceNorth"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/iv_blueDiceNorth"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:visibility="gone" />
-            <ImageView
-                android:id="@+id/iv_redDiceNorth2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/iv_redDiceNorth2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/iv_blueDiceNorth2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/iv_blueDiceNorth2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="5dp"
-                android:visibility="gone" />
-            <ImageView
-                android:id="@+id/iv_redDiceNorth3"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="5dp"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/iv_blueDiceNorth3"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="5dp"
-                android:visibility="gone" />
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/iv_redDiceNorth3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/iv_blueDiceNorth3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -162,42 +177,57 @@
                 android:textStyle="bold"
                 android:text="我"
                 android:visibility="gone" />
-            <ImageView
-                android:id="@+id/iv_redDiceSouth"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/iv_blueDiceSouth"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/iv_redDiceSouth"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/iv_blueDiceSouth"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:visibility="gone" />
-            <ImageView
-                android:id="@+id/iv_redDiceSouth2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/iv_redDiceSouth2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/iv_blueDiceSouth2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/iv_blueDiceSouth2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="5dp"
-                android:visibility="gone" />
-            <ImageView
-                android:id="@+id/iv_redDiceSouth3"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="5dp"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/iv_blueDiceSouth3"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="5dp"
-                android:visibility="gone" />
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/iv_redDiceSouth3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/iv_blueDiceSouth3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -238,42 +268,57 @@
                 android:textStyle="bold"
                 android:text="我"
                 android:visibility="gone" />
-            <ImageView
-                android:id="@+id/iv_redDiceWest"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/iv_blueDiceWest"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/iv_redDiceWest"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/iv_blueDiceWest"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:visibility="gone" />
-            <ImageView
-                android:id="@+id/iv_redDiceWest2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/iv_redDiceWest2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/iv_blueDiceWest2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/iv_blueDiceWest2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="5dp"
-                android:visibility="gone" />
-            <ImageView
-                android:id="@+id/iv_redDiceWest3"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="5dp"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/iv_blueDiceWest3"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="5dp"
-                android:visibility="gone" />
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/iv_redDiceWest3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/iv_blueDiceWest3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -315,42 +360,57 @@
                 android:textStyle="bold"
                 android:text="我"
                 android:visibility="gone" />
-            <ImageView
-                android:id="@+id/iv_redDiceEast"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/iv_blueDiceEast"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/iv_redDiceEast"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/iv_blueDiceEast"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:visibility="gone" />
-            <ImageView
-                android:id="@+id/iv_redDiceEast2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/iv_redDiceEast2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/iv_blueDiceEast2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/iv_blueDiceEast2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="5dp"
-                android:visibility="gone" />
-            <ImageView
-                android:id="@+id/iv_redDiceEast3"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="5dp"
-                android:visibility="gone"/>
-            <ImageView
-                android:id="@+id/iv_blueDiceEast3"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="5dp"
-                android:visibility="gone" />
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/iv_redDiceEast3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/iv_blueDiceEast3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="2dp"
+                    android:visibility="gone" />
+            </LinearLayout>
         </LinearLayout>
 
         <ImageView

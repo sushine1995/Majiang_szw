@@ -903,15 +903,13 @@
                 <TextView
                     android:id="@+id/tv_useDiceMethod"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:paddingBottom="5dp"
                     android:gravity="center_vertical|left"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text=""
-                    android:maxLines="1"
-                    android:maxEms="18"
-                    android:ellipsize="end" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -933,12 +931,13 @@
                 <TextView
                     android:id="@+id/tv_startCardMethod"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:paddingBottom="5dp"
                     android:gravity="center_vertical|left"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="137" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -965,7 +964,7 @@
                     android:gravity="center_vertical|left"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="137" />
+                    android:text="" />
             </LinearLayout>
 
             <wzp.project.majiang.widget.MyListView
@@ -1088,15 +1087,13 @@
                     <TextView
                         android:id="@+id/tv_wealthGodCondition"
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/tv_tip_height"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
+                        android:paddingBottom="5dp"
                         android:gravity="center_vertical|left"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text=""
-                        android:maxLines="1"
-                        android:maxEms="18"
-                        android:ellipsize="end"/>
+                        android:text=""/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -1123,7 +1120,7 @@
                         android:gravity="center_vertical|left"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="137" />
+                        android:text="" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1231,7 +1228,7 @@
                         android:gravity="center_vertical|left"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
-                        android:text="137" />
+                        android:text="" />
                 </LinearLayout>
 
                 <wzp.project.majiang.widget.MyListView

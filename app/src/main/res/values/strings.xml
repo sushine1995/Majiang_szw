@@ -469,6 +469,18 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>牌型加财神1</item>
+        <item>牌型加财神2</item>
+        <item>牌型加财神3</item>
+        <item>牌型加财神4</item>
+        <item>牌型加财神5</item>
+        <item>牌型加财神6</item>
+        <item>牌型加财神7</item>
+        <item>牌型加财神8</item>
     </string-array>
     <!--循环次数-->
     <string-array name="loop_times_arr">

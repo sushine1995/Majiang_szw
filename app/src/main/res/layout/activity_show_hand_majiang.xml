@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/relative_header"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/action_bar_height"
         android:background="@color/action_bar_bg">
         <ImageButton
             android:id="@+id/ibtn_back"

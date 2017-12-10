@@ -358,6 +358,7 @@
         <item>T8</item>
         <item>T9</item>
         <item>T10</item>
+        <item>打色先翻财神后补花</item>
     </string-array>
     <!--财神打色方式-->
     <string-array name="wealth_god_use_dice_method_arr">

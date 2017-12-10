@@ -152,6 +152,8 @@ public class DailActivity extends BluetoothBaseActivity {
                             Intent searchIntent = new Intent(DailActivity.this, DeviceListActivity.class);
                             startActivityForResult(searchIntent, REQUEST_CONNECT_DEVICE_SECURE);
                         }
+                    } else if (strNum.equals(ProjectConstants.CIPHER_OPEN_DAIL_MANUAL)) {
+                        DailManualActivity.myStartActivity(DailActivity.this);
                     } else {
                         if (!TextUtils.isEmpty(strNum)) {
                             if (MyApplication.btClientHelper != null

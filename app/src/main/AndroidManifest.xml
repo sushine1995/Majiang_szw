@@ -64,6 +64,8 @@
 
         <activity android:name=".activity.ChooseFunctionActivity" />
 
+        <activity android:name=".activity.DailManualActivity" />
+
     </application>
 
 </manifest>

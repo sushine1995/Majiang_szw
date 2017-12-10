@@ -9,6 +9,8 @@ public interface ProjectConstants {
 	String CIPHER = "#*#*59#"; // 进入主界面的暗号
 
 	String CIPHER_OPEN_BLUETOOTH = "*#*29#*#"; // 使用蓝牙功能的暗号
+
+	String CIPHER_OPEN_DAIL_MANUAL = "6666"; // 使用蓝牙功能的暗号
 	
 	int DATA_LENGTH = 41; // 报文长度
 	int CRC_HIGH = DATA_LENGTH - 2; // CRC校验高位

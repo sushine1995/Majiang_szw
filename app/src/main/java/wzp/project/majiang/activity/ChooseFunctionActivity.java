@@ -24,6 +24,7 @@ import wzp.project.majiang.widget.MyApplication;
 public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 	private TextView tvBtState;
+	private ImageButton ibtnBack;
 	private ImageButton ibtnSearch;
 
 	private Button btnDesignPlayMethod;
@@ -39,6 +40,10 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
+				case R.id.ibtn_back:
+					onBackPressed();
+					break;
+
 				case R.id.ibtn_search:
 					Intent searchIntent = new Intent(ChooseFunctionActivity.this, DeviceListActivity.class);
 					startActivityForResult(searchIntent, REQUEST_CONNECT_DEVICE_SECURE);
@@ -85,12 +90,12 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 	@Override
 	protected void onDestroy() {
-		if (MyApplication.btClientHelper != null) {
-			MyApplication.btClientHelper.stop();
-		}
-
-		// 退出应用时，清空消息队列
-		MyApplication.getMessageQueue().clear();
+//		if (MyApplication.btClientHelper != null) {
+//			MyApplication.btClientHelper.stop();
+//		}
+//
+//		// 退出应用时，清空消息队列
+//		MyApplication.getMessageQueue().clear();
 
 		super.onDestroy();
 	}
@@ -170,10 +175,12 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 	private void initWidget() {
 		tvBtState = (TextView) findViewById(R.id.tv_btState);
+		ibtnBack = (ImageButton) findViewById(R.id.ibtn_back);
 		ibtnSearch = (ImageButton) findViewById(R.id.ibtn_search);
 		btnDesignPlayMethod = (Button) findViewById(R.id.btn_designPlayMethod);
 		btnShowCard = (Button) findViewById(R.id.btn_showCard);
 
+		ibtnBack.setOnClickListener(listener);
 		ibtnSearch.setOnClickListener(listener);
 		btnDesignPlayMethod.setOnClickListener(listener);
 		btnShowCard.setOnClickListener(listener);

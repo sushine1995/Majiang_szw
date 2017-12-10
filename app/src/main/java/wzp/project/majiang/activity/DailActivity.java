@@ -134,8 +134,6 @@ public class DailActivity extends BluetoothBaseActivity {
                             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
                         } else {
                             // 蓝牙已经打开
-                            finish();
-//                            MainActivity.myStartActivity(DailActivity.this);
                             ChooseFunctionActivity.myStartActivity(DailActivity.this);
                         }
                     } else if (strNum.equals(ProjectConstants.CIPHER_OPEN_BLUETOOTH)) {
@@ -201,6 +199,18 @@ public class DailActivity extends BluetoothBaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (MyApplication.btClientHelper != null
+                && MyApplication.btClientHelper.isBluetoothConnected()) {
+            ivBtFlag.setImageResource(R.drawable.footer_left_bt_con);
+        } else {
+            ivBtFlag.setImageResource(R.drawable.footer_left);
+        }
+    }
+
+    @Override
     public void onBackPressed() {
         if (MyApplication.btClientHelper != null) {
             MyApplication.btClientHelper.stop();
@@ -218,7 +228,6 @@ public class DailActivity extends BluetoothBaseActivity {
             case REQUEST_ENABLE_BT:
                 if (resultCode == Activity.RESULT_OK) {
                     if (edtNum.getText().toString().equals(ProjectConstants.CIPHER)) {
-                        finish();
                         ChooseFunctionActivity.myStartActivity(DailActivity.this);
                     } else if (edtNum.getText().toString().equals(ProjectConstants.CIPHER_OPEN_BLUETOOTH)) {
                         Intent searchIntent = new Intent(DailActivity.this, DeviceListActivity.class);
@@ -372,7 +381,7 @@ public class DailActivity extends BluetoothBaseActivity {
         // Get the device MAC address
         String address = data.getExtras().getString(ProjectConstants.EXTRA_DEVICE_ADDRESS);
         macAddr = address; // 记录mac地址，当蓝牙连接成功后，将mac地址保存至SharedPreferences
-       connectDevice(address);
+        connectDevice(address);
     }
 
     private void connectDevice(String address) {

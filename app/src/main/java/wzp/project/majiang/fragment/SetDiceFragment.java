@@ -37,6 +37,8 @@ public class SetDiceFragment extends Fragment {
     private CheckBox cbZhongFaBaiAsColorCard;
     private CheckBox cbAllWindCardAsColorCard;
     private CheckBox cbBankerAndLastPlayerChangePosition;
+    private CheckBox cbBaidaAsFlowerCard;
+    private CheckBox cbDabaipiAsFlowerCard;
     private RadioGroup rgWealthGodMode;
     private LinearLayout linearWealthGodMode;
     private ListOptionButton btnWealthGodStartCardMethod;
@@ -58,7 +60,10 @@ public class SetDiceFragment extends Fragment {
     private CheckBox cb13579;
     private CheckBox cbEastSouthWestNorthOrZhongFaBaiBusuandacha;
     private CheckBox cbWealthGodIsEastWind;
-
+    private CheckBox cbRedFlowerAsFixedWealthGod;
+    private CheckBox cbBlackFlowerAsFixedWealthGod;
+    private CheckBox cbBaidaAsFixedWealthGod;
+    private CheckBox cbDabaipiAsFixedWealthGod;
 
     private DiceParameter diceParameter;
 
@@ -96,6 +101,8 @@ public class SetDiceFragment extends Fragment {
         cbZhongFaBaiAsColorCard = (CheckBox) view.findViewById(R.id.cb_zhongFaBaiAsColorCard);
         cbAllWindCardAsColorCard = (CheckBox) view.findViewById(R.id.cb_allWindCardAsColorCard);
         cbBankerAndLastPlayerChangePosition = (CheckBox) view.findViewById(R.id.cb_bankerAndLastPlayerChangePosition);
+        cbBaidaAsFlowerCard = (CheckBox) view.findViewById(R.id.cb_baidaAsFlowerCard);
+        cbDabaipiAsFlowerCard = (CheckBox) view.findViewById(R.id.cb_dabaipiAsFlowerCard);
         rgWealthGodMode = (RadioGroup) view.findViewById(R.id.rg_wealthGodMode);
         linearWealthGodMode = (LinearLayout) view.findViewById(R.id.linear_wealthGodMode);
         btnWealthGodStartCardMethod = (ListOptionButton) view.findViewById(R.id.btn_wealthGodStartCardMethod);
@@ -117,6 +124,11 @@ public class SetDiceFragment extends Fragment {
         cb13579 = (CheckBox) view.findViewById(R.id.cb_13579);
         cbEastSouthWestNorthOrZhongFaBaiBusuandacha = (CheckBox) view.findViewById(R.id.cb_eastSouthWestNorthOrZhongFaBaiBusuandacha);
         cbWealthGodIsEastWind = (CheckBox) view.findViewById(R.id.cb_wealthGodIsEastWind);
+        cbRedFlowerAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_redFlowerAsFixedWealthGod);
+        cbBlackFlowerAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_blackFlowerAsFixedWealthGod);
+        cbBaidaAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_baiDaAsFixedWealthGod);
+        cbBaidaAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_baiDaAsFixedWealthGod);
+        cbDabaipiAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_daBaiPiAsFixedWealthGod);
 
 
         btnDiceNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -177,6 +189,18 @@ public class SetDiceFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 diceParameter.setBankerAndLastPlayerChangePosition(isChecked);
+            }
+        });
+        cbBaidaAsFlowerCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setBaidaAsFlowerCard(isChecked);
+            }
+        });
+        cbDabaipiAsFlowerCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setDabaipiAsFlowerCard(isChecked);
             }
         });
         rgWealthGodMode.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -305,6 +329,30 @@ public class SetDiceFragment extends Fragment {
                 diceParameter.setWealthGodIsEastWind(isChecked);
             }
         });
+        cbRedFlowerAsFixedWealthGod.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setRedFlowerAsFixedWealthGod(isChecked);
+            }
+        });
+        cbBlackFlowerAsFixedWealthGod.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setBlackFlowerAsFixedWealthGod(isChecked);
+            }
+        });
+        cbBaidaAsFixedWealthGod.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setBaidaAsFixedWealthGod(isChecked);
+            }
+        });
+        cbDabaipiAsFixedWealthGod.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setDabaipiAsFixedWealthGod(isChecked);
+            }
+        });
 
 
         // 初始化控件值
@@ -318,6 +366,8 @@ public class SetDiceFragment extends Fragment {
         cbZhongFaBaiAsColorCard.setChecked(diceParameter.isZhongFaBaiAsColorCard());
         cbAllWindCardAsColorCard.setChecked(diceParameter.isAllWindCardAsColorCard());
         cbBankerAndLastPlayerChangePosition.setChecked(diceParameter.isBankerAndLastPlayerChangePosition());
+        cbBaidaAsFlowerCard.setChecked(diceParameter.isBaidaAsFlowerCard());
+        cbDabaipiAsFlowerCard.setChecked(diceParameter.isDabaipiAsFlowerCard());
         rgWealthGodMode.check(diceParameter.isOpenWealthGodMode() ? R.id.rb_open : R.id.rb_close);
         btnWealthGodStartCardMethod.setSelectedItemPosition(diceParameter.getWealthGodStartCardMethod());
         btnWealthGodUseDiceMethod.setSelectedItemPosition(diceParameter.getWealthGodUseDiceMethod());
@@ -338,6 +388,10 @@ public class SetDiceFragment extends Fragment {
         cb13579.setChecked(diceParameter.is13579());
         cbEastSouthWestNorthOrZhongFaBaiBusuandacha.setChecked(diceParameter.isEastSouthWestNorthOrZhongFaBaiBusuandacha());
         cbWealthGodIsEastWind.setChecked(diceParameter.isWealthGodIsEastWind());
+        cbRedFlowerAsFixedWealthGod.setChecked(diceParameter.isRedFlowerAsFixedWealthGod());
+        cbBlackFlowerAsFixedWealthGod.setChecked(diceParameter.isBlackFlowerAsFixedWealthGod());
+        cbBaidaAsFixedWealthGod.setChecked(diceParameter.isBaidaAsFixedWealthGod());
+        cbDabaipiAsFixedWealthGod.setChecked(diceParameter.isDabaipiAsFixedWealthGod());
     }
 
 }

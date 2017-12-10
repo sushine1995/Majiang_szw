@@ -36,6 +36,12 @@ public class DiceParameter {
     private boolean is13579;
     private boolean isEastSouthWestNorthOrZhongFaBaiBusuandacha; // 东南西北/中发白不算大岔
     private boolean isWealthGodIsEastWind; // 翻花牌，财神为东风
+    private boolean isRedFlowerAsFixedWealthGod;
+    private boolean isBlackFlowerAsFixedWealthGod;
+    private boolean isBaidaAsFixedWealthGod;
+    private boolean isDabaipiAsFixedWealthGod;
+    private boolean isBaidaAsFlowerCard;
+    private boolean isDabaipiAsFlowerCard;
 
     public int getDiceNum() {
         return diceNum;
@@ -275,5 +281,53 @@ public class DiceParameter {
 
     public void setWealthGodIsEastWind(boolean wealthGodIsEastWind) {
         isWealthGodIsEastWind = wealthGodIsEastWind;
+    }
+
+    public void setRedFlowerAsFixedWealthGod(boolean redFlowerAsFixedWealthGod) {
+        isRedFlowerAsFixedWealthGod = redFlowerAsFixedWealthGod;
+    }
+
+    public void setBlackFlowerAsFixedWealthGod(boolean blackFlowerAsFixedWealthGod) {
+        isBlackFlowerAsFixedWealthGod = blackFlowerAsFixedWealthGod;
+    }
+
+    public void setBaidaAsFixedWealthGod(boolean baidaAsFixedWealthGod) {
+        isBaidaAsFixedWealthGod = baidaAsFixedWealthGod;
+    }
+
+    public void setDabaipiAsFixedWealthGod(boolean dabaipiAsFixedWealthGod) {
+        isDabaipiAsFixedWealthGod = dabaipiAsFixedWealthGod;
+    }
+
+    public void setBaidaAsFlowerCard(boolean baidaAsFlowerCard) {
+        isBaidaAsFlowerCard = baidaAsFlowerCard;
+    }
+
+    public void setDabaipiAsFlowerCard(boolean dabaipiAsFlowerCard) {
+        isDabaipiAsFlowerCard = dabaipiAsFlowerCard;
+    }
+
+    public boolean isRedFlowerAsFixedWealthGod() {
+        return isRedFlowerAsFixedWealthGod;
+    }
+
+    public boolean isBlackFlowerAsFixedWealthGod() {
+        return isBlackFlowerAsFixedWealthGod;
+    }
+
+    public boolean isBaidaAsFixedWealthGod() {
+        return isBaidaAsFixedWealthGod;
+    }
+
+    public boolean isDabaipiAsFixedWealthGod() {
+        return isDabaipiAsFixedWealthGod;
+    }
+
+    public boolean isBaidaAsFlowerCard() {
+        return isBaidaAsFlowerCard;
+    }
+
+    public boolean isDabaipiAsFlowerCard() {
+        return isDabaipiAsFlowerCard;
     }
 }

@@ -388,6 +388,12 @@ public class ShowPlayMethodFragment extends Fragment {
         if (dp.isBankerAndLastPlayerChangePosition()) {
             diceParamList.add("胡牌庄家与上家换位置");
         }
+        if (dp.isBaidaAsFlowerCard()) {
+            diceParamList.add("百搭为花牌");
+        }
+        if (dp.isDabaipiAsFlowerCard()) {
+            diceParamList.add("大白皮为花牌");
+        }
         showDiceParamAdapter.notifyDataSetChanged();
         if (diceParamList.size() == 0) {
             lvDiceParameter.setVisibility(View.GONE);
@@ -439,6 +445,18 @@ public class ShowPlayMethodFragment extends Fragment {
         }
         if (dp.isWealthGodIsEastWind()) {
             wealthGodParamList.add("翻花牌，财神为东风");
+        }
+        if (dp.isRedFlowerAsFixedWealthGod()) {
+            wealthGodParamList.add("红花为固定财神");
+        }
+        if (dp.isBlackFlowerAsFixedWealthGod()) {
+            wealthGodParamList.add("黑花为固定财神");
+        }
+        if (dp.isBaidaAsFixedWealthGod()) {
+            wealthGodParamList.add("百搭为固定财神");
+        }
+        if (dp.isDabaipiAsFixedWealthGod()) {
+            wealthGodParamList.add("大白皮为固定财神");
         }
         showWealthGodParamAdapter.notifyDataSetChanged();
         if (wealthGodParamList.size() == 0) {

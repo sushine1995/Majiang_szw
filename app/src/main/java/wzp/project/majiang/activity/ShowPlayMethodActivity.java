@@ -235,15 +235,15 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
                                         k++;
                                     }
-                                    // 备用，4个字节
-                                    sendMsg[i++] = (byte) 0x00;
-                                    sendMsg[i++] = (byte) 0x00;
+                                    // 备用，2个字节
                                     sendMsg[i++] = (byte) 0x00;
                                     sendMsg[i++] = (byte) 0x00;
 
 
                                     // 色子参数
                                     dp = parameter.getDiceParameter();
+                                    sendMsg[i++] = dp.isBaidaAsFlowerCard() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isDabaipiAsFlowerCard() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = (byte) (dp.getDiceNum() + 1);
                                     sendMsg[i++] = (byte) (dp.getUseDiceTimes() + 1);
                                     sendMsg[i++] = (byte) dp.getUseDiceMethod();
@@ -274,12 +274,12 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                                     sendMsg[i++] = dp.is13579() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = dp.isEastSouthWestNorthOrZhongFaBaiBusuandacha() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = dp.isWealthGodIsEastWind() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isRedFlowerAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isBlackFlowerAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isBaidaAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = dp.isDabaipiAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
 
-                                    // 备用，5个字节
-                                    sendMsg[i++] = (byte) 0x00;
-                                    sendMsg[i++] = (byte) 0x00;
-                                    sendMsg[i++] = (byte) 0x00;
-                                    sendMsg[i++] = (byte) 0x00;
+                                    // 备用，1个字节
                                     sendMsg[i++] = (byte) 0x00;
 
                                     Log.d(LOG_TAG, "i = " + i + "; len = " + sendMsg.length);

@@ -245,6 +245,34 @@
             android:text="胡牌庄家与上家换位置"
             android:background="@color/white"/>
 
+        <CheckBox
+            android:id="@+id/cb_baidaAsFlowerCard"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tv_tip_height"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_1"
+            android:layout_marginRight="@dimen/basic_method_horizontal_interval_1"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_m"
+            android:textColor="@color/black"
+            android:text="百搭为花牌"
+            android:background="@color/white"/>
+
+        <CheckBox
+            android:id="@+id/cb_dabaipiAsFlowerCard"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tv_tip_height"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="@dimen/basic_method_horizontal_interval_1"
+            android:layout_marginRight="@dimen/basic_method_horizontal_interval_1"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_m"
+            android:textColor="@color/black"
+            android:text="大白皮为花牌"
+            android:background="@color/white"/>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/separator_line_height2"
@@ -285,7 +313,7 @@
 
         <LinearLayout
             android:id="@+id/linear_wealthGodMode"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <LinearLayout
@@ -719,6 +747,72 @@
                 android:textSize="@dimen/text_size_m"
                 android:textColor="@color/black"
                 android:text="翻花牌，财神为东风" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:orientation="horizontal"
+                android:background="@color/white">
+                <CheckBox
+                    android:id="@+id/cb_redFlowerAsFixedWealthGod"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="红花为固定财神" />
+
+                <CheckBox
+                    android:id="@+id/cb_blackFlowerAsFixedWealthGod"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="黑花为固定财神" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:orientation="horizontal"
+                android:background="@color/white">
+                <CheckBox
+                    android:id="@+id/cb_baiDaAsFixedWealthGod"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="百搭为固定财神" />
+
+                <CheckBox
+                    android:id="@+id/cb_daBaiPiAsFixedWealthGod"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="大白皮为固定财神" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -397,8 +397,13 @@ public class DailActivity extends BluetoothBaseActivity {
     protected void onBluetoothDataReceived(byte[] recvData) {
         if (CalculateUtil.byteToInt(recvData[1]) == 0xa1
                 && CalculateUtil.byteToInt(recvData[2]) == 0x01) {
-            edtNum.setText("");
             vibrator.vibrate(200);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    edtNum.setText("");
+                }
+            });
         }
     }
 }

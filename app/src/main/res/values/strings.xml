@@ -348,6 +348,8 @@
         <item>固定起牌方位的第一张牌翻财神</item>
         <item>起牌上家倒数第一张为财神</item>
         <item>跳牌端补花后第一张为财神</item>
+        <item>打色先翻财神后补花</item>
+        <item>起牌上家方位顺数打色总定财神</item>
         <item>T1</item>
         <item>T2</item>
         <item>T3</item>
@@ -358,8 +360,6 @@
         <item>T8</item>
         <item>T9</item>
         <item>T10</item>
-        <item>打色先翻财神后补花</item>
-        <item>起牌上家方位顺数打色总定财神</item>
     </string-array>
     <!--财神打色方式-->
     <string-array name="wealth_god_use_dice_method_arr">

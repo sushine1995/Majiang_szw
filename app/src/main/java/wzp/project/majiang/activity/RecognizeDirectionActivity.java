@@ -46,6 +46,7 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 						sendMsg[1] = (byte) 0xd1;
 						sendMsg[2] = (byte) 0x01;
 						sendMsg[3] = (byte) btnEmptyMode.getSelectedItemPosition();
+						CalculateUtil.analyseMessage(sendMsg);
 						byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SEND_MSG_LENGTH - 2);
 						sendMsg[ProjectConstants.CRC_HIGH] = crc[0];
 						sendMsg[ProjectConstants.CRC_LOW] = crc[1];
@@ -61,6 +62,7 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 						sendMsg[1] = (byte) 0xd2;
 						sendMsg[2] = (byte) 0x01;
 						sendMsg[3] = (byte) btnEmptyMode.getSelectedItemPosition();
+						CalculateUtil.analyseMessage(sendMsg);
 						byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SEND_MSG_LENGTH - 2);
 						sendMsg[ProjectConstants.CRC_HIGH] = crc[0];
 						sendMsg[ProjectConstants.CRC_LOW] = crc[1];
@@ -76,6 +78,7 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 						sendMsg[1] = (byte) 0xd3;
 						sendMsg[2] = (byte) 0x01;
 						sendMsg[3] = (byte) btnEmptyMode.getSelectedItemPosition();
+						CalculateUtil.analyseMessage(sendMsg);
 						byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SEND_MSG_LENGTH - 2);
 						sendMsg[ProjectConstants.CRC_HIGH] = crc[0];
 						sendMsg[ProjectConstants.CRC_LOW] = crc[1];
@@ -91,6 +94,7 @@ public class RecognizeDirectionActivity extends BluetoothBaseActivity {
 						sendMsg[1] = (byte) 0xd4;
 						sendMsg[2] = (byte) 0x01;
 						sendMsg[3] = (byte) btnEmptyMode.getSelectedItemPosition();
+						CalculateUtil.analyseMessage(sendMsg);
 						byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SEND_MSG_LENGTH - 2);
 						sendMsg[ProjectConstants.CRC_HIGH] = crc[0];
 						sendMsg[ProjectConstants.CRC_LOW] = crc[1];

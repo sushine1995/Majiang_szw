@@ -3,7 +3,12 @@ package wzp.project.majiang.activity.base;
 import android.os.Bundle;
 import android.util.Log;
 
+import wzp.project.majiang.util.CRC16;
+import wzp.project.majiang.util.CalculateUtil;
 import wzp.project.majiang.widget.MyApplication;
+
+import static wzp.project.majiang.constant.ProjectConstants.CRC_HIGH;
+import static wzp.project.majiang.constant.ProjectConstants.CRC_LOW;
 
 public abstract class BluetoothBaseActivity extends BaseActivity {
 
@@ -47,6 +52,42 @@ public abstract class BluetoothBaseActivity extends BaseActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+	}
+
+	/**
+	 * 发送报文
+	 *
+	 * @param sendData 报文
+	 * @param isNeedCrc 是否需要对报文进行CRC校验；
+	 * 					若为false，表示此报文已经包含CRC校验位，是一条完整的报文；
+	 * 					若为true，表示此报文未包含CRC校验位，需要进行校验并添加校验结果；
+	 */
+	protected void sendMsg(byte[] sendData, boolean isNeedCrc) {
+		if (null == sendData
+				|| sendData.length < 2) {
+			throw new IllegalArgumentException("sendData数组不能为空，且长度至少为2");
+		}
+
+		if (isNeedCrc) {
+			byte[] crc = CRC16.getCrc16(sendData, sendData.length - 2);
+			sendData[CRC_HIGH] = crc[0];
+			sendData[CRC_LOW] = crc[1];
+		}
+
+		CalculateUtil.analyseMessage(sendData);
+		if (MyApplication.btClientHelper != null) {
+			// TODO 后期需要抛出并处理异常
+			MyApplication.btClientHelper.write(sendData);
+		}
+	}
+
+	/**
+	 * 发送报文，默认需要进行CRC校验
+	 *
+	 * @param sendData 报文
+	 */
+	protected void sendMsg(byte[] sendData) {
+		sendMsg(sendData, true);
 	}
 
 	protected abstract void onBluetoothDataReceived(final byte[] recvData);

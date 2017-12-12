@@ -440,6 +440,7 @@ public class BluetoothClientHelper {
 									Log.i(TAG, res.toString());
 
 									synchronized (MyApplication.getMessageQueue()) {
+										CalculateUtil.analyseMessage(singleData);
 										MyApplication.getMessageQueue().add(singleData);
 									}
 

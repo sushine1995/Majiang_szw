@@ -282,6 +282,8 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                                     // 备用，1个字节
                                     sendMsg[i++] = (byte) 0x00;
 
+                                    CalculateUtil.analyseMessage(sendMsg);
+
                                     Log.d(LOG_TAG, "i = " + i + "; len = " + sendMsg.length);
 //                            Log.d(LOG_TAG, Arrays.toString(sendMsg));
 

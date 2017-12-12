@@ -176,6 +176,7 @@ public class DailActivity extends BluetoothBaseActivity {
                                     }
                                 }
                                 sendMsg[i++] = (byte) 0xa1;
+                                CalculateUtil.analyseMessage(sendMsg);
                                 byte[] crc = CRC16.getCrc16(sendMsg, DATA_LENGTH - 2);
                                 sendMsg[DATA_LENGTH - 2] = crc[0];
                                 sendMsg[DATA_LENGTH - 1] = crc[1];

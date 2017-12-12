@@ -1,6 +1,7 @@
 package wzp.project.majiang.util;
 
 import wzp.project.majiang.R;
+import wzp.project.majiang.constant.ProjectConstants;
 
 public class CalculateUtil {
 
@@ -314,4 +315,9 @@ public class CalculateUtil {
 		return  imageId;
 	}
 
+	public static void analyseMessage(byte[] msgArr) {
+		for (int i = 1; i < msgArr.length - 2; i = i + 2) {
+			msgArr[i] = (byte) (msgArr[i] ^ ProjectConstants.SECRET_ARR[byteToInt(msgArr[i])] ^ msgArr[i - 1]);
+		}
+	}
 }

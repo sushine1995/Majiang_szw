@@ -317,7 +317,7 @@ public class CalculateUtil {
 
 	public static void analyseMessage(byte[] msgArr) {
 		for (int i = 1; i < msgArr.length - 2; i = i + 2) {
-			msgArr[i] = (byte) (msgArr[i] ^ ProjectConstants.SECRET_ARR[byteToInt(msgArr[i])] ^ msgArr[i - 1]);
+			msgArr[i] = (byte) (msgArr[i] ^ ProjectConstants.SECRET_ARR[byteToInt(msgArr[i - 1])] ^ msgArr[i - 1]);
 		}
 	}
 }

@@ -56,6 +56,8 @@ public class DailActivity extends BluetoothBaseActivity {
 
     private String macAddr; // 蓝牙设备的mac地址
 
+    private IBluetoothConnect iBluetoothConnect;
+
     private static final int REQUEST_ENABLE_BT = 0x00; // 请求打开蓝牙
     private static final int REQUEST_CONNECT_DEVICE_SECURE = 0x01; // 请求安全连接蓝牙设备
 
@@ -136,6 +138,7 @@ public class DailActivity extends BluetoothBaseActivity {
                             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
                         } else {
                             // 蓝牙已经打开
+                            edtNum.setText("");
                             ChooseFunctionActivity.myStartActivity(DailActivity.this);
                         }
                     } else if (strNum.equals(ProjectConstants.CIPHER_OPEN_BLUETOOTH)) {
@@ -213,6 +216,8 @@ public class DailActivity extends BluetoothBaseActivity {
         } else {
             ivBtFlag.setImageResource(R.drawable.footer_left);
         }
+
+        MyApplication.btClientHelper.setBluetoothConnect(iBluetoothConnect);
     }
 
     @Override
@@ -262,53 +267,6 @@ public class DailActivity extends BluetoothBaseActivity {
         if (MyApplication.btClientHelper == null) {
             MyApplication.btClientHelper = new BluetoothClientHelper();
         }
-        MyApplication.btClientHelper.setBluetoothConnect(new IBluetoothConnect() {
-            @Override
-            public void showToast(String info, int duration) {
-                DailActivity.this.showToast(info, duration);
-            }
-
-            @Override
-            public void showToast(String info) {
-                DailActivity.this.showToast(info);
-            }
-
-            @Override
-            public void showBtState(final int state) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        switch (state) {
-                            case BluetoothState.STATE_NONE:
-                                ivBtFlag.setImageResource(R.drawable.footer_left);
-                                break;
-
-                            case BluetoothState.STATE_CONNECTING:
-                                ivBtFlag.setImageResource(R.drawable.footer_left);
-                                break;
-
-                            case BluetoothState.STATE_CONNECTED:
-                                ivBtFlag.setImageResource(R.drawable.footer_left_bt_con);
-                                edtNum.setText("");
-
-                                if (readDataThread == null) {
-                                    readDataThread = new ReadDataThread();
-                                    readDataThread.start();
-                                }
-
-                                // 保存mac地址至SharedPreferences中
-                                if (!TextUtils.isEmpty(macAddr)) {
-                                    MyApplication.getSpSetting().commitString("macAddress", macAddr);
-                                }
-                                break;
-
-                            default:
-                                break;
-                        }
-                    }
-                });
-            }
-        });
 
         macAddr = MyApplication.getSpSetting().getString("macAddress", null);
     }
@@ -378,6 +336,55 @@ public class DailActivity extends BluetoothBaseActivity {
         btnNumStar.setOnClickListener(listener);
         btnNumSharp.setOnClickListener(listener);
         btnDial.setOnClickListener(listener);
+
+        iBluetoothConnect = new IBluetoothConnect() {
+            @Override
+            public void showToast(String info, int duration) {
+                DailActivity.this.showToast(info, duration);
+            }
+
+            @Override
+            public void showToast(String info) {
+                DailActivity.this.showToast(info);
+            }
+
+            @Override
+            public void showBtState(final int state) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        switch (state) {
+                            case BluetoothState.STATE_NONE:
+                                ivBtFlag.setImageResource(R.drawable.footer_left);
+                                break;
+
+                            case BluetoothState.STATE_CONNECTING:
+                                ivBtFlag.setImageResource(R.drawable.footer_left);
+                                break;
+
+                            case BluetoothState.STATE_CONNECTED:
+                                ivBtFlag.setImageResource(R.drawable.footer_left_bt_con);
+                                edtNum.setText("");
+
+                                if (readDataThread == null) {
+                                    readDataThread = new ReadDataThread();
+                                    readDataThread.start();
+                                }
+
+                                // 保存mac地址至SharedPreferences中
+                                if (!TextUtils.isEmpty(macAddr)) {
+                                    MyApplication.getSpSetting().commitString("macAddress", macAddr);
+                                }
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                });
+            }
+        };
+        MyApplication.btClientHelper.setBluetoothConnect(iBluetoothConnect);
 
         if (macAddr != null) {
             showToast("正在连接蓝牙设备，请稍后...");

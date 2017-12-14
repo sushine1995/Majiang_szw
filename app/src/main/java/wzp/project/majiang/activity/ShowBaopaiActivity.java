@@ -91,7 +91,16 @@ public class ShowBaopaiActivity extends BluetoothBaseActivity {
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				tvId.setText(Integer.toHexString(CalculateUtil.byteToInt(copyRecvData[1])));
+				String strCode = "";
+				int code = CalculateUtil.byteToInt(copyRecvData[1]);
+				if (code == 0xc1) {
+					strCode = "多牌";
+				} else if (code == 0xc2) {
+					strCode = "少牌";
+				} else {
+					strCode = Integer.toHexString(code);
+				}
+				tvId.setText(strCode);
 
 				int num = CalculateUtil.byteToInt(copyRecvData[2]);
 				// num最多不能超过17

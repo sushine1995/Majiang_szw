@@ -299,13 +299,18 @@
         <item>第一次色定位起牌，第一次色起财神</item>
         <item>一次色定位，一/二次色相加起牌（打两次色子）</item>
         <item>第一次色定位起牌，二次色拿财神（打两次色子）</item>
-        <item>一次色定位、起财神；二次色与一次色相加起牌</item>
+        <item>一次色定位、順数起财神；一次色与二次色相加起牌</item>
         <item>一次色定位，一/二次色相加起牌，三次色拿财神</item>
         <item>一次色定位，一/二次色相加起牌，二次色倒数拿财神</item>
-        <item>一次色定位顺数拿财神，（起财神的下家）二次色起牌</item>
+        <item>一次色定位順数拿财神，（起财神方位的上家），二次色起牌</item>
         <item>一次色定位，二次色起牌</item>
         <item>一次色定二次色方位，二次色定位，一二次色相加起牌</item>
         <item>一次色定二次色方位，二次色定位、起牌</item>
+        <item>D1</item>
+        <item>D2</item>
+        <item>D3</item>
+        <item>D4</item>
+        <item>D5</item>
     </string-array>
     <!--第一次色定位、起牌方式-->
     <string-array name="first_dice_position_send_card_method_arr">
@@ -342,7 +347,7 @@
         <item>跳跃翻牌值</item>
         <item>倒数墩数翻牌值</item>
         <item>打色翻牌值</item>
-        <item>起牌上家方位，打色总定财神</item>
+        <item>起牌方位下家，打色总数倒数翻财神</item>
         <item>补花后翻财神</item>
         <item>固定财神</item>
         <item>固定起牌方位的第一张牌翻财神</item>
@@ -529,6 +534,13 @@
         <item>三色全（不缺门）</item>
         <item>缺一色（川）</item>
         <item>风头，三连一句话</item>
+        <item>卡5星</item>
+        <item>一九万</item>
+        <item>特1</item>
+        <item>特2</item>
+        <item>特3</item>
+        <item>特4</item>
+        <item>特5</item>
     </string-array>
     <!--玩法名称-->
     <string-array name="play_method_name_arr">

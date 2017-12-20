@@ -12,11 +12,11 @@ public interface ProjectConstants {
 
 	String CIPHER_OPEN_DAIL_MANUAL = "6666"; // 使用蓝牙功能的暗号
 	
-	int DATA_LENGTH = 41; // 报文长度
+	int DATA_LENGTH = 45; // 报文长度
 	int CRC_HIGH = DATA_LENGTH - 2; // CRC校验高位
 	int CRC_LOW = DATA_LENGTH - 1; // CRC校验低位
 
-	int SEND_MSG_LENGTH = 41;
+	int SEND_MSG_LENGTH = 45;
 	int SET_PARAMETER_MSG_LENGTH = 214; // 设置参数的报文长度
 
 	int MAX_MAJIANG_NUM = 36;

@@ -173,9 +173,11 @@ public class DailActivity extends BluetoothBaseActivity {
                                     ch = strNum.charAt(j);
                                     if (ch >= '0' && ch <= '9') {
                                         sendMsg[i++] = (byte) (ch - '0');
-                                        if (i == (DATA_LENGTH - 3)) {
-                                            break;
-                                        }
+                                    } else {
+                                        sendMsg[i++] = (byte) ch;
+                                    }
+                                    if (i == (DATA_LENGTH - 3)) {
+                                        break;
                                     }
                                 }
                                 sendMsg[i++] = (byte) 0xa1;

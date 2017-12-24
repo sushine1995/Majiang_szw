@@ -355,8 +355,8 @@
         <item>跳牌端补花后第一张为财神</item>
         <item>打色先翻财神后补花</item>
         <item>起牌上家方位顺数打色总定财神</item>
-        <item>T1</item>
-        <item>T2</item>
+        <item>数顺翻财神，翻牌值起牌</item>
+        <item>比大小</item>
         <item>T3</item>
         <item>T4</item>
         <item>T5</item>
@@ -469,6 +469,8 @@
         <item>上张</item>
         <item>下张</item>
         <item>上张和下张</item>
+        <item>单数上双数下</item>
+        <item>上财神下花牌</item>
     </string-array>
     <!--财神优先个数-->
     <string-array name="wealth_god_precedence_num_arr">
@@ -536,8 +538,8 @@
         <item>风头，三连一句话</item>
         <item>卡5星</item>
         <item>一九万</item>
-        <item>特1</item>
-        <item>特2</item>
+        <item>东南西北算杠</item>
+        <item>三一三九中发白</item>
         <item>特3</item>
         <item>特4</item>
         <item>特5</item>

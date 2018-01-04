@@ -42,6 +42,7 @@ public class DiceParameter {
     private boolean isDabaipiAsFixedWealthGod;
     private boolean isBaidaAsFlowerCard;
     private boolean isDabaipiAsFlowerCard;
+    private boolean isZhongFaBaiWealthGodAsEastWind;
 
     public int getDiceNum() {
         return diceNum;
@@ -329,5 +330,13 @@ public class DiceParameter {
 
     public boolean isDabaipiAsFlowerCard() {
         return isDabaipiAsFlowerCard;
+    }
+
+    public boolean isZhongFaBaiWealthGodAsEastWind() {
+        return isZhongFaBaiWealthGodAsEastWind;
+    }
+
+    public void setZhongFaBaiWealthGodAsEastWind(boolean zhongFaBaiWealthGodAsEastWind) {
+        isZhongFaBaiWealthGodAsEastWind = zhongFaBaiWealthGodAsEastWind;
     }
 }

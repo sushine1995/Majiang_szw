@@ -276,10 +276,22 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                                     sendMsg[i++] = dp.isWealthGodIsEastWind() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = dp.isRedFlowerAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = dp.isBlackFlowerAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
-                                    sendMsg[i++] = dp.isBaidaAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
-                                    sendMsg[i++] = dp.isDabaipiAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+//                                    sendMsg[i++] = dp.isBaidaAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+//                                    sendMsg[i++] = dp.isDabaipiAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
+                                    byte byteParam = 0x00;
+                                    if (dp.isBaidaAsFixedWealthGod()) {
+                                        byteParam |= 0x01;
+                                    }
+                                    if (dp.isDabaipiAsFixedWealthGod()) {
+                                        byteParam |= 0x02;
+                                    }
+                                    if (dp.isZhongFaBaiWealthGodAsEastWind()) {
+                                        byteParam |= 0x04;
+                                    }
+                                    sendMsg[i++] = byteParam;
 
-                                    // 备用，1个字节
+                                    // 备用，2个字节
+                                    sendMsg[i++] = (byte) 0x00;
                                     sendMsg[i++] = (byte) 0x00;
 
                                     CalculateUtil.analyseMessage(sendMsg);

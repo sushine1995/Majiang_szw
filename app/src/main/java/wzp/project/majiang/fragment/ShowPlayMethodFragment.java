@@ -458,6 +458,9 @@ public class ShowPlayMethodFragment extends Fragment {
         if (dp.isDabaipiAsFixedWealthGod()) {
             wealthGodParamList.add("大白皮为固定财神");
         }
+        if (dp.isZhongFaBaiWealthGodAsEastWind()) {
+            wealthGodParamList.add("翻中发白财神为东风");
+        }
         showWealthGodParamAdapter.notifyDataSetChanged();
         if (wealthGodParamList.size() == 0) {
             lvWealthGodParam.setVisibility(View.GONE);

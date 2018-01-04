@@ -64,6 +64,7 @@ public class SetDiceFragment extends Fragment {
     private CheckBox cbBlackFlowerAsFixedWealthGod;
     private CheckBox cbBaidaAsFixedWealthGod;
     private CheckBox cbDabaipiAsFixedWealthGod;
+    private CheckBox cbGetZhongFaBaiWealthGodAsEastWind;
 
     private DiceParameter diceParameter;
 
@@ -129,6 +130,7 @@ public class SetDiceFragment extends Fragment {
         cbBaidaAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_baiDaAsFixedWealthGod);
         cbBaidaAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_baiDaAsFixedWealthGod);
         cbDabaipiAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_daBaiPiAsFixedWealthGod);
+        cbGetZhongFaBaiWealthGodAsEastWind = (CheckBox) view.findViewById(R.id.cb_getZhongFaBaiWealthGodAsEastWind);
 
 
         btnDiceNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -353,6 +355,12 @@ public class SetDiceFragment extends Fragment {
                 diceParameter.setDabaipiAsFixedWealthGod(isChecked);
             }
         });
+        cbGetZhongFaBaiWealthGodAsEastWind.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                diceParameter.setZhongFaBaiWealthGodAsEastWind(isChecked);
+            }
+        });
 
 
         // 初始化控件值
@@ -392,6 +400,7 @@ public class SetDiceFragment extends Fragment {
         cbBlackFlowerAsFixedWealthGod.setChecked(diceParameter.isBlackFlowerAsFixedWealthGod());
         cbBaidaAsFixedWealthGod.setChecked(diceParameter.isBaidaAsFixedWealthGod());
         cbDabaipiAsFixedWealthGod.setChecked(diceParameter.isDabaipiAsFixedWealthGod());
+        cbGetZhongFaBaiWealthGodAsEastWind.setChecked(diceParameter.isZhongFaBaiWealthGodAsEastWind());
     }
 
 }

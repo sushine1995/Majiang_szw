@@ -158,7 +158,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
                                 tvBtState.setText("已连接：" + MyApplication
                                         .btClientHelper.getRemoteDevName());
 
-                                if (readDataThread == null) {
+                                if (readDataThread == null && isFront) {
                                     readDataThread = new ReadDataThread();
                                     readDataThread.start();
                                 }

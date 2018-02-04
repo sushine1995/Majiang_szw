@@ -9,6 +9,8 @@ public class BaseActivity extends AppCompatActivity {
 
 	private static final String tag = "BaseActivity";
 
+	protected boolean isFront; // 记录Activity是否显示在前台
+
 	protected final String LOG_TAG = this.getClass().getSimpleName();
 
 	@Override
@@ -18,6 +20,17 @@ public class BaseActivity extends AppCompatActivity {
 		Log.d(tag, this.getClass().getSimpleName());
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		isFront = true;
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		isFront = false;
+	}
 
 	public void showToast(final String info) {
 		runOnUiThread(new Runnable() {

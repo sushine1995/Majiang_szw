@@ -35,7 +35,7 @@ public class BluetoothClientHelper {
 	
 	
 
-	private BluetoothAdapter bluetoothAdapterr;
+	private BluetoothAdapter bluetoothAdapter;
 	private IBluetoothConnect bluetoothConnect;
 
 	private ConnectThread connectThread;
@@ -43,18 +43,20 @@ public class BluetoothClientHelper {
 
 	private int curBtState; 	// 当前蓝牙状态
 	private String remoteDevName; // 远程蓝牙设备名称
+
+	private int reConnectTimes; // 重连次数
 	
 	private static final String TAG = "BluetoothClientHelper";
 
 	
 	public BluetoothClientHelper(IBluetoothConnect bluetoothConnect) {
-		bluetoothAdapterr = BluetoothAdapter.getDefaultAdapter();
+		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		curBtState = BluetoothState.STATE_NONE;
 		this.bluetoothConnect = bluetoothConnect;
 	}
 
 	public BluetoothClientHelper() {
-		bluetoothAdapterr = BluetoothAdapter.getDefaultAdapter();
+		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		curBtState = BluetoothState.STATE_NONE;
 	}
 
@@ -138,6 +140,8 @@ public class BluetoothClientHelper {
 			communicationThread = null;
 		}
 
+		reConnectTimes = 0;
+
 		communicationThread = new CommunicationThread(socket);
 		communicationThread.start();
 		
@@ -213,6 +217,25 @@ public class BluetoothClientHelper {
 		Log.e(TAG, res.toString());
 	}
 
+	/**
+	 * 断开重连
+	 */
+	private void reConnect(boolean reCount) {
+		if (reCount) {
+			reConnectTimes = 5;
+		}
+
+		if (reConnectTimes == 0) {
+			return;
+		}
+
+		String macAddr = MyApplication.getSpSetting().getString("macAddress", null);
+		if (macAddr != null) {
+			BluetoothDevice device = bluetoothAdapter.getRemoteDevice(macAddr);
+			connect(device);
+		}
+		reConnectTimes--;
+	}
 	
 	/**
 	 * 蓝牙连接线程
@@ -223,7 +246,7 @@ public class BluetoothClientHelper {
 		
 		private final BluetoothSocket mmSocket;
 		private final BluetoothDevice mmDevice;
-		private boolean isActClose; // 是否主动关闭连接线程
+		private boolean activeClose; // 是否主动关闭连接线程
 
 		public ConnectThread(BluetoothDevice device) {
 			mmDevice = device;
@@ -241,12 +264,12 @@ public class BluetoothClientHelper {
 		public void run() {
 			setName("ConnectThread");
 
-			bluetoothAdapterr.cancelDiscovery();
+			bluetoothAdapter.cancelDiscovery();
 
 			try {
 				mmSocket.connect();
 			} catch (IOException e) {
-				if (!isActClose) {
+				if (!activeClose) {
 					// 如果不是主动关闭连接线程，就应该打印并提示异常信息
 					Log.e(TAG, Log.getStackTraceString(e));
 					connectionFailed();
@@ -259,6 +282,8 @@ public class BluetoothClientHelper {
 						Log.e(TAG, "BluetoothSocket关闭异常");
 						Log.e(TAG, Log.getStackTraceString(e));
 					}
+
+					reConnect(false);
 				}
 
 				return;
@@ -274,7 +299,7 @@ public class BluetoothClientHelper {
 		}
 
 		public void cancel() {
-			isActClose = true;
+			activeClose = true;
 
 			try {
 				mmSocket.close();
@@ -294,7 +319,7 @@ public class BluetoothClientHelper {
 		private final BluetoothSocket mmSocket;
 		private final InputStream mmInStream;
 		private final OutputStream mmOutStream;
-		private volatile boolean isActClose; // 是否主动关闭
+		private volatile boolean activeClose; // 是否主动关闭
 		
 		// 每次蓝牙读取出来的数据
 		private byte[] recvData = new byte[256];
@@ -303,7 +328,7 @@ public class BluetoothClientHelper {
 		// 缓冲区List，所有接收到的数据都存放在该缓冲区中
 		private LinkedList<Byte> bufList = new LinkedList<>();
 		// 单条报文，14个字节
-		private byte[] singleData = new byte[DATA_LENGTH] ;
+//		private byte[] singleData = new byte[DATA_LENGTH] ;
 		// CRC校验数组
 		private byte[] crc = new byte[2];
 
@@ -355,7 +380,8 @@ public class BluetoothClientHelper {
 						DealDataWhile:
 						while (bufList.size() >= DATA_LENGTH) {
 							// 取出前DATA_LENGTH个数据
-							Arrays.fill(singleData, (byte) 0);
+//							Arrays.fill(singleData, (byte) 0);
+							byte[] singleData = new byte[DATA_LENGTH] ;
 							Iterator<Byte> iterator = bufList.iterator();
 							for (int i = 0; i < DATA_LENGTH; i++) {
 								singleData[i] = iterator.next();
@@ -460,7 +486,7 @@ public class BluetoothClientHelper {
 
 //					Log.d(TAG, new String(data));
 				} catch (IOException e) {
-					if (!isActClose) {
+					if (!activeClose) {
 						// 如果不是主动关闭通讯线程，就应该打印并提示异常信息
 						Log.e(TAG, Log.getStackTraceString(e));
 						connectionInterrupt(); // 蓝牙连接断开
@@ -473,6 +499,9 @@ public class BluetoothClientHelper {
 								Log.e(TAG, Log.getStackTraceString(e));
 							}
 						}
+
+						// 重连
+						reConnect(true);
 					}
 					
 					break;
@@ -489,7 +518,7 @@ public class BluetoothClientHelper {
 		}
 
 		public void cancel() {
-			isActClose = true;
+			activeClose = true;
 			
 			try {
 				mmSocket.close();

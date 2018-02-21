@@ -585,7 +585,6 @@
         <item>4</item>
         <item>5</item>
     </string-array>
-
     <!--起牌备用1-->
     <string-array name="start_card_reserve1_arr">
         <item>0</item>
@@ -595,7 +594,6 @@
         <item>4</item>
         <item>5</item>
     </string-array>
-
     <!--起牌备用2-->
     <string-array name="start_card_reserve2_arr">
         <item>0</item>
@@ -605,7 +603,6 @@
         <item>4</item>
         <item>5</item>
     </string-array>
-
     <!--财神备用-->
     <string-array name="wealth_god_reserve_arr">
         <item>0</item>
@@ -614,6 +611,15 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+    </string-array>
+    <!--色子点数-->
+    <string-array name="dice_arr">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
 
     <string name="dail_manual">使用说明：\n

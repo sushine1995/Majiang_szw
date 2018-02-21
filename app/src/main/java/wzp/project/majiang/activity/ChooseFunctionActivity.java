@@ -29,6 +29,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 	private Button btnDesignPlayMethod;
 	private Button btnShowCard;
+	private Button btnStudyTest;
 
 	private static final int REQUEST_ENABLE_BT = 0x00; // 请求打开蓝牙
 	private static final int REQUEST_CONNECT_DEVICE_SECURE = 0x01; // 请求安全连接蓝牙设备
@@ -55,6 +56,10 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 				case R.id.btn_showCard:
 					MainActivity.myStartActivity(ChooseFunctionActivity.this);
+					break;
+
+				case R.id.btn_studyTest:
+					StudyTestActivity.myStartActivity(ChooseFunctionActivity.this);
 					break;
 
 				default:
@@ -179,11 +184,13 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		ibtnSearch = (ImageButton) findViewById(R.id.ibtn_search);
 		btnDesignPlayMethod = (Button) findViewById(R.id.btn_designPlayMethod);
 		btnShowCard = (Button) findViewById(R.id.btn_showCard);
+		btnStudyTest = (Button) findViewById(R.id.btn_studyTest);
 
 		ibtnBack.setOnClickListener(listener);
 		ibtnSearch.setOnClickListener(listener);
 		btnDesignPlayMethod.setOnClickListener(listener);
 		btnShowCard.setOnClickListener(listener);
+		btnStudyTest.setOnClickListener(listener);
 
 		if (MyApplication.btClientHelper != null && MyApplication.btClientHelper.isBluetoothConnected()) {
 			tvBtState.setText("已连接: " + MyApplication.btClientHelper.getRemoteDevName());

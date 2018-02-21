@@ -290,7 +290,7 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
                                     // 备用，2个字节
                                     sendMsg[i++] = (byte) 0x00;
-                                    sendMsg[i++] = (byte) dp.getWealthGodReserve();
+                                    sendMsg[i++] = (byte) dp.getWealthGodReserve(); // 财神备用
 
                                     CalculateUtil.analyseMessage(sendMsg);
 

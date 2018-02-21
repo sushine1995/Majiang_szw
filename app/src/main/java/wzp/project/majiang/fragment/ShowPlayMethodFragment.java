@@ -318,7 +318,7 @@ public class ShowPlayMethodFragment extends Fragment {
             basicParamList.add("报胡牌");
         }
         if (bp.isUseDiceTest()) {
-            basicParamList.add("打色测试");
+            basicParamList.add("二代码");
         }
         if (bp.isPengZhuanBroadcastCard()) {
             basicParamList.add("碰转报牌");
@@ -326,17 +326,8 @@ public class ShowPlayMethodFragment extends Fragment {
         if (bp.isResetTest()) {
             basicParamList.add("复位测试");
         }
-        if (bp.isDicePanelPositionNotification()) {
-            basicParamList.add("色盘定位提示");
-        }
         if (bp.isBloodFight()) {
             basicParamList.add("血战");
-        }
-        if (bp.isDicePanelTroubleNotification()) {
-            basicParamList.add("色盘故障提示");
-        }
-        if (bp.isDigitScreenSwitch()) {
-            basicParamList.add("数显档位开关");
         }
         if (bp.isThreePlayer()) {
             basicParamList.add("三人玩法三人点数");
@@ -349,7 +340,6 @@ public class ShowPlayMethodFragment extends Fragment {
         }
 
         tvLayerNum.setText(bp.isThreeLayer() ? "三层" : "两层");
-//        tvMachineGear.setText(getResources().getStringArray(R.array.machine_gear_arr)[bp.getMachineGear()]);
         tvTotalCardNum.setText(String.valueOf(bp.getTotalCardNum()));
         tvEastTop.setText(String.valueOf(bp.getEastTop()));
         tvEastMiddle.setText(String.valueOf(bp.getEastMiddle()));

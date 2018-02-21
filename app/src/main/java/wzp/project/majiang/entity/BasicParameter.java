@@ -17,6 +17,7 @@ public class BasicParameter {
     private int continuousWorkRound;
     private int totalUseRound;
     private int broadcastCardNum;
+    private int reserve; // 备用
     private boolean isVoiceBox;
     private boolean isMachineHeadPosition;
     private boolean isPanelInduction;
@@ -27,13 +28,9 @@ public class BasicParameter {
     private boolean isUseDiceTest;
     private boolean isPengZhuanBroadcastCard; // 碰转报牌
     private boolean isResetTest;
-    private boolean isDicePanelPositionNotification;
     private boolean isBloodFight;
-    private boolean isDicePanelTroubleNotification;
-    private boolean isDigitScreenSwitch;
     private boolean isThreePlayer;
     private boolean isThreeLayer;
-//    private int machineGear;
     private int totalCardNum;
     private int eastTop;
     private int eastMiddle;
@@ -216,36 +213,12 @@ public class BasicParameter {
         isResetTest = resetTest;
     }
 
-    public boolean isDicePanelPositionNotification() {
-        return isDicePanelPositionNotification;
-    }
-
-    public void setDicePanelPositionNotification(boolean dicePanelPositionNotification) {
-        isDicePanelPositionNotification = dicePanelPositionNotification;
-    }
-
     public boolean isBloodFight() {
         return isBloodFight;
     }
 
     public void setBloodFight(boolean bloodFight) {
         isBloodFight = bloodFight;
-    }
-
-    public boolean isDicePanelTroubleNotification() {
-        return isDicePanelTroubleNotification;
-    }
-
-    public void setDicePanelTroubleNotification(boolean dicePanelTroubleNotification) {
-        isDicePanelTroubleNotification = dicePanelTroubleNotification;
-    }
-
-    public boolean isDigitScreenSwitch() {
-        return isDigitScreenSwitch;
-    }
-
-    public void setDigitScreenSwitch(boolean digitScreenSwitch) {
-        isDigitScreenSwitch = digitScreenSwitch;
     }
 
     public boolean isThreePlayer() {
@@ -263,14 +236,6 @@ public class BasicParameter {
     public void setThreeLayer(boolean threeLayer) {
         isThreeLayer = threeLayer;
     }
-
-//    public int getMachineGear() {
-//        return machineGear;
-//    }
-//
-//    public void setMachineGear(int machineGear) {
-//        this.machineGear = machineGear;
-//    }
 
     public int getTotalCardNum() {
         return totalCardNum;
@@ -374,5 +339,13 @@ public class BasicParameter {
 
     public void setNorthBottom(int northBottom) {
         this.northBottom = northBottom;
+    }
+
+    public int getReserve() {
+        return reserve;
+    }
+
+    public void setReserve(int reserve) {
+        this.reserve = reserve;
     }
 }

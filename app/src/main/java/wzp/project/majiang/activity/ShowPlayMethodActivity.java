@@ -169,10 +169,12 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                                     sendMsg[i++] = bp.isUseDiceTest() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = bp.isPengZhuanBroadcastCard() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = bp.isResetTest() ? (byte) 0x01 : (byte) 0x00;
-                                    sendMsg[i++] = bp.isDicePanelPositionNotification() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = (byte) bp.getReserve();
                                     sendMsg[i++] = bp.isBloodFight() ? (byte) 0x01 : (byte) 0x00;
-                                    sendMsg[i++] = bp.isDicePanelTroubleNotification() ? (byte) 0x01 : (byte) 0x00;
-                                    sendMsg[i++] = bp.isDigitScreenSwitch() ? (byte) 0x01 : (byte) 0x00;
+//                                    sendMsg[i++] = bp.isDicePanelTroubleNotification() ? (byte) 0x01 : (byte) 0x00;
+//                                    sendMsg[i++] = bp.isDigitScreenSwitch() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) 0x00;
                                     sendMsg[i++] = bp.isThreePlayer() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = bp.isThreeLayer() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = (byte) bp.getTotalCardNum();

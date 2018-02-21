@@ -38,6 +38,7 @@ public class BasicMethodFragment extends Fragment {
     private ListOptionButton btnContinuousWorkRound;
     private ListOptionButton btnTotalUseRound;
     private ListOptionButton btnBroadcastCardNum;
+    private ListOptionButton btnReserve;
     private CheckBox cbVoiceBox;
     private CheckBox cbMachineHeadPosition;
     private CheckBox cbPanelInduction;
@@ -48,13 +49,9 @@ public class BasicMethodFragment extends Fragment {
     private CheckBox cbUseDiceTest;
     private CheckBox cbPengZhuanBroadcastCard;
     private CheckBox cbResetTest;
-    private CheckBox cbDicePanelPositionNotification;
     private CheckBox cbBloodFight;
-    private CheckBox cbDicePanelTroubleNotification;
-    private CheckBox cbDigitScreenSwitch;
     private CheckBox cbThreePlayer;
     private RadioGroup rgLayer;
-//    private ListOptionButton btnMachineGear;
     private TextView tvTotalCardNum;
     private ListOptionButton btnEastTop;
     private ListOptionButton btnEastMiddle;
@@ -119,6 +116,7 @@ public class BasicMethodFragment extends Fragment {
         btnContinuousWorkRound = (ListOptionButton) view.findViewById(R.id.btn_continuousWorkingRound);
         btnTotalUseRound = (ListOptionButton) view.findViewById(R.id.btn_totalUseRound);
         btnBroadcastCardNum = (ListOptionButton) view.findViewById(R.id.btn_broadcastCardNum);
+        btnReserve = (ListOptionButton) view.findViewById(R.id.btn_reserve);
         cbVoiceBox = (CheckBox) view.findViewById(R.id.cb_voiceBox);
         cbMachineHeadPosition = (CheckBox) view.findViewById(R.id.cb_machineHeadPosition);
         cbPanelInduction = (CheckBox) view.findViewById(R.id.cb_panelInduction);
@@ -129,13 +127,9 @@ public class BasicMethodFragment extends Fragment {
         cbUseDiceTest = (CheckBox) view.findViewById(R.id.cb_useDiceTest);
         cbPengZhuanBroadcastCard = (CheckBox) view.findViewById(R.id.cb_pengZhuanBroadcastCard);
         cbResetTest = (CheckBox) view.findViewById(R.id.cb_resetTest);
-        cbDicePanelPositionNotification = (CheckBox) view.findViewById(R.id.cb_dicePanelPositionNotification);
         cbBloodFight = (CheckBox) view.findViewById(R.id.cb_bloodFight);
-        cbDicePanelTroubleNotification = (CheckBox) view.findViewById(R.id.cb_dicePanelTroubleNotification);
-        cbDigitScreenSwitch = (CheckBox) view.findViewById(R.id.cb_digitScreenSwitch);
         cbThreePlayer = (CheckBox) view.findViewById(R.id.cb_threePlayer);
         rgLayer = (RadioGroup) view.findViewById(R.id.rg_layer);
-//        btnMachineGear = (ListOptionButton) view.findViewById(R.id.btn_machineGear);
         tvTotalCardNum = (TextView) view.findViewById(R.id.tv_totalCardNum);
         btnEastTop = (ListOptionButton) view.findViewById(R.id.btn_eastTop);
         btnEastMiddle = (ListOptionButton) view.findViewById(R.id.btn_eastMiddle);
@@ -218,6 +212,12 @@ public class BasicMethodFragment extends Fragment {
                 basicParameter.setBroadcastCardNum(position);
             }
         });
+        btnReserve.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                basicParameter.setReserve(position);
+            }
+        });
         cbVoiceBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -278,28 +278,10 @@ public class BasicMethodFragment extends Fragment {
                 basicParameter.setResetTest(isChecked);
             }
         });
-        cbDicePanelPositionNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                basicParameter.setDicePanelPositionNotification(isChecked);
-            }
-        });
         cbBloodFight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 basicParameter.setBloodFight(isChecked);
-            }
-        });
-        cbDicePanelTroubleNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                basicParameter.setDicePanelTroubleNotification(isChecked);
-            }
-        });
-        cbDigitScreenSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                basicParameter.setDigitScreenSwitch(isChecked);
             }
         });
         cbThreePlayer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -334,13 +316,6 @@ public class BasicMethodFragment extends Fragment {
                 }
             }
         });
-//        btnMachineGear.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                basicParameter.setMachineGear(position);
-//                analyseCardNumFromMachineGear(position);
-//        }
-//        });
         btnEastTop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -439,6 +414,7 @@ public class BasicMethodFragment extends Fragment {
         btnContinuousWorkRound.setSelectedItemPosition(basicParameter.getContinuousWorkRound());
         btnTotalUseRound.setSelectedItemPosition(basicParameter.getTotalUseRound());
         btnBroadcastCardNum.setSelectedItemPosition(basicParameter.getBroadcastCardNum());
+        btnReserve.setSelectedItemPosition(basicParameter.getReserve());
         cbVoiceBox.setChecked(basicParameter.isVoiceBox());
         cbMachineHeadPosition.setChecked(basicParameter.isMachineHeadPosition());
         cbPanelInduction.setChecked(basicParameter.isPanelInduction());
@@ -449,13 +425,9 @@ public class BasicMethodFragment extends Fragment {
         cbUseDiceTest.setChecked(basicParameter.isUseDiceTest());
         cbPengZhuanBroadcastCard.setChecked(basicParameter.isPengZhuanBroadcastCard());
         cbResetTest.setChecked(basicParameter.isResetTest());
-        cbDicePanelPositionNotification.setChecked(basicParameter.isDicePanelPositionNotification());
         cbBloodFight.setChecked(basicParameter.isBloodFight());
-        cbDicePanelTroubleNotification.setChecked(basicParameter.isDicePanelTroubleNotification());
-        cbDigitScreenSwitch.setChecked(basicParameter.isDigitScreenSwitch());
         cbThreePlayer.setChecked(basicParameter.isThreePlayer());
         rgLayer.check(basicParameter.isThreeLayer() ? R.id.rb_tripple : R.id.rb_double);
-//        btnMachineGear.setSelectedItemPosition(basicParameter.getMachineGear());
         tvTotalCardNum.setText(String.valueOf(basicParameter.getTotalCardNum()));
         btnEastTop.setSelectedItemPosition(basicParameter.getEastTop());
         btnEastMiddle.setSelectedItemPosition(basicParameter.getEastMiddle());

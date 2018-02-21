@@ -433,6 +433,27 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
                 android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/tv_tip_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="基本设置备用" />
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_reserve"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_option_height"
+                    android:background="@drawable/btn_options_bg"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/down"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_m"
+                    app:options="@array/basic_parameter_reserve"></wzp.project.majiang.widget.ListOptionButton>
             </LinearLayout>
         </LinearLayout>
 
@@ -665,7 +686,7 @@
                     android:layout_height="@dimen/tv_tip_height"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="打色测试" />
+                    android:text="二代码" />
 
                 <wzp.project.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
@@ -744,7 +765,7 @@
             android:paddingRight="@dimen/basic_method_horizontal_interval_1"
             android:orientation="horizontal"
             android:background="@color/white">
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -768,15 +789,14 @@
                     android:scaleType="center"
                     android:src="@drawable/tip"
                     app:funTip="@string/dice_panel_position_tip"/>
-            </LinearLayout>
+            </LinearLayout>-->
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox
@@ -794,10 +814,10 @@
                     android:scaleType="center"
                     android:src="@drawable/tip"
                     app:funTip="@string/blood_fight_mode_tip"/>
-            </LinearLayout>
+            </LinearLayout>-->
         </LinearLayout>
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
@@ -855,7 +875,7 @@
                     android:src="@drawable/tip"
                     app:funTip="@string/digital_switch_tip"/>
             </LinearLayout>
-        </LinearLayout>
+        </LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -886,6 +906,32 @@
                     android:scaleType="center"
                     android:src="@drawable/tip"
                     app:funTip="@string/three_player_tip"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginLeft="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/cb_bloodFight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/tv_tip_height"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="血战" />
+
+                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                    android:layout_width="@dimen/iv_tip_width"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:scaleType="center"
+                    android:src="@drawable/tip"
+                    app:funTip="@string/blood_fight_mode_tip"/>
             </LinearLayout>
         </LinearLayout>
 

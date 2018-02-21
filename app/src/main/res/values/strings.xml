@@ -576,6 +576,17 @@
         <item>北</item>
     </string-array>
 
+    <!--基本设置备用-->
+    <string-array name="basic_parameter_reserve">
+        <item>备用1</item>
+        <item>备用2</item>
+        <item>备用3</item>
+        <item>备用4</item>
+        <item>备用5</item>
+        <item>备用6</item>
+    </string-array>
+
+
     <string name="dail_manual">使用说明：\n
         1.按1加拨号键，东方位开机。\n
         2.按2加拨号键，南方位开机。\n

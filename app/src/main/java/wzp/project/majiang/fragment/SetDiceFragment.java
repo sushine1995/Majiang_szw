@@ -51,6 +51,7 @@ public class SetDiceFragment extends Fragment {
     private ListOptionButton btnWealthGodLastBlockNum;
     private ListOptionButton btnWealthGodStartCardPosition;
     private ListOptionButton btnWealthGodPrecedenceNum;
+    private ListOptionButton btnWealthGodReserve;
     private CheckBox cbZhongAsFixedWealthGod;
     private CheckBox cbColorCardAsFixedWealthGod;
     private CheckBox cbYiTiaoAsFixedWealthGod;
@@ -118,6 +119,7 @@ public class SetDiceFragment extends Fragment {
         btnWealthGodLastBlockNum = (ListOptionButton) view.findViewById(R.id.btn_wealthGodLastBlockNum);
         btnWealthGodStartCardPosition = (ListOptionButton) view.findViewById(R.id.btn_wealthGodStartCardPosition);
         btnWealthGodPrecedenceNum = (ListOptionButton) view.findViewById(R.id.btn_wealthGodPrecedenceNum);
+        btnWealthGodReserve = (ListOptionButton) view.findViewById(R.id.btn_wealthGodReserve);
         cbZhongAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_zhongAsFixedWealthGod);
         cbColorCardAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_colorCardAsFixedWealthGod);
         cbYiTiaoAsFixedWealthGod = (CheckBox) view.findViewById(R.id.cb_yiTiaoAsFixedWealthGod);
@@ -281,6 +283,12 @@ public class SetDiceFragment extends Fragment {
                 diceParameter.setWealthGodPrecedenceNum(position);
             }
         });
+        btnWealthGodReserve.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setWealthGodReserve(position);
+            }
+        });
         cbZhongAsFixedWealthGod.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -403,6 +411,7 @@ public class SetDiceFragment extends Fragment {
         btnWealthGodLastBlockNum.setSelectedItemPosition(diceParameter.getWealthGodLastBlockNum());
         btnWealthGodStartCardPosition.setSelectedItemPosition(diceParameter.getWealthGodStartCardPosition());
         btnWealthGodPrecedenceNum.setSelectedItemPosition(diceParameter.getWealthGodPrecedenceNum());
+        btnWealthGodReserve.setSelectedItemPosition(diceParameter.getWealthGodReserve());
         cbZhongAsFixedWealthGod.setChecked(diceParameter.isZhongAsFixedWealthGod());
         cbColorCardAsFixedWealthGod.setChecked(diceParameter.isColorCardAsFixedWealthGod());
         cbYiTiaoAsFixedWealthGod.setChecked(diceParameter.isYiTiaoAsFixedWealthGod());

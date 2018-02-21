@@ -175,8 +175,6 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                                     sendMsg[i++] = bp.isBloodFight() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = (byte) dp.getStartCardReserve1(); // 色子参数-起牌备用1
                                     sendMsg[i++] = (byte) dp.getStartCardReserve2(); // 色子参数-起牌备用2
-                                    sendMsg[i++] = (byte) 0x00;
-                                    sendMsg[i++] = (byte) 0x00;
                                     sendMsg[i++] = bp.isThreePlayer() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = bp.isThreeLayer() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = (byte) bp.getTotalCardNum();
@@ -278,8 +276,6 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                                     sendMsg[i++] = dp.isWealthGodIsEastWind() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = dp.isRedFlowerAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = dp.isBlackFlowerAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
-//                                    sendMsg[i++] = dp.isBaidaAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
-//                                    sendMsg[i++] = dp.isDabaipiAsFixedWealthGod() ? (byte) 0x01 : (byte) 0x00;
                                     byte byteParam = 0x00;
                                     if (dp.isBaidaAsFixedWealthGod()) {
                                         byteParam |= 0x01;
@@ -294,12 +290,12 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
                                     // 备用，2个字节
                                     sendMsg[i++] = (byte) 0x00;
-                                    sendMsg[i++] = (byte) 0x00;
+                                    sendMsg[i++] = (byte) dp.getWealthGodReserve();
 
                                     CalculateUtil.analyseMessage(sendMsg);
 
                                     Log.d(LOG_TAG, "i = " + i + "; len = " + sendMsg.length);
-//                            Log.d(LOG_TAG, Arrays.toString(sendMsg));
+///                            Log.d(LOG_TAG, Arrays.toString(sendMsg));
 
                                     byte[] crc = CRC16.getCrc16(sendMsg, ProjectConstants.SET_PARAMETER_MSG_LENGTH - 2);
                                     sendMsg[i++] = crc[0];

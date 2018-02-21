@@ -208,7 +208,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/start_card_reserve1">
+                    app:options="@array/start_card_reserve1_arr">
                 </wzp.project.majiang.widget.ListOptionButton>
             </LinearLayout>
 
@@ -238,7 +238,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/start_card_reserve2">
+                    app:options="@array/start_card_reserve2_arr">
                 </wzp.project.majiang.widget.ListOptionButton>
             </LinearLayout>
         </LinearLayout>
@@ -649,6 +649,52 @@
                         android:background="@drawable/btn_options_bg"
                         app:options="@array/wealth_god_precedence_num_arr">
                     </wzp.project.majiang.widget.ListOptionButton>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                android:orientation="horizontal"
+                android:background="@color/white">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="财神备用"/>
+
+                    <wzp.project.majiang.widget.ListOptionButton
+                        android:id="@+id/btn_wealthGodReserve"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_option_height"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:gravity="center"
+                        android:drawableRight="@drawable/down"
+                        android:drawablePadding="5dp"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:background="@drawable/btn_options_bg"
+                        app:options="@array/wealth_god_reserve_arr">
+                    </wzp.project.majiang.widget.ListOptionButton>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
+                    android:orientation="vertical">
                 </LinearLayout>
             </LinearLayout>
 

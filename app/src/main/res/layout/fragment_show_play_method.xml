@@ -1319,6 +1319,33 @@
                         android:text="" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+                    android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+                    android:orientation="horizontal"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="财神备用：" />
+
+                    <TextView
+                        android:id="@+id/tv_wealthGodReserve"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/tv_tip_height"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical|left"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="" />
+                </LinearLayout>
+
                 <wzp.project.majiang.widget.MyListView
                     android:id="@+id/lv_wealthGodParam"
                     android:layout_width="match_parent"

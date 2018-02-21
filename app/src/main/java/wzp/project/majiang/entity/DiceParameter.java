@@ -27,6 +27,7 @@ public class DiceParameter {
     private int wealthGodLastBlockNum;
     private int wealthGodStartCardPosition;
     private int wealthGodPrecedenceNum;
+    private int wealthGodReserve; // 财神备用
     private boolean isZhongAsFixedWealthGod;
     private boolean isColorCardAsFixedWealthGod;
     private boolean isYiTiaoAsFixedWealthGod;
@@ -356,5 +357,13 @@ public class DiceParameter {
 
     public void setStartCardReserve2(int startCardReserve2) {
         this.startCardReserve2 = startCardReserve2;
+    }
+
+    public int getWealthGodReserve() {
+        return wealthGodReserve;
+    }
+
+    public void setWealthGodReserve(int wealthGodReserve) {
+        this.wealthGodReserve = wealthGodReserve;
     }
 }

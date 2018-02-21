@@ -86,6 +86,7 @@ public class ShowPlayMethodFragment extends Fragment {
     private TextView tvWealthGodLastBlockNum;
     private TextView tvWealthGodStartCardPosition;
     private TextView tvWealthGodPrecedenceNum;
+    private TextView tvWealthGodReserve;
     private MyListView lvWealthGodParam;
 
     private Button btnModifyPlayMethod;
@@ -237,6 +238,7 @@ public class ShowPlayMethodFragment extends Fragment {
         tvWealthGodLastBlockNum = (TextView) view.findViewById(R.id.tv_wealthGodLastBlockNum);
         tvWealthGodStartCardPosition = (TextView) view.findViewById(R.id.tv_wealthGodStartCardPosition);
         tvWealthGodPrecedenceNum = (TextView) view.findViewById(R.id.tv_wealthGodPrecedenceNum);
+        tvWealthGodReserve = (TextView) view.findViewById(R.id.tv_wealthGodReserve);
         lvWealthGodParam = (MyListView) view.findViewById(R.id.lv_wealthGodParam);
 
         btnModifyPlayMethod = (Button) view.findViewById(R.id.btn_modifyPlayMethod);
@@ -298,7 +300,7 @@ public class ShowPlayMethodFragment extends Fragment {
         tvContinuousWorkTimes.setText(getResources().getStringArray(R.array.continuous_work_rounds_arr)[bp.getContinuousWorkRound()]);
         tvTotalRounds.setText(getResources().getStringArray(R.array.total_rounds_arr)[bp.getTotalUseRound()]);
         tvBroadcastCardNum.setText(getResources().getStringArray(R.array.broadcast_card_num_arr)[bp.getBroadcastCardNum()]);
-        tvBasicMethodReserve.setText(getResources().getStringArray(R.array.basic_parameter_reserve)[bp.getReserve()]);
+        tvBasicMethodReserve.setText(getResources().getStringArray(R.array.basic_parameter_reserve_arr)[bp.getReserve()]);
 
         basicParamList.clear();
         if (bp.isVoiceBox()) {
@@ -366,8 +368,8 @@ public class ShowPlayMethodFragment extends Fragment {
         tvUseDiceMethod.setText(getResources().getStringArray(R.array.use_dice_method_arr)[dp.getUseDiceMethod()]);
         tvStartCardMethod.setText(getResources().getStringArray(R.array.first_dice_position_send_card_method_arr)[dp.getStartCardMethod()]);
         tvStartCardSupplementFlowerMethod.setText(getResources().getStringArray(R.array.start_card_supplement_flower_method_arr)[dp.getStartCardSupplementFlowerMethod()]);
-        tvStartCardReserve1.setText(getResources().getStringArray(R.array.start_card_reserve1)[dp.getStartCardReserve1()]);
-        tvStartCardReserve2.setText(getResources().getStringArray(R.array.start_card_reserve2)[dp.getStartCardReserve2()]);
+        tvStartCardReserve1.setText(getResources().getStringArray(R.array.start_card_reserve1_arr)[dp.getStartCardReserve1()]);
+        tvStartCardReserve2.setText(getResources().getStringArray(R.array.start_card_reserve2_arr)[dp.getStartCardReserve2()]);
 
         diceParamList.clear();
         if (dp.isOneFiveNineGetCard()) {
@@ -408,6 +410,7 @@ public class ShowPlayMethodFragment extends Fragment {
         tvWealthGodLastBlockNum.setText(getResources().getStringArray(R.array.wealth_god_last_block_num_arr)[dp.getWealthGodLastBlockNum()]);
         tvWealthGodStartCardPosition.setText(getResources().getStringArray(R.array.wealth_god_start_card_position_arr)[dp.getWealthGodStartCardPosition()]);
         tvWealthGodPrecedenceNum.setText(getResources().getStringArray(R.array.wealth_god_precedence_num_arr)[dp.getWealthGodPrecedenceNum()]);
+        tvWealthGodReserve.setText(getResources().getStringArray(R.array.wealth_god_reserve_arr)[dp.getWealthGodReserve()]);
 
         wealthGodParamList.clear();
         if (dp.isZhongAsFixedWealthGod()) {

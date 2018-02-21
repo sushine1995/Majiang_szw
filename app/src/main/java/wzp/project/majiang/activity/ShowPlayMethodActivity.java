@@ -144,9 +144,11 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                                     sendMsg[i++] = (byte) 0x00;
 
                                     parameter = MyApplication.getParameterList().get(j);
+                                    bp = parameter.getBasicParameter(); // 基本方式
+                                    ccp = parameter.getChooseCardParameter(); // 选牌方式
+                                    dp = parameter.getDiceParameter(); // 色子参数
 
                                     // 基本方式
-                                    bp = parameter.getBasicParameter();
                                     sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.player_num_arr)[bp.getPlayerNum()]);
                                     sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.every_hand_num_arr)[bp.getEveryHandCardNum()]);
                                     sendMsg[i++] = Byte.parseByte(getResources().getStringArray(R.array.banker_card_num_arr)[bp.getBankerCardNum()]);
@@ -171,8 +173,8 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                                     sendMsg[i++] = bp.isResetTest() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = (byte) bp.getReserve();
                                     sendMsg[i++] = bp.isBloodFight() ? (byte) 0x01 : (byte) 0x00;
-//                                    sendMsg[i++] = bp.isDicePanelTroubleNotification() ? (byte) 0x01 : (byte) 0x00;
-//                                    sendMsg[i++] = bp.isDigitScreenSwitch() ? (byte) 0x01 : (byte) 0x00;
+                                    sendMsg[i++] = (byte) dp.getStartCardReserve1(); // 色子参数-起牌备用1
+                                    sendMsg[i++] = (byte) dp.getStartCardReserve2(); // 色子参数-起牌备用2
                                     sendMsg[i++] = (byte) 0x00;
                                     sendMsg[i++] = (byte) 0x00;
                                     sendMsg[i++] = bp.isThreePlayer() ? (byte) 0x01 : (byte) 0x00;
@@ -203,7 +205,6 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
 
                                     // 选牌方式
-                                    ccp = parameter.getChooseCardParameter();
                                     List<ChooseCardMethod> ccmList = ccp.getMethods();
                                     ChooseCardMethod ccm = null;
                                     List<SingleChooseCardMethod> sccmList = null;
@@ -243,7 +244,6 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
 
                                     // 色子参数
-                                    dp = parameter.getDiceParameter();
                                     sendMsg[i++] = dp.isBaidaAsFlowerCard() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = dp.isDabaipiAsFlowerCard() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = (byte) (dp.getDiceNum() + 1);

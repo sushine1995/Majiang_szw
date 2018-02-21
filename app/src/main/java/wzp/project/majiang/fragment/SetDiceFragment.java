@@ -32,6 +32,8 @@ public class SetDiceFragment extends Fragment {
     private ListOptionButton btnUseDiceMethod;
     private ListOptionButton btnStartCardMethod;
     private ListOptionButton btnStartCardSupplementFlowerMethod;
+    private ListOptionButton btnStartCardReserve1;
+    private ListOptionButton btnStartCardReserve2;
     private CheckBox cbOneFiveNineGetCard;
     private CheckBox cbEastSouthWestNorthAsColorCard;
     private CheckBox cbZhongFaBaiAsColorCard;
@@ -97,6 +99,8 @@ public class SetDiceFragment extends Fragment {
         btnUseDiceMethod = (ListOptionButton) view.findViewById(R.id.btn_useDiceMethod);
         btnStartCardMethod = (ListOptionButton) view.findViewById(R.id.btn_startCardMethod);
         btnStartCardSupplementFlowerMethod = (ListOptionButton) view.findViewById(R.id.btn_startCardSupplementFlowerMethod);
+        btnStartCardReserve1 = (ListOptionButton) view.findViewById(R.id.btn_startCardReserve1);
+        btnStartCardReserve2 = (ListOptionButton) view.findViewById(R.id.btn_startCardReserve2);
         cbOneFiveNineGetCard = (CheckBox) view.findViewById(R.id.cb_oneFiveNineGetCard);
         cbEastSouthWestNorthAsColorCard = (CheckBox) view.findViewById(R.id.cb_eastSouthWestNorthAsColorCard);
         cbZhongFaBaiAsColorCard = (CheckBox) view.findViewById(R.id.cb_zhongFaBaiAsColorCard);
@@ -161,6 +165,18 @@ public class SetDiceFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 diceParameter.setStartCardSupplementFlowerMethod(position);
+            }
+        });
+        btnStartCardReserve1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setStartCardReserve1(position);
+            }
+        });
+        btnStartCardReserve2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                diceParameter.setStartCardReserve2(position);
             }
         });
         cbOneFiveNineGetCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -369,6 +385,8 @@ public class SetDiceFragment extends Fragment {
         btnUseDiceMethod.setSelectedItemPosition(diceParameter.getUseDiceMethod());
         btnStartCardMethod.setSelectedItemPosition(diceParameter.getStartCardMethod());
         btnStartCardSupplementFlowerMethod.setSelectedItemPosition(diceParameter.getStartCardSupplementFlowerMethod());
+        btnStartCardReserve1.setSelectedItemPosition(diceParameter.getStartCardReserve1());
+        btnStartCardReserve2.setSelectedItemPosition(diceParameter.getStartCardReserve2());
         cbOneFiveNineGetCard.setChecked(diceParameter.isOneFiveNineGetCard());
         cbEastSouthWestNorthAsColorCard.setChecked(diceParameter.isEastSouthWestNorthAsColorCard());
         cbZhongFaBaiAsColorCard.setChecked(diceParameter.isZhongFaBaiAsColorCard());

@@ -51,8 +51,8 @@ public class ShowPlayMethodFragment extends Fragment {
     private TextView tvContinuousWorkTimes;
     private TextView tvTotalRounds;
     private TextView tvBroadcastCardNum;
+    private TextView tvBasicMethodReserve;
     private TextView tvLayerNum;
-//    private TextView tvMachineGear;
     private TextView tvTotalCardNum;
     private TextView tvEastTop;
     private TextView tvEastMiddle;
@@ -73,6 +73,8 @@ public class ShowPlayMethodFragment extends Fragment {
     private TextView tvUseDiceMethod;
     private TextView tvStartCardMethod;
     private TextView tvStartCardSupplementFlowerMethod;
+    private TextView tvStartCardReserve1;
+    private TextView tvStartCardReserve2;
     private MyListView lvDiceParameter;
     private TextView tvWealthGodMode;
     private LinearLayout linearWealthGodMode;
@@ -200,8 +202,8 @@ public class ShowPlayMethodFragment extends Fragment {
         tvContinuousWorkTimes = (TextView) view.findViewById(R.id.tv_continuousWorkRounds);
         tvTotalRounds = (TextView) view.findViewById(R.id.tv_totalRounds);
         tvBroadcastCardNum = (TextView) view.findViewById(R.id.tv_broadcastCardNum);
+        tvBasicMethodReserve = (TextView) view.findViewById(R.id.tv_basicMethodReserve);
         tvLayerNum = (TextView) view.findViewById(R.id.tv_layerNum);
-//        tvMachineGear = (TextView) view.findViewById(R.id.tv_machineGear);
         tvTotalCardNum = (TextView) view.findViewById(R.id.tv_totalCardNum);
         tvEastTop = (TextView) view.findViewById(R.id.tv_eastTop);
         tvEastMiddle = (TextView) view.findViewById(R.id.tv_eastMiddle);
@@ -222,6 +224,8 @@ public class ShowPlayMethodFragment extends Fragment {
         tvUseDiceMethod = (TextView) view.findViewById(R.id.tv_useDiceMethod);
         tvStartCardMethod = (TextView) view.findViewById(R.id.tv_startCardMethod);
         tvStartCardSupplementFlowerMethod = (TextView) view.findViewById(R.id.tv_startCardSupplementFlowerMethod);
+        tvStartCardReserve1 = (TextView) view.findViewById(R.id.tv_startCardReserve1);
+        tvStartCardReserve2 = (TextView) view.findViewById(R.id.tv_startCardReserve2);
         lvDiceParameter = (MyListView) view.findViewById(R.id.lv_diceParameter);
         tvWealthGodMode = (TextView) view.findViewById(R.id.tv_wealthGodMode);
         linearWealthGodMode = (LinearLayout) view.findViewById(R.id.linear_wealthGodMode);
@@ -294,6 +298,7 @@ public class ShowPlayMethodFragment extends Fragment {
         tvContinuousWorkTimes.setText(getResources().getStringArray(R.array.continuous_work_rounds_arr)[bp.getContinuousWorkRound()]);
         tvTotalRounds.setText(getResources().getStringArray(R.array.total_rounds_arr)[bp.getTotalUseRound()]);
         tvBroadcastCardNum.setText(getResources().getStringArray(R.array.broadcast_card_num_arr)[bp.getBroadcastCardNum()]);
+        tvBasicMethodReserve.setText(getResources().getStringArray(R.array.basic_parameter_reserve)[bp.getReserve()]);
 
         basicParamList.clear();
         if (bp.isVoiceBox()) {
@@ -361,6 +366,8 @@ public class ShowPlayMethodFragment extends Fragment {
         tvUseDiceMethod.setText(getResources().getStringArray(R.array.use_dice_method_arr)[dp.getUseDiceMethod()]);
         tvStartCardMethod.setText(getResources().getStringArray(R.array.first_dice_position_send_card_method_arr)[dp.getStartCardMethod()]);
         tvStartCardSupplementFlowerMethod.setText(getResources().getStringArray(R.array.start_card_supplement_flower_method_arr)[dp.getStartCardSupplementFlowerMethod()]);
+        tvStartCardReserve1.setText(getResources().getStringArray(R.array.start_card_reserve1)[dp.getStartCardReserve1()]);
+        tvStartCardReserve2.setText(getResources().getStringArray(R.array.start_card_reserve2)[dp.getStartCardReserve2()]);
 
         diceParamList.clear();
         if (dp.isOneFiveNineGetCard()) {

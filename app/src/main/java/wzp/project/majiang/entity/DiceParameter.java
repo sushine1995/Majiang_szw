@@ -11,6 +11,8 @@ public class DiceParameter {
     private int useDiceMethod;
     private int startCardMethod;
     private int startCardSupplementFlowerMethod;
+    private int startCardReserve1; // 起牌备用1
+    private int startCardReserve2; // 起牌备用2
     private boolean isOneFiveNineGetCard;
     private boolean isEastSouthWestNorthAsColorCard;
     private boolean isZhongFaBaiAsColorCard; // 中发白当花牌
@@ -338,5 +340,21 @@ public class DiceParameter {
 
     public void setZhongFaBaiWealthGodAsEastWind(boolean zhongFaBaiWealthGodAsEastWind) {
         isZhongFaBaiWealthGodAsEastWind = zhongFaBaiWealthGodAsEastWind;
+    }
+
+    public int getStartCardReserve1() {
+        return startCardReserve1;
+    }
+
+    public void setStartCardReserve1(int startCardReserve1) {
+        this.startCardReserve1 = startCardReserve1;
+    }
+
+    public int getStartCardReserve2() {
+        return startCardReserve2;
+    }
+
+    public void setStartCardReserve2(int startCardReserve2) {
+        this.startCardReserve2 = startCardReserve2;
     }
 }

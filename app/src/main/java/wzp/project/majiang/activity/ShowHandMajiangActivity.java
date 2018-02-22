@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -31,6 +30,10 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 	private LinearLayout linearSouth;
 	private LinearLayout linearWest;
 	private LinearLayout linearEast;
+	private LinearLayout linearNorthUp;
+	private LinearLayout linearSouthUp;
+	private LinearLayout linearWestUp;
+	private LinearLayout linearEastUp;
 
 	private TextView tvBankerPositionEast;
 	private TextView tvMyPositionEast;
@@ -70,6 +73,11 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 	private static final int RED_DICE = 1;
 	private static final int BLUE_DICE = 0;
 
+	private static final int DOWN_MAJIANG_NUM = 17;
+	private static final int UP_MAJIANG_NUM = 8;
+	private static final int PLACEHOLDER_INDEX = 5; // 两个ImageView之间的占位控件的位置
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -106,6 +114,10 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 		linearSouth = (LinearLayout) findViewById(R.id.linear_south);
 		linearWest = (LinearLayout) findViewById(R.id.linear_west);
 		linearEast = (LinearLayout) findViewById(R.id.linear_east);
+		linearNorthUp = (LinearLayout) findViewById(R.id.linear_northUp);
+		linearSouthUp = (LinearLayout) findViewById(R.id.linear_southUp);
+		linearWestUp = (LinearLayout) findViewById(R.id.linear_westUp);
+		linearEastUp = (LinearLayout) findViewById(R.id.linear_eastUp);
 
 		tvBankerPositionEast = (TextView) findViewById(R.id.tv_bankerPositionEast);
 		tvMyPositionEast = (TextView) findViewById(R.id.tv_myPositionEast);
@@ -152,32 +164,40 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 					case R.id.menu_east:
 						if (isChecked) {
 							linearEast.setVisibility(View.VISIBLE);
+							linearEastUp.setVisibility(View.VISIBLE);
 						} else {
 							linearEast.setVisibility(View.INVISIBLE);
+							linearEastUp.setVisibility(View.INVISIBLE);
 						}
 						break;
 
 					case R.id.menu_south:
 						if (isChecked) {
 							linearSouth.setVisibility(View.VISIBLE);
+							linearSouthUp.setVisibility(View.VISIBLE);
 						} else {
 							linearSouth.setVisibility(View.INVISIBLE);
+							linearSouthUp.setVisibility(View.INVISIBLE);
 						}
 						break;
 
 					case R.id.menu_west:
 						if (isChecked) {
 							linearWest.setVisibility(View.VISIBLE);
+							linearWestUp.setVisibility(View.VISIBLE);
 						} else {
 							linearWest.setVisibility(View.INVISIBLE);
+							linearWestUp.setVisibility(View.INVISIBLE);
 						}
 						break;
 
 					case R.id.menu_north:
 						if (isChecked) {
 							linearNorth.setVisibility(View.VISIBLE);
+							linearNorthUp.setVisibility(View.VISIBLE);
 						} else {
 							linearNorth.setVisibility(View.INVISIBLE);
+							linearNorthUp.setVisibility(View.INVISIBLE);
 						}
 						break;
 				}
@@ -200,8 +220,8 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 			}
 		});
 
-		// 控件内容初始化
-		//initMajiang(18;
+		// 麻将控件内容初始化
+		initMajiang();
 	}
 
 	/**
@@ -272,6 +292,112 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 		}
 	}
 
+	private void initMajiang() {
+		ImageView ivMajiang = null;
+		View vPlaceholder =  null;
+
+
+		// 北、南方向
+		LinearLayout.LayoutParams paramsNorSou = new LinearLayout.LayoutParams(
+				getResources().getDimensionPixelSize(R.dimen.a_majiang_width),
+				getResources().getDimensionPixelSize(R.dimen.a_majiang_height));
+
+		// 西、东方向
+		LinearLayout.LayoutParams paramsWesEas = new LinearLayout.LayoutParams(
+				getResources().getDimensionPixelSize(R.dimen.a_majiang_height),
+				getResources().getDimensionPixelSize(R.dimen.a_majiang_width));
+
+//		// 北、南方向分隔控件
+//		LinearLayout.LayoutParams paramsNorSouSplit = new LinearLayout.LayoutParams(
+//				0, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+//
+//		// 西、东方向分隔控件
+//		LinearLayout.LayoutParams paramsWesEasSplit = new LinearLayout.LayoutParams(
+//				LinearLayout.LayoutParams.MATCH_PARENT, 0, 1);
+
+		// 北、南方向分隔控件
+		LinearLayout.LayoutParams paramsNorSouSplit = new LinearLayout.LayoutParams(
+				(DOWN_MAJIANG_NUM - UP_MAJIANG_NUM) * getResources().getDimensionPixelSize(R.dimen.a_majiang_width),
+				getResources().getDimensionPixelSize(R.dimen.a_majiang_height));
+
+		// 西、东方向分隔控件
+		LinearLayout.LayoutParams paramsWesEasSplit = new LinearLayout.LayoutParams(
+				getResources().getDimensionPixelSize(R.dimen.a_majiang_height),
+				(DOWN_MAJIANG_NUM - UP_MAJIANG_NUM) * getResources().getDimensionPixelSize(R.dimen.a_majiang_width));
+
+		// 北
+		for (int i = 0; i < DOWN_MAJIANG_NUM; i++) {
+			ivMajiang = new ImageView(this);
+			ivMajiang.setLayoutParams(paramsNorSou);
+			linearNorth.addView(ivMajiang);
+		}
+		for (int i = 0; i <= UP_MAJIANG_NUM; i++) {
+			if (i == UP_MAJIANG_NUM - PLACEHOLDER_INDEX) {
+				vPlaceholder = new View(this);
+				vPlaceholder.setLayoutParams(paramsNorSouSplit);
+				linearNorthUp.addView(vPlaceholder);
+				continue;
+			}
+			ivMajiang = new ImageView(this);
+			ivMajiang.setLayoutParams(paramsNorSou);
+			linearNorthUp.addView(ivMajiang);
+		}
+
+		// 南
+		for (int i = 0; i < DOWN_MAJIANG_NUM; i++) {
+			ivMajiang = new ImageView(this);
+			ivMajiang.setLayoutParams(paramsNorSou);
+			linearSouth.addView(ivMajiang);
+		}
+		for (int i = 0; i <= UP_MAJIANG_NUM; i++) {
+			if (i == PLACEHOLDER_INDEX) {
+				vPlaceholder = new View(this);
+				vPlaceholder.setLayoutParams(paramsNorSouSplit);
+				linearSouthUp.addView(vPlaceholder);
+				continue;
+			}
+			ivMajiang = new ImageView(this);
+			ivMajiang.setLayoutParams(paramsNorSou);
+			linearSouthUp.addView(ivMajiang);
+		}
+
+		// 西
+		for (int i = 0; i < DOWN_MAJIANG_NUM; i++) {
+			ivMajiang = new ImageView(this);
+			ivMajiang.setLayoutParams(paramsWesEas);
+			linearWest.addView(ivMajiang);
+		}
+		for (int i = 0; i <= UP_MAJIANG_NUM; i++) {
+			if (i == PLACEHOLDER_INDEX) {
+				vPlaceholder = new View(this);
+				vPlaceholder.setLayoutParams(paramsWesEasSplit);
+				linearWestUp.addView(vPlaceholder);
+				continue;
+			}
+			ivMajiang = new ImageView(this);
+			ivMajiang.setLayoutParams(paramsWesEas);
+			linearWestUp.addView(ivMajiang);
+		}
+
+		// 东
+		for (int i = 0; i < DOWN_MAJIANG_NUM; i++) {
+			ivMajiang = new ImageView(this);
+			ivMajiang.setLayoutParams(paramsWesEas);
+			linearEast.addView(ivMajiang);
+		}
+		for (int i = 0; i <= UP_MAJIANG_NUM; i++) {
+			if (i == UP_MAJIANG_NUM - PLACEHOLDER_INDEX) {
+				vPlaceholder = new View(this);
+				vPlaceholder.setLayoutParams(paramsWesEasSplit);
+				linearEastUp.addView(vPlaceholder);
+				continue;
+			}
+			ivMajiang = new ImageView(this);
+			ivMajiang.setLayoutParams(paramsWesEas);
+			linearEastUp.addView(ivMajiang);
+		}
+	}
+
 	/**
 	 * 启动Activity
 	 *
@@ -287,19 +413,114 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 	 *
 	 * @param recvData
 	 */
+//	private void updateMajiang(byte[] recvData) {
+//		final byte[] copyRecvData = Arrays.copyOf(recvData, recvData.length);
+//		runOnUiThread(new Runnable() {
+//			@Override
+//			public void run() {
+//				int num = CalculateUtil.byteToInt(copyRecvData[2]);
+//				// num最多不能超过18
+//				if (num > 18) {
+//					Log.e(LOG_TAG, "麻将牌数目异常：" + num);
+//					return;
+//				}
+//
+//				LinearLayout linearDirection = null;
+//				Bitmap majiangBitmap = null;
+//				Matrix matrix = new Matrix();
+//				int majiangDirection = CalculateUtil.byteToInt(copyRecvData[1]);
+//				switch (majiangDirection) {
+//					// 东
+//					case 0xe9:
+//						matrix.setRotate(-90);
+//						linearDirection = linearEast;
+//						break;
+//
+//					// 南
+//					case 0xec:
+//						linearDirection = linearSouth;
+//						break;
+//
+//					// 西
+//					case 0xeb:
+//						matrix.setRotate(90);
+//						linearDirection = linearWest;
+//						break;
+//
+//					// 北
+//					case 0xea:
+//						linearDirection = linearNorth;
+//						break;
+//
+//					default:
+//						break;
+//				}
+//
+//				if(num > linearDirection.getChildCount()) {
+//					int addedChildCount = num - linearDirection.getChildCount();
+//
+//					LinearLayout.LayoutParams params = null;
+//					if (majiangDirection == 0xe9 || majiangDirection == 0xeb) {
+//						params = new LinearLayout.LayoutParams(
+//								getResources().getDimensionPixelSize(R.dimen.a_majiang_height),
+//								getResources().getDimensionPixelSize(R.dimen.a_majiang_width));
+//					} else {
+//						params = new LinearLayout.LayoutParams(
+//								getResources().getDimensionPixelSize(R.dimen.a_majiang_width),
+//								getResources().getDimensionPixelSize(R.dimen.a_majiang_height));
+//					}
+//
+//					ImageView ivMajiang = null;
+//					for (int i = 0; i < addedChildCount; i++) {
+//						ivMajiang = new ImageView(ShowHandMajiangActivity.this);
+//						ivMajiang.setLayoutParams(params);
+//
+//						linearDirection.addView(ivMajiang);
+//					}
+//				} else {
+//					int delChidCount = linearDirection.getChildCount() - num;
+//					for (int i = 0; i < delChidCount; i++) {
+//						linearDirection.removeViewAt(linearDirection.getChildCount() - 1);
+//					}
+//				}
+//
+//				int index; // ImageView在父容器中的索引
+//				int imageId; // 麻将图片的资源ID
+//				for (int i = 0; i < num; i++) {
+//					if (majiangDirection == 0xe9 || majiangDirection == 0xec) {
+//						// 东方位先后顺序为，从下至上
+//						// 北方位先后顺序为，从右至左
+//						// 最多18张牌，index范围：0~17
+//						index = num - 1 - i;
+//					} else {
+//						index = i;
+//					}
+//
+//					imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[3 + i]));
+//					if (imageId != -1) {
+//						// 正常显示麻将图片
+//						majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
+//						majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
+//								majiangBitmap.getWidth(), majiangBitmap.getHeight(),
+//								matrix, true);
+//						((ImageView) linearDirection.getChildAt(index)).setImageBitmap(majiangBitmap);
+//						linearDirection.getChildAt(index).setVisibility(View.VISIBLE);
+//					} else {
+//						// 当前位置不显示麻将
+//						linearDirection.getChildAt(index).setVisibility(View.INVISIBLE);
+//					}
+//				}
+//			}
+//		});
+//	}
+
 	private void updateMajiang(byte[] recvData) {
 		final byte[] copyRecvData = Arrays.copyOf(recvData, recvData.length);
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				int num = CalculateUtil.byteToInt(copyRecvData[2]);
-				// num最多不能超过18
-				if (num > 18) {
-					Log.e(LOG_TAG, "麻将牌数目异常：" + num);
-					return;
-				}
-
 				LinearLayout linearDirection = null;
+				LinearLayout linearDirectionUp = null;
 				Bitmap majiangBitmap = null;
 				Matrix matrix = new Matrix();
 				int majiangDirection = CalculateUtil.byteToInt(copyRecvData[1]);
@@ -308,69 +529,48 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 					case 0xe9:
 						matrix.setRotate(-90);
 						linearDirection = linearEast;
+						linearDirectionUp = linearEastUp;
 						break;
 
 					// 南
-					case 0xec:
+					case 0xea:
 						linearDirection = linearSouth;
+						linearDirectionUp = linearSouthUp;
 						break;
 
 					// 西
 					case 0xeb:
 						matrix.setRotate(90);
 						linearDirection = linearWest;
+						linearDirectionUp = linearWestUp;
 						break;
 
 					// 北
-					case 0xea:
+					case 0xec:
 						linearDirection = linearNorth;
+						linearDirectionUp = linearNorthUp;
 						break;
 
 					default:
 						break;
 				}
 
-				if(num > linearDirection.getChildCount()) {
-					int addedChildCount = num - linearDirection.getChildCount();
-
-					LinearLayout.LayoutParams params = null;
-					if (majiangDirection == 0xe9 || majiangDirection == 0xeb) {
-						params = new LinearLayout.LayoutParams(
-								getResources().getDimensionPixelSize(R.dimen.a_majiang_height),
-								getResources().getDimensionPixelSize(R.dimen.a_majiang_width));
-					} else {
-						params = new LinearLayout.LayoutParams(
-								getResources().getDimensionPixelSize(R.dimen.a_majiang_width),
-								getResources().getDimensionPixelSize(R.dimen.a_majiang_height));
-					}
-
-					ImageView ivMajiang = null;
-					for (int i = 0; i < addedChildCount; i++) {
-						ivMajiang = new ImageView(ShowHandMajiangActivity.this);
-						ivMajiang.setLayoutParams(params);
-
-						linearDirection.addView(ivMajiang);
-					}
-				} else {
-					int delChidCount = linearDirection.getChildCount() - num;
-					for (int i = 0; i < delChidCount; i++) {
-						linearDirection.removeViewAt(linearDirection.getChildCount() - 1);
-					}
-				}
-
 				int index; // ImageView在父容器中的索引
 				int imageId; // 麻将图片的资源ID
-				for (int i = 0; i < num; i++) {
+				int msgMajiangIndex = 3; // 报文中麻将的index
+				/*
+				下方麻将
+				 */
+				for (int i = 0; i < DOWN_MAJIANG_NUM; i++) {
 					if (majiangDirection == 0xe9 || majiangDirection == 0xec) {
 						// 东方位先后顺序为，从下至上
 						// 北方位先后顺序为，从右至左
-						// 最多18张牌，index范围：0~17
-						index = num - 1 - i;
+						index = DOWN_MAJIANG_NUM - 1 - i;
 					} else {
 						index = i;
 					}
 
-					imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[3 + i]));
+					imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[msgMajiangIndex++]));
 					if (imageId != -1) {
 						// 正常显示麻将图片
 						majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
@@ -382,6 +582,37 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 					} else {
 						// 当前位置不显示麻将
 						linearDirection.getChildAt(index).setVisibility(View.INVISIBLE);
+					}
+				}
+				/*
+				上方麻将
+				 */
+				msgMajiangIndex = 20;
+				for (int i = 0; i <= UP_MAJIANG_NUM; i++) {
+					if (i == PLACEHOLDER_INDEX) {
+						continue;
+					}
+
+					if (majiangDirection == 0xe9 || majiangDirection == 0xec) {
+						// 东方位先后顺序为，从下至上
+						// 北方位先后顺序为，从右至左
+						index = UP_MAJIANG_NUM - i;
+					} else {
+						index = i;
+					}
+
+					imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[msgMajiangIndex++]));
+					if (imageId != -1) {
+						// 正常显示麻将图片
+						majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
+						majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
+								majiangBitmap.getWidth(), majiangBitmap.getHeight(),
+								matrix, true);
+						((ImageView) linearDirectionUp.getChildAt(index)).setImageBitmap(majiangBitmap);
+						linearDirectionUp.getChildAt(index).setVisibility(View.VISIBLE);
+					} else {
+						// 当前位置不显示麻将
+						linearDirectionUp.getChildAt(index).setVisibility(View.INVISIBLE);
 					}
 				}
 			}

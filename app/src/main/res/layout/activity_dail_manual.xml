@@ -45,6 +45,7 @@
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:paddingLeft="30dp"
+        android:lineSpacingExtra="5dp"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_l"
         android:text="@string/dail_manual"/>

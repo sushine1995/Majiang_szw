@@ -204,28 +204,55 @@ public class DailActivity extends BluetoothBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dail);
 
+        /*
+        沉浸式布局
+         */
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+
         initParam();
-        initWidget();
+
+        if (bluetoothAdapter == null) {
+            Toast.makeText(DailActivity.this, "当前设备不具备蓝牙功能！",
+                    Toast.LENGTH_LONG).show();
+            finish();
+        }
+        if (!bluetoothAdapter.isEnabled()) {
+            // 蓝牙尚未打开
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        } else {
+            // 蓝牙已经打开
+            initWidget();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        if (MyApplication.btClientHelper != null
-                && MyApplication.btClientHelper.isBluetoothConnected()) {
-            ivBtFlag.setImageResource(R.drawable.footer_left_bt_con);
-        } else {
-            ivBtFlag.setImageResource(R.drawable.footer_left);
-        }
+        if (bluetoothAdapter.isEnabled()) {
+            if (MyApplication.btClientHelper != null
+                    && MyApplication.btClientHelper.isBluetoothConnected()) {
+                ivBtFlag.setImageResource(R.drawable.footer_left_bt_con);
+            } else {
+                ivBtFlag.setImageResource(R.drawable.footer_left);
+            }
 
-        MyApplication.btClientHelper.setBluetoothConnect(iBluetoothConnect);
+            MyApplication.btClientHelper.setBluetoothConnect(iBluetoothConnect);
+        }
     }
 
     @Override
     public void onBackPressed() {
         if (MyApplication.btClientHelper != null) {
             MyApplication.btClientHelper.stop();
+            MyApplication.btClientHelper = null;
         }
 
         // 退出应用时，清空消息队列
@@ -239,15 +266,12 @@ public class DailActivity extends BluetoothBaseActivity {
         switch (requestCode) {
             case REQUEST_ENABLE_BT:
                 if (resultCode == Activity.RESULT_OK) {
-                    if (edtNum.getText().toString().equals(ProjectConstants.CIPHER)) {
-                        ChooseFunctionActivity.myStartActivity(DailActivity.this);
-                    } else if (edtNum.getText().toString().equals(ProjectConstants.CIPHER_OPEN_BLUETOOTH)) {
-                        Intent searchIntent = new Intent(DailActivity.this, DeviceListActivity.class);
-                        startActivityForResult(searchIntent, REQUEST_CONNECT_DEVICE_SECURE);
-                    }
+                    // 成功打开蓝牙，初始化控件
+                    initWidget();
                 } else {
                     Log.d(LOG_TAG, "蓝牙尚未开启");
                     Toast.makeText(this, "蓝牙尚未开启，无法使用该功能", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
                 break;
 
@@ -293,7 +317,7 @@ public class DailActivity extends BluetoothBaseActivity {
 
 
         if (android.os.Build.VERSION.SDK_INT <= 10) {
-            edtNum.setInputType(InputType.TYPE_NULL);;
+            edtNum.setInputType(InputType.TYPE_NULL);
             edtNum.setFocusable(false);
         } else {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -307,14 +331,6 @@ public class DailActivity extends BluetoothBaseActivity {
                 edtNum.setInputType(InputType.TYPE_NULL);
                 edtNum.setFocusable(false);
             }
-        }
-
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(option);
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
         btnDialDel.setOnClickListener(listener);

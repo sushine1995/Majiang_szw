@@ -163,8 +163,6 @@ public class BluetoothClientHelper {
 			communicationThread.cancel();
 			communicationThread = null;
 		}
-		
-//		setState(STATE_NONE);
 	}
 
 	/**
@@ -327,8 +325,6 @@ public class BluetoothClientHelper {
 		private int len;
 		// 缓冲区List，所有接收到的数据都存放在该缓冲区中
 		private LinkedList<Byte> bufList = new LinkedList<>();
-		// 单条报文，14个字节
-//		private byte[] singleData = new byte[DATA_LENGTH] ;
 		// CRC校验数组
 		private byte[] crc = new byte[2];
 
@@ -380,7 +376,6 @@ public class BluetoothClientHelper {
 						DealDataWhile:
 						while (bufList.size() >= DATA_LENGTH) {
 							// 取出前DATA_LENGTH个数据
-//							Arrays.fill(singleData, (byte) 0);
 							byte[] singleData = new byte[DATA_LENGTH] ;
 							Iterator<Byte> iterator = bufList.iterator();
 							for (int i = 0; i < DATA_LENGTH; i++) {
@@ -454,8 +449,6 @@ public class BluetoothClientHelper {
 										singleData[i] = iterator.next();
 									}
 								} else {
-//									onMCUDataReceived(singleData);
-
 									// 打印一条完整的报文
 									res.delete(0, res.length());
 									res.append("有效报文：" );
@@ -502,8 +495,10 @@ public class BluetoothClientHelper {
 
 						// 重连
 						reConnect(true);
+					} else {
+						setState(BluetoothState.STATE_NONE);
 					}
-					
+
 					break;
 				}
 			}

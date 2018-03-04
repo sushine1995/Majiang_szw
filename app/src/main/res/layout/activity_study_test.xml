@@ -48,53 +48,107 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/horizontal_interval"
+                android:paddingRight="@dimen/horizontal_interval"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="方位学习"/>
+                    android:paddingTop="@dimen/vertical_interval"
+                    android:paddingBottom="@dimen/vertical_interval"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="方位学习"/>
+                    <TextView
+                        android:id="@+id/tv_directionStudyProgress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/horizontal_interval2"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_m"
+                        android:text="" />
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <Button
                         android:id="@+id/btn_directionStudyEast"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="东"/>
+                        android:layout_weight="1"
+                        android:text="东"
+                        android:textSize="@dimen/text_size_m" />
+
                     <Button
                         android:id="@+id/btn_directionStudySouth"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="南"/>
+                        android:layout_weight="1"
+                        android:text="南"
+                        android:textSize="@dimen/text_size_m" />
+
                     <Button
                         android:id="@+id/btn_directionStudyWest"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="西"/>
+                        android:layout_weight="1"
+                        android:text="西"
+                        android:textSize="@dimen/text_size_m" />
+
                     <Button
                         android:id="@+id/btn_directionStudyNorth"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="北"/>
+                        android:layout_weight="1"
+                        android:text="北"
+                        android:textSize="@dimen/text_size_m" />
                 </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="@dimen/horizontal_interval"
+                android:layout_marginRight="@dimen/horizontal_interval"
+                android:layout_marginTop="10dp"
+                android:background="@color/separator_line_color2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/horizontal_interval"
+                android:paddingRight="@dimen/horizontal_interval"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="打色按键学习"/>
+                    android:paddingTop="@dimen/vertical_interval"
+                    android:paddingBottom="@dimen/vertical_interval"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="打色按键学习"/>
+                    <TextView
+                        android:id="@+id/tv_useDiceProgress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/horizontal_interval2"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_m" />
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -104,75 +158,114 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="东"/>
+                        android:text="东"
+                        android:textSize="@dimen/text_size_m"/>
                     <Button
                         android:id="@+id/btn_useDiceSouth"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="南"/>
+                        android:text="南"
+                        android:textSize="@dimen/text_size_m"/>
                     <Button
                         android:id="@+id/btn_useDiceWest"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="西"/>
+                        android:text="西"
+                        android:textSize="@dimen/text_size_m"/>
                     <Button
                         android:id="@+id/btn_useDiceNorth"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="北"/>
+                        android:text="北"
+                        android:textSize="@dimen/text_size_m"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/vertical_interval"
                     android:orientation="horizontal">
                     <Button
                         android:id="@+id/btn_upDown1"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="升降1"/>
+                        android:text="升降1"
+                        android:textSize="@dimen/text_size_m"/>
                     <Button
                         android:id="@+id/btn_upDown2"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="升降2"/>
+                        android:text="升降2"
+                        android:textSize="@dimen/text_size_m"/>
                 </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/separator_line_height4"
+                android:background="@color/separator_line_color2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/vertical_interval"
+                android:paddingBottom="@dimen/vertical_interval"
+                android:paddingLeft="@dimen/horizontal_interval"
+                android:paddingRight="@dimen/horizontal_interval"
                 android:orientation="horizontal">
                 <Button
                     android:id="@+id/btn_checkMajiang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="麻将牌检测"/>
+                    android:text="麻将牌检测"
+                    android:textSize="@dimen/text_size_m"/>
                 <ImageView
                     android:id="@+id/iv_checkMajiang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/horizontal_interval2"
                     android:layout_gravity="center_vertical" />
+                <TextView
+                    android:id="@+id/tv_checkMajiangProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/horizontal_interval2"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_m" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/separator_line_height5"
+                android:layout_marginLeft="@dimen/horizontal_interval"
+                android:layout_marginRight="@dimen/horizontal_interval"
+                android:background="@color/separator_line_color2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/vertical_interval"
+                android:paddingBottom="@dimen/vertical_interval"
+                android:paddingLeft="@dimen/horizontal_interval"
+                android:paddingRight="@dimen/horizontal_interval"
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
                     android:text="红："/>
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_redDice"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
@@ -182,16 +275,20 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/dice_arr">
+                    app:options="@array/dice_arr"
+                    app:optionWidth="75dp">
                 </wzp.project.majiang.widget.ListOptionButton>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
                     android:text="白："/>
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_whiteDice"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="@dimen/btn_option_height"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
@@ -201,36 +298,68 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/dice_arr">
+                    app:options="@array/dice_arr"
+                    app:optionWidth="75dp">
                 </wzp.project.majiang.widget.ListOptionButton>
                 <Button
                     android:id="@+id/btn_useDice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:textSize="@dimen/text_size_m"
                     android:text="打色"/>
             </LinearLayout>
 
-            <RelativeLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <Button
-                    android:id="@+id/btn_remoteControlStudy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="遥控器学习"/>
-            </RelativeLayout>
+                android:layout_height="@dimen/separator_line_height4"
+                android:background="@color/separator_line_color2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/vertical_interval"
+                android:paddingBottom="@dimen/vertical_interval"
+                android:paddingLeft="@dimen/horizontal_interval"
+                android:paddingRight="@dimen/horizontal_interval"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_remoteControlStudy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="遥控器学习"
+                    android:textSize="@dimen/text_size_m"/>
+                <TextView
+                    android:id="@+id/tv_remoteControlProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/horizontal_interval2"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_m" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/separator_line_height5"
+                android:layout_marginLeft="@dimen/horizontal_interval"
+                android:layout_marginRight="@dimen/horizontal_interval"
+                android:background="@color/separator_line_color2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/vertical_interval"
+                android:paddingBottom="@dimen/vertical_interval"
+                android:paddingLeft="@dimen/horizontal_interval"
+                android:paddingRight="@dimen/horizontal_interval"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <Button
                     android:id="@+id/btn_channelTest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/horizontal_interval2"
+                    android:textSize="@dimen/text_size_m"
                     android:text="通道测试"/>
                 <TextView
                     android:id="@+id/tv_channelTestEast"
@@ -263,6 +392,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/horizontal_interval2"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
@@ -271,39 +401,54 @@
                         android:text="通道号"/>
                     <TextView
                         android:id="@+id/tv_channelNo"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text=""/>
                 </LinearLayout>
                 <ImageView
                     android:id="@+id/iv_channelTestMajiang"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/horizontal_interval2"/>
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/separator_line_height4"
+                android:background="@color/separator_line_color2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/vertical_interval"
+                android:paddingBottom="@dimen/vertical_interval"
+                android:paddingLeft="@dimen/horizontal_interval"
+                android:paddingRight="@dimen/horizontal_interval"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:gravity="center"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
                         android:text="刹车时间："/>
                     <wzp.project.majiang.widget.AddSubWidget
                         android:id="@+id/as_brakeTime"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="@dimen/btn_option_height"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:layout_gravity="center"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
                         android:gravity="center"
-                        android:drawableRight="@drawable/down"
-                        android:drawablePadding="5dp"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
                         app:maxVal="99"
@@ -312,26 +457,31 @@
                         android:id="@+id/btn_setBrakeTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="@dimen/text_size_m"
                         android:text="设置"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
                         android:text="打色延时："/>
                     <wzp.project.majiang.widget.AddSubWidget
                         android:id="@+id/as_useDiceDelay"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="@dimen/btn_option_height"
                         android:layout_gravity="center"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:gravity="center"
-                        android:drawableRight="@drawable/down"
-                        android:drawablePadding="5dp"
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
                         app:maxVal="99"
@@ -340,6 +490,39 @@
                         android:id="@+id/btn_setUseDiceDelay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="设置"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        android:text="充电功率："/>
+                    <wzp.project.majiang.widget.AddSubWidget
+                        android:id="@+id/as_chargePower"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="@dimen/btn_option_height"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:textSize="@dimen/text_size_m"
+                        android:textColor="@color/black"
+                        app:maxVal="99"
+                        app:initVal="0"/>
+                    <Button
+                        android:id="@+id/btn_setChargePower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:text="设置"/>
                 </LinearLayout>
             </LinearLayout>

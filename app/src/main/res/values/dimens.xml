@@ -34,6 +34,8 @@
     <dimen name="splite_line_height">0.8dp</dimen>
     <dimen name="separator_line_height2">22dp</dimen>
     <dimen name="separator_line_height3">8dp</dimen>
+    <dimen name="separator_line_height4">10dp</dimen>
+    <dimen name="separator_line_height5">2dp</dimen>
 
     <!--  基本方式 -->
     <dimen name="tv_tip_height">30dp</dimen>
@@ -53,4 +55,9 @@
 
     <dimen name="basic_num_option_width">62dp</dimen>
     <dimen name="special_rule_option_width">124dp</dimen>
+
+
+    <dimen name="horizontal_interval">16dp</dimen>
+    <dimen name="horizontal_interval2">10dp</dimen>
+    <dimen name="vertical_interval">10dp</dimen>
 </resources>

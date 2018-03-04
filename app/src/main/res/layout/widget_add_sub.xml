@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="@drawable/linear_add_sub_bg">
     <RelativeLayout
@@ -24,7 +24,7 @@
 
     <EditText
         android:id="@+id/edt_num"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_height="match_parent"
         android:background="@null"
         android:inputType="number"
@@ -47,6 +47,4 @@
             android:background="@drawable/ibtn_add_bg"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
-
-
 </LinearLayout>

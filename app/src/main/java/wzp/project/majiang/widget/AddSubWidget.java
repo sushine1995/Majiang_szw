@@ -59,13 +59,8 @@ public class AddSubWidget extends LinearLayout implements View.OnClickListener, 
 		int initVal = typedArray.getInt(R.styleable.addSubWidget_initVal, DEF_MAX_VALUE);
 		int maxVal = typedArray.getInt(R.styleable.addSubWidget_maxVal, DEF_MAX_VALUE);
 
-		if (initVal <= maxVal) {
-			setCurValue(initVal);
-			setMaxValue(maxVal);
-		} else {
-			setCurValue(maxVal);
-			setMaxValue(maxVal);
-		}
+		setMaxValue(maxVal);
+		setCurValue(initVal);
 	}
 
 	@Override
@@ -107,8 +102,12 @@ public class AddSubWidget extends LinearLayout implements View.OnClickListener, 
 	public void setCurValue(int val) {
 		if (val >= MIN_VALUE && val <= maxValue) {
 			curVal = val;
-			edtNum.setText(String.valueOf(curVal));
+		} else if (val > maxValue) {
+			curVal = maxValue;
+		} else {
+			curVal = MIN_VALUE;
 		}
+		edtNum.setText(String.valueOf(curVal));
 	}
 
 	public int getCurVal() {

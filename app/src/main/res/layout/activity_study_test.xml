@@ -452,7 +452,7 @@
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
                         app:maxVal="99"
-                        app:initVal="0"/>
+                        app:initVal="50"/>
                     <Button
                         android:id="@+id/btn_setBrakeTime"
                         android:layout_width="wrap_content"
@@ -485,7 +485,7 @@
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
                         app:maxVal="99"
-                        app:initVal="0"/>
+                        app:initVal="50"/>
                     <Button
                         android:id="@+id/btn_setUseDiceDelay"
                         android:layout_width="wrap_content"
@@ -517,7 +517,7 @@
                         android:textSize="@dimen/text_size_m"
                         android:textColor="@color/black"
                         app:maxVal="99"
-                        app:initVal="0"/>
+                        app:initVal="50"/>
                     <Button
                         android:id="@+id/btn_setChargePower"
                         android:layout_width="wrap_content"

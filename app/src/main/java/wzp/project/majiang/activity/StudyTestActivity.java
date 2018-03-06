@@ -440,6 +440,7 @@ public class StudyTestActivity extends BluetoothBaseActivity {
                         public void run() {
                             tvRemoteControlStudyProgress.setTextColor(getResources().getColor(R.color.red));
                             tvRemoteControlStudyProgress.setText(R.string.remote_control_studying);
+                            btnRemoteControlStudy.setTextColor(getResources().getColor(R.color.red));
                         }
                     });
                 } else if (CalculateUtil.byteToInt(recvData[3]) == 0x01) {
@@ -448,6 +449,16 @@ public class StudyTestActivity extends BluetoothBaseActivity {
                         public void run() {
                             tvRemoteControlStudyProgress.setTextColor(getResources().getColor(R.color.green));
                             tvRemoteControlStudyProgress.setText(R.string.remote_control_studied);
+                            vibrator.vibrate(200);
+                        }
+                    });
+                } else if (CalculateUtil.byteToInt(recvData[3]) == 0x02) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tvRemoteControlStudyProgress.setTextColor(getResources().getColor(R.color.blue));
+                            tvRemoteControlStudyProgress.setText(R.string.remote_control_study_fail);
+                            btnRemoteControlStudy.setTextColor(getResources().getColor(R.color.black));
                             vibrator.vibrate(200);
                         }
                     });
@@ -568,6 +579,17 @@ public class StudyTestActivity extends BluetoothBaseActivity {
                 @Override
                 public void run() {
                     tvProgress.setTextColor(getResources().getColor(R.color.green));
+                    tvProgress.setText(sbProgress);
+
+                    vibrator.vibrate(200);
+                }
+            });
+        } else if (progress == 0x02) {
+            sbProgress.append(getResources().getString(R.string.direction_study_fail));
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    tvProgress.setTextColor(getResources().getColor(R.color.blue));
                     tvProgress.setText(sbProgress);
                     btnArr[index].setTextColor(getResources().getColor(R.color.black));
 

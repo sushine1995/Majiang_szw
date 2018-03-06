@@ -646,10 +646,12 @@
 
     <string name="direction_studying">方位识别中...</string>
     <string name="direction_study_finish">方位识别完成</string>
+    <string name="direction_study_fail">方位识别失败</string>
     <string name="checking_majiang">麻将检测中...</string>
     <string name="checked_majiang">麻将检测完成</string>
     <string name="remote_control_studying">学习中...</string>
     <string name="remote_control_studied">学习完成</string>
+    <string name="remote_control_study_fail">学习失败</string>
     <string name="channel_studying">测试中...</string>
     <string name="channel_studied">测试完成</string>
 </resources>

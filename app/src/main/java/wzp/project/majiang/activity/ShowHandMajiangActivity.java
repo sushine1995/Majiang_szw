@@ -533,7 +533,7 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 						break;
 
 					// 南
-					case 0xea:
+					case 0xec:
 						linearDirection = linearSouth;
 						linearDirectionUp = linearSouthUp;
 						break;
@@ -546,7 +546,7 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 						break;
 
 					// 北
-					case 0xec:
+					case 0xea:
 						linearDirection = linearNorth;
 						linearDirectionUp = linearNorthUp;
 						break;

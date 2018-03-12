@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -129,7 +131,14 @@ public class ShowFileListAdapter extends BaseAdapter {
                     localIntent.setComponent(new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareImgUI"));
                 }
                 localIntent.putExtra("android.intent.extra.TEXT", file.getName());
-                localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(file));
+                Uri uri;
+                // 判断版本大于等于7.0
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    uri = FileProvider.getUriForFile(context, "wzp.project.majiang.fileprovider", file);
+                } else {
+                    uri = Uri.fromFile(file);
+                }
+                localIntent.putExtra("android.intent.extra.STREAM", uri);
                 localIntent.setType("*/*");
 
                 context.startActivity(localIntent);

@@ -761,125 +761,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-            android:orientation="horizontal"
-            android:background="@color/white">
-            <!--<LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <CheckBox
-                    android:id="@+id/cb_dicePanelPositionNotification"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="色盘定位提示" />
-
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
-                    android:layout_width="@dimen/iv_tip_width"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:scaleType="center"
-                    android:src="@drawable/tip"
-                    app:funTip="@string/dice_panel_position_tip"/>
-            </LinearLayout>-->
-
-            <!--<LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <CheckBox
-                    android:id="@+id/cb_bloodFight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="血战" />
-
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
-                    android:layout_width="@dimen/iv_tip_width"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:scaleType="center"
-                    android:src="@drawable/tip"
-                    app:funTip="@string/blood_fight_mode_tip"/>
-            </LinearLayout>-->
-        </LinearLayout>
-
-        <!--<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
-            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
-            android:orientation="horizontal"
-            android:background="@color/white">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <CheckBox
-                    android:id="@+id/cb_dicePanelTroubleNotification"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="色盘故障提示" />
-
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
-                    android:layout_width="@dimen/iv_tip_width"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:scaleType="center"
-                    android:src="@drawable/tip"
-                    app:funTip="@string/dice_panel_trouble_tip"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <CheckBox
-                    android:id="@+id/cb_digitScreenSwitch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/tv_tip_height"
-                    android:textSize="@dimen/text_size_m"
-                    android:textColor="@color/black"
-                    android:text="数显档位开关" />
-
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
-                    android:layout_width="@dimen/iv_tip_width"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:scaleType="center"
-                    android:src="@drawable/tip"
-                    app:funTip="@string/digital_switch_tip"/>
-            </LinearLayout>
-        </LinearLayout>-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
@@ -907,14 +788,24 @@
                     android:src="@drawable/tip"
                     app:funTip="@string/three_player_tip"/>
             </LinearLayout>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/basic_method_horizontal_interval_1"
+            android:paddingRight="@dimen/basic_method_horizontal_interval_1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@color/white">
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:layout_marginLeft="16dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <CheckBox

@@ -392,6 +392,7 @@ public class StudyTestActivity extends BluetoothBaseActivity {
                         public void run() {
                             tvCheckMajiangProgress.setTextColor(getResources().getColor(R.color.red));
                             tvCheckMajiangProgress.setText(getResources().getString(R.string.checking_majiang));
+                            btnCheckMajiang.setTextColor(getResources().getColor(R.color.red));
                         }
                     });
                 } else if (CalculateUtil.byteToInt(recvData[3]) == 0x01) {
@@ -420,6 +421,16 @@ public class StudyTestActivity extends BluetoothBaseActivity {
                             }
                         });
                     }
+                } else if (CalculateUtil.byteToInt(recvData[3]) == 0x02) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tvCheckMajiangProgress.setTextColor(getResources().getColor(R.color.blue));
+                            tvCheckMajiangProgress.setText(getResources().getString(R.string.check_majiang_fail));
+                            btnCheckMajiang.setTextColor(getResources().getColor(R.color.black));
+                            vibrator.vibrate(200);
+                        }
+                    });
                 }
                 break;
 

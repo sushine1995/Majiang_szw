@@ -655,6 +655,7 @@
     <string name="direction_study_fail">方位识别失败</string>
     <string name="checking_majiang">麻将检测中...</string>
     <string name="checked_majiang">麻将检测完成</string>
+    <string name="check_majiang_fail">麻将检测失败</string>
     <string name="remote_control_studying">学习中...</string>
     <string name="remote_control_studied">学习完成</string>
     <string name="remote_control_study_fail">学习失败</string>

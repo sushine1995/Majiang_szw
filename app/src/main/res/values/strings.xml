@@ -25,7 +25,7 @@
     <string name="continuous_boradcast_card_tip">打钩，则预报牌时报连续4张牌的牌型；不打钩，则跳报千家预抓的牌型</string>
     <string name="assign_id_card_position_tip">如打钩，只能使用测试8档学习的ID卡定位；否则可任意一张ID卡定位</string>
     <string name="broadcast_winner_tip">打钩则面板开启报胡牌功能，不打钩则关闭</string>
-    <string name="dice_test_tip">如打钩，打色输出值在色盘上显示；用于测试与维修判断；用户正常使用不能打钩。</string>
+    <string name="dice_test_tip">牌的编码为二代码</string>
     <string name="peng_zhuan_broadcast_card_tip">打钩则面板开启碰转报预抓牌功能，不打钩则关闭</string>
     <string name="reset_test_tip">如打钩，则洗完牌后即可打色输出；如果不打钩，则洗牌完毕后需按升降键托碗升到上位后方可打色输出。</string>
     <string name="dice_panel_position_tip">定位成功后色盘上对应方位的庄位灯闪烁提示</string>
@@ -360,8 +360,8 @@
         <item>起牌上家倒数第一张为财神</item>
         <item>跳牌端补花后第一张为财神</item>
         <item>打色先翻财神后补花</item>
-        <item>起牌上家方位顺数打色总定财神</item>
-        <item>数顺翻财神，翻牌值起牌</item>
+        <item>起牌上家方位顺数打色定财神</item>
+        <item>顺数翻财神，翻牌值起牌</item>
         <item>比大小</item>
         <item>T3</item>
         <item>T4</item>
@@ -546,6 +546,12 @@
         <item>一九万</item>
         <item>东南西北算杠</item>
         <item>三一三九中发白</item>
+        <item>石家庄-刮大风</item>
+        <item>三一三九中发白牌型</item>
+        <item>兰州幺鸡幺蛋</item>
+        <item>同色最多</item>
+        <item>特1</item>
+        <item>特2</item>
         <item>特3</item>
         <item>特4</item>
         <item>特5</item>

@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_below="@id/linear_northUp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
             android:textSize="@dimen/text_size_l"
             android:textColor="@color/black"
             android:text="财神"/>
@@ -188,6 +188,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_above="@id/linear_southUp"
+            android:layout_alignParentRight="true"
             android:textSize="@dimen/text_size_l"
             android:textColor="@color/black"
             android:text="财神"/>

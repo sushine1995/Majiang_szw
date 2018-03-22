@@ -13,7 +13,6 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 
 import wzp.project.majiang.R;
-import wzp.project.majiang.util.DensityUtil;
 
 public class ListOptionPopupWindow extends PopupWindow {
 
@@ -24,13 +23,12 @@ public class ListOptionPopupWindow extends PopupWindow {
 	private ArrayAdapter<String> adapter;
 	private int screenHeight;
 
-	public static final int DEF_POP_WIN_WIDTH_DP = 140; // 默认popwin宽度，单位dp
+//	public static final int DEF_POP_WIN_WIDTH_DP = 140; // 默认popwin宽度，单位dp
 
 	
 	@SuppressLint("InflateParams")
 	public ListOptionPopupWindow(Context context) {
 		this.context = context;
-		setWidth(DensityUtil.dp2px(context, DEF_POP_WIN_WIDTH_DP));
 		
 		listView = (ListView) LayoutInflater.from(context).inflate(R.layout.pop_win_list, null);
 		adapter = new ArrayAdapter<>(context, R.layout.listitem_pw_list);
@@ -67,6 +65,8 @@ public class ListOptionPopupWindow extends PopupWindow {
 
 	@Override
 	public void showAsDropDown(View anchor) {
+		setWidth(anchor.getWidth());
+
 		int[] outLocation = new int[2];
 		anchor.getLocationInWindow(outLocation);
 

@@ -23,8 +23,6 @@ public class ListOptionPopupWindow extends PopupWindow {
 	private ArrayAdapter<String> adapter;
 	private int screenHeight;
 
-//	public static final int DEF_POP_WIN_WIDTH_DP = 140; // 默认popwin宽度，单位dp
-
 	
 	@SuppressLint("InflateParams")
 	public ListOptionPopupWindow(Context context) {
@@ -65,7 +63,7 @@ public class ListOptionPopupWindow extends PopupWindow {
 
 	@Override
 	public void showAsDropDown(View anchor) {
-		setWidth(anchor.getWidth());
+		setWidth(anchor.getWidth()); // 宽度和anchor宽度保持一致
 
 		int[] outLocation = new int[2];
 		anchor.getLocationInWindow(outLocation);

@@ -104,8 +104,7 @@
                 android:textSize="@dimen/text_size_m"
                 android:textColor="@color/black"
                 android:background="@drawable/btn_options_bg"
-                app:options="@array/use_dice_method_arr"
-                app:optionWidth="325dp">
+                app:options="@array/use_dice_method_arr">
             </wzp.project.majiang.widget.ListOptionButton>
         </LinearLayout>
 
@@ -137,8 +136,7 @@
                 android:textSize="@dimen/text_size_m"
                 android:textColor="@color/black"
                 android:background="@drawable/btn_options_bg"
-                app:options="@array/first_dice_position_send_card_method_arr"
-                app:optionWidth="325dp">
+                app:options="@array/first_dice_position_send_card_method_arr">
             </wzp.project.majiang.widget.ListOptionButton>
         </LinearLayout>
 
@@ -170,8 +168,7 @@
                 android:textSize="@dimen/text_size_m"
                 android:textColor="@color/black"
                 android:background="@drawable/btn_options_bg"
-                app:options="@array/start_card_supplement_flower_method_arr"
-                app:optionWidth="325dp">
+                app:options="@array/start_card_supplement_flower_method_arr">
             </wzp.project.majiang.widget.ListOptionButton>
         </LinearLayout>
 
@@ -412,8 +409,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/wealth_god_start_card_method_arr"
-                    app:optionWidth="325dp">
+                    app:options="@array/wealth_god_start_card_method_arr">
                 </wzp.project.majiang.widget.ListOptionButton>
             </LinearLayout>
 
@@ -445,8 +441,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/wealth_god_use_dice_method_arr"
-                    app:optionWidth="325dp">
+                    app:options="@array/wealth_god_use_dice_method_arr">
                 </wzp.project.majiang.widget.ListOptionButton>
             </LinearLayout>
 
@@ -478,8 +473,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/wealth_god_condition_arr"
-                    app:optionWidth="325dp">
+                    app:options="@array/wealth_god_condition_arr">
                 </wzp.project.majiang.widget.ListOptionButton>
             </LinearLayout>
 
@@ -511,8 +505,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/wind_card_wealth_god_loop_method_arr"
-                    app:optionWidth="325dp">
+                    app:options="@array/wind_card_wealth_god_loop_method_arr">
                 </wzp.project.majiang.widget.ListOptionButton>
             </LinearLayout>
 

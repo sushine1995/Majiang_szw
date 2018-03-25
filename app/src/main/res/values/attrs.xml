@@ -12,7 +12,6 @@
 
     <declare-styleable name="listOptionButton">
         <attr name="options" format="reference" />
-        <attr name="optionWidth" format="dimension" />
         <attr name="selectedIndex" format="integer" />
     </declare-styleable>
 

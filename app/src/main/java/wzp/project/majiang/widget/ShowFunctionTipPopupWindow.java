@@ -13,7 +13,7 @@ public class ShowFunctionTipPopupWindow extends PopupWindow {
 
 	private TextView tvFunTip;
 
-	
+
 	@SuppressLint("InflateParams")
 	public ShowFunctionTipPopupWindow(Context context) {
 		super((int) (160 * context.getResources().getDisplayMetrics().density),

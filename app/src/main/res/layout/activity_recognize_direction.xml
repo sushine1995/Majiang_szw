@@ -68,8 +68,7 @@
             android:textSize="@dimen/text_size_m"
             android:textColor="@color/black"
             android:background="@drawable/btn_options_bg"
-            app:options="@array/empty_mode_arr"
-            app:optionWidth="100dp">
+            app:options="@array/empty_mode_arr">
         </wzp.project.majiang.widget.ListOptionButton>
     </LinearLayout>
 

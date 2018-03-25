@@ -78,19 +78,8 @@
                 android:textSize="@dimen/text_size_m"
                 android:textColor="@color/black"
                 android:background="@drawable/btn_options_bg"
-                app:options="@array/loop_times_arr"
-                app:optionWidth="160dp"/>
+                app:options="@array/loop_times_arr"/>
 
-            <!--<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
-                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
-                android:orientation="vertical">
-
-            </LinearLayout>-->
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_playMethod"
                 android:layout_width="match_parent"
@@ -185,8 +174,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width"/>
+                    app:selectedIndex="10"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleA"
@@ -201,8 +189,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -237,8 +224,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleB"
@@ -253,8 +239,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -289,8 +274,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleC"
@@ -305,8 +289,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -341,8 +324,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleD"
@@ -357,8 +339,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -393,8 +374,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleE"
@@ -409,8 +389,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -445,8 +424,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleF"
@@ -461,8 +439,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -497,8 +474,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleG"
@@ -513,8 +489,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -549,8 +524,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleH"
@@ -565,8 +539,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr"/>
             </LinearLayout>
 
             <LinearLayout
@@ -601,8 +574,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleI"
@@ -617,8 +589,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -653,8 +624,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleJ"
@@ -669,8 +639,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -705,8 +674,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleK"
@@ -721,8 +689,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -757,8 +724,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleL"
@@ -773,8 +739,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -809,8 +774,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleM"
@@ -825,8 +789,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -861,8 +824,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleN"
@@ -877,8 +839,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -913,8 +874,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleO"
@@ -929,8 +889,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -965,8 +924,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleP"
@@ -981,8 +939,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -1017,8 +974,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleQ"
@@ -1033,8 +989,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -1069,8 +1024,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleR"
@@ -1085,8 +1039,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
 
             <LinearLayout
@@ -1122,8 +1075,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/basic_num_arr"
-                    app:selectedIndex="10"
-                    app:optionWidth="@dimen/basic_num_option_width" />
+                    app:selectedIndex="10" />
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleS"
@@ -1138,8 +1090,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/special_rule_arr"
-                    app:optionWidth="@dimen/special_rule_option_width" />
+                    app:options="@array/special_rule_arr" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

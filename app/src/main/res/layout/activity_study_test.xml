@@ -275,8 +275,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/dice_arr"
-                    app:optionWidth="75dp">
+                    app:options="@array/dice_arr">
                 </wzp.project.majiang.widget.ListOptionButton>
                 <TextView
                     android:layout_width="wrap_content"
@@ -298,8 +297,7 @@
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
-                    app:options="@array/dice_arr"
-                    app:optionWidth="75dp">
+                    app:options="@array/dice_arr">
                 </wzp.project.majiang.widget.ListOptionButton>
                 <Button
                     android:id="@+id/btn_useDice"

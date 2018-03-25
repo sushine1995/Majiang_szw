@@ -1048,7 +1048,6 @@
                 android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
                 android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
                 android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
-                android:layout_marginBottom="@dimen/edit_play_method_vertical_interval"
                 android:orientation="horizontal">
                 <CheckBox
                     android:id="@+id/cb_s"
@@ -1079,6 +1078,357 @@
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleS"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/cb_t"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="T"/>
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numT"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:selectedIndex="10" />
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleT"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/cb_u"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="U"/>
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numU"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:selectedIndex="10" />
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleU"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/cb_v"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="V"/>
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numV"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:selectedIndex="10" />
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/cb_w"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="W"/>
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numW"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:selectedIndex="10" />
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleW"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/cb_x"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="X"/>
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numX"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:selectedIndex="10" />
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleX"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/cb_y"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="Y"/>
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numY"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:selectedIndex="10" />
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleY"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/special_rule_arr" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_option_height"
+                android:layout_marginLeft="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginRight="@dimen/paly_method_setting_horizontal_interval_1"
+                android:layout_marginTop="@dimen/edit_play_method_vertical_interval"
+                android:layout_marginBottom="@dimen/edit_play_method_vertical_interval"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/cb_z"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:text="Z"/>
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_numZ"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/edit_play_method_horizontal_interval"
+                    android:layout_marginRight="@dimen/edit_play_method_horizontal_interval"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:gravity="center"
+                    android:drawableRight="@drawable/down"
+                    android:drawablePadding="5dp"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black"
+                    android:background="@drawable/btn_options_bg"
+                    app:options="@array/basic_num_arr"
+                    app:selectedIndex="10" />
+
+                <wzp.project.majiang.widget.ListOptionButton
+                    android:id="@+id/btn_specialRuleZ"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"

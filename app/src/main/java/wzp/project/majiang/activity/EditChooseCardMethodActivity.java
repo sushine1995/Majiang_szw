@@ -93,6 +93,27 @@ public class EditChooseCardMethodActivity extends BaseActivity {
     private CheckBox cbS;
     private ListOptionButton btnNumS;
     private ListOptionButton btnSpecialRuleS;
+    private CheckBox cbT;
+    private ListOptionButton btnNumT;
+    private ListOptionButton btnSpecialRuleT;
+    private CheckBox cbU;
+    private ListOptionButton btnNumU;
+    private ListOptionButton btnSpecialRuleU;
+    private CheckBox cbV;
+    private ListOptionButton btnNumV;
+    private ListOptionButton btnSpecialRuleV;
+    private CheckBox cbW;
+    private ListOptionButton btnNumW;
+    private ListOptionButton btnSpecialRuleW;
+    private CheckBox cbX;
+    private ListOptionButton btnNumX;
+    private ListOptionButton btnSpecialRuleX;
+    private CheckBox cbY;
+    private ListOptionButton btnNumY;
+    private ListOptionButton btnSpecialRuleY;
+    private CheckBox cbZ;
+    private ListOptionButton btnNumZ;
+    private ListOptionButton btnSpecialRuleZ;
 
     private AlertDialog dlgExit;
 
@@ -104,9 +125,6 @@ public class EditChooseCardMethodActivity extends BaseActivity {
     private List<ListOptionButton> btnSpecialRuleList = new ArrayList<>();
 
     private ChooseCardMethod chooseCardMethod;
-
-    private String[] playMethodNameArr;
-    private String[] loopTimesArr;
 
     private int playMethod; // 标识当前在修改哪一种玩法
     private int index; // 数据索引，表示当前修改的是哪一个数据
@@ -153,9 +171,6 @@ public class EditChooseCardMethodActivity extends BaseActivity {
     }
 
     private void initData() {
-        playMethodNameArr = getResources().getStringArray(R.array.play_method_name_arr);
-        loopTimesArr = getResources().getStringArray(R.array.loop_times_arr);
-
         playMethod = getIntent().getIntExtra("playMethod", -1);
         index = getIntent().getIntExtra("index", -1);
 
@@ -246,6 +261,30 @@ public class EditChooseCardMethodActivity extends BaseActivity {
         cbS = (CheckBox) findViewById(R.id.cb_s);
         btnNumS = (ListOptionButton) findViewById(R.id.btn_numS);
         btnSpecialRuleS = (ListOptionButton) findViewById(R.id.btn_specialRuleS);
+        cbT = (CheckBox) findViewById(R.id.cb_t);
+        btnNumT = (ListOptionButton) findViewById(R.id.btn_numT);
+        btnSpecialRuleT = (ListOptionButton) findViewById(R.id.btn_specialRuleT);
+        cbS = (CheckBox) findViewById(R.id.cb_s);
+        btnNumS = (ListOptionButton) findViewById(R.id.btn_numS);
+        btnSpecialRuleS = (ListOptionButton) findViewById(R.id.btn_specialRuleS);
+        cbU = (CheckBox) findViewById(R.id.cb_u);
+        btnNumU = (ListOptionButton) findViewById(R.id.btn_numU);
+        btnSpecialRuleU = (ListOptionButton) findViewById(R.id.btn_specialRuleU);
+        cbV = (CheckBox) findViewById(R.id.cb_v);
+        btnNumV = (ListOptionButton) findViewById(R.id.btn_numV);
+        btnSpecialRuleV = (ListOptionButton) findViewById(R.id.btn_specialRuleV);
+        cbW = (CheckBox) findViewById(R.id.cb_w);
+        btnNumW = (ListOptionButton) findViewById(R.id.btn_numW);
+        btnSpecialRuleW = (ListOptionButton) findViewById(R.id.btn_specialRuleW);
+        cbX = (CheckBox) findViewById(R.id.cb_x);
+        btnNumX = (ListOptionButton) findViewById(R.id.btn_numX);
+        btnSpecialRuleX = (ListOptionButton) findViewById(R.id.btn_specialRuleX);
+        cbY = (CheckBox) findViewById(R.id.cb_y);
+        btnNumY = (ListOptionButton) findViewById(R.id.btn_numY);
+        btnSpecialRuleY = (ListOptionButton) findViewById(R.id.btn_specialRuleY);
+        cbZ = (CheckBox) findViewById(R.id.cb_z);
+        btnNumZ = (ListOptionButton) findViewById(R.id.btn_numZ);
+        btnSpecialRuleZ = (ListOptionButton) findViewById(R.id.btn_specialRuleZ);
 
         dlgExit = new AlertDialog.Builder(this)
                 .setTitle("注意")
@@ -291,6 +330,13 @@ public class EditChooseCardMethodActivity extends BaseActivity {
         cbList.add(cbQ);
         cbList.add(cbR);
         cbList.add(cbS);
+        cbList.add(cbT);
+        cbList.add(cbU);
+        cbList.add(cbV);
+        cbList.add(cbW);
+        cbList.add(cbX);
+        cbList.add(cbY);
+        cbList.add(cbZ);
 
         btnNumList.add(btnNumA);
         btnNumList.add(btnNumB);
@@ -311,6 +357,13 @@ public class EditChooseCardMethodActivity extends BaseActivity {
         btnNumList.add(btnNumQ);
         btnNumList.add(btnNumR);
         btnNumList.add(btnNumS);
+        btnNumList.add(btnNumT);
+        btnNumList.add(btnNumU);
+        btnNumList.add(btnNumV);
+        btnNumList.add(btnNumW);
+        btnNumList.add(btnNumX);
+        btnNumList.add(btnNumY);
+        btnNumList.add(btnNumZ);
 
         btnSpecialRuleList.add(btnSpecialRuleA);
         btnSpecialRuleList.add(btnSpecialRuleB);
@@ -331,6 +384,13 @@ public class EditChooseCardMethodActivity extends BaseActivity {
         btnSpecialRuleList.add(btnSpecialRuleQ);
         btnSpecialRuleList.add(btnSpecialRuleR);
         btnSpecialRuleList.add(btnSpecialRuleS);
+        btnSpecialRuleList.add(btnSpecialRuleT);
+        btnSpecialRuleList.add(btnSpecialRuleU);
+        btnSpecialRuleList.add(btnSpecialRuleV);
+        btnSpecialRuleList.add(btnSpecialRuleW);
+        btnSpecialRuleList.add(btnSpecialRuleX);
+        btnSpecialRuleList.add(btnSpecialRuleY);
+        btnSpecialRuleList.add(btnSpecialRuleZ);
 
         rvPlayMethod.setAdapter(adapter);
         rvPlayMethod.setLayoutManager(new LinearLayoutManager(getContext(),

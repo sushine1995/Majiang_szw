@@ -340,6 +340,17 @@
         <item>对家方位红点起牌</item>
         <item>右家方位小点起牌</item>
         <item>左家方位小点起牌</item>
+        <item>右家方位红点起牌</item>
+        <item>左家方位红点起牌</item>
+        <item>右家方位白点起牌</item>
+        <item>左家方位白点起牌</item>
+        <item>总数定位红点起牌</item>
+        <item>总数定位白点起牌</item>
+        <item>Q1</item>
+        <item>Q2</item>
+        <item>Q3</item>
+        <item>Q4</item>
+        <item>Q5</item>
     </string-array>
     <!--起牌补花方式-->
     <string-array name="start_card_supplement_flower_method_arr">
@@ -577,8 +588,8 @@
         <item>Q:十三烂</item>
         <item>R:风牌</item>
         <item>S:穷胡-东北</item>
-        <item>T</item>
-        <item>U</item>
+        <item>T:二八杠</item>
+        <item>U:牛牛</item>
         <item>V</item>
         <item>W</item>
         <item>X</item>

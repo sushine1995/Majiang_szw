@@ -8,6 +8,8 @@ public interface ProjectConstants {
 
 	String CIPHER = "#*#*59#"; // 进入主界面的暗号
 
+	String CIPHER2 = "8888"; // 进入主界面的暗号
+
 	String CIPHER_OPEN_BLUETOOTH = "####"; // 使用蓝牙功能的暗号
 
 	String CIPHER_OPEN_DAIL_MANUAL = "6666"; // 使用蓝牙功能的暗号

@@ -125,7 +125,7 @@ public class DailActivity extends BluetoothBaseActivity {
 
                 case R.id.btn_dial:
                     String strNum = edtNum.getText().toString();
-                    if (strNum.equals(ProjectConstants.CIPHER)) {
+                    if (strNum.equals(ProjectConstants.CIPHER) || strNum.equals(ProjectConstants.CIPHER2)) {
                         if (bluetoothAdapter == null) {
                             Toast.makeText(DailActivity.this, "当前设备不具备蓝牙功能！",
                                     Toast.LENGTH_LONG).show();

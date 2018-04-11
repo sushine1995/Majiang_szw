@@ -1106,7 +1106,7 @@
                     android:paddingLeft="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="T"/>
+                    android:text="T:二八杠"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numT"
@@ -1156,7 +1156,7 @@
                     android:paddingLeft="5dp"
                     android:textSize="@dimen/text_size_m"
                     android:textColor="@color/black"
-                    android:text="U"/>
+                    android:text="U:牛牛"/>
 
                 <wzp.project.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numU"

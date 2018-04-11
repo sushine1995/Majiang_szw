@@ -49,7 +49,7 @@
             android:layout_toRightOf="@id/tv_recvSendMethod"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_l"
-            android:text="QQ"
+            android:text="微信"
             android:background="@drawable/ibtn_back_bg"></Button>
 
         <Button

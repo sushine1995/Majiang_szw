@@ -52,7 +52,7 @@ public class ReceiveSendFileActivity extends BaseActivity {
 
     private ListView lvFile;
 
-    private int remoteSource = RemoteFileSource.QQ;
+    private int remoteSource = RemoteFileSource.WECHAT;
 
     private List<File> fileList;
     private ShowFileListAdapter showFileListAdapter;

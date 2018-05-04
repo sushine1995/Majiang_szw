@@ -47,7 +47,7 @@
                 android:text="暂无数据"
                 android:background="@color/white"/>
 
-            <wzp.project.majiang.widget.MyListView
+            <com.wzp.majiang.widget.MyListView
                 android:id="@+id/lv_showChooseCardMethod"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -56,7 +56,7 @@
                 android:paddingRight="@dimen/basic_method_horizontal_interval_1"
                 android:divider="@color/separator_line_color2"
                 android:dividerHeight="1dp"
-                android:background="@color/white"></wzp.project.majiang.widget.MyListView>
+                android:background="@color/white"></com.wzp.majiang.widget.MyListView>
 
             <TextView
                 android:layout_width="match_parent"
@@ -418,7 +418,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <wzp.project.majiang.widget.MyListView
+            <com.wzp.majiang.widget.MyListView
                 android:id="@+id/lv_basicParameter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -428,7 +428,7 @@
                 android:paddingLeft="40dp"
                 android:paddingRight="40dp"
                 android:divider="@null"
-                android:background="@color/white"></wzp.project.majiang.widget.MyListView>
+                android:background="@color/white"></com.wzp.majiang.widget.MyListView>
 
 
             <TextView
@@ -1055,7 +1055,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <wzp.project.majiang.widget.MyListView
+            <com.wzp.majiang.widget.MyListView
                 android:id="@+id/lv_diceParameter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1065,7 +1065,7 @@
                 android:paddingLeft="40dp"
                 android:paddingRight="40dp"
                 android:divider="@null"
-                android:background="@color/white"></wzp.project.majiang.widget.MyListView>
+                android:background="@color/white"></com.wzp.majiang.widget.MyListView>
 
 
             <LinearLayout
@@ -1346,7 +1346,7 @@
                         android:text="" />
                 </LinearLayout>
 
-                <wzp.project.majiang.widget.MyListView
+                <com.wzp.majiang.widget.MyListView
                     android:id="@+id/lv_wealthGodParam"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1356,7 +1356,7 @@
                     android:paddingLeft="40dp"
                     android:paddingRight="40dp"
                     android:divider="@null"
-                    android:background="@color/white"></wzp.project.majiang.widget.MyListView>
+                    android:background="@color/white"></com.wzp.majiang.widget.MyListView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

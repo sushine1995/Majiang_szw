@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
-                <wzp.project.majiang.widget.ShowFunctionTipTextView
+                <com.wzp.majiang.widget.ShowFunctionTipTextView
                     android:id="@+id/tv_playerNum"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
@@ -33,7 +33,7 @@
                     android:text="玩家数"
                     app:funTip="@string/player_num_fun_tip"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_playerNum"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -46,7 +46,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/player_num_arr">
-                </wzp.project.majiang.widget.ListOptionButton>
+                </com.wzp.majiang.widget.ListOptionButton>
             </LinearLayout>
 
             <LinearLayout
@@ -55,7 +55,7 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
                 android:orientation="vertical">
-                <wzp.project.majiang.widget.ShowFunctionTipTextView
+                <com.wzp.majiang.widget.ShowFunctionTipTextView
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
                     android:gravity="center"
@@ -66,7 +66,7 @@
                     android:text="每手牌数"
                     app:funTip="@string/every_hand_num_tip"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_everyHandNum"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -79,7 +79,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/every_hand_num_arr">
-                </wzp.project.majiang.widget.ListOptionButton>
+                </com.wzp.majiang.widget.ListOptionButton>
             </LinearLayout>
         </LinearLayout>
 
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
-                <wzp.project.majiang.widget.ShowFunctionTipTextView
+                <com.wzp.majiang.widget.ShowFunctionTipTextView
                     android:id="@+id/tv_bankerCardNum"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
@@ -108,7 +108,7 @@
                     android:text="庄家拿牌数"
                     app:funTip="@string/banker_card_num_tip"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_bankerCardNum"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -121,7 +121,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/banker_card_num_arr">
-                </wzp.project.majiang.widget.ListOptionButton>
+                </com.wzp.majiang.widget.ListOptionButton>
             </LinearLayout>
 
             <LinearLayout
@@ -130,7 +130,7 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
                 android:orientation="vertical">
-                <wzp.project.majiang.widget.ShowFunctionTipTextView
+                <com.wzp.majiang.widget.ShowFunctionTipTextView
                     android:id="@+id/tv_otherPlayerCardNum"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
@@ -142,7 +142,7 @@
                     android:text="闲家拿牌数"
                     app:funTip="@string/other_player_card_num_tip"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_otherPlayerCardNum"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -155,7 +155,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/other_player_card_num_arr">
-                </wzp.project.majiang.widget.ListOptionButton>
+                </com.wzp.majiang.widget.ListOptionButton>
             </LinearLayout>
         </LinearLayout>
 
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
-                <wzp.project.majiang.widget.ShowFunctionTipTextView
+                <com.wzp.majiang.widget.ShowFunctionTipTextView
                     android:id="@+id/tv_bankerSkip"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
@@ -184,7 +184,7 @@
                     android:text="庄家跳牌"
                     app:funTip="@string/banker_skip_tip"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_bankerSkip"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -197,7 +197,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/banker_skip_arr">
-                </wzp.project.majiang.widget.ListOptionButton>
+                </com.wzp.majiang.widget.ListOptionButton>
             </LinearLayout>
 
             <LinearLayout
@@ -206,7 +206,7 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
                 android:orientation="vertical">
-                <wzp.project.majiang.widget.ShowFunctionTipTextView
+                <com.wzp.majiang.widget.ShowFunctionTipTextView
                     android:id="@+id/tv_getCardMethod"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
@@ -218,7 +218,7 @@
                     android:text="抓牌方式"
                     app:funTip="@string/get_card_method_tip"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_getCardMethod"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -231,7 +231,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/get_card_method_arr">
-                </wzp.project.majiang.widget.ListOptionButton>
+                </com.wzp.majiang.widget.ListOptionButton>
             </LinearLayout>
         </LinearLayout>
 
@@ -250,7 +250,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <wzp.project.majiang.widget.ShowFunctionTipTextView
+                <com.wzp.majiang.widget.ShowFunctionTipTextView
                     android:id="@+id/tv_programStartTimes"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
@@ -262,7 +262,7 @@
                     android:textSize="@dimen/text_size_m"
                     app:funTip="@string/program_start_times_tip" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_programStartTimes"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -274,7 +274,7 @@
                     android:paddingRight="5dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_m"
-                    app:options="@array/program_start_times_arr"></wzp.project.majiang.widget.ListOptionButton>
+                    app:options="@array/program_start_times_arr"></com.wzp.majiang.widget.ListOptionButton>
             </LinearLayout>
 
             <LinearLayout
@@ -283,7 +283,7 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
                 android:orientation="vertical">
-                <wzp.project.majiang.widget.ShowFunctionTipTextView
+                <com.wzp.majiang.widget.ShowFunctionTipTextView
                     android:id="@+id/tv_programStopTimes"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
@@ -295,7 +295,7 @@
                     android:text="程序关机次数"
                     app:funTip="@string/program_stop_times_tip"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_programStopTimes"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -308,7 +308,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/program_stop_times_arr">
-                </wzp.project.majiang.widget.ListOptionButton>
+                </com.wzp.majiang.widget.ListOptionButton>
             </LinearLayout>
         </LinearLayout>
 
@@ -325,7 +325,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
-                <wzp.project.majiang.widget.ShowFunctionTipTextView
+                <com.wzp.majiang.widget.ShowFunctionTipTextView
                     android:id="@+id/tv_continuousWorkRounds"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
@@ -337,7 +337,7 @@
                     android:text="连续工作局数"
                     app:funTip="@string/continuous_working_rounds_tip"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_continuousWorkingRound"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -349,7 +349,7 @@
                     android:paddingRight="5dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_m"
-                    app:options="@array/continuous_work_rounds_arr"></wzp.project.majiang.widget.ListOptionButton>
+                    app:options="@array/continuous_work_rounds_arr"></com.wzp.majiang.widget.ListOptionButton>
             </LinearLayout>
 
             <LinearLayout
@@ -358,7 +358,7 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/basic_method_horizontal_interval_2"
                 android:orientation="vertical">
-                <wzp.project.majiang.widget.ShowFunctionTipTextView
+                <com.wzp.majiang.widget.ShowFunctionTipTextView
                     android:id="@+id/tv_totalRounds"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
@@ -370,7 +370,7 @@
                     android:text="总共使用局数"
                     app:funTip="@string/total_rounds_tip"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_totalUseRound"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -383,7 +383,7 @@
                     android:textColor="@color/black"
                     android:background="@drawable/btn_options_bg"
                     app:options="@array/total_rounds_arr">
-                </wzp.project.majiang.widget.ListOptionButton>
+                </com.wzp.majiang.widget.ListOptionButton>
             </LinearLayout>
         </LinearLayout>
 
@@ -400,7 +400,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
-                <wzp.project.majiang.widget.ShowFunctionTipTextView
+                <com.wzp.majiang.widget.ShowFunctionTipTextView
                     android:id="@+id/tv_broadcastCardNum"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/tv_tip_height"
@@ -412,7 +412,7 @@
                     android:text="报牌张数"
                     app:funTip="@string/broadcast_card_num_tip"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_broadcastCardNum"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -424,7 +424,7 @@
                     android:paddingRight="5dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_m"
-                    app:options="@array/broadcast_card_num_arr"></wzp.project.majiang.widget.ListOptionButton>
+                    app:options="@array/broadcast_card_num_arr"></com.wzp.majiang.widget.ListOptionButton>
             </LinearLayout>
 
             <LinearLayout
@@ -441,7 +441,7 @@
                     android:textColor="@color/black"
                     android:text="基本设置备用" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_reserve"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -453,7 +453,7 @@
                     android:paddingRight="5dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_m"
-                    app:options="@array/basic_parameter_reserve_arr"></wzp.project.majiang.widget.ListOptionButton>
+                    app:options="@array/basic_parameter_reserve_arr"></com.wzp.majiang.widget.ListOptionButton>
             </LinearLayout>
         </LinearLayout>
 
@@ -482,7 +482,7 @@
                     android:textColor="@color/black"
                     android:text="便携式语音盒" />
 
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                <com.wzp.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -508,7 +508,7 @@
                     android:textColor="@color/black"
                     android:text="机头定位" />
 
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                <com.wzp.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -542,7 +542,7 @@
                     android:textColor="@color/black"
                     android:text="面板感应" />
 
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                <com.wzp.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -568,7 +568,7 @@
                     android:textColor="@color/black"
                     android:text="钱盒定位" />
 
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                <com.wzp.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -602,7 +602,7 @@
                     android:textColor="@color/black"
                     android:text="连续报牌" />
 
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                <com.wzp.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -628,7 +628,7 @@
                     android:textColor="@color/black"
                     android:text="指定ID卡定位" />
 
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                <com.wzp.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -662,7 +662,7 @@
                     android:textColor="@color/black"
                     android:text="报胡牌" />
 
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                <com.wzp.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -688,7 +688,7 @@
                     android:textColor="@color/black"
                     android:text="二代码" />
 
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                <com.wzp.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -722,7 +722,7 @@
                     android:textColor="@color/black"
                     android:text="碰转报牌" />
 
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                <com.wzp.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -748,7 +748,7 @@
                     android:textColor="@color/black"
                     android:text="复位测试" />
 
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                <com.wzp.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -780,7 +780,7 @@
                     android:textColor="@color/black"
                     android:text="三人玩法三人点数" />
 
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                <com.wzp.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -816,7 +816,7 @@
                     android:textColor="@color/black"
                     android:text="血战" />
 
-                <wzp.project.majiang.widget.ShowFunctionTipImageView
+                <com.wzp.majiang.widget.ShowFunctionTipImageView
                     android:layout_width="@dimen/iv_tip_width"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -915,7 +915,7 @@
                     android:textColor="@color/black"
                     android:text="上"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_eastTop"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -938,7 +938,7 @@
                     android:textColor="@color/black"
                     android:text="中"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_eastMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -961,7 +961,7 @@
                     android:textColor="@color/black"
                     android:text="下"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_eastBottom"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -1004,7 +1004,7 @@
                     android:textColor="@color/black"
                     android:text="上"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_northTop"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -1027,7 +1027,7 @@
                     android:textColor="@color/black"
                     android:text="中"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_northMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -1050,7 +1050,7 @@
                     android:textColor="@color/black"
                     android:text="下"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_northBottom"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -1100,7 +1100,7 @@
                     android:textColor="@color/black"
                     android:text="上"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_westTop"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -1123,7 +1123,7 @@
                     android:textColor="@color/black"
                     android:text="中"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_westMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -1146,7 +1146,7 @@
                     android:textColor="@color/black"
                     android:text="下"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_westBottom"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -1190,7 +1190,7 @@
                     android:textColor="@color/black"
                     android:text="上"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_southTop"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -1213,7 +1213,7 @@
                     android:textColor="@color/black"
                     android:text="中"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_southMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"
@@ -1236,7 +1236,7 @@
                     android:textColor="@color/black"
                     android:text="下"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_southBottom"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/btn_option_height"

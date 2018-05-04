@@ -240,7 +240,7 @@
                     android:textSize="@dimen/fun_set_text_size"
                     android:textColor="@color/black"
                     android:gravity="center"/>
-                <wzp.project.majiang.widget.AddSubWidget
+                <com.wzp.majiang.widget.AddSubWidget
                     android:id="@+id/as_east"
                     android:layout_width="0dp"
                     android:layout_weight="2.5"
@@ -269,7 +269,7 @@
                     android:textSize="@dimen/fun_set_text_size"
                     android:textColor="@color/black"
                     android:gravity="center"/>
-                <wzp.project.majiang.widget.AddSubWidget
+                <com.wzp.majiang.widget.AddSubWidget
                     android:id="@+id/as_south"
                     android:layout_width="0dp"
                     android:layout_weight="2.5"
@@ -298,7 +298,7 @@
                     android:textSize="@dimen/fun_set_text_size"
                     android:textColor="@color/black"
                     android:gravity="center"/>
-                <wzp.project.majiang.widget.AddSubWidget
+                <com.wzp.majiang.widget.AddSubWidget
                     android:id="@+id/as_west"
                     android:layout_width="0dp"
                     android:layout_weight="2.5"
@@ -327,7 +327,7 @@
                     android:textSize="@dimen/fun_set_text_size"
                     android:textColor="@color/black"
                     android:gravity="center"/>
-                <wzp.project.majiang.widget.AddSubWidget
+                <com.wzp.majiang.widget.AddSubWidget
                     android:id="@+id/as_north"
                     android:layout_width="0dp"
                     android:layout_weight="2.5"

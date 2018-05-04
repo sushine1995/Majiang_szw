@@ -64,7 +64,7 @@
                 android:textColor="@color/black"
                 android:text="循环次数"/>
 
-            <wzp.project.majiang.widget.ListOptionButton
+            <com.wzp.majiang.widget.ListOptionButton
                 android:id="@+id/btn_loopTimes"
                 android:layout_width="160dp"
                 android:layout_height="@dimen/btn_option_height"
@@ -158,7 +158,7 @@
                     android:textColor="@color/black"
                     android:text="A:平胡"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numA"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -176,7 +176,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleA"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -208,7 +208,7 @@
                     android:textColor="@color/black"
                     android:text="B:混一色"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numB"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -226,7 +226,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleB"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -258,7 +258,7 @@
                     android:textColor="@color/black"
                     android:text="C:七小对"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numC"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -276,7 +276,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleC"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -308,7 +308,7 @@
                     android:textColor="@color/black"
                     android:text="D:对对碰"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numD"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -326,7 +326,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleD"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -358,7 +358,7 @@
                     android:textColor="@color/black"
                     android:text="E:清一色"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numE"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -376,7 +376,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleE"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -408,7 +408,7 @@
                     android:textColor="@color/black"
                     android:text="F:风一色"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numF"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -426,7 +426,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleF"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -458,7 +458,7 @@
                     android:textColor="@color/black"
                     android:text="G:十三幺"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numG"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -476,7 +476,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleG"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -508,7 +508,7 @@
                     android:textColor="@color/black"
                     android:text="H:将一色"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numH"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -526,7 +526,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleH"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -558,7 +558,7 @@
                     android:textColor="@color/black"
                     android:text="I:混将胡"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numI"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -576,7 +576,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleI"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -608,7 +608,7 @@
                     android:textColor="@color/black"
                     android:text="J:九大坎"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numJ"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -626,7 +626,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleJ"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -658,7 +658,7 @@
                     android:textColor="@color/black"
                     android:text="K:缺一门-湘"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numK"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -676,7 +676,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleK"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -708,7 +708,7 @@
                     android:textColor="@color/black"
                     android:text="L:三色全"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numL"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -726,7 +726,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleL"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -758,7 +758,7 @@
                     android:textColor="@color/black"
                     android:text="M:板板胡"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numM"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -776,7 +776,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleM"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -808,7 +808,7 @@
                     android:textColor="@color/black"
                     android:text="N:双三张"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numN"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -826,7 +826,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleN"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -858,7 +858,7 @@
                     android:textColor="@color/black"
                     android:text="O:暗红"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numO"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -876,7 +876,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleO"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -908,7 +908,7 @@
                     android:textColor="@color/black"
                     android:text="P:幺九"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numP"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -926,7 +926,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleP"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -958,7 +958,7 @@
                     android:textColor="@color/black"
                     android:text="Q:十三烂"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numQ"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -976,7 +976,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleQ"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -1008,7 +1008,7 @@
                     android:textColor="@color/black"
                     android:text="R:风牌"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numR"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -1026,7 +1026,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleR"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -1058,7 +1058,7 @@
                     android:textColor="@color/black"
                     android:text="S:穷胡-东北"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numS"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -1076,7 +1076,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleS"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -1108,7 +1108,7 @@
                     android:textColor="@color/black"
                     android:text="T:二八杠"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numT"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -1126,7 +1126,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleT"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -1158,7 +1158,7 @@
                     android:textColor="@color/black"
                     android:text="U:牛牛"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numU"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -1176,7 +1176,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleU"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -1208,7 +1208,7 @@
                     android:textColor="@color/black"
                     android:text="V"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numV"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -1226,7 +1226,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleV"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -1258,7 +1258,7 @@
                     android:textColor="@color/black"
                     android:text="W"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numW"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -1276,7 +1276,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleW"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -1308,7 +1308,7 @@
                     android:textColor="@color/black"
                     android:text="X"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numX"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -1326,7 +1326,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleX"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -1358,7 +1358,7 @@
                     android:textColor="@color/black"
                     android:text="Y"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numY"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -1376,7 +1376,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleY"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -1409,7 +1409,7 @@
                     android:textColor="@color/black"
                     android:text="Z"/>
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_numZ"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -1427,7 +1427,7 @@
                     app:options="@array/basic_num_arr"
                     app:selectedIndex="10" />
 
-                <wzp.project.majiang.widget.ListOptionButton
+                <com.wzp.majiang.widget.ListOptionButton
                     android:id="@+id/btn_specialRuleZ"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"

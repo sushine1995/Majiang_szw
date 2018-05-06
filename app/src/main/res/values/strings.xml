@@ -312,9 +312,9 @@
         <item>一次色定位，二次色起牌</item>
         <item>一次色定二次色方位，二次色定位，一二次色相加起牌</item>
         <item>一次色定二次色方位，二次色定位、起牌</item>
-        <item>D1</item>
-        <item>D2</item>
-        <item>D3</item>
+        <item>总点定位，小点順数翻财神，翻财神对家大点拿牌</item>
+        <item>总点定位，小点順数翻财神，翻财神上家大点拿牌</item>
+        <item>一次色定位翻财神，起财神上家起牌</item>
         <item>D4</item>
         <item>D5</item>
     </string-array>
@@ -346,9 +346,9 @@
         <item>左家方位白点起牌</item>
         <item>总数定位红点起牌</item>
         <item>总数定位白点起牌</item>
-        <item>Q1</item>
-        <item>Q2</item>
-        <item>Q3</item>
+        <item>总数加大点</item>
+        <item>总数加小点</item>
+        <item>大定大拿</item>
         <item>Q4</item>
         <item>Q5</item>
     </string-array>
@@ -363,8 +363,8 @@
     <string-array name="wealth_god_start_card_method_arr">
         <item>跳跃翻牌值</item>
         <item>倒数墩数翻牌值</item>
-        <item>打色翻牌值</item>
-        <item>起牌方位下家，打色总数倒数翻财神</item>
+        <item>打色倒数翻牌值</item>
+        <item>起牌方位下家，打色倒数翻财神</item>
         <item>补花后翻财神</item>
         <item>固定财神</item>
         <item>固定起牌方位的第一张牌翻财神</item>
@@ -374,7 +374,7 @@
         <item>起牌上家方位顺数打色定财神</item>
         <item>顺数翻财神，翻牌值起牌</item>
         <item>比大小</item>
-        <item>T3</item>
+        <item>打色順数翻财神</item>
         <item>T4</item>
         <item>T5</item>
         <item>T6</item>
@@ -389,8 +389,8 @@
         <item>大点翻财神</item>
         <item>小点翻财神</item>
         <item>总数*2翻财神</item>
-        <item>大点加一倒数翻财神</item>
-        <item>小点加一倒数翻财神</item>
+        <item>大点加一翻财神</item>
+        <item>小点加一翻财神</item>
         <item>单数则跳牌财神，双数则倒数财神</item>
         <item>双数则跳牌财神，单数数则倒数财神</item>
         <item>倒数张数翻财神</item>

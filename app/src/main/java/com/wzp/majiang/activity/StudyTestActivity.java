@@ -43,7 +43,11 @@ public class StudyTestActivity extends BluetoothBaseActivity {
     private Button btnUpDown1;
     private Button btnUpDown2;
     private Button btnCheckMajiang;
-    private ImageView ivCheckMajiang;
+//    private ImageView ivCheckMajiang;
+    private TextView tvEasthMajiang;
+    private TextView tvSouthMajiang;
+    private TextView tvWestMajiang;
+    private TextView tvNorthMajiang;
     private TextView tvCheckMajiangProgress;
     private ListOptionButton btnRedDice;
     private ListOptionButton btnWhiteDice;
@@ -146,7 +150,10 @@ public class StudyTestActivity extends BluetoothBaseActivity {
                     break;
 
                 case R.id.btn_checkMajiang:
-                    ivCheckMajiang.setVisibility(View.INVISIBLE);
+                    tvEasthMajiang.setVisibility(View.INVISIBLE);
+                    tvSouthMajiang.setVisibility(View.INVISIBLE);
+                    tvWestMajiang.setVisibility(View.INVISIBLE);
+                    tvNorthMajiang.setVisibility(View.INVISIBLE);
                     tvCheckMajiangProgress.setText("");
 
                     if (MyApplication.btClientHelper.isBluetoothConnected()) {
@@ -313,7 +320,10 @@ public class StudyTestActivity extends BluetoothBaseActivity {
         btnUpDown1 = (Button) findViewById(R.id.btn_upDown1);
         btnUpDown2 = (Button) findViewById(R.id.btn_upDown2);
         btnCheckMajiang = (Button) findViewById(R.id.btn_checkMajiang);
-        ivCheckMajiang = (ImageView) findViewById(R.id.iv_checkMajiang);
+        tvEasthMajiang = (TextView) findViewById(R.id.tv_eastMajiang);
+        tvSouthMajiang = (TextView) findViewById(R.id.tv_southMajiang);
+        tvWestMajiang = (TextView) findViewById(R.id.tv_westMajiang);
+        tvNorthMajiang = (TextView) findViewById(R.id.tv_northMajiang);
         tvCheckMajiangProgress = (TextView) findViewById(R.id.tv_checkMajiangProgress);
         btnRedDice = (ListOptionButton) findViewById(R.id.btn_redDice);
         btnWhiteDice = (ListOptionButton) findViewById(R.id.btn_whiteDice);
@@ -404,22 +414,30 @@ public class StudyTestActivity extends BluetoothBaseActivity {
                             vibrator.vibrate(200);
                         }
                     });
-                    final int imageRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[4]));
-                    if (imageRes != -1) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ivCheckMajiang.setImageResource(imageRes);
-                                ivCheckMajiang.setVisibility(View.VISIBLE);
-                            }
-                        });
-                    } else {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ivCheckMajiang.setVisibility(View.INVISIBLE);
-                            }
-                        });
+                    TextView[] tvMajiangArr = new TextView[] {tvEasthMajiang, tvSouthMajiang,
+                        tvWestMajiang, tvNorthMajiang};
+                    for (int i = 0; i < 4; i++) {
+                        final int imageRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[4 + i]));
+                        final TextView tvMajiang = tvMajiangArr[i];
+                        if (imageRes != -1) {
+                            final Drawable drawable = getResources().getDrawable(imageRes);
+                            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    tvMajiang.setCompoundDrawables(null, null, null, drawable);
+                                    tvMajiang.setVisibility(View.VISIBLE);
+                                }
+                            });
+                        } else {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    tvMajiang.setCompoundDrawables(null, null, null, null);
+                                    tvMajiang.setVisibility(View.VISIBLE);
+                                }
+                            });
+                        }
                     }
                 } else if (CalculateUtil.byteToInt(recvData[3]) == 0x02) {
                     runOnUiThread(new Runnable() {

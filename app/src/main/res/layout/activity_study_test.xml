@@ -215,8 +215,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/vertical_interval"
-                android:paddingBottom="@dimen/vertical_interval"
                 android:paddingLeft="@dimen/horizontal_interval"
                 android:paddingRight="@dimen/horizontal_interval"
                 android:orientation="horizontal">
@@ -224,20 +222,58 @@
                     android:id="@+id/btn_checkMajiang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:text="麻将牌检测"
                     android:textSize="@dimen/text_size_m"/>
-                <ImageView
-                    android:id="@+id/iv_checkMajiang"
+                <TextView
+                    android:id="@+id/tv_eastMajiang"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/horizontal_interval2"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:drawableBottom="@drawable/tiao1"
+                    android:text="东"/>
+                <TextView
+                    android:id="@+id/tv_southMajiang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/horizontal_interval2"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:drawableBottom="@drawable/tiao1"
+                    android:text="南"/>
+                <TextView
+                    android:id="@+id/tv_westMajiang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/horizontal_interval2"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:drawableBottom="@drawable/tiao1"
+                    android:text="西"/>
+                <TextView
+                    android:id="@+id/tv_northMajiang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/horizontal_interval2"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:drawableBottom="@drawable/tiao1"
+                    android:text="北"/>
                 <TextView
                     android:id="@+id/tv_checkMajiangProgress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="@dimen/horizontal_interval2"
-                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:textSize="@dimen/text_size_m" />
             </LinearLayout>
 

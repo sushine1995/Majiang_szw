@@ -18,6 +18,12 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.wzp.majiang.R;
+import com.wzp.majiang.activity.ReceiveSendFileActivity;
+import com.wzp.majiang.activity.base.BaseActivity;
+import com.wzp.majiang.constant.RemoteFileSource;
+import com.wzp.majiang.entity.PlayMethodParameter;
+import com.wzp.majiang.widget.MyApplication;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -32,13 +38,6 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
-import com.wzp.majiang.R;
-import com.wzp.majiang.activity.ReceiveSendFileActivity;
-import com.wzp.majiang.activity.base.BaseActivity;
-import com.wzp.majiang.constant.RemoteFileSource;
-import com.wzp.majiang.entity.PlayMethodParameter;
-import com.wzp.majiang.widget.MyApplication;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -134,7 +133,7 @@ public class ShowFileListAdapter extends BaseAdapter {
                 Uri uri;
                 // 判断版本大于等于7.0
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    uri = FileProvider.getUriForFile(context, "wzp.project.majiang.fileprovider", file);
+                    uri = FileProvider.getUriForFile(context, "com.wzp.majiang.fileprovider", file);
                 } else {
                     uri = Uri.fromFile(file);
                 }

@@ -15,12 +15,9 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.wzp.majiang.R;
 import com.wzp.majiang.activity.EditPlayMethodActivity;
+import com.wzp.majiang.activity.ShowPlayMethodActivity;
 import com.wzp.majiang.adapter.ShowChooseCardMethodListAdapter;
 import com.wzp.majiang.adapter.ShowParamListAdapter;
 import com.wzp.majiang.entity.BasicParameter;
@@ -30,6 +27,9 @@ import com.wzp.majiang.entity.DiceParameter;
 import com.wzp.majiang.entity.PlayMethodParameter;
 import com.wzp.majiang.widget.MyApplication;
 import com.wzp.majiang.widget.MyListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by wzp on 2017/8/28.
@@ -259,6 +259,7 @@ public class ShowPlayMethodFragment extends Fragment {
         btnModifyPlayMethod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((ShowPlayMethodActivity) getActivity()).setModify(true);
                 EditPlayMethodActivity.myStartActivityForResult(ShowPlayMethodFragment.this, method, REQUEST_EDIT_PLAY_METHOD);
             }
         });

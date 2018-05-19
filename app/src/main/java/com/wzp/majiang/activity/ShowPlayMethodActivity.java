@@ -86,6 +86,7 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
     private MyProgressDialog dlgProgress;
 
     private String districtCode;
+    private boolean modify; // 是否修改了玩法
 
     private static  final int REQUEST_READ_WRITE_EXTERNAL_STORAGE = 0x02;
     private static  final int REQUEST_RECV_SEND_FILE = 0x22;
@@ -349,7 +350,11 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
     @Override
     public void onBackPressed() {
-        dlgExit.show();
+        if (isModify()) {
+            dlgExit.show();
+        } else {
+            finish();
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -493,6 +498,7 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
             ((ShowPlayMethodFragment) fragment).savePlayMethod();
         }
         showToast("参数保存成功！");
+        setModify(false);
     }
 
     /**
@@ -537,17 +543,18 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
             transFormer.transform(domSource, xmlResult);
 
             showToast("保存成功");
+            setModify(false);
         } catch (ParserConfigurationException e) {
-            e.printStackTrace();
+            Log.e(LOG_TAG, Log.getStackTraceString(e));
             showToast("保存失败");
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(LOG_TAG, Log.getStackTraceString(e));
             showToast("保存失败");
         } catch (TransformerConfigurationException e) {
-            e.printStackTrace();
+            Log.e(LOG_TAG, Log.getStackTraceString(e));
             showToast("保存失败");
         } catch (TransformerException e) {
-            e.printStackTrace();
+            Log.e(LOG_TAG, Log.getStackTraceString(e));
             showToast("保存失败");
         }
     }
@@ -583,5 +590,13 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
         resArr[1] = dCode % 10000 / 100;
         resArr[2] = dCode % 100;
         return resArr;
+    }
+
+    public void setModify(boolean modify) {
+        this.modify = modify;
+    }
+
+    public boolean isModify() {
+        return modify;
     }
 }

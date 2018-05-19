@@ -406,24 +406,6 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
     private void initData() {
         fragmentList = new ArrayList<>();
-        Fragment fragment1 = new ShowPlayMethodFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt("method", PlayMethod.NO_1);
-        fragment1.setArguments(bundle);
-        fragmentList.add(fragment1);
-
-        Fragment fragment2 = new ShowPlayMethodFragment();
-        Bundle bundle2 = new Bundle();
-        bundle2.putInt("method", PlayMethod.NO_2);
-        fragment2.setArguments(bundle2);
-        fragmentList.add(fragment2);
-
-        Fragment fragment3 = new ShowPlayMethodFragment();
-        Bundle bundle3 = new Bundle();
-        bundle3.putInt("method", PlayMethod.NO_3);
-        fragment3.setArguments(bundle3);
-        fragmentList.add(fragment3);
-
         playMethodVpAdapter = new ShowPlayMethodVpAdapter(getSupportFragmentManager(), fragmentList);
 
         File basePath = new File(ProjectConstants.baseFilePath);
@@ -432,6 +414,43 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
         }
 
         districtCode = getIntent().getStringExtra("districtCode");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(800);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                Fragment fragment1 = new ShowPlayMethodFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("method", PlayMethod.NO_1);
+                fragment1.setArguments(bundle);
+                fragmentList.add(fragment1);
+
+                Fragment fragment2 = new ShowPlayMethodFragment();
+                Bundle bundle2 = new Bundle();
+                bundle2.putInt("method", PlayMethod.NO_2);
+                fragment2.setArguments(bundle2);
+                fragmentList.add(fragment2);
+
+                Fragment fragment3 = new ShowPlayMethodFragment();
+                Bundle bundle3 = new Bundle();
+                bundle3.putInt("method", PlayMethod.NO_3);
+                fragment3.setArguments(bundle3);
+                fragmentList.add(fragment3);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        playMethodVpAdapter.notifyDataSetChanged();
+                        dlgProgress.dismiss();
+                    }
+                });
+            }
+        }).start();
     }
 
     private void initWidget() {
@@ -488,6 +507,8 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
         btnSaveAs.setOnClickListener(listener);
         btnReadFile.setOnClickListener(listener);
         btnDownload.setOnClickListener(listener);
+
+        dlgProgress.show("玩法读取中，请稍后...");
     }
 
     /**

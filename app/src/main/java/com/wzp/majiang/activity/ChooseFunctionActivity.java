@@ -68,12 +68,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		Manifest.permission.READ_EXTERNAL_STORAGE
 	};
 
-	private static final int PERMISSON_REQUESTCODE = 0;
-
-	/**
-	 * 判断是否需要检测，防止不停的弹框
-	 */
-	private boolean isNeedCheck = true;
+	private static final int PERMISSON_REQUEST_CODE = 0;
 
 	private String districtCode; // 区域码
 
@@ -145,13 +140,6 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choose_function);
 
-		if (Build.VERSION.SDK_INT >= 23
-				&& getApplicationInfo().targetSdkVersion >= 23) {
-			if (isNeedCheck) {
-				checkPermissions(needPermissions);
-			}
-		}
-
 		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		if (bluetoothAdapter == null) {
 			Toast.makeText(this, "当前设备不具备蓝牙功能！",
@@ -173,8 +161,11 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		// 启动定位
-		locationClient.startLocation();
+
+		if (checkPermissions(needPermissions)) {
+			// 启动定位
+			locationClient.startLocation();
+		}
 	}
 
 	@Override
@@ -261,6 +252,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
             }
         });
 
+        // 初始化定位功能
 		initLocation();
 	}
 
@@ -303,33 +295,40 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	}
 
 	@Override
-	protected void onBluetoothDataReceived(byte[] recvData) {
-
-	}
+	protected void onBluetoothDataReceived(byte[] recvData) {}
 
 	/**
+	 * 检查是否具有设定的权限
 	 *
 	 * @param permissions
-	 * @since 2.5.0
+	 * @return 权限是否均被接受
 	 *
 	 */
-	private void checkPermissions(String... permissions) {
-		try {
-			if (Build.VERSION.SDK_INT >= 23
-					&& getApplicationInfo().targetSdkVersion >= 23) {
+	private boolean checkPermissions(String... permissions) {
+		if (Build.VERSION.SDK_INT >= 23
+				&& getApplicationInfo().targetSdkVersion >= 23) {
+			try {
 				List<String> needRequestPermissonList = findDeniedPermissions(permissions);
 				if (null != needRequestPermissonList
 						&& needRequestPermissonList.size() > 0) {
+					// 存在被拒绝的权限，需要提醒用户获取相应的权限，方可正常使用定位功能
 					String[] array = needRequestPermissonList.toArray(new String[needRequestPermissonList.size()]);
 					Method method = getClass().getMethod("requestPermissions",
-							new Class[]{String[].class,	int.class});
+							new Class[]{String[].class, int.class});
 
-					method.invoke(this, array, PERMISSON_REQUESTCODE);
+					method.invoke(this, array, PERMISSON_REQUEST_CODE);
+				} else {
+					// 设定的权限均被接受
+					return true;
 				}
+			} catch (Exception e) {
+				Log.e(LOG_TAG, Log.getStackTraceString(e));
 			}
-		} catch (Throwable e) {
-			Log.e(LOG_TAG, Log.getStackTraceString(e));
+		} else {
+			return true;
 		}
+
+		return false;
 	}
 
 	/**
@@ -379,14 +378,11 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 	@TargetApi(23)
 	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] paramArrayOfInt) {
-		if (requestCode == PERMISSON_REQUESTCODE) {
+		if (requestCode == PERMISSON_REQUEST_CODE) {
 			if (!verifyPermissions(paramArrayOfInt)) {
 				showMissingPermissionDialog();
-				isNeedCheck = false;
 			} else {
-				if (locationClient.isStarted()) {
-					locationClient.stopLocation();
-				}
+				// 启动定位
 				locationClient.startLocation();
 			}
 		}

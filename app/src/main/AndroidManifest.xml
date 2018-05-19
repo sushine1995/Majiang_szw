@@ -12,14 +12,35 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!--高德地图定位SDK-->
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <!--获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <!--这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <!--用于访问网络，网络定位需要上网-->
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <!--用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <!--写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+
+
     <application
-        android:name="com.wzp.majiang.widget.MyApplication"
+        android:name=".widget.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/phone"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.wzp.majiang.activity.DailActivity">
+        <activity android:name=".activity.DailActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -27,46 +48,46 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.wzp.majiang.activity.MainActivity">
+        <activity android:name=".activity.MainActivity">
         </activity>
 
-        <activity android:name="com.wzp.majiang.activity.ShowMajiangActivity">
+        <activity android:name=".activity.ShowMajiangActivity">
         </activity>
 
-        <activity android:name="com.wzp.majiang.activity.ShowHandMajiangActivity">
+        <activity android:name=".activity.ShowHandMajiangActivity">
         </activity>
 
-        <activity android:name="com.wzp.majiang.activity.ShowBaopaiActivity">
+        <activity android:name=".activity.ShowBaopaiActivity">
         </activity>
 
-        <activity android:name="com.wzp.majiang.activity.RecognizeDirectionActivity">
+        <activity android:name=".activity.RecognizeDirectionActivity">
         </activity>
 
-        <activity android:name="com.wzp.majiang.activity.SettingActivity">
+        <activity android:name=".activity.SettingActivity">
         </activity>
 
         <activity
-            android:name="com.wzp.majiang.activity.DeviceListActivity"
+            android:name=".activity.DeviceListActivity"
             android:theme="@android:style/Theme.Dialog"
             android:launchMode="singleTop">
         </activity>
 
-        <activity android:name="com.wzp.majiang.activity.ShowPlayMethodActivity">
+        <activity android:name=".activity.ShowPlayMethodActivity">
         </activity>
 
 
-        <activity android:name="com.wzp.majiang.activity.EditChooseCardMethodActivity">
+        <activity android:name=".activity.EditChooseCardMethodActivity">
         </activity>
 
-        <activity android:name="com.wzp.majiang.activity.EditPlayMethodActivity" />
+        <activity android:name=".activity.EditPlayMethodActivity" />
 
-        <activity android:name="com.wzp.majiang.activity.ReceiveSendFileActivity" />
+        <activity android:name=".activity.ReceiveSendFileActivity" />
 
-        <activity android:name="com.wzp.majiang.activity.ChooseFunctionActivity" />
+        <activity android:name=".activity.ChooseFunctionActivity" />
 
-        <activity android:name="com.wzp.majiang.activity.DailManualActivity" />
+        <activity android:name=".activity.DailManualActivity" />
 
-        <activity android:name="com.wzp.majiang.activity.StudyTestActivity" />
+        <activity android:name=".activity.StudyTestActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -77,6 +98,11 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="50fc740ce3ee52336c8467582197f991">
+        </meta-data>
+
+        <service android:name="com.amap.api.location.APSService"></service>
     </application>
 
 </manifest>

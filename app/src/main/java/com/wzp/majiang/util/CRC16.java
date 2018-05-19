@@ -25,7 +25,6 @@ public class CRC16 {
 		for (int i = 0; i < len; i++) {
 			// 要先把data[i]转化为int类型（目的是为了类型转换时能得到无符号值）
 			crcReg ^= (data[i] & 0xff);
-//			System.out.println(String.format("%02x", (int) crcReg));
 			
 			/*
 			 * 查表法就是把以下移位操作的结果事先算出并存储起来
@@ -46,8 +45,7 @@ public class CRC16 {
 		 */
 		byte highByte = (byte) ((crcReg & 0xFF00) >> 8);
 		byte lowByte = (byte) (crcReg & 0x00FF);
-		
-//		return new byte[] {highByte, lowByte};
+
 		return new byte[] {lowByte, highByte};
 	}
 	
@@ -80,7 +78,6 @@ public class CRC16 {
 		for (int i = 0; i < len; i++) {
 			// 要先把data[i]转化为int类型（目的是为了类型转换时能得到无符号值）
 			crcReg ^= (data[i] & 0xff);
-//			System.out.println(String.format("%02x", (int) crcReg));
 			
 			/*
 			 * 查表法就是把以下移位操作的结果事先算出并存储起来
@@ -103,8 +100,6 @@ public class CRC16 {
 		byte lowByte = (byte) (crcReg & 0x00FF);
 		
 		Arrays.fill(crc, (byte) 0);
-//		crc[0] = highByte;
-//		crc[1] = lowByte;
 		crc[0] = lowByte;
 		crc[1] = highByte;
 	}
@@ -117,5 +112,17 @@ public class CRC16 {
 	 */
 	public static void getCrc16(byte[] data, byte[] crc) {
 		getCrc16(data, data.length, crc);
+	}
+
+	/**
+	 * 对字节数组进行CRC校验，并将校验结果放在数组的最后两个元素
+	 *
+	 * @param data 待校验的数组
+	 */
+	public static void check(byte[] data) {
+		int length = data.length;
+		byte[] crc = CRC16.getCrc16(data, length - 2);
+		data[length - 2] = crc[0];
+		data[length - 1] = crc[1];
 	}
 }

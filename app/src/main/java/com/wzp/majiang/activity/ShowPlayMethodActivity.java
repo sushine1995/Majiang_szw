@@ -22,27 +22,6 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import com.wzp.majiang.R;
 import com.wzp.majiang.activity.base.BluetoothBaseActivity;
 import com.wzp.majiang.adapter.ShowPlayMethodVpAdapter;
@@ -60,6 +39,26 @@ import com.wzp.majiang.util.CalculateUtil;
 import com.wzp.majiang.widget.MyApplication;
 import com.wzp.majiang.widget.MyProgressDialog;
 import com.wzp.majiang.widget.SaveAsDialog;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import static com.wzp.majiang.widget.MyApplication.getContext;
 
@@ -85,6 +84,8 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
 
     private SaveAsDialog dlgSaveAs;
     private MyProgressDialog dlgProgress;
+
+    private String districtCode;
 
     private static  final int REQUEST_READ_WRITE_EXTERNAL_STORAGE = 0x02;
     private static  final int REQUEST_RECV_SEND_FILE = 0x22;
@@ -117,16 +118,42 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                byte[] sendMsg = new byte[ProjectConstants.SET_PARAMETER_MSG_LENGTH];
-                                int i = 0;
+                                // 发送区域码
+                                byte[] msgArr = new byte[ProjectConstants.DATA_LENGTH];
+                                int[] districtCodeArr = parseDistrictCode();
+                                msgArr[0] = (byte) 0xfe;
+                                msgArr[1] = (byte) 0xa9;
+                                if (districtCodeArr != null) {
+                                    msgArr[2] = (byte) districtCodeArr[0];
+                                    msgArr[3] = (byte) districtCodeArr[1];
+                                    msgArr[4] = (byte) districtCodeArr[2];
+                                } else {
+                                    msgArr[2] = (byte) 0xff;
+                                    msgArr[3] = (byte) 0xff;
+                                    msgArr[4] = (byte) 0xff;
+                                }
+                                CalculateUtil.analyseMessage(msgArr);
+                                CRC16.check(msgArr);
+
+                                // 发完一条报文，间隔2s，再发另一条
+                                MyApplication.btClientHelper.write(msgArr);
+                                try {
+                                    TimeUnit.SECONDS.sleep(2);
+                                } catch (InterruptedException e) {
+                                    Log.e(LOG_TAG, Log.getStackTraceString(e));
+                                    showToast("线程异常，数据发送失败");
+                                }
+
+                                // 待发送的字节数组的index
+                                int i;
                                 // 玩法参数
-                                PlayMethodParameter parameter = null;
-                                BasicParameter bp = null;
-                                ChooseCardParameter ccp = null;
-                                DiceParameter dp = null;
+                                PlayMethodParameter parameter;
+                                BasicParameter bp;
+                                ChooseCardParameter ccp;
+                                DiceParameter dp;
                                 for (int j = 0; j < MyApplication.getParameterList().size(); j++) {
                                     i = 0;
-                                    Arrays.fill(sendMsg, (byte) 0x00);
+                                    byte[] sendMsg = new byte[ProjectConstants.SET_PARAMETER_MSG_LENGTH];
 
                                     // 报文头
                                     sendMsg[i++] = (byte) 0xf1;
@@ -398,6 +425,8 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
         if (!basePath.exists()) {
             basePath.mkdirs();
         }
+
+        districtCode = getIntent().getStringExtra("districtCode");
     }
 
     private void initWidget() {
@@ -533,8 +562,26 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
         }
     }
 
-    public static void myStartActivity(Context context) {
+    public static void myStartActivity(Context context, String districtCode) {
         Intent intent = new Intent(context, ShowPlayMethodActivity.class);
+        intent.putExtra("districtCode", districtCode);
         context.startActivity(intent);
+    }
+
+    /**
+     * 将区域码解析成整型数组，如123456解析成{12, 34, 56}
+     *
+     * @return
+     */
+    private int[] parseDistrictCode() {
+        if (districtCode == null) {
+            return null;
+        }
+        int dCode = Integer.parseInt(districtCode);
+        int[] resArr = new int[3];
+        resArr[0] = dCode / 10000;
+        resArr[1] = dCode % 10000 / 100;
+        resArr[2] = dCode % 100;
+        return resArr;
     }
 }

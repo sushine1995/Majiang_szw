@@ -1,12 +1,19 @@
 package com.wzp.majiang.activity;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +22,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.wzp.majiang.R;
 import com.wzp.majiang.activity.base.BluetoothBaseActivity;
 import com.wzp.majiang.constant.BluetoothState;
@@ -22,12 +33,17 @@ import com.wzp.majiang.constant.ProjectConstants;
 import com.wzp.majiang.util.BluetoothClientHelper;
 import com.wzp.majiang.widget.MyApplication;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 	private TextView tvBtState;
 	private ImageButton ibtnBack;
 	private ImageButton ibtnSearch;
 
+	private TextView tvLocation;
 	private Button btnDesignPlayMethod;
 	private Button btnShowCard;
 	private Button btnStudyTest;
@@ -36,9 +52,30 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	private static final int REQUEST_CONNECT_DEVICE_SECURE = 0x01; // 请求安全连接蓝牙设备
 
 	private BluetoothAdapter bluetoothAdapter;
-	private SharedPreferences preferences;
 
 	private String macAddr; // 蓝牙设备的mac地址
+
+	private AMapLocationClient locationClient;
+	private AMapLocationClientOption locationOption;
+
+	/**
+	 * 需要进行检测的权限数组
+	 */
+	protected String[] needPermissions = {
+		Manifest.permission.ACCESS_COARSE_LOCATION,
+		Manifest.permission.ACCESS_FINE_LOCATION,
+		Manifest.permission.WRITE_EXTERNAL_STORAGE,
+		Manifest.permission.READ_EXTERNAL_STORAGE
+	};
+
+	private static final int PERMISSON_REQUESTCODE = 0;
+
+	/**
+	 * 判断是否需要检测，防止不停的弹框
+	 */
+	private boolean isNeedCheck = true;
+
+	private String districtCode; // 区域码
 
 	private View.OnClickListener listener = new View.OnClickListener() {
 		@Override
@@ -54,7 +91,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 					break;
 
 				case R.id.btn_designPlayMethod:
-					ShowPlayMethodActivity.myStartActivity(ChooseFunctionActivity.this);
+					ShowPlayMethodActivity.myStartActivity(ChooseFunctionActivity.this, districtCode);
 					break;
 
 				case R.id.btn_showCard:
@@ -71,20 +108,57 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		}
 	};
 
+	/**
+	 * 定位监听
+	 */
+	private AMapLocationListener locationListener = new AMapLocationListener() {
+		@Override
+		public void onLocationChanged(AMapLocation location) {
+			if (null != location) {
+				//errCode等于0代表定位成功，其他的为定位失败，具体的可以参照官网定位错误码说明
+				if(location.getErrorCode() == 0){
+					districtCode = location.getAdCode();
+					tvLocation.setText(location.getAddress() + "---" + districtCode);
+					tvLocation.setVisibility(View.VISIBLE);
+				} else {
+					//定位失败
+					StringBuffer sb = new StringBuffer();
+					sb.append("定位失败" + "\n");
+					sb.append("错误码:" + location.getErrorCode() + "\n");
+					sb.append("错误信息:" + location.getErrorInfo() + "\n");
+					sb.append("错误描述:" + location.getLocationDetail() + "\n");
+					Log.e(LOG_TAG, sb.toString());
+
+					tvLocation.setText("定位失败！错误描述：" + location.getLocationDetail()
+							+ "。错误码：" + location.getErrorCode());
+					tvLocation.setVisibility(View.VISIBLE);
+					districtCode = null;
+				}
+			} else {
+				Log.e(LOG_TAG, "定位失败，location is null");
+			}
+		}
+	};
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choose_function);
 
-		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+		if (Build.VERSION.SDK_INT >= 23
+				&& getApplicationInfo().targetSdkVersion >= 23) {
+			if (isNeedCheck) {
+				checkPermissions(needPermissions);
+			}
+		}
 
+		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		if (bluetoothAdapter == null) {
 			Toast.makeText(this, "当前设备不具备蓝牙功能！",
 					Toast.LENGTH_LONG).show();
 			finish();
 			return;
 		}
-
 		if (!bluetoothAdapter.isEnabled()) {
 			// 蓝牙尚未打开
 			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -97,15 +171,17 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	}
 
 	@Override
-	protected void onDestroy() {
-//		if (MyApplication.btClientHelper != null) {
-//			MyApplication.btClientHelper.stop();
-//		}
-//
-//		// 退出应用时，清空消息队列
-//		MyApplication.getMessageQueue().clear();
+	protected void onStart() {
+		super.onStart();
+		// 启动定位
+		locationClient.startLocation();
+	}
 
-		super.onDestroy();
+	@Override
+	protected void onStop() {
+		// 停止定位
+		locationClient.stopLocation();
+		super.onStop();
 	}
 
 	@Override
@@ -184,12 +260,15 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
                 });
             }
         });
+
+		initLocation();
 	}
 
 	private void initWidget() {
 		tvBtState = (TextView) findViewById(R.id.tv_btState);
 		ibtnBack = (ImageButton) findViewById(R.id.ibtn_back);
 		ibtnSearch = (ImageButton) findViewById(R.id.ibtn_search);
+		tvLocation = (TextView) findViewById(R.id.tv_location);
 		btnDesignPlayMethod = (Button) findViewById(R.id.btn_designPlayMethod);
 		btnShowCard = (Button) findViewById(R.id.btn_showCard);
 		btnStudyTest = (Button) findViewById(R.id.btn_studyTest);
@@ -226,5 +305,174 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	@Override
 	protected void onBluetoothDataReceived(byte[] recvData) {
 
+	}
+
+	/**
+	 *
+	 * @param permissions
+	 * @since 2.5.0
+	 *
+	 */
+	private void checkPermissions(String... permissions) {
+		try {
+			if (Build.VERSION.SDK_INT >= 23
+					&& getApplicationInfo().targetSdkVersion >= 23) {
+				List<String> needRequestPermissonList = findDeniedPermissions(permissions);
+				if (null != needRequestPermissonList
+						&& needRequestPermissonList.size() > 0) {
+					String[] array = needRequestPermissonList.toArray(new String[needRequestPermissonList.size()]);
+					Method method = getClass().getMethod("requestPermissions",
+							new Class[]{String[].class,	int.class});
+
+					method.invoke(this, array, PERMISSON_REQUESTCODE);
+				}
+			}
+		} catch (Throwable e) {
+			Log.e(LOG_TAG, Log.getStackTraceString(e));
+		}
+	}
+
+	/**
+	 * 获取权限集中需要申请权限的列表
+	 *
+	 * @param permissions
+	 * @return
+	 * @since 2.5.0
+	 *
+	 */
+	private List<String> findDeniedPermissions(String[] permissions) {
+		List<String> needRequestPermissonList = new ArrayList<String>();
+		if (Build.VERSION.SDK_INT >= 23
+				&& getApplicationInfo().targetSdkVersion >= 23){
+			try {
+				for (String perm : permissions) {
+					Method checkSelfMethod = getClass().getMethod("checkSelfPermission", String.class);
+					Method shouldShowRequestPermissionRationaleMethod = getClass().getMethod("shouldShowRequestPermissionRationale",
+							String.class);
+					if ((Integer)checkSelfMethod.invoke(this, perm) != PackageManager.PERMISSION_GRANTED
+							|| (Boolean)shouldShowRequestPermissionRationaleMethod.invoke(this, perm)) {
+						needRequestPermissonList.add(perm);
+					}
+				}
+			} catch (Throwable e) {
+				Log.e(LOG_TAG, Log.getStackTraceString(e));
+			}
+		}
+		return needRequestPermissonList;
+	}
+
+	/**
+	 * 检测是否所有的权限都已经授权
+	 * @param grantResults
+	 * @return
+	 * @since 2.5.0
+	 *
+	 */
+	private boolean verifyPermissions(int[] grantResults) {
+		for (int result : grantResults) {
+			if (result != PackageManager.PERMISSION_GRANTED) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	@TargetApi(23)
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] paramArrayOfInt) {
+		if (requestCode == PERMISSON_REQUESTCODE) {
+			if (!verifyPermissions(paramArrayOfInt)) {
+				showMissingPermissionDialog();
+				isNeedCheck = false;
+			} else {
+				if (locationClient.isStarted()) {
+					locationClient.stopLocation();
+				}
+				locationClient.startLocation();
+			}
+		}
+	}
+
+	/**
+	 * 显示提示信息
+	 *
+	 * @since 2.5.0
+	 *
+	 */
+	private void showMissingPermissionDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(R.string.notifyTitle);
+		builder.setMessage(R.string.notifyMsg);
+
+		// 拒绝, 退出应用
+		builder.setNegativeButton(R.string.cancel,
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						finish();
+					}
+				});
+
+		builder.setPositiveButton(R.string.setting,
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						startAppSettings();
+					}
+				});
+
+		builder.setCancelable(false);
+
+		builder.show();
+	}
+
+	/**
+	 *  启动应用的设置
+	 *
+	 * @since 2.5.0
+	 *
+	 */
+	private void startAppSettings() {
+		Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+		intent.setData(Uri.parse("package:" + getPackageName()));
+		startActivity(intent);
+	}
+
+	/**
+	 * 初始化定位
+	 *
+	 * @since 2.8.0
+	 * @author hongming.wang
+	 *
+	 */
+	private void initLocation(){
+		//初始化client
+		locationClient = new AMapLocationClient(this.getApplicationContext());
+		locationOption = getDefaultOption();
+		//设置定位参数
+		locationClient.setLocationOption(locationOption);
+		// 设置定位监听
+		locationClient.setLocationListener(locationListener);
+	}
+	/**
+	 * 默认的定位参数
+	 * @since 2.8.0
+	 * @author hongming.wang
+	 *
+	 */
+	private AMapLocationClientOption getDefaultOption(){
+		AMapLocationClientOption mOption = new AMapLocationClientOption();
+		mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
+		mOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
+		mOption.setHttpTimeOut(30000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
+		mOption.setInterval(5000);//可选，设置定位间隔。默认为2秒
+		mOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
+		mOption.setOnceLocation(false);//可选，设置是否单次定位。默认是false
+		mOption.setOnceLocationLatest(false);//可选，设置是否等待wifi刷新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用
+		AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
+		mOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false
+		mOption.setWifiScan(true); //可选，设置是否开启wifi扫描。默认为true，如果设置为false会同时停止主动刷新，停止以后完全依赖于系统刷新，定位位置可能存在误差
+		mOption.setLocationCacheEnable(false); //可选，设置是否使用缓存定位，默认为true
+		mOption.setGeoLanguage(AMapLocationClientOption.GeoLanguage.DEFAULT);//可选，设置逆地理信息的语言，默认值为默认语言（根据所在地区选择语言）
+		return mOption;
 	}
 }

@@ -59,41 +59,62 @@
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="80dp"
-        android:paddingRight="80dp"
-        android:orientation="vertical"
-        android:gravity="center"
         android:background="@drawable/background">
-        <Button
-            android:id="@+id/btn_designPlayMethod"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:textColor="@color/black"
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:drawableLeft="@drawable/location"
+            android:textColor="@color/red"
             android:textSize="@dimen/text_size_l"
-            android:text="玩法设计"
-            android:background="@drawable/linear_main_btns_bg"/>
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"/>
 
-        <Button
-            android:id="@+id/btn_showCard"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_l"
-            android:text="牌型显示"
-            android:background="@drawable/linear_main_btns_bg" />
+            android:layout_height="match_parent"
+            android:paddingLeft="80dp"
+            android:paddingRight="80dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/btn_designPlayMethod"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_l"
+                android:text="玩法设计"
+                android:layout_gravity="center"
+                android:background="@drawable/linear_main_btns_bg"/>
 
-        <Button
-            android:id="@+id/btn_studyTest"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_l"
-            android:text="学习测试"
-            android:background="@drawable/linear_main_btns_bg" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/btn_showCard"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_l"
+                android:text="牌型显示"
+                android:background="@drawable/linear_main_btns_bg" />
+
+            <Button
+                android:id="@+id/btn_studyTest"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_l"
+                android:text="学习测试"
+                android:background="@drawable/linear_main_btns_bg" />
+        </LinearLayout>
+    </RelativeLayout>
+
 </LinearLayout>

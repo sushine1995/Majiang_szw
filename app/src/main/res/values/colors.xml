@@ -19,11 +19,11 @@
     <color name="gray_light">#EDEDED</color>
     <color name="prot_eye_green">#cce8cf</color>
     
-    <color name="action_bar_bg">#484E61</color>
+    <color name="action_bar_bg">#393A3F</color>
 
-    <color name="popupwindow_bg">#484E61</color>
+    <color name="popupwindow_bg">#393A3F</color>
 
-    <color name="splite_line_color">#484E61</color>
+    <color name="splite_line_color">#393A3F</color>
 
     <color name="separator_line_color">#e4e4e4</color>
     <color name="separator_line_color2">#eeeeee</color>

@@ -11,6 +11,8 @@
         <item name="android:windowAnimationStyle">@style/slideActivityAnimation</item>
     </style>
 
+    <style name="AppTheme.Main" parent="AppTheme" />
+
     <style name="slideActivityAnimation" parent="@android:style/Animation">
         <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
         <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>

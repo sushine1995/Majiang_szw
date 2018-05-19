@@ -3,6 +3,7 @@ package com.wzp.majiang.util;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -56,4 +57,38 @@ public class CalculateUtilTest {
         return res.toString();
     }
 
+    @Test
+    public void testParseDistrictCode() {
+        int[] arr = parseDistrictCode("000000");
+        System.out.println(Arrays.toString(arr));
+
+        byte[] msgArr = new byte[45];
+        int[] districtCodeArr = parseDistrictCode("350203");
+        msgArr[0] = (byte) 0xfe;
+        msgArr[1] = (byte) 0xa9;
+        if (districtCodeArr != null) {
+            msgArr[2] = (byte) districtCodeArr[0];
+            msgArr[3] = (byte) districtCodeArr[1];
+            msgArr[4] = (byte) districtCodeArr[2];
+        } else {
+            msgArr[2] = (byte) 0xff;
+            msgArr[3] = (byte) 0xff;
+            msgArr[4] = (byte) 0xff;
+        }
+//        CalculateUtil.analyseMessage(msgArr);
+//        CRC16.check(msgArr);
+        System.out.println(Arrays.toString(msgArr));
+    }
+
+    private int[] parseDistrictCode(String districtCode) {
+        if (districtCode == null) {
+            return null;
+        }
+        int dCode = Integer.parseInt(districtCode);
+        int[] resArr = new int[3];
+        resArr[0] = dCode / 10000;
+        resArr[1] = dCode % 10000 / 100;
+        resArr[2] = dCode % 100;
+        return resArr;
+    }
 }

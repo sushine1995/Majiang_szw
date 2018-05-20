@@ -405,16 +405,12 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
     }
 
     private void initData() {
-        fragmentList = new ArrayList<>();
-        playMethodVpAdapter = new ShowPlayMethodVpAdapter(getSupportFragmentManager(), fragmentList);
-
-        File basePath = new File(ProjectConstants.baseFilePath);
-        if (!basePath.exists()) {
-            basePath.mkdirs();
-        }
-
         districtCode = getIntent().getStringExtra("districtCode");
 
+        createDefaultFolder();
+
+        fragmentList = new ArrayList<>();
+        playMethodVpAdapter = new ShowPlayMethodVpAdapter(getSupportFragmentManager(), fragmentList);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -511,6 +507,18 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
         dlgProgress.show("玩法读取中，请稍后...");
     }
 
+    private void createDefaultFolder() {
+        File basePath = new File(ProjectConstants.BASE_FILE_PATH);
+        if (!basePath.exists()) {
+            basePath.mkdir();
+        }
+
+        File uncaughtExceptionLogPath = new File(ProjectConstants.UNCAUGHT_EXCEPTION_LOG_PATH);
+        if (!uncaughtExceptionLogPath.exists()) {
+            uncaughtExceptionLogPath.mkdirs();
+        }
+    }
+
     /**
      * 保存玩法参数
      */
@@ -534,12 +542,12 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
             ((ShowPlayMethodFragment) fragment).savePlayMethod();
         }
 
-        File file = new File(ProjectConstants.baseFilePath);
+        File file = new File(ProjectConstants.BASE_FILE_PATH);
         if (!file.exists()) {
             file.mkdirs();
         }
 
-        filename = ProjectConstants.baseFilePath + "/" + filename + ".mj";
+        filename = ProjectConstants.BASE_FILE_PATH + "/" + filename + ".mj";
 
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

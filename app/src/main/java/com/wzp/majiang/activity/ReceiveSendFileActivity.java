@@ -15,6 +15,14 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.wzp.majiang.R;
+import com.wzp.majiang.activity.base.BaseActivity;
+import com.wzp.majiang.adapter.ShowFileListAdapter;
+import com.wzp.majiang.constant.ProjectConstants;
+import com.wzp.majiang.constant.RemoteFileSource;
+import com.wzp.majiang.util.DensityUtil;
+import com.wzp.majiang.widget.ShowRemoteFileDialog;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -24,14 +32,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.wzp.majiang.R;
-import com.wzp.majiang.activity.base.BaseActivity;
-import com.wzp.majiang.adapter.ShowFileListAdapter;
-import com.wzp.majiang.constant.ProjectConstants;
-import com.wzp.majiang.constant.RemoteFileSource;
-import com.wzp.majiang.util.DensityUtil;
-import com.wzp.majiang.widget.ShowRemoteFileDialog;
 
 /**
  * Created by wzp on 2017/9/21.
@@ -73,7 +73,7 @@ public class ReceiveSendFileActivity extends BaseActivity {
     }
 
     private void initData() {
-        File file = new File(ProjectConstants.baseFilePath);
+        File file = new File(ProjectConstants.BASE_FILE_PATH);
         File[] files = file.listFiles(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
@@ -150,7 +150,7 @@ public class ReceiveSendFileActivity extends BaseActivity {
     }
 
     private void copyFile(File src) {
-        File dest = new File(ProjectConstants.baseFilePath);
+        File dest = new File(ProjectConstants.BASE_FILE_PATH);
         if (Arrays.asList(dest.list(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {

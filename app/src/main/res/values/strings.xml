@@ -613,12 +613,16 @@
 
     <!--基本设置备用-->
     <string-array name="basic_parameter_reserve_arr">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
+        <item>基本</item>
+        <item>兰科</item>
+        <item>宣和</item>
+        <item>宏勋</item>
+        <item>雀友</item>
         <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
     </string-array>
     <!--起牌备用1-->
     <string-array name="start_card_reserve1_arr">

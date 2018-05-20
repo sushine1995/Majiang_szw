@@ -199,7 +199,7 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                                     sendMsg[i++] = bp.isUseDiceTest() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = bp.isPengZhuanBroadcastCard() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = bp.isResetTest() ? (byte) 0x01 : (byte) 0x00;
-                                    sendMsg[i++] = (byte) bp.getReserve();
+                                    sendMsg[i++] = (byte) bp.getReserve(); // 基本参数备用-操作盘
                                     sendMsg[i++] = bp.isBloodFight() ? (byte) 0x01 : (byte) 0x00;
                                     sendMsg[i++] = (byte) dp.getStartCardReserve1(); // 色子参数-起牌备用1
                                     sendMsg[i++] = (byte) dp.getStartCardReserve2(); // 色子参数-起牌备用2

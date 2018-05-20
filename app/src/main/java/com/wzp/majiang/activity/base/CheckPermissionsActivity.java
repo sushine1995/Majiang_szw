@@ -39,6 +39,8 @@ public class CheckPermissionsActivity extends BaseActivity {
 
     protected static final int PERMISSON_REQUEST_CODE = 0;
 
+    private AlertDialog alertDialog;
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -48,6 +50,15 @@ public class CheckPermissionsActivity extends BaseActivity {
                 || permissionList.contains(Manifest.permission.READ_EXTERNAL_STORAGE))) {
             createDefaultFolder();
         }
+    }
+
+    @Override
+    protected void onStop() {
+        if (alertDialog != null) {
+            alertDialog.dismiss();
+        }
+
+        super.onStop();
     }
 
     /**
@@ -149,30 +160,33 @@ public class CheckPermissionsActivity extends BaseActivity {
      * @since 2.5.0
      */
     private void showMissingPermissionDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.notifyTitle);
-        builder.setMessage(R.string.notifyMsg);
+        if (alertDialog == null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.notifyTitle);
+            builder.setMessage(R.string.notifyMsg);
 
-        // 拒绝, 退出应用
-        builder.setNegativeButton(R.string.cancel,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
+            // 拒绝, 退出应用
+            builder.setNegativeButton(R.string.cancel,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
 
-        builder.setPositiveButton(R.string.setting,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startAppSettings();
-                    }
-                });
+            builder.setPositiveButton(R.string.setting,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            startAppSettings();
+                        }
+                    });
 
-        builder.setCancelable(false);
+            builder.setCancelable(false);
 
-        builder.show();
+            alertDialog = builder.create();
+        }
+        alertDialog.show();
     }
 
     /**

@@ -1,7 +1,6 @@
 package com.wzp.majiang.activity.base;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.wzp.majiang.util.CRC16;
 import com.wzp.majiang.util.CalculateUtil;
@@ -10,9 +9,7 @@ import com.wzp.majiang.widget.MyApplication;
 import static com.wzp.majiang.constant.ProjectConstants.CRC_HIGH;
 import static com.wzp.majiang.constant.ProjectConstants.CRC_LOW;
 
-public abstract class BluetoothBaseActivity extends BaseActivity {
-
-	private static final String tag = "BluetoothBaseActivity";
+public abstract class BluetoothBaseActivity extends CheckPermissionsActivity {
 
 	protected ReadDataThread readDataThread;
 
@@ -20,8 +17,6 @@ public abstract class BluetoothBaseActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		Log.d(tag, this.getClass().getSimpleName());
 	}
 
 	@Override

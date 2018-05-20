@@ -1,25 +1,20 @@
 package com.wzp.majiang.activity;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.wzp.majiang.R;
@@ -60,8 +55,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import static com.wzp.majiang.widget.MyApplication.getContext;
-
 /**
  * Created by wzp on 2017/8/28.
  */
@@ -88,7 +81,6 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
     private String districtCode;
     private boolean modify; // 是否修改了玩法
 
-    private static  final int REQUEST_READ_WRITE_EXTERNAL_STORAGE = 0x02;
     private static  final int REQUEST_RECV_SEND_FILE = 0x22;
 
 
@@ -361,35 +353,10 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (ContextCompat.checkSelfPermission(getContext(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(getContext(),
-                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            Manifest.permission.READ_EXTERNAL_STORAGE},
-                    REQUEST_READ_WRITE_EXTERNAL_STORAGE);
-        } else {
-            setContentView(R.layout.activity_show_play_method);
+        setContentView(R.layout.activity_show_play_method);
 
-            initData();
-            initWidget();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_READ_WRITE_EXTERNAL_STORAGE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                setContentView(R.layout.activity_show_play_method);
-
-                initData();
-                initWidget();
-            } else {
-                Toast.makeText(getContext(), "系统拒绝读写外部文件，请到系统设置-权限管理中，打开此权限", Toast.LENGTH_SHORT).show();
-            }
-            return;
-        }
+        initData();
+        initWidget();
     }
 
     @Override

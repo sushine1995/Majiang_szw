@@ -8,9 +8,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.wzp.majiang.R;
-import com.wzp.majiang.activity.base.BaseActivity;
+import com.wzp.majiang.activity.base.CheckPermissionsActivity;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends CheckPermissionsActivity {
 
 	private ImageButton ibtnBack;
 

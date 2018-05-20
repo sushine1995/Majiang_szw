@@ -11,11 +11,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.wzp.majiang.R;
-import com.wzp.majiang.activity.base.BaseActivity;
+import com.wzp.majiang.activity.base.CheckPermissionsActivity;
 import com.wzp.majiang.adapter.ModifyPlayMethodVpAdapter;
 import com.wzp.majiang.constant.PlayMethod;
 import com.wzp.majiang.entity.BasicParameter;
@@ -27,7 +24,10 @@ import com.wzp.majiang.fragment.ChooseCardMethodFragment;
 import com.wzp.majiang.fragment.SetDiceFragment;
 import com.wzp.majiang.widget.MyApplication;
 
-public class EditPlayMethodActivity extends BaseActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class EditPlayMethodActivity extends CheckPermissionsActivity {
 
     private ImageButton ibtnBack;
     private TextView tvTitle;

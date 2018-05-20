@@ -16,7 +16,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.wzp.majiang.R;
-import com.wzp.majiang.activity.base.BaseActivity;
+import com.wzp.majiang.activity.base.CheckPermissionsActivity;
 import com.wzp.majiang.adapter.ShowFileListAdapter;
 import com.wzp.majiang.constant.ProjectConstants;
 import com.wzp.majiang.constant.RemoteFileSource;
@@ -37,7 +37,7 @@ import java.util.List;
  * Created by wzp on 2017/9/21.
  */
 
-public class ReceiveSendFileActivity extends BaseActivity {
+public class ReceiveSendFileActivity extends CheckPermissionsActivity {
 
     private ImageButton ibtnBack;
     private Button btnRecvSendMethod;

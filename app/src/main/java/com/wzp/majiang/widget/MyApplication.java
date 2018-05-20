@@ -4,14 +4,15 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.wzp.majiang.entity.PlayMethodParameter;
+import com.wzp.majiang.exception.DefUncaughtExceptionHandler;
+import com.wzp.majiang.util.BluetoothClientHelper;
+import com.wzp.majiang.util.MySharedPreferences;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-
-import com.wzp.majiang.entity.PlayMethodParameter;
-import com.wzp.majiang.util.BluetoothClientHelper;
-import com.wzp.majiang.util.MySharedPreferences;
 
 /**
  * 提供一些全局的Application属性
@@ -42,6 +43,9 @@ public class MyApplication extends Application {
 
 		spPlayMethod = new MySharedPreferences(context, "play_method_prefs");
 		spSetting = new MySharedPreferences(context, "setting_prefs");
+
+		// 程序未捕获的异常统一在DefUncaughtExceptionHandler中处理
+		DefUncaughtExceptionHandler.getInstance().init(this);
 	}
 
 	public static Context getContext() {

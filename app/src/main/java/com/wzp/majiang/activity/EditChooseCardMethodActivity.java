@@ -15,21 +15,21 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.wzp.majiang.R;
-import com.wzp.majiang.activity.base.BaseActivity;
+import com.wzp.majiang.activity.base.CheckPermissionsActivity;
 import com.wzp.majiang.adapter.SingleChooseCardListAdapter;
 import com.wzp.majiang.entity.ChooseCardMethod;
 import com.wzp.majiang.entity.SingleChooseCardMethod;
 import com.wzp.majiang.widget.ListOptionButton;
 import com.wzp.majiang.widget.MyApplication;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.wzp.majiang.widget.MyApplication.getContext;
 
 
-public class EditChooseCardMethodActivity extends BaseActivity {
+public class EditChooseCardMethodActivity extends CheckPermissionsActivity {
 
     private ImageButton ibtnBack;
     private TextView tvTitle;

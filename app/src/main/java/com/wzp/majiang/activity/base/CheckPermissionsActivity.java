@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class CheckPermissionsActivity extends BaseActivity {
@@ -31,8 +32,6 @@ public class CheckPermissionsActivity extends BaseActivity {
      * 需要进行检测的权限数组
      */
     protected String[] needPermissions = {
-//        Manifest.permission.ACCESS_COARSE_LOCATION,
-//        Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
         Manifest.permission.READ_EXTERNAL_STORAGE
     };
@@ -45,9 +44,10 @@ public class CheckPermissionsActivity extends BaseActivity {
     protected void onStart() {
         super.onStart();
 
-        List<String> permissionList = checkPermissions(needPermissions);
-        if (permissionList != null && !(permissionList.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                || permissionList.contains(Manifest.permission.READ_EXTERNAL_STORAGE))) {
+        List<String> deniedPermissionList = checkPermissions(needPermissions);
+        if (deniedPermissionList == null
+                || !(deniedPermissionList.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                || deniedPermissionList.contains(Manifest.permission.READ_EXTERNAL_STORAGE))) {
             createDefaultFolder();
         }
     }
@@ -145,10 +145,10 @@ public class CheckPermissionsActivity extends BaseActivity {
             for (int i = 0; i < permissions.length; i++) {
                 map.put(permissions[i], paramArrayOfInt[i]);
             }
-            if (map.containsKey(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    && map.get(Manifest.permission.WRITE_EXTERNAL_STORAGE).equals(PackageManager.PERMISSION_GRANTED)
-                    && map.containsKey(Manifest.permission.READ_EXTERNAL_STORAGE)
-                    && map.get(Manifest.permission.READ_EXTERNAL_STORAGE).equals(PackageManager.PERMISSION_GRANTED)) {
+            if (Objects.equals(map.get(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    PackageManager.PERMISSION_GRANTED)
+                    && Objects.equals(map.get(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    PackageManager.PERMISSION_GRANTED)) {
                 createDefaultFolder();
             }
         }

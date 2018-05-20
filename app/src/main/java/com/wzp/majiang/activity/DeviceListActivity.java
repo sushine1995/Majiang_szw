@@ -74,11 +74,15 @@ public class DeviceListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_device_list);
 
+		/*
+		设置搜索页面的宽度
+		 */
 		android.view.WindowManager.LayoutParams p = getWindow().getAttributes();
 		DisplayMetrics dm = getResources().getDisplayMetrics();
 		p.width = (int) (dm.widthPixels * 0.75); // 宽度设置为屏幕的0.75
 		getWindow().setAttributes(p);
 
+		// 返回值默认为RESULT_CANCELED
 		setResult(Activity.RESULT_CANCELED);
 
 		initParam();

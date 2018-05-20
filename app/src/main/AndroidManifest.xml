@@ -68,7 +68,7 @@
 
         <activity
             android:name=".activity.DeviceListActivity"
-            android:theme="@android:style/Theme.Dialog"
+            android:theme="@style/AppTheme.Dialog"
             android:launchMode="singleTop">
         </activity>
 

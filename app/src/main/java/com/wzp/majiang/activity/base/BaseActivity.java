@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 public class BaseActivity extends AppCompatActivity {
 
-	private static final String tag = "BaseActivity";
+	private static final String TAG = "BaseActivity";
 
 	protected boolean isFront; // 记录Activity是否显示在前台
 
@@ -17,7 +17,7 @@ public class BaseActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		Log.d(tag, this.getClass().getSimpleName());
+		Log.d(TAG, this.getClass().getSimpleName());
 	}
 
 	@Override

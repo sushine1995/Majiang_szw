@@ -7,6 +7,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,7 +28,11 @@ import com.wzp.majiang.constant.ProjectConstants;
 import com.wzp.majiang.util.BluetoothClientHelper;
 import com.wzp.majiang.widget.MyApplication;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
@@ -48,10 +53,8 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	private String macAddr; // 蓝牙设备的mac地址
 
 	private String[] needPermissions = {
-			Manifest.permission.ACCESS_COARSE_LOCATION,
-			Manifest.permission.ACCESS_FINE_LOCATION,
-			Manifest.permission.WRITE_EXTERNAL_STORAGE,
-			Manifest.permission.READ_EXTERNAL_STORAGE
+		Manifest.permission.ACCESS_COARSE_LOCATION,
+		Manifest.permission.ACCESS_FINE_LOCATION
 	};
 
 	private AMapLocationClient locationClient;
@@ -124,6 +127,8 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Log.d(LOG_TAG, "onCreate");
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choose_function);
 
@@ -147,13 +152,15 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 	@Override
 	protected void onStart() {
+		Log.d(LOG_TAG, "onStart");
 		super.onStart();
 
 		List<String> deniedPermissionList = checkPermissions(needPermissions);
+		Log.d(LOG_TAG, "onStart-deniedPermissions" + deniedPermissionList.toString());
 		if (deniedPermissionList == null || deniedPermissionList.size() == 0) {
 			// 启动定位
 			locationClient.startLocation();
-			Log.d(LOG_TAG, "startLocation");
+			Log.d(LOG_TAG, "onStart---startLocation");
 		}
 	}
 
@@ -161,6 +168,10 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	protected void onStop() {
 		// 停止定位
 		locationClient.stopLocation();
+
+		tvLocation.setText("");
+		tvLocation.setVisibility(View.GONE);
+
 		super.onStop();
 	}
 
@@ -186,6 +197,31 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 			default:
 				break;
+		}
+	}
+
+	@TargetApi(23)
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] paramArrayOfInt) {
+		if (permissions == null || permissions.length == 0) {
+			return;
+		}
+
+		super.onRequestPermissionsResult(requestCode, permissions, paramArrayOfInt);
+		if (requestCode == PERMISSON_REQUEST_CODE) {
+			List<String> permissionList = Arrays.asList(permissions);
+			for (String permission : needPermissions) {
+				if (!permissionList.contains(permission)) {
+					return;
+				}
+			}
+
+			if (verifyPermissions(permissions, paramArrayOfInt)) {
+				// 启动定位
+				locationClient.startLocation();
+				Log.d(LOG_TAG, "onRequestPermissionsResult---startLocation");
+			} else {
+				showMissingPermissionDialog();
+			}
 		}
 	}
 
@@ -286,15 +322,17 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	@Override
 	protected void onBluetoothDataReceived(byte[] recvData) {}
 
-	@TargetApi(23)
-	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] paramArrayOfInt) {
-		super.onRequestPermissionsResult(requestCode, permissions, paramArrayOfInt);
-		if (requestCode == PERMISSON_REQUEST_CODE) {
-			if (verifyPermissions(paramArrayOfInt)) {
-				// 启动定位
-				locationClient.startLocation();
+	private boolean verifyPermissions(String[] permissions, int[] paramArrayOfInt) {
+		Map<String, Integer> map = new HashMap<>();
+		for (int i = 0; i < permissions.length; i++) {
+			map.put(permissions[i], paramArrayOfInt[i]);
+		}
+		for (String permission : needPermissions) {
+			if (!Objects.equals(map.get(permission), PackageManager.PERMISSION_GRANTED)) {
+				return false;
 			}
 		}
+		return true;
 	}
 
 	/**

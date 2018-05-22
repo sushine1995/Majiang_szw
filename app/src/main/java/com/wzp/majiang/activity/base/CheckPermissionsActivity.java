@@ -20,6 +20,7 @@ import com.wzp.majiang.constant.ProjectConstants;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,12 +32,14 @@ public class CheckPermissionsActivity extends BaseActivity {
     /**
      * 需要进行检测的权限数组
      */
-    protected String[] needPermissions = {
+    private String[] needPermissions = {
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
         Manifest.permission.READ_EXTERNAL_STORAGE
     };
 
     protected static final int PERMISSON_REQUEST_CODE = 0;
+
+    private static final String TAG = "CheckPermissionsActi";
 
     private AlertDialog alertDialog;
 
@@ -45,6 +48,7 @@ public class CheckPermissionsActivity extends BaseActivity {
         super.onStart();
 
         List<String> deniedPermissionList = checkPermissions(needPermissions);
+        Log.d(TAG, "onStart-deniedPermissions" + deniedPermissionList.toString());
         if (deniedPermissionList == null
                 || !(deniedPermissionList.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 || deniedPermissionList.contains(Manifest.permission.READ_EXTERNAL_STORAGE))) {
@@ -97,7 +101,7 @@ public class CheckPermissionsActivity extends BaseActivity {
                 }
             }
         } catch (Throwable e) {
-            Log.e(LOG_TAG, Log.getStackTraceString(e));
+            Log.e(TAG, Log.getStackTraceString(e));
         }
         return needRequestPermissonList;
     }
@@ -113,21 +117,18 @@ public class CheckPermissionsActivity extends BaseActivity {
 
                 method.invoke(this, array, PERMISSON_REQUEST_CODE);
             } catch (Exception e) {
-                Log.e(LOG_TAG, Log.getStackTraceString(e));
+                Log.e(TAG, Log.getStackTraceString(e));
             }
         }
     }
 
-    /**
-     * 检测是否所有的权限都已经授权
-     *
-     * @param grantResults
-     * @return
-     * @since 2.5.0
-     */
-    protected boolean verifyPermissions(int[] grantResults) {
-        for (int result : grantResults) {
-            if (result != PackageManager.PERMISSION_GRANTED) {
+    private boolean verifyPermissions(String[] permissions, int[] paramArrayOfInt) {
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < permissions.length; i++) {
+            map.put(permissions[i], paramArrayOfInt[i]);
+        }
+        for (String permission : needPermissions) {
+            if (!Objects.equals(map.get(permission), PackageManager.PERMISSION_GRANTED)) {
                 return false;
             }
         }
@@ -136,19 +137,20 @@ public class CheckPermissionsActivity extends BaseActivity {
 
     @TargetApi(23)
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] paramArrayOfInt) {
+        Log.d(TAG, "onRequestPermissionsResult-permissions=" + Arrays.toString(permissions));
+        Log.d(TAG, "onRequestPermissionsResult-paramArrayOfInt=" + Arrays.toString(paramArrayOfInt));
+
         if (requestCode == PERMISSON_REQUEST_CODE) {
-            if (!verifyPermissions(paramArrayOfInt)) {
-                showMissingPermissionDialog();
+            List<String> permissionList = Arrays.asList(permissions);
+            for (String permission : needPermissions) {
+                if (!permissionList.contains(permission)) {
+                    return;
+                }
             }
 
-            Map<String, Integer> map = new HashMap<>();
-            for (int i = 0; i < permissions.length; i++) {
-                map.put(permissions[i], paramArrayOfInt[i]);
-            }
-            if (Objects.equals(map.get(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                    PackageManager.PERMISSION_GRANTED)
-                    && Objects.equals(map.get(Manifest.permission.READ_EXTERNAL_STORAGE),
-                    PackageManager.PERMISSION_GRANTED)) {
+            if (!verifyPermissions(permissions, paramArrayOfInt)) {
+                showMissingPermissionDialog();
+            } else {
                 createDefaultFolder();
             }
         }
@@ -159,7 +161,7 @@ public class CheckPermissionsActivity extends BaseActivity {
      *
      * @since 2.5.0
      */
-    private void showMissingPermissionDialog() {
+    protected void showMissingPermissionDialog() {
         if (alertDialog == null) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(R.string.notifyTitle);

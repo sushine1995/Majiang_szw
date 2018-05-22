@@ -43,7 +43,6 @@ public class StudyTestActivity extends BluetoothBaseActivity {
     private Button btnUpDown1;
     private Button btnUpDown2;
     private Button btnCheckMajiang;
-//    private ImageView ivCheckMajiang;
     private TextView tvEasthMajiang;
     private TextView tvSouthMajiang;
     private TextView tvWestMajiang;

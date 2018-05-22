@@ -239,8 +239,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:gravity="center"
-                    android:drawableBottom="@drawable/tiao1"
-                    android:text="东"/>
+                    android:text="东"
+                    android:visibility="invisible"/>
                 <TextView
                     android:id="@+id/tv_southMajiang"
                     android:layout_width="wrap_content"
@@ -249,8 +249,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:gravity="center"
-                    android:drawableBottom="@drawable/tiao1"
-                    android:text="南"/>
+                    android:text="南"
+                    android:visibility="invisible"/>
                 <TextView
                     android:id="@+id/tv_westMajiang"
                     android:layout_width="wrap_content"
@@ -259,8 +259,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:gravity="center"
-                    android:drawableBottom="@drawable/tiao1"
-                    android:text="西"/>
+                    android:text="西"
+                    android:visibility="invisible"/>
                 <TextView
                     android:id="@+id/tv_northMajiang"
                     android:layout_width="wrap_content"
@@ -269,8 +269,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:gravity="center"
-                    android:drawableBottom="@drawable/tiao1"
-                    android:text="北"/>
+                    android:text="北"
+                    android:visibility="invisible"/>
                 <TextView
                     android:id="@+id/tv_checkMajiangProgress"
                     android:layout_width="match_parent"
@@ -279,7 +279,8 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="@dimen/horizontal_interval2"
                     android:layout_gravity="center"
-                    android:textSize="@dimen/text_size_m" />
+                    android:textSize="@dimen/text_size_m"
+                    android:visibility="invisible" />
             </LinearLayout>
 
             <View

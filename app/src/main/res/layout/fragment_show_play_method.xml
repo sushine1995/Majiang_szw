@@ -402,7 +402,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/tv_tip_height"
                         android:gravity="center"
-                        android:text="基本设置备用："
+                        android:text="操作盘选择："
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_m" />
 

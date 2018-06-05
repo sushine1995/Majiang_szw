@@ -312,6 +312,16 @@ public class CalculateUtil {
 				imageId = R.drawable.ic;
 				break;
 
+			// 百搭
+			case 0xa0:
+				imageId = R.drawable.baida;
+				break;
+
+			// 空白
+			case 0xa1:
+				imageId = R.drawable.kongbai;
+				break;
+
 			case 0x00:
 				imageId = -1;
 				break;

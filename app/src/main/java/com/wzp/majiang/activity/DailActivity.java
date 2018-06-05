@@ -208,6 +208,7 @@ public class DailActivity extends BluetoothBaseActivity {
             Toast.makeText(DailActivity.this, "当前设备不具备蓝牙功能！",
                     Toast.LENGTH_LONG).show();
             finish();
+            return;
         }
         if (!bluetoothAdapter.isEnabled()) {
             // 蓝牙尚未打开

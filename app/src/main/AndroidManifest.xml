@@ -99,8 +99,14 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="50fc740ce3ee52336c8467582197f991">
+        <!--my laptop-->
+        <!--<meta-data android:name="com.amap.api.v2.apikey" android:value="50fc740ce3ee52336c8467582197f991">
+        </meta-data>-->
+
+        <!--DSJYJY-->
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="e13047494605a848a8ff389d313d7298">
         </meta-data>
+
 
         <service android:name="com.amap.api.location.APSService"></service>
     </application>

@@ -34,7 +34,9 @@ public class CheckPermissionsActivity extends BaseActivity {
      */
     private String[] needPermissions = {
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        Manifest.permission.READ_EXTERNAL_STORAGE
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_FINE_LOCATION
     };
 
     protected static final int PERMISSON_REQUEST_CODE = 0;
@@ -48,7 +50,7 @@ public class CheckPermissionsActivity extends BaseActivity {
         super.onStart();
 
         List<String> deniedPermissionList = checkPermissions(needPermissions);
-        Log.d(TAG, "onStart-deniedPermissions" + deniedPermissionList.toString());
+        Log.d(TAG, "onStart-deniedPermissions" + Objects.toString(deniedPermissionList));
         if (deniedPermissionList == null
                 || !(deniedPermissionList.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 || deniedPermissionList.contains(Manifest.permission.READ_EXTERNAL_STORAGE))) {
@@ -127,8 +129,13 @@ public class CheckPermissionsActivity extends BaseActivity {
         for (int i = 0; i < permissions.length; i++) {
             map.put(permissions[i], paramArrayOfInt[i]);
         }
+//        for (String permission : needPermissions) {
+//            if (!Objects.equals(map.get(permission), PackageManager.PERMISSION_GRANTED)) {
+//                return false;
+//            }
+//        }
         for (String permission : needPermissions) {
-            if (!Objects.equals(map.get(permission), PackageManager.PERMISSION_GRANTED)) {
+            if (map.get(permission) != null && !Objects.equals(map.get(permission), PackageManager.PERMISSION_GRANTED)) {
                 return false;
             }
         }
@@ -141,12 +148,12 @@ public class CheckPermissionsActivity extends BaseActivity {
         Log.d(TAG, "onRequestPermissionsResult-paramArrayOfInt=" + Arrays.toString(paramArrayOfInt));
 
         if (requestCode == PERMISSON_REQUEST_CODE) {
-            List<String> permissionList = Arrays.asList(permissions);
-            for (String permission : needPermissions) {
-                if (!permissionList.contains(permission)) {
-                    return;
-                }
-            }
+//            List<String> permissionList = Arrays.asList(permissions);
+//            for (String permission : needPermissions) {
+//                if (!permissionList.contains(permission)) {
+//                    return;
+//                }
+//            }
 
             if (!verifyPermissions(permissions, paramArrayOfInt)) {
                 showMissingPermissionDialog();

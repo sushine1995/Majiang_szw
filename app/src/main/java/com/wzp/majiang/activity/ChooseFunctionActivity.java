@@ -28,7 +28,6 @@ import com.wzp.majiang.constant.ProjectConstants;
 import com.wzp.majiang.util.BluetoothClientHelper;
 import com.wzp.majiang.widget.MyApplication;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -156,7 +155,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		super.onStart();
 
 		List<String> deniedPermissionList = checkPermissions(needPermissions);
-		Log.d(LOG_TAG, "onStart-deniedPermissions" + deniedPermissionList.toString());
+		Log.d(LOG_TAG, "onStart-deniedPermissions" + Objects.toString(deniedPermissionList));
 		if (deniedPermissionList == null || deniedPermissionList.size() == 0) {
 			// 启动定位
 			locationClient.startLocation();
@@ -208,12 +207,12 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 		super.onRequestPermissionsResult(requestCode, permissions, paramArrayOfInt);
 		if (requestCode == PERMISSON_REQUEST_CODE) {
-			List<String> permissionList = Arrays.asList(permissions);
-			for (String permission : needPermissions) {
-				if (!permissionList.contains(permission)) {
-					return;
-				}
-			}
+//			List<String> permissionList = Arrays.asList(permissions);
+//			for (String permission : needPermissions) {
+//				if (!permissionList.contains(permission)) {
+//					return;
+//				}
+//			}
 
 			if (verifyPermissions(permissions, paramArrayOfInt)) {
 				// 启动定位
@@ -328,7 +327,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 			map.put(permissions[i], paramArrayOfInt[i]);
 		}
 		for (String permission : needPermissions) {
-			if (!Objects.equals(map.get(permission), PackageManager.PERMISSION_GRANTED)) {
+			if (map.get(permission) != null && !Objects.equals(map.get(permission), PackageManager.PERMISSION_GRANTED)) {
 				return false;
 			}
 		}

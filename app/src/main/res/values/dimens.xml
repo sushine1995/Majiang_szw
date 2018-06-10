@@ -61,4 +61,6 @@
     <dimen name="horizontal_interval">16dp</dimen>
     <dimen name="horizontal_interval2">10dp</dimen>
     <dimen name="vertical_interval">10dp</dimen>
+
+    <dimen name="direction_width_height">30dp</dimen>
 </resources>

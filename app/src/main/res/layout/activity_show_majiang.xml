@@ -99,11 +99,17 @@
                 android:textColor="@color/blue"
                 android:text="下上"/>
 
+            <ImageView
+                android:layout_width="@dimen/direction_width_height"
+                android:layout_height="@dimen/direction_width_height"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/north"/>
+
             <TextView
                 android:id="@+id/tv_blockNumNorth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:textSize="@dimen/text_size_l"
                 android:textColor="@color/red"
@@ -152,11 +158,17 @@
                 android:textColor="@color/blue"
                 android:text="上下"/>
 
+            <ImageView
+                android:layout_width="@dimen/direction_width_height"
+                android:layout_height="@dimen/direction_width_height"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/south"/>
+
             <TextView
                 android:id="@+id/tv_blockNumSouth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:textSize="@dimen/text_size_l"
                 android:textColor="@color/red"
@@ -207,11 +219,17 @@
                 android:textColor="@color/blue"
                 android:text="下上"/>
 
+            <ImageView
+                android:layout_width="@dimen/direction_width_height"
+                android:layout_height="@dimen/direction_width_height"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/west"/>
+
             <TextView
                 android:id="@+id/tv_blockNumWest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:textSize="@dimen/text_size_l"
                 android:textColor="@color/red"
                 android:text="" />
@@ -262,20 +280,118 @@
                 android:textColor="@color/blue"
                 android:text="上下"/>
 
+            <ImageView
+                android:layout_width="@dimen/direction_width_height"
+                android:layout_height="@dimen/direction_width_height"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/east"/>
+
             <TextView
                 android:id="@+id/tv_blockNumEast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:textSize="@dimen/text_size_l"
                 android:textColor="@color/red"
                 android:text="" />
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/direction"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="多牌"
+                    android:textColor="@color/red"/>
+                <ImageView
+                    android:id="@+id/iv_moreMajiang1"
+                    android:layout_width="@dimen/a_majiang_width"
+                    android:layout_height="@dimen/a_majiang_height"
+                    android:layout_marginLeft="5dp"/>
+                <ImageView
+                    android:id="@+id/iv_moreMajiang2"
+                    android:layout_width="@dimen/a_majiang_width"
+                    android:layout_height="@dimen/a_majiang_height"
+                    android:layout_marginLeft="5dp"/>
+                <ImageView
+                    android:id="@+id/iv_moreMajiang3"
+                    android:layout_width="@dimen/a_majiang_width"
+                    android:layout_height="@dimen/a_majiang_height"
+                    android:layout_marginLeft="5dp"/>
+                <ImageView
+                    android:id="@+id/iv_moreMajiang4"
+                    android:layout_width="@dimen/a_majiang_width"
+                    android:layout_height="@dimen/a_majiang_height"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="少牌"
+                    android:textColor="@color/red"/>
+                <ImageView
+                    android:id="@+id/iv_lessMajiang1"
+                    android:layout_width="@dimen/a_majiang_width"
+                    android:layout_height="@dimen/a_majiang_height"
+                    android:layout_marginLeft="5dp"/>
+                <ImageView
+                    android:id="@+id/iv_lessMajiang2"
+                    android:layout_width="@dimen/a_majiang_width"
+                    android:layout_height="@dimen/a_majiang_height"
+                    android:layout_marginLeft="5dp"/>
+                <ImageView
+                    android:id="@+id/iv_lessMajiang3"
+                    android:layout_width="@dimen/a_majiang_width"
+                    android:layout_height="@dimen/a_majiang_height"
+                    android:layout_marginLeft="5dp"/>
+                <ImageView
+                    android:id="@+id/iv_lessMajiang4"
+                    android:layout_width="@dimen/a_majiang_width"
+                    android:layout_height="@dimen/a_majiang_height"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/a_majiang_height"
+                    android:gravity="center"
+                    android:text="错牌"
+                    android:textColor="@color/red"/>
+                <TextView
+                    android:id="@+id/tv_wrongMajiangNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text=""
+                    android:textColor="@color/red"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_errorTip"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/a_majiang_height"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/red"/>
+        </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

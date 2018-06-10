@@ -14,12 +14,13 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import java.util.Arrays;
-
 import com.wzp.majiang.R;
 import com.wzp.majiang.activity.base.BluetoothBaseActivity;
+import com.wzp.majiang.constant.ProjectConstants;
 import com.wzp.majiang.util.CalculateUtil;
 import com.wzp.majiang.widget.MyApplication;
+
+import java.util.Arrays;
 
 public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 
@@ -67,6 +68,17 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 	private ImageView ivBlueDiceNorth2;
 	private ImageView ivRedDiceNorth3;
 	private ImageView ivBlueDiceNorth3;
+
+	private ImageView ivMoreMajiang1;
+	private ImageView ivMoreMajiang2;
+	private ImageView ivMoreMajiang3;
+	private ImageView ivMoreMajiang4;
+	private ImageView ivLessMajiang1;
+	private ImageView ivLessMajiang2;
+	private ImageView ivLessMajiang3;
+	private ImageView ivLessMajiang4;
+	private TextView tvWrongNum;
+	private TextView tvErrorTip;
 
 	private PopupMenu pmSelectDirection;
 
@@ -151,6 +163,17 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 		ivBlueDiceNorth2 = (ImageView) findViewById(R.id.iv_blueDiceNorth2);
 		ivRedDiceNorth3 = (ImageView) findViewById(R.id.iv_redDiceNorth3);
 		ivBlueDiceNorth3 = (ImageView) findViewById(R.id.iv_blueDiceNorth3);
+
+		ivMoreMajiang1 = (ImageView) findViewById(R.id.iv_moreMajiang1);
+		ivMoreMajiang2 = (ImageView) findViewById(R.id.iv_moreMajiang2);
+		ivMoreMajiang3 = (ImageView) findViewById(R.id.iv_moreMajiang3);
+		ivMoreMajiang4 = (ImageView) findViewById(R.id.iv_moreMajiang4);
+		ivLessMajiang1 = (ImageView) findViewById(R.id.iv_lessMajiang1);
+		ivLessMajiang2 = (ImageView) findViewById(R.id.iv_lessMajiang2);
+		ivLessMajiang3 = (ImageView) findViewById(R.id.iv_lessMajiang3);
+		ivLessMajiang4 = (ImageView) findViewById(R.id.iv_lessMajiang4);
+		tvWrongNum = (TextView) findViewById(R.id.tv_wrongMajiangNum);
+		tvErrorTip = (TextView) findViewById(R.id.tv_errorTip);
 
 		pmSelectDirection = new PopupMenu(this, ibtnMoreFun);
 		getMenuInflater().inflate(R.menu.menu_select_direction, pmSelectDirection.getMenu());
@@ -619,7 +642,7 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 
 
 	@Override
-	protected void onBluetoothDataReceived(byte[] recvData) {
+	protected void onBluetoothDataReceived(final byte[] recvData) {
 		// 桌面牌
 		switch (CalculateUtil.byteToInt(recvData[1])) {
 			// 东
@@ -636,6 +659,68 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 			// 色子
 			case 0xed:
 				updateDiceAndPositionFlag(recvData);
+				break;
+
+			// 故障显示
+			case 0xe0:
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						int majiangRes;
+
+						/*
+						多牌
+						 */
+						int moreNum = CalculateUtil.byteToInt(recvData[2]);
+						if (moreNum > 4) { // 最多4张牌，超过则认为出错，忽略此条报文
+							return;
+						}
+						ImageView[] ivMoreMajiangArr = new ImageView[]{
+								ivMoreMajiang1, ivMoreMajiang2,
+								ivMoreMajiang3, ivMoreMajiang4
+						};
+						for (int i = 0; i < moreNum; i++) {
+							majiangRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[3 + i]));
+							if (majiangRes != ProjectConstants.INVISIBLE_MAJIANG) {
+								ivMoreMajiangArr[i].setImageResource(majiangRes);
+								ivMoreMajiangArr[i].setVisibility(View.VISIBLE);
+							} else {
+								ivMoreMajiangArr[i].setVisibility(View.INVISIBLE);
+							}
+						}
+
+						/*
+						少牌
+						 */
+						int lessNum = CalculateUtil.byteToInt(recvData[7]);
+						if (lessNum > 4) { // 最多4张牌，超过则认为出错，忽略此条报文
+							return;
+						}
+						ImageView[] ivLessMajiangArr = new ImageView[]{
+								ivLessMajiang1, ivLessMajiang2,
+								ivLessMajiang3, ivLessMajiang4
+						};
+						for (int i = 0; i < lessNum; i++) {
+							majiangRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[8 + i]));
+							if (majiangRes != ProjectConstants.INVISIBLE_MAJIANG) {
+								ivLessMajiangArr[i].setImageResource(majiangRes);
+								ivLessMajiangArr[i].setVisibility(View.VISIBLE);
+							} else {
+								ivLessMajiangArr[i].setVisibility(View.INVISIBLE);
+							}
+						}
+
+						// 错牌数量
+						tvWrongNum.setText(CalculateUtil.byteToInt(recvData[12]) + "张");
+
+						// 故障提示
+						if (CalculateUtil.byteToInt(recvData[13]) == 1) {
+							tvErrorTip.setText("请检查牌");
+						} else {
+							tvErrorTip.setText("");
+						}
+					}
+				});
 				break;
 
 			default:

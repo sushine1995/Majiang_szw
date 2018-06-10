@@ -322,8 +322,9 @@ public class CalculateUtil {
 				imageId = R.drawable.kongbai;
 				break;
 
+			// 不显示任何牌，但空出一个位置
 			case 0x00:
-				imageId = -1;
+				imageId = ProjectConstants.INVISIBLE_MAJIANG;
 				break;
 		}
 

@@ -55,4 +55,6 @@ public class ProjectConstants {
 	};
 
 	public static final SimpleDateFormat SDF = new SimpleDateFormat("yyyyMMddHHmmss");
+
+	public static final int INVISIBLE_MAJIANG = -1; // 不显示任何麻将牌，但空出一个位置
 }

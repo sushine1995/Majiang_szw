@@ -354,8 +354,12 @@
         <item>总数加大点</item>
         <item>总数加小点</item>
         <item>大定大拿</item>
+        <item>本家方位小点起牌</item>
+        <item>本家方位大点起牌</item>
+        <item>Q1</item>
+        <item>Q2</item>
+        <item>Q3</item>
         <item>Q4</item>
-        <item>Q5</item>
     </string-array>
     <!--起牌补花方式-->
     <string-array name="start_card_supplement_flower_method_arr">

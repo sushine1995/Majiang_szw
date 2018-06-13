@@ -301,16 +301,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_centerInParent="true">
+            <TextView
+                android:id="@+id/tv_majiangColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=""
+                android:textSize="@dimen/text_size_xl"
+                android:textColor="@color/black" />
             <LinearLayout
+                android:id="@+id/linear_moreMajiang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="多牌"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_size_m"/>
                 <ImageView
                     android:id="@+id/iv_moreMajiang1"
                     android:layout_width="@dimen/a_majiang_width"
@@ -333,6 +344,7 @@
                     android:layout_marginLeft="5dp"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/linear_lessMajiang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -342,7 +354,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="少牌"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_size_m"/>
                 <ImageView
                     android:id="@+id/iv_lessMajiang1"
                     android:layout_width="@dimen/a_majiang_width"
@@ -365,6 +378,7 @@
                     android:layout_marginLeft="5dp"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/linear_wrongNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -375,14 +389,16 @@
                     android:layout_height="@dimen/a_majiang_height"
                     android:gravity="center"
                     android:text="错牌"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_size_m"/>
                 <TextView
-                    android:id="@+id/tv_wrongMajiangNum"
+                    android:id="@+id/tv_wrongNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text=""
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_size_m"/>
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_errorTip"
@@ -390,8 +406,10 @@
                 android:layout_height="@dimen/a_majiang_height"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
+                android:lines="1"
                 android:text=""
-                android:textColor="@color/red"/>
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_xl"/>
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

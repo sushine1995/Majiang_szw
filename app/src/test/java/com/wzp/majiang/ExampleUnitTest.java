@@ -14,4 +14,10 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void testFormat() throws Exception {
+        String str = String.format("%02d", 232);
+        System.out.println(str);
+    }
 }

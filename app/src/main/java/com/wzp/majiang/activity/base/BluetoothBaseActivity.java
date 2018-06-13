@@ -1,6 +1,8 @@
 package com.wzp.majiang.activity.base;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.wzp.majiang.util.CRC16;
 import com.wzp.majiang.util.CalculateUtil;
@@ -83,6 +85,17 @@ public abstract class BluetoothBaseActivity extends CheckPermissionsActivity {
 	 */
 	protected void sendMsg(byte[] sendData) {
 		sendMsg(sendData, true);
+	}
+
+	/**
+	 * 将麻将牌设为INVISIBLE
+	 * @param ivMajiangArr
+	 */
+	protected void setMajiangInvisible(ImageView[] ivMajiangArr) {
+		for (ImageView ivMajiang :
+				ivMajiangArr) {
+			ivMajiang.setVisibility(View.INVISIBLE);
+		}
 	}
 
 	protected abstract void onBluetoothDataReceived(final byte[] recvData);

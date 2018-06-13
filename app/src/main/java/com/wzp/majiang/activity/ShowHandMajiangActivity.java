@@ -69,14 +69,18 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 	private ImageView ivRedDiceNorth3;
 	private ImageView ivBlueDiceNorth3;
 
+	private TextView tvMajiangColor;
+	private LinearLayout linearMoreMajiang;
 	private ImageView ivMoreMajiang1;
 	private ImageView ivMoreMajiang2;
 	private ImageView ivMoreMajiang3;
 	private ImageView ivMoreMajiang4;
+	private LinearLayout linearLessMajiang;
 	private ImageView ivLessMajiang1;
 	private ImageView ivLessMajiang2;
 	private ImageView ivLessMajiang3;
 	private ImageView ivLessMajiang4;
+	private LinearLayout linearWrongNum;
 	private TextView tvWrongNum;
 	private TextView tvErrorTip;
 
@@ -164,14 +168,18 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 		ivRedDiceNorth3 = (ImageView) findViewById(R.id.iv_redDiceNorth3);
 		ivBlueDiceNorth3 = (ImageView) findViewById(R.id.iv_blueDiceNorth3);
 
+		tvMajiangColor = (TextView) findViewById(R.id.tv_majiangColor);
+		linearMoreMajiang = (LinearLayout) findViewById(R.id.linear_moreMajiang);
 		ivMoreMajiang1 = (ImageView) findViewById(R.id.iv_moreMajiang1);
 		ivMoreMajiang2 = (ImageView) findViewById(R.id.iv_moreMajiang2);
 		ivMoreMajiang3 = (ImageView) findViewById(R.id.iv_moreMajiang3);
 		ivMoreMajiang4 = (ImageView) findViewById(R.id.iv_moreMajiang4);
 		ivLessMajiang1 = (ImageView) findViewById(R.id.iv_lessMajiang1);
+		linearLessMajiang = (LinearLayout) findViewById(R.id.linear_lessMajiang);
 		ivLessMajiang2 = (ImageView) findViewById(R.id.iv_lessMajiang2);
 		ivLessMajiang3 = (ImageView) findViewById(R.id.iv_lessMajiang3);
 		ivLessMajiang4 = (ImageView) findViewById(R.id.iv_lessMajiang4);
+		linearWrongNum = (LinearLayout) findViewById(R.id.linear_wrongNum);
 		tvWrongNum = (TextView) findViewById(R.id.tv_wrongMajiangNum);
 		tvErrorTip = (TextView) findViewById(R.id.tv_errorTip);
 
@@ -674,11 +682,16 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 						int moreNum = CalculateUtil.byteToInt(recvData[2]);
 						if (moreNum > 4) { // 最多4张牌，超过则认为出错，忽略此条报文
 							return;
+						} else if (moreNum > 0) {
+							linearMoreMajiang.setVisibility(View.VISIBLE);
+						} else {
+							linearMoreMajiang.setVisibility(View.GONE);
 						}
 						ImageView[] ivMoreMajiangArr = new ImageView[]{
 								ivMoreMajiang1, ivMoreMajiang2,
 								ivMoreMajiang3, ivMoreMajiang4
 						};
+						setMajiangInvisible(ivMoreMajiangArr);
 						for (int i = 0; i < moreNum; i++) {
 							majiangRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[3 + i]));
 							if (majiangRes != ProjectConstants.INVISIBLE_MAJIANG) {
@@ -695,11 +708,16 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 						int lessNum = CalculateUtil.byteToInt(recvData[7]);
 						if (lessNum > 4) { // 最多4张牌，超过则认为出错，忽略此条报文
 							return;
+						} else if (lessNum > 0) {
+							linearLessMajiang.setVisibility(View.VISIBLE);
+						} else {
+							linearLessMajiang.setVisibility(View.GONE);
 						}
 						ImageView[] ivLessMajiangArr = new ImageView[]{
 								ivLessMajiang1, ivLessMajiang2,
 								ivLessMajiang3, ivLessMajiang4
 						};
+						setMajiangInvisible(ivLessMajiangArr);
 						for (int i = 0; i < lessNum; i++) {
 							majiangRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[8 + i]));
 							if (majiangRes != ProjectConstants.INVISIBLE_MAJIANG) {
@@ -711,13 +729,43 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 						}
 
 						// 错牌数量
-						tvWrongNum.setText(CalculateUtil.byteToInt(recvData[12]) + "张");
+						int wrongNum = CalculateUtil.byteToInt(recvData[12]);
+						if (wrongNum > 0) {
+							tvWrongNum.setText(wrongNum + "张");
+							linearWrongNum.setVisibility(View.VISIBLE);
+						} else {
+							linearWrongNum.setVisibility(View.GONE);
+						}
 
 						// 故障提示
 						if (CalculateUtil.byteToInt(recvData[13]) == 1) {
-							tvErrorTip.setText("请检查牌");
+							tvErrorTip.setText("请检查牌" + String.format("%02d", CalculateUtil.byteToInt(recvData[14])));
+							tvErrorTip.setVisibility(View.VISIBLE);
 						} else {
 							tvErrorTip.setText("");
+							tvErrorTip.setVisibility(View.GONE);
+						}
+
+						// 麻将牌颜色
+						int color = CalculateUtil.byteToInt(recvData[17]);
+						switch (color) {
+							case 0x00:
+								tvMajiangColor.setText("");
+								tvMajiangColor.setVisibility(View.GONE);
+								break;
+
+							case 0x01:
+								tvMajiangColor.setText("蓝牌");
+								tvMajiangColor.setVisibility(View.VISIBLE);
+								break;
+
+							case 0x02:
+								tvMajiangColor.setText("绿牌");
+								tvMajiangColor.setVisibility(View.VISIBLE);
+								break;
+
+							default:
+								break;
 						}
 					}
 				});

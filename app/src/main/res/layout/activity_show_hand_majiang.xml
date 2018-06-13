@@ -574,14 +574,16 @@
                 android:gravity="center"
                 android:text=""
                 android:textSize="@dimen/text_size_xl"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:visibility="gone" />
             <LinearLayout
                 android:id="@+id/linear_moreMajiang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="gone">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -615,7 +617,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="gone">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -649,7 +652,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="gone">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/a_majiang_height"
@@ -674,7 +678,8 @@
                 android:gravity="center"
                 android:text=""
                 android:textColor="@color/red"
-                android:textSize="@dimen/text_size_xl"/>
+                android:textSize="@dimen/text_size_xl"
+                android:visibility="gone"/>
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

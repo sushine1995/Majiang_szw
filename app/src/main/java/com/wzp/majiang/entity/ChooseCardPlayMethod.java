@@ -1,10 +1,9 @@
 package com.wzp.majiang.entity;
 
 /**
- * Created by zippe on 2017/9/5.
+ * 选牌方式下的玩法
  */
-
-public class SingleChooseCardMethod {
+public class ChooseCardPlayMethod {
 
     private int name; // 玩法名称的ID
     private int num; // 基本张数
@@ -48,7 +47,7 @@ public class SingleChooseCardMethod {
             return false;
         if (getClass() != otherObject.getClass())     //第四步      因为在子类中比较的内容会有变化，所以使用getClass
             return false;
-        SingleChooseCardMethod other = (SingleChooseCardMethod) otherObject;      //第五步
+        ChooseCardPlayMethod other = (ChooseCardPlayMethod) otherObject;      //第五步
         return getName() == other.getName();//第六步
     }
 }

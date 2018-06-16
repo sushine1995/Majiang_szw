@@ -3,14 +3,13 @@ package com.wzp.majiang.entity;
 import java.util.List;
 
 /**
- * Created by zippe on 2017/9/5.
+ * 选牌方式
  */
-
 public class ChooseCardMethod {
 
     private boolean isSelected; // 是否被选中
     private int loopTimes; // 循环次数
-    private List<SingleChooseCardMethod> methods; // 玩法集合
+    private List<ChooseCardPlayMethod> methods; // 玩法集合
 
     public boolean isSelected() {
         return isSelected;
@@ -28,11 +27,11 @@ public class ChooseCardMethod {
         this.loopTimes = loopTimes;
     }
 
-    public List<SingleChooseCardMethod> getMethods() {
+    public List<ChooseCardPlayMethod> getMethods() {
         return methods;
     }
 
-    public void setMethods(List<SingleChooseCardMethod> methods) {
+    public void setMethods(List<ChooseCardPlayMethod> methods) {
         this.methods = methods;
     }
 }

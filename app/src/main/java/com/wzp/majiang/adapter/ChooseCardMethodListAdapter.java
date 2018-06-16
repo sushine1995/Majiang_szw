@@ -1,10 +1,10 @@
 package com.wzp.majiang.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,16 +16,18 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.List;
-
 import com.wzp.majiang.R;
 import com.wzp.majiang.activity.EditChooseCardMethodActivity;
 import com.wzp.majiang.activity.EditPlayMethodActivity;
 import com.wzp.majiang.entity.ChooseCardMethod;
-import com.wzp.majiang.entity.SingleChooseCardMethod;
+import com.wzp.majiang.entity.ChooseCardPlayMethod;
 import com.wzp.majiang.util.DensityUtil;
 
+import java.util.List;
 
+/**
+ * 选牌方式列表
+ */
 public class ChooseCardMethodListAdapter extends BaseAdapter {
 
     private Context context;
@@ -107,8 +109,11 @@ public class ChooseCardMethodListAdapter extends BaseAdapter {
                 EditChooseCardMethodActivity.myStartActivityForResult(context,
                         ((EditPlayMethodActivity) context).getPlayMethod(),
                         position);
-            }
+           }
         });
+        /*
+         点击删除图标删除
+         */
         holder.ibtnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,6 +138,9 @@ public class ChooseCardMethodListAdapter extends BaseAdapter {
         });
         listPlayMethod(context, holder.linearPlayMethodList, chooseCardMethod.getMethods());
 
+        /*
+        长按删除
+         */
 //        convertView.setOnLongClickListener(new View.OnLongClickListener() {
 //            @Override
 //            public boolean onLongClick(View v) {
@@ -161,13 +169,13 @@ public class ChooseCardMethodListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private void listPlayMethod(Context context, LinearLayout linearPlayMethodList, List<SingleChooseCardMethod> methodList) {
+    private void listPlayMethod(Context context, LinearLayout linearPlayMethodList, List<ChooseCardPlayMethod> methodList) {
         int childCount = linearPlayMethodList.getChildCount();
         for (int i = 0; i < childCount; i++) {
             linearPlayMethodList.removeViewAt(0);
         }
 
-        for (SingleChooseCardMethod method : methodList) {
+        for (ChooseCardPlayMethod method : methodList) {
             LinearLayout linearAdded = new LinearLayout(context);
             linearAdded.setOrientation(LinearLayout.HORIZONTAL);
             TextView tvName = new TextView(context);

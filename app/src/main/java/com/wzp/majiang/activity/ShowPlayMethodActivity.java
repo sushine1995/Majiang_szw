@@ -27,7 +27,7 @@ import com.wzp.majiang.entity.ChooseCardMethod;
 import com.wzp.majiang.entity.ChooseCardParameter;
 import com.wzp.majiang.entity.DiceParameter;
 import com.wzp.majiang.entity.PlayMethodParameter;
-import com.wzp.majiang.entity.SingleChooseCardMethod;
+import com.wzp.majiang.entity.ChooseCardPlayMethod;
 import com.wzp.majiang.fragment.ShowPlayMethodFragment;
 import com.wzp.majiang.util.CRC16;
 import com.wzp.majiang.util.CalculateUtil;
@@ -225,8 +225,8 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                                     // 选牌方式
                                     List<ChooseCardMethod> ccmList = ccp.getMethods();
                                     ChooseCardMethod ccm = null;
-                                    List<SingleChooseCardMethod> sccmList = null;
-                                    SingleChooseCardMethod sccm = null;
+                                    List<ChooseCardPlayMethod> sccmList = null;
+                                    ChooseCardPlayMethod sccm = null;
                                     int k = 0;
                                     for (; k < ccmList.size(); k++) {
                                         ccm = ccmList.get(k);

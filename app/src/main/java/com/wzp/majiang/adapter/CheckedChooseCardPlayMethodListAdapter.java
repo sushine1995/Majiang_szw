@@ -7,21 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.wzp.majiang.R;
+import com.wzp.majiang.entity.ChooseCardPlayMethod;
+
 import java.util.List;
 
-import com.wzp.majiang.R;
-import com.wzp.majiang.entity.SingleChooseCardMethod;
-
-
-public class SingleChooseCardListAdapter extends RecyclerView.Adapter<SingleChooseCardListAdapter.MyViewHolder> {
+/**
+ * 被选中的选牌方式下的玩法列表
+ */
+public class CheckedChooseCardPlayMethodListAdapter extends RecyclerView.Adapter<CheckedChooseCardPlayMethodListAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<SingleChooseCardMethod> datas;
+    private List<ChooseCardPlayMethod> datas;
     private OnItemClickLitener mOnItemClickLitener;
     private String[] playMethodNameArr;
 
 
-    public SingleChooseCardListAdapter(Context context, List<SingleChooseCardMethod> datas) {
+    public CheckedChooseCardPlayMethodListAdapter(Context context, List<ChooseCardPlayMethod> datas) {
         mContext = context;
         this.datas = datas;
         playMethodNameArr = context.getResources().getStringArray(R.array.play_method_name_arr);
@@ -34,7 +36,7 @@ public class SingleChooseCardListAdapter extends RecyclerView.Adapter<SingleChoo
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         MyViewHolder holder = new MyViewHolder(LayoutInflater.from(mContext)
-                .inflate(R.layout.listitem_single_choose_card_method, viewGroup, false));
+                .inflate(R.layout.listitem_checked_choose_card_play_method, viewGroup, false));
         return holder;
     }
 

@@ -10,12 +10,12 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.List;
-
 import com.wzp.majiang.R;
 import com.wzp.majiang.entity.ChooseCardMethod;
-import com.wzp.majiang.entity.SingleChooseCardMethod;
+import com.wzp.majiang.entity.ChooseCardPlayMethod;
 import com.wzp.majiang.util.DensityUtil;
+
+import java.util.List;
 
 
 public class ShowChooseCardMethodListAdapter extends BaseAdapter {
@@ -77,13 +77,13 @@ public class ShowChooseCardMethodListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private void listPlayMethod(Context context, LinearLayout linearPlayMethodList, List<SingleChooseCardMethod> methodList) {
+    private void listPlayMethod(Context context, LinearLayout linearPlayMethodList, List<ChooseCardPlayMethod> methodList) {
         int childCount = linearPlayMethodList.getChildCount();
         for (int i = 0; i < childCount; i++) {
             linearPlayMethodList.removeViewAt(0);
         }
 
-        for (SingleChooseCardMethod method : methodList) {
+        for (ChooseCardPlayMethod method : methodList) {
             LinearLayout linearAdded = new LinearLayout(context);
             linearAdded.setOrientation(LinearLayout.HORIZONTAL);
             TextView tvName = new TextView(context);

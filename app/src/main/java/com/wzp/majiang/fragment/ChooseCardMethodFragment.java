@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
-import java.util.List;
-
 import com.wzp.majiang.R;
 import com.wzp.majiang.activity.EditChooseCardMethodActivity;
 import com.wzp.majiang.activity.EditPlayMethodActivity;
@@ -19,7 +17,11 @@ import com.wzp.majiang.adapter.ChooseCardMethodListAdapter;
 import com.wzp.majiang.entity.ChooseCardMethod;
 import com.wzp.majiang.entity.ChooseCardParameter;
 
+import java.util.List;
 
+/**
+ * 选牌方式
+ */
 public class ChooseCardMethodFragment extends Fragment {
 
     private EditPlayMethodActivity activity;

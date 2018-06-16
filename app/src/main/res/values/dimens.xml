@@ -64,4 +64,6 @@
     <dimen name="vertical_interval">10dp</dimen>
 
     <dimen name="direction_width_height">30dp</dimen>
+
+    <dimen name="choose_card_method_height">32dp</dimen>
 </resources>

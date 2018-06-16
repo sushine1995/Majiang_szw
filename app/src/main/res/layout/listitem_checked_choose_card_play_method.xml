@@ -15,7 +15,7 @@
         android:gravity="center_vertical"
         android:textSize="@dimen/text_size_m"
         android:textColor="@color/black"
-        android:text="A：平胡"/>
+        android:text=""/>
 
     <View
         android:layout_width="1dp"
@@ -32,7 +32,7 @@
         android:gravity="center_vertical"
         android:textSize="@dimen/text_size_m"
         android:textColor="@color/black"
-        android:text="张数：4"/>
+        android:text=""/>
 
     <View
         android:layout_width="1dp"
@@ -48,5 +48,5 @@
         android:gravity="center_vertical"
         android:textSize="@dimen/text_size_m"
         android:textColor="@color/black"
-        android:text="不断幺九"/>
+        android:text=""/>
 </LinearLayout>

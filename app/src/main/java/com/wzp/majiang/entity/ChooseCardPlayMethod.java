@@ -3,7 +3,7 @@ package com.wzp.majiang.entity;
 /**
  * 选牌方式下的玩法
  */
-public class ChooseCardPlayMethod {
+public class ChooseCardPlayMethod implements Cloneable {
 
     private int name; // 玩法名称的ID
     private int num; // 基本张数
@@ -49,5 +49,10 @@ public class ChooseCardPlayMethod {
             return false;
         ChooseCardPlayMethod other = (ChooseCardPlayMethod) otherObject;      //第五步
         return getName() == other.getName();//第六步
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

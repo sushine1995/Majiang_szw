@@ -50,15 +50,7 @@ public class EditChooseCardMethodActivity extends CheckPermissionsActivity {
                     break;
 
                 case R.id.ibtn_save:
-                    showToast("保存成功");
-
-                    chooseCardMethod.setSelected(true);
-                    if (MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
-                            .getMethods().size() <= index) {
-                        MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
-                                .getMethods().add(chooseCardMethod);
-                    }
-
+                    saveModification();
                     finish();
                     break;
             }
@@ -99,8 +91,12 @@ public class EditChooseCardMethodActivity extends CheckPermissionsActivity {
             chooseCardMethod.setSelected(true);
             chooseCardMethod.setMethods(new ArrayList<ChooseCardPlayMethod>());
         } else {
-            chooseCardMethod = MyApplication.getParameterList().get(playMethod)
-                    .getChooseCardParameter().getMethods().get(index);
+            try {
+                chooseCardMethod = (ChooseCardMethod) MyApplication.getParameterList().get(playMethod)
+                        .getChooseCardParameter().getMethods().get(index).clone();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
         }
 
         chooseCardPlayMethodListAdapter = new ChooseCardPlayMethodListAdapter(this, chooseCardMethod);
@@ -118,13 +114,7 @@ public class EditChooseCardMethodActivity extends CheckPermissionsActivity {
                 .setPositiveButton("保存", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        showToast("保存成功");
-                        chooseCardMethod.setSelected(true);
-                        if (MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
-                                .getMethods().size() <= index) {
-                            MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
-                                    .getMethods().add(chooseCardMethod);
-                        }
+                        saveModification();
                         finish();
                     }
                 })
@@ -156,5 +146,21 @@ public class EditChooseCardMethodActivity extends CheckPermissionsActivity {
         intent.putExtra("playMethod", playMethod);
         intent.putExtra("index", index);
         context.startActivity(intent);
+    }
+
+    /**
+     * 保存修改
+     */
+    private void saveModification() {
+        showToast("保存成功");
+        chooseCardMethod.setSelected(true);
+        if (MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
+                .getMethods().size() <= index) {
+            MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
+                    .getMethods().add(chooseCardMethod);
+        } else {
+            MyApplication.getParameterList().get(playMethod).getChooseCardParameter()
+                    .getMethods().set(index, chooseCardMethod);
+        }
     }
 }

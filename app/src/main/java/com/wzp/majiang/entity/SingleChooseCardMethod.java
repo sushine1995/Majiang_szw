@@ -6,7 +6,7 @@ package com.wzp.majiang.entity;
 
 public class SingleChooseCardMethod {
 
-    private int name; // 玩法名称
+    private int name; // 玩法名称的ID
     private int num; // 基本张数
     private int specialRule; // 特殊规则
 

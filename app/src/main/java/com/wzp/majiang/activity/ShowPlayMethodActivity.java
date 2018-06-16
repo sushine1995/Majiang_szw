@@ -225,21 +225,21 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                                     // 选牌方式
                                     List<ChooseCardMethod> ccmList = ccp.getMethods();
                                     ChooseCardMethod ccm = null;
-                                    List<ChooseCardPlayMethod> sccmList = null;
-                                    ChooseCardPlayMethod sccm = null;
+                                    List<ChooseCardPlayMethod> ccpmList = null;
+                                    ChooseCardPlayMethod ccpm = null;
                                     int k = 0;
                                     for (; k < ccmList.size(); k++) {
                                         ccm = ccmList.get(k);
 
                                         sendMsg[i++] = (byte) (ccm.getLoopTimes() + 1);
-                                        sccmList = ccm.getMethods();
+                                        ccpmList = ccm.getMethods();
                                         int l = 0;
-                                        for (; l < sccmList.size(); l++) {
-                                            sccm = sccmList.get(l);
+                                        for (; l < ccpmList.size(); l++) {
+                                            ccpm = ccpmList.get(l);
 
-                                            sendMsg[i++] = (byte) (sccm.getName() + 1);
-                                            sendMsg[i++] = (byte) sccm.getNum();
-                                            sendMsg[i++] = (byte) sccm.getSpecialRule();
+                                            sendMsg[i++] = (byte) (ccpm.getName() + 1);
+                                            sendMsg[i++] = (byte) ccpm.getNum();
+                                            sendMsg[i++] = (byte) ccpm.getSpecialRule();
                                         }
                                         while (l < 6) {
                                             for (int m = 0; m < 3; m++) {

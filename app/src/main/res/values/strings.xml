@@ -578,61 +578,33 @@
     </string-array>
     <!--玩法名称-->
     <string-array name="play_method_name_arr">
-        <item>@string/play_method_name_a</item>
-        <item>@string/play_method_name_b</item>
-        <item>@string/play_method_name_c</item>
-        <item>@string/play_method_name_d</item>
-        <item>@string/play_method_name_e</item>
-        <item>@string/play_method_name_f</item>
-        <item>@string/play_method_name_g</item>
-        <item>@string/play_method_name_h</item>
-        <item>@string/play_method_name_i</item>
-        <item>@string/play_method_name_j</item>
-        <item>@string/play_method_name_k</item>
-        <item>@string/play_method_name_l</item>
-        <item>@string/play_method_name_m</item>
-        <item>@string/play_method_name_n</item>
-        <item>@string/play_method_name_o</item>
-        <item>@string/play_method_name_p</item>
-        <item>@string/play_method_name_q</item>
-        <item>@string/play_method_name_r</item>
-        <item>@string/play_method_name_s</item>
-        <item>@string/play_method_name_t</item>
-        <item>@string/play_method_name_u</item>
-        <item>@string/play_method_name_v</item>
-        <item>@string/play_method_name_w</item>
-        <item>@string/play_method_name_x</item>
-        <item>@string/play_method_name_y</item>
-        <item>@string/play_method_name_z</item>
+        <item>A:平胡</item>
+        <item>B:混一色</item>
+        <item>C:七小对</item>
+        <item>D:对对碰</item>
+        <item>E:清一色</item>
+        <item>F:风一色</item>
+        <item>G:十三幺</item>
+        <item>H:将一色</item>
+        <item>I:混将胡</item>
+        <item>J:九大坎</item>
+        <item>K:缺一门-湘</item>
+        <item>L:三色全</item>
+        <item>M:板板胡</item>
+        <item>N:双三张</item>
+        <item>O:暗红</item>
+        <item>P:幺九</item>
+        <item>Q:十三烂</item>
+        <item>R:风牌</item>
+        <item>S:穷胡-东北</item>
+        <item>T:二八杠</item>
+        <item>U:牛牛</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
     </string-array>
-
-    <string name="play_method_name_a">A:平胡</string>
-    <string name="play_method_name_b">B:混一色</string>
-    <string name="play_method_name_c">C:七小对</string>
-    <string name="play_method_name_d">D:对对碰</string>
-    <string name="play_method_name_e">E:清一色</string>
-    <string name="play_method_name_f">F:风一色</string>
-    <string name="play_method_name_g">G:十三幺</string>
-    <string name="play_method_name_h">H:将一色</string>
-    <string name="play_method_name_i">I:混将胡</string>
-    <string name="play_method_name_j">J:九大坎</string>
-    <string name="play_method_name_k">K:缺一门-湘</string>
-    <string name="play_method_name_l">L:三色全</string>
-    <string name="play_method_name_m">M:板板胡</string>
-    <string name="play_method_name_n">N:双三张</string>
-    <string name="play_method_name_o">O:暗红</string>
-    <string name="play_method_name_p">P:幺九</string>
-    <string name="play_method_name_q">Q:十三烂</string>
-    <string name="play_method_name_r">R:风牌</string>
-    <string name="play_method_name_s">S:穷胡-东北</string>
-    <string name="play_method_name_t">T:二八杠</string>
-    <string name="play_method_name_u">U:牛牛</string>
-    <string name="play_method_name_v">V</string>
-    <string name="play_method_name_w">W</string>
-    <string name="play_method_name_x">X</string>
-    <string name="play_method_name_y">Y</string>
-    <string name="play_method_name_z">Z</string>
-
 
     <!--空位模式-->
     <string-array name="empty_mode_arr">

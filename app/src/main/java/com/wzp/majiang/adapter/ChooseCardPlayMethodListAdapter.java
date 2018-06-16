@@ -30,8 +30,7 @@ public class ChooseCardPlayMethodListAdapter extends RecyclerView.Adapter<Recycl
 
     private ChooseCardPlayMethodHeaderManager headerManager;
 
-    private static final int MAX_NUM = 6;
-    private static final String LOG_TAG = "EditSingleChooseCardLis";
+    private static final int MAX_NUM = 6; // 选牌玩法的最大数量
 
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_NORMAL = 1;
@@ -46,13 +45,13 @@ public class ChooseCardPlayMethodListAdapter extends RecyclerView.Adapter<Recycl
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        if (i == TYPE_HEADER) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        if (viewType == TYPE_HEADER) {
             if (headerManager == null) {
                 headerManager = new ChooseCardPlayMethodHeaderManager(context, viewGroup, chooseCardMethod);
             }
             return new HeaderViewHolder(headerManager.getView());
-        } else if (i == TYPE_NORMAL) {
+        } else if (viewType == TYPE_NORMAL) {
             MyViewHolder holder = new MyViewHolder(LayoutInflater.from(context)
                     .inflate(R.layout.listitem_choose_card_play_method, viewGroup, false));
             return holder;
@@ -66,10 +65,16 @@ public class ChooseCardPlayMethodListAdapter extends RecyclerView.Adapter<Recycl
             final MyViewHolder myViewHolder = (MyViewHolder) holder;
             final int playMethodIndex =  i - 1;
 
+            /*
+            先清空监听器，避免item复用造成的异常
+             */
             myViewHolder.cbName.setOnCheckedChangeListener(null);
             myViewHolder.btnNum.setOnItemClickListener(null);
             myViewHolder.btnSpecialRule.setOnItemClickListener(null);
 
+            /*
+            为item中的元素设置初值
+             */
             myViewHolder.cbName.setText(playMethodNameArr[playMethodIndex]);
             int checkedIndex = indexOfCheckedList(playMethodIndex);
             if (checkedIndex != -1) {
@@ -82,6 +87,9 @@ public class ChooseCardPlayMethodListAdapter extends RecyclerView.Adapter<Recycl
                 myViewHolder.btnSpecialRule.setSelectedItemPosition(0); // 特殊规则默认无，index为0
             }
 
+            /*
+            重新设置监听器
+             */
             myViewHolder.cbName.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -102,37 +110,30 @@ public class ChooseCardPlayMethodListAdapter extends RecyclerView.Adapter<Recycl
                             return;
                         }
                     } else {
-                        if (!checkedDataList.contains(method)) {
-                            return;
-                        }
                         checkedDataList.remove(method);
                     }
 
                     headerManager.notifyDataSetChanged();
                 }
             });
-
             myViewHolder.btnNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     if (myViewHolder.cbName.isChecked()) {
-                        ChooseCardPlayMethod method = new ChooseCardPlayMethod();
-                        method.setName(playMethodIndex);
-                        checkedDataList.get(checkedDataList.indexOf(method))
+                        int checkedIndex = indexOfCheckedList(playMethodIndex);
+                        checkedDataList.get(checkedIndex)
                                 .setNum(myViewHolder.btnNum.getSelectedItemPosition());
 
                         headerManager.notifyDataSetChanged();
                     }
                 }
             });
-
             myViewHolder.btnSpecialRule.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     if (myViewHolder.cbName.isChecked()) {
-                        ChooseCardPlayMethod method = new ChooseCardPlayMethod();
-                        method.setName(playMethodIndex);
-                        checkedDataList.get(checkedDataList.indexOf(method))
+                        int checkedIndex = indexOfCheckedList(playMethodIndex);
+                        checkedDataList.get(checkedIndex)
                                 .setSpecialRule(myViewHolder.btnSpecialRule.getSelectedItemPosition());
 
                         headerManager.notifyDataSetChanged();

@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.Arrays;
-
 import com.wzp.majiang.R;
 import com.wzp.majiang.activity.base.BluetoothBaseActivity;
 import com.wzp.majiang.util.CalculateUtil;
@@ -87,68 +85,62 @@ public class ShowBaopaiActivity extends BluetoothBaseActivity {
 	 * @param recvData
 	 */
 	private void updateMajiang(byte[] recvData) {
-		final byte[] copyRecvData = Arrays.copyOf(recvData, recvData.length);
-		runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				String strCode = "";
-				int code = CalculateUtil.byteToInt(copyRecvData[1]);
-				if (code == 0xc1) {
-					strCode = "多牌";
-				} else if (code == 0xc2) {
-					strCode = "少牌";
-				} else {
-					strCode = Integer.toHexString(code);
-				}
-				tvId.setText(strCode);
+		String strCode;
+		int code = CalculateUtil.byteToInt(recvData[1]);
+		if (code == 0xc1) {
+			strCode = "多牌";
+		} else if (code == 0xc2) {
+			strCode = "少牌";
+		} else {
+			strCode = Integer.toHexString(code);
+		}
+		tvId.setText(strCode);
 
-				int num = CalculateUtil.byteToInt(copyRecvData[2]);
-				// num最多不能超过17
-				if (num > 19) {
-					Log.e(LOG_TAG, "麻将牌数目异常：" + num);
-					return;
-				}
+		int num = CalculateUtil.byteToInt(recvData[2]);
+		// num最多不能超过17
+		if (num > 19) {
+			Log.e(LOG_TAG, "麻将牌数目异常：" + num);
+			return;
+		}
 
-				if(num > linearMajiang.getChildCount()) {
-					int addedChildCount = num - linearMajiang.getChildCount();
+		if(num > linearMajiang.getChildCount()) {
+			int addedChildCount = num - linearMajiang.getChildCount();
 
 //					LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 //							LinearLayout.LayoutParams.WRAP_CONTENT,
 //							LinearLayout.LayoutParams.WRAP_CONTENT);
-					LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-							(int) getResources().getDimensionPixelSize(R.dimen.a_majiang_width),
-							(int) getResources().getDimensionPixelSize(R.dimen.a_majiang_height));
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+					(int) getResources().getDimensionPixelSize(R.dimen.a_majiang_width),
+					(int) getResources().getDimensionPixelSize(R.dimen.a_majiang_height));
 //					params.setMargins(2, 0, 0, 0);
-					ImageView ivMajiang = null;
-					for (int i = 0; i < addedChildCount; i++) {
-						ivMajiang = new ImageView(ShowBaopaiActivity.this);
-						ivMajiang.setLayoutParams(params);
+			ImageView ivMajiang = null;
+			for (int i = 0; i < addedChildCount; i++) {
+				ivMajiang = new ImageView(ShowBaopaiActivity.this);
+				ivMajiang.setLayoutParams(params);
 
-						linearMajiang.addView(ivMajiang);
-					}
-				} else {
-					int delChidCount = linearMajiang.getChildCount() - num;
-					for (int i = 0; i < delChidCount; i++) {
-						linearMajiang.removeViewAt(linearMajiang.getChildCount() - 1);
-					}
-				}
-
-				Bitmap majiangBitmap = null;
-				int imageId; // 麻将图片资源ID
-				for (int i = 0; i < num; i++) {
-					imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[3 + i]));
-					if (imageId != -1) {
-						// 正常显示麻将图片
-						majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
-						((ImageView) linearMajiang.getChildAt(i)).setImageBitmap(majiangBitmap);
-						linearMajiang.getChildAt(i).setVisibility(View.VISIBLE);
-					} else {
-						// 当前位置不显示麻将
-						linearMajiang.getChildAt(i).setVisibility(View.INVISIBLE);
-					}
-				}
+				linearMajiang.addView(ivMajiang);
 			}
-		});
+		} else {
+			int delChidCount = linearMajiang.getChildCount() - num;
+			for (int i = 0; i < delChidCount; i++) {
+				linearMajiang.removeViewAt(linearMajiang.getChildCount() - 1);
+			}
+		}
+
+		Bitmap majiangBitmap = null;
+		int imageId; // 麻将图片资源ID
+		for (int i = 0; i < num; i++) {
+			imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[3 + i]));
+			if (imageId != -1) {
+				// 正常显示麻将图片
+				majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
+				((ImageView) linearMajiang.getChildAt(i)).setImageBitmap(majiangBitmap);
+				linearMajiang.getChildAt(i).setVisibility(View.VISIBLE);
+			} else {
+				// 当前位置不显示麻将
+				linearMajiang.getChildAt(i).setVisibility(View.INVISIBLE);
+			}
+		}
 	}
 
 

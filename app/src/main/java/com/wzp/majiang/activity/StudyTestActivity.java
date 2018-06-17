@@ -396,23 +396,13 @@ public class StudyTestActivity extends BluetoothBaseActivity {
 
             case 0xa2:
                 if (CalculateUtil.byteToInt(recvData[3]) == 0x00) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            tvCheckMajiangProgress.setTextColor(getResources().getColor(R.color.red));
-                            tvCheckMajiangProgress.setText(getResources().getString(R.string.checking_majiang));
-                            btnCheckMajiang.setTextColor(getResources().getColor(R.color.red));
-                        }
-                    });
+                    tvCheckMajiangProgress.setTextColor(getResources().getColor(R.color.red));
+                    tvCheckMajiangProgress.setText(getResources().getString(R.string.checking_majiang));
+                    btnCheckMajiang.setTextColor(getResources().getColor(R.color.red));
                 } else if (CalculateUtil.byteToInt(recvData[3]) == 0x01) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            tvCheckMajiangProgress.setTextColor(getResources().getColor(R.color.green));
-                            tvCheckMajiangProgress.setText(getResources().getString(R.string.checked_majiang));
-                            vibrator.vibrate(200);
-                        }
-                    });
+                    tvCheckMajiangProgress.setTextColor(getResources().getColor(R.color.green));
+                    tvCheckMajiangProgress.setText(getResources().getString(R.string.checked_majiang));
+                    vibrator.vibrate(200);
                     TextView[] tvMajiangArr = new TextView[] {tvEasthMajiang, tvSouthMajiang,
                         tvWestMajiang, tvNorthMajiang};
                     for (int i = 0; i < 4; i++) {
@@ -421,96 +411,51 @@ public class StudyTestActivity extends BluetoothBaseActivity {
                         if (imageRes != -1) {
                             final Drawable drawable = getResources().getDrawable(imageRes);
                             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    tvMajiang.setCompoundDrawables(null, null, null, drawable);
-                                    tvMajiang.setVisibility(View.VISIBLE);
-                                }
-                            });
+                            tvMajiang.setCompoundDrawables(null, null, null, drawable);
+                            tvMajiang.setVisibility(View.VISIBLE);
                         } else {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    tvMajiang.setCompoundDrawables(null, null, null, null);
-                                    tvMajiang.setVisibility(View.VISIBLE);
-                                }
-                            });
+                            tvMajiang.setCompoundDrawables(null, null, null, null);
+                            tvMajiang.setVisibility(View.VISIBLE);
                         }
                     }
                 } else if (CalculateUtil.byteToInt(recvData[3]) == 0x02) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            tvCheckMajiangProgress.setTextColor(getResources().getColor(R.color.blue));
-                            tvCheckMajiangProgress.setText(getResources().getString(R.string.check_majiang_fail));
-                            btnCheckMajiang.setTextColor(getResources().getColor(R.color.black));
-                            vibrator.vibrate(200);
-                        }
-                    });
+                    tvCheckMajiangProgress.setTextColor(getResources().getColor(R.color.blue));
+                    tvCheckMajiangProgress.setText(getResources().getString(R.string.check_majiang_fail));
+                    btnCheckMajiang.setTextColor(getResources().getColor(R.color.black));
+                    vibrator.vibrate(200);
                 }
                 break;
 
             case 0xa3:
                 showToast("打色成功");
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        vibrator.vibrate(200);
-                    }
-                });
+                vibrator.vibrate(200);
                 break;
 
             case 0xa4:
                 if (CalculateUtil.byteToInt(recvData[3]) == 0x00) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            tvRemoteControlStudyProgress.setTextColor(getResources().getColor(R.color.red));
-                            tvRemoteControlStudyProgress.setText(R.string.remote_control_studying);
-                            btnRemoteControlStudy.setTextColor(getResources().getColor(R.color.red));
-                        }
-                    });
+                    tvRemoteControlStudyProgress.setTextColor(getResources().getColor(R.color.red));
+                    tvRemoteControlStudyProgress.setText(R.string.remote_control_studying);
+                    btnRemoteControlStudy.setTextColor(getResources().getColor(R.color.red));
                 } else if (CalculateUtil.byteToInt(recvData[3]) == 0x01) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            tvRemoteControlStudyProgress.setTextColor(getResources().getColor(R.color.green));
-                            tvRemoteControlStudyProgress.setText(R.string.remote_control_studied);
-                            vibrator.vibrate(200);
-                        }
-                    });
+                    tvRemoteControlStudyProgress.setTextColor(getResources().getColor(R.color.green));
+                    tvRemoteControlStudyProgress.setText(R.string.remote_control_studied);
+                    vibrator.vibrate(200);
                 } else if (CalculateUtil.byteToInt(recvData[3]) == 0x02) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            tvRemoteControlStudyProgress.setTextColor(getResources().getColor(R.color.blue));
-                            tvRemoteControlStudyProgress.setText(R.string.remote_control_study_fail);
-                            btnRemoteControlStudy.setTextColor(getResources().getColor(R.color.black));
-                            vibrator.vibrate(200);
-                        }
-                    });
+                    tvRemoteControlStudyProgress.setTextColor(getResources().getColor(R.color.blue));
+                    tvRemoteControlStudyProgress.setText(R.string.remote_control_study_fail);
+                    btnRemoteControlStudy.setTextColor(getResources().getColor(R.color.black));
+                    vibrator.vibrate(200);
                 }
                 break;
 
             case 0xa5:
                 if (CalculateUtil.byteToInt(recvData[3]) == 0x00) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            btnChannelTest.setTextColor(getResources().getColor(R.color.red));
-                            btnChannelTest.setText(R.string.channel_studying);
-                        }
-                    });
+                    btnChannelTest.setTextColor(getResources().getColor(R.color.red));
+                    btnChannelTest.setText(R.string.channel_studying);
                 } else if (CalculateUtil.byteToInt(recvData[3]) == 0x01) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            btnChannelTest.setTextColor(getResources().getColor(R.color.black));
-                            btnChannelTest.setText("通道测试");
-                            vibrator.vibrate(200);
-                        }
-                    });
+                    btnChannelTest.setTextColor(getResources().getColor(R.color.black));
+                    btnChannelTest.setText("通道测试");
+                    vibrator.vibrate(200);
 
                     final TextView[] tvDirectionArr = new TextView[] {tvChannelTestEast, tvChannelTestSouth,
                             tvChannelTestWest, tvChannelTestNorth};
@@ -521,58 +466,33 @@ public class StudyTestActivity extends BluetoothBaseActivity {
                         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
 
                         final int j = i;
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                tvDirectionArr[j].setCompoundDrawables(null, null, null, drawable);
-                            }
-                        });
+                        tvDirectionArr[j].setCompoundDrawables(null, null, null, drawable);
                     }
                     final int channelNo = CalculateUtil.byteToInt(recvData[8]);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            tvChannelNo.setText(String.valueOf(channelNo));
-                            int majiangRes = CalculateUtil.getMajiangImage(channelNo);
-                            if (majiangRes != -1) {
-                                ivChannelTestMajiang.setImageResource(majiangRes);
-                                ivChannelTestMajiang.setVisibility(View.VISIBLE);
-                            } else {
-                                ivChannelTestMajiang.setVisibility(View.INVISIBLE);
-                            }
-                        }
-                    });
+                    tvChannelNo.setText(String.valueOf(channelNo));
+                    int majiangRes = CalculateUtil.getMajiangImage(channelNo);
+                    if (majiangRes != -1) {
+                        ivChannelTestMajiang.setImageResource(majiangRes);
+                        ivChannelTestMajiang.setVisibility(View.VISIBLE);
+                    } else {
+                        ivChannelTestMajiang.setVisibility(View.INVISIBLE);
+                    }
                 }
                 break;
 
             case 0xa6:
                 showToast("刹车时间设置成功");
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        vibrator.vibrate(200);
-                    }
-                });
+                vibrator.vibrate(200);
                 break;
 
             case 0xa7:
                 showToast("打色延迟设置成功");
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        vibrator.vibrate(200);
-                    }
-                });
+                vibrator.vibrate(200);
                 break;
 
             case 0xa8:
                 showToast("充电功率设置成功");
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        vibrator.vibrate(200);
-                    }
-                });
+                vibrator.vibrate(200);
                 break;
         }
     }
@@ -593,37 +513,22 @@ public class StudyTestActivity extends BluetoothBaseActivity {
         final StringBuilder sbProgress = new StringBuilder(directionArr[index]);
         if (progress == 0x00) {
             sbProgress.append(getResources().getString(R.string.direction_studying));
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    tvProgress.setTextColor(getResources().getColor(R.color.red));
-                    tvProgress.setText(sbProgress);
-                    btnArr[index].setTextColor(getResources().getColor(R.color.red));
-                }
-            });
+            tvProgress.setTextColor(getResources().getColor(R.color.red));
+            tvProgress.setText(sbProgress);
+            btnArr[index].setTextColor(getResources().getColor(R.color.red));
         } else if (progress == 0x01) {
             sbProgress.append(getResources().getString(R.string.direction_study_finish));
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    tvProgress.setTextColor(getResources().getColor(R.color.green));
-                    tvProgress.setText(sbProgress);
+            tvProgress.setTextColor(getResources().getColor(R.color.green));
+            tvProgress.setText(sbProgress);
 
-                    vibrator.vibrate(200);
-                }
-            });
+            vibrator.vibrate(200);
         } else if (progress == 0x02) {
             sbProgress.append(getResources().getString(R.string.direction_study_fail));
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    tvProgress.setTextColor(getResources().getColor(R.color.blue));
-                    tvProgress.setText(sbProgress);
-                    btnArr[index].setTextColor(getResources().getColor(R.color.black));
+            tvProgress.setTextColor(getResources().getColor(R.color.blue));
+            tvProgress.setText(sbProgress);
+            btnArr[index].setTextColor(getResources().getColor(R.color.black));
 
-                    vibrator.vibrate(200);
-                }
-            });
+            vibrator.vibrate(200);
         }
     }
 

@@ -5,6 +5,10 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 
+import com.wzp.majiang.activity.IBluetoothConnect;
+import com.wzp.majiang.constant.BluetoothState;
+import com.wzp.majiang.widget.MyApplication;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -12,10 +16,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.UUID;
-
-import com.wzp.majiang.activity.IBluetoothConnect;
-import com.wzp.majiang.constant.BluetoothState;
-import com.wzp.majiang.widget.MyApplication;
 
 import static com.wzp.majiang.constant.ProjectConstants.CRC_HIGH;
 import static com.wzp.majiang.constant.ProjectConstants.CRC_LOW;
@@ -25,15 +25,9 @@ import static com.wzp.majiang.constant.ProjectConstants.DATA_LENGTH;
  * 蓝牙客户端帮助类
  */
 public class BluetoothClientHelper {
-	// Unique UUID for this application
-//	private static final UUID MY_UUID = UUID
-//			.fromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
-
 	// 和普通蓝牙设备通信，UUID必须设为该值
 	private static final UUID MY_UUID = UUID
 			.fromString("00001101-0000-1000-8000-00805F9B34FB");
-	
-	
 
 	private BluetoothAdapter bluetoothAdapter;
 	private IBluetoothConnect bluetoothConnect;
@@ -325,8 +319,6 @@ public class BluetoothClientHelper {
 		private int len;
 		// 缓冲区List，所有接收到的数据都存放在该缓冲区中
 		private LinkedList<Byte> bufList = new LinkedList<>();
-		// CRC校验数组
-		private byte[] crc = new byte[2];
 
 		public CommunicationThread(BluetoothSocket socket) {
 			mmSocket = socket;
@@ -423,7 +415,7 @@ public class BluetoothClientHelper {
 							 * onDataReceived()方法，对报文进行处理；
 							 */
 							while (true) {
-								CRC16.getCrc16(singleData, singleData.length - 2, crc);
+								byte[] crc = CRC16.getCrc16(singleData, singleData.length - 2);
 
 								if (singleData[CRC_HIGH] != crc[0]
 										|| singleData[CRC_LOW] != crc[1]) {
@@ -475,9 +467,6 @@ public class BluetoothClientHelper {
 							}
 						}
 					}
-
-
-//					Log.d(TAG, new String(data));
 				} catch (IOException e) {
 					if (!activeClose) {
 						// 如果不是主动关闭通讯线程，就应该打印并提示异常信息

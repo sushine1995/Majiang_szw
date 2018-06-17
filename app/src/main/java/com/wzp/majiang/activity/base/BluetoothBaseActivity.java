@@ -123,7 +123,13 @@ public abstract class BluetoothBaseActivity extends CheckPermissionsActivity {
 						}
 					}
 					if (singleData != null) {
-						onBluetoothDataReceived(singleData);
+						final byte[] recvData = singleData;
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								onBluetoothDataReceived(recvData);
+							}
+						});
 					}
 				}
 

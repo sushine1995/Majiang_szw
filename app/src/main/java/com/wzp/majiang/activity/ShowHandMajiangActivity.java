@@ -20,8 +20,6 @@ import com.wzp.majiang.constant.ProjectConstants;
 import com.wzp.majiang.util.CalculateUtil;
 import com.wzp.majiang.widget.MyApplication;
 
-import java.util.Arrays;
-
 public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 
 	private ImageButton ibtnBack;
@@ -372,108 +370,102 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 	}
 
 	private void updateMajiang(byte[] recvData) {
-		final byte[] copyRecvData = Arrays.copyOf(recvData, recvData.length);
-		runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				LinearLayout linearDirection = null;
-				LinearLayout linearDirectionUp = null;
-				Bitmap majiangBitmap = null;
-				Matrix matrix = new Matrix();
-				int majiangDirection = CalculateUtil.byteToInt(copyRecvData[1]);
-				switch (majiangDirection) {
-					// 东
-					case 0xe9:
-						matrix.setRotate(-90);
-						linearDirection = linearEast;
-						linearDirectionUp = linearEastUp;
-						break;
+		LinearLayout linearDirection = null;
+		LinearLayout linearDirectionUp = null;
+		Bitmap majiangBitmap = null;
+		Matrix matrix = new Matrix();
+		int majiangDirection = CalculateUtil.byteToInt(recvData[1]);
+		switch (majiangDirection) {
+			// 东
+			case 0xe9:
+				matrix.setRotate(-90);
+				linearDirection = linearEast;
+				linearDirectionUp = linearEastUp;
+				break;
 
-					// 南
-					case 0xec:
-						linearDirection = linearSouth;
-						linearDirectionUp = linearSouthUp;
-						break;
+			// 南
+			case 0xec:
+				linearDirection = linearSouth;
+				linearDirectionUp = linearSouthUp;
+				break;
 
-					// 西
-					case 0xeb:
-						matrix.setRotate(90);
-						linearDirection = linearWest;
-						linearDirectionUp = linearWestUp;
-						break;
+			// 西
+			case 0xeb:
+				matrix.setRotate(90);
+				linearDirection = linearWest;
+				linearDirectionUp = linearWestUp;
+				break;
 
-					// 北
-					case 0xea:
-						linearDirection = linearNorth;
-						linearDirectionUp = linearNorthUp;
-						break;
+			// 北
+			case 0xea:
+				linearDirection = linearNorth;
+				linearDirectionUp = linearNorthUp;
+				break;
 
-					default:
-						break;
-				}
+			default:
+				break;
+		}
 
-				int index; // ImageView在父容器中的索引
-				int imageId; // 麻将图片的资源ID
-				int msgMajiangIndex = 3; // 报文中麻将的index
-				/*
-				下方麻将
-				 */
-				for (int i = 0; i < DOWN_MAJIANG_NUM; i++) {
-					if (majiangDirection == 0xe9 || majiangDirection == 0xec) {
-						// 东方位先后顺序为，从下至上
-						// 北方位先后顺序为，从右至左
-						index = DOWN_MAJIANG_NUM - 1 - i;
-					} else {
-						index = i;
-					}
-
-					imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[msgMajiangIndex++]));
-					if (imageId != -1) {
-						// 正常显示麻将图片
-						majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
-						majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
-								majiangBitmap.getWidth(), majiangBitmap.getHeight(),
-								matrix, true);
-						((ImageView) linearDirection.getChildAt(index)).setImageBitmap(majiangBitmap);
-						linearDirection.getChildAt(index).setVisibility(View.VISIBLE);
-					} else {
-						// 当前位置不显示麻将
-						linearDirection.getChildAt(index).setVisibility(View.INVISIBLE);
-					}
-				}
-				/*
-				上方麻将
-				 */
-				msgMajiangIndex = 20;
-				for (int i = 0; i <= UP_MAJIANG_NUM; i++) {
-					if (i == PLACEHOLDER_INDEX) {
-						continue;
-					}
-
-					if (majiangDirection == 0xe9 || majiangDirection == 0xec) {
-						// 东方位先后顺序为，从下至上
-						// 北方位先后顺序为，从右至左
-						index = UP_MAJIANG_NUM - i;
-					} else {
-						index = i;
-					}
-
-					imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[msgMajiangIndex++]));
-					if (imageId != -1) {
-						// 正常显示麻将图片
-						majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
-						majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
-								majiangBitmap.getWidth(), majiangBitmap.getHeight(),
-								matrix, true);
-						((ImageView) linearDirectionUp.getChildAt(index)).setImageBitmap(majiangBitmap);
-						linearDirectionUp.getChildAt(index).setVisibility(View.VISIBLE);
-					} else {
-						// 当前位置不显示麻将
-						linearDirectionUp.getChildAt(index).setVisibility(View.INVISIBLE);
-					}
-				}
+		int index; // ImageView在父容器中的索引
+		int imageId; // 麻将图片的资源ID
+		int msgMajiangIndex = 3; // 报文中麻将的index
+		/*
+		下方麻将
+		 */
+		for (int i = 0; i < DOWN_MAJIANG_NUM; i++) {
+			if (majiangDirection == 0xe9 || majiangDirection == 0xec) {
+				// 东方位先后顺序为，从下至上
+				// 北方位先后顺序为，从右至左
+				index = DOWN_MAJIANG_NUM - 1 - i;
+			} else {
+				index = i;
 			}
-		});
+
+			imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[msgMajiangIndex++]));
+			if (imageId != -1) {
+				// 正常显示麻将图片
+				majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
+				majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
+						majiangBitmap.getWidth(), majiangBitmap.getHeight(),
+						matrix, true);
+				((ImageView) linearDirection.getChildAt(index)).setImageBitmap(majiangBitmap);
+				linearDirection.getChildAt(index).setVisibility(View.VISIBLE);
+			} else {
+				// 当前位置不显示麻将
+				linearDirection.getChildAt(index).setVisibility(View.INVISIBLE);
+			}
+		}
+		/*
+		上方麻将
+		 */
+		msgMajiangIndex = 20;
+		for (int i = 0; i <= UP_MAJIANG_NUM; i++) {
+			if (i == PLACEHOLDER_INDEX) {
+				continue;
+			}
+
+			if (majiangDirection == 0xe9 || majiangDirection == 0xec) {
+				// 东方位先后顺序为，从下至上
+				// 北方位先后顺序为，从右至左
+				index = UP_MAJIANG_NUM - i;
+			} else {
+				index = i;
+			}
+
+			imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[msgMajiangIndex++]));
+			if (imageId != -1) {
+				// 正常显示麻将图片
+				majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
+				majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
+						majiangBitmap.getWidth(), majiangBitmap.getHeight(),
+						matrix, true);
+				((ImageView) linearDirectionUp.getChildAt(index)).setImageBitmap(majiangBitmap);
+				linearDirectionUp.getChildAt(index).setVisibility(View.VISIBLE);
+			} else {
+				// 当前位置不显示麻将
+				linearDirectionUp.getChildAt(index).setVisibility(View.INVISIBLE);
+			}
+		}
 	}
 
 	/**
@@ -482,116 +474,110 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 	 * @param recvData
 	 */
 	private void updateDiceAndPositionFlag(byte[] recvData) {
-		final byte[] copyRecvData = Arrays.copyOf(recvData, recvData.length);
-		runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				int bankerPosition = copyRecvData[3];
-				switch (bankerPosition) {
-					case 0x00:
-						tvBankerPositionEast.setVisibility(View.GONE);
-						tvBankerPositionSouth.setVisibility(View.GONE);
-						tvBankerPositionWest.setVisibility(View.GONE);
-						tvBankerPositionNorth.setVisibility(View.GONE);
-						break;
-					case 0x01:
-						tvBankerPositionEast.setVisibility(View.VISIBLE);
-						tvBankerPositionSouth.setVisibility(View.GONE);
-						tvBankerPositionWest.setVisibility(View.GONE);
-						tvBankerPositionNorth.setVisibility(View.GONE);
-						break;
-					case 0x02:
-						tvBankerPositionEast.setVisibility(View.GONE);
-						tvBankerPositionSouth.setVisibility(View.VISIBLE);
-						tvBankerPositionWest.setVisibility(View.GONE);
-						tvBankerPositionNorth.setVisibility(View.GONE);
-						break;
-					case 0x03:
-						tvBankerPositionEast.setVisibility(View.GONE);
-						tvBankerPositionSouth.setVisibility(View.GONE);
-						tvBankerPositionWest.setVisibility(View.VISIBLE);
-						tvBankerPositionNorth.setVisibility(View.GONE);
-						break;
-					case 0x04:
-						tvBankerPositionEast.setVisibility(View.GONE);
-						tvBankerPositionSouth.setVisibility(View.GONE);
-						tvBankerPositionWest.setVisibility(View.GONE);
-						tvBankerPositionNorth.setVisibility(View.VISIBLE);
-						break;
-					default:
-						break;
-				}
+		int bankerPosition = recvData[3];
+		switch (bankerPosition) {
+			case 0x00:
+				tvBankerPositionEast.setVisibility(View.GONE);
+				tvBankerPositionSouth.setVisibility(View.GONE);
+				tvBankerPositionWest.setVisibility(View.GONE);
+				tvBankerPositionNorth.setVisibility(View.GONE);
+				break;
+			case 0x01:
+				tvBankerPositionEast.setVisibility(View.VISIBLE);
+				tvBankerPositionSouth.setVisibility(View.GONE);
+				tvBankerPositionWest.setVisibility(View.GONE);
+				tvBankerPositionNorth.setVisibility(View.GONE);
+				break;
+			case 0x02:
+				tvBankerPositionEast.setVisibility(View.GONE);
+				tvBankerPositionSouth.setVisibility(View.VISIBLE);
+				tvBankerPositionWest.setVisibility(View.GONE);
+				tvBankerPositionNorth.setVisibility(View.GONE);
+				break;
+			case 0x03:
+				tvBankerPositionEast.setVisibility(View.GONE);
+				tvBankerPositionSouth.setVisibility(View.GONE);
+				tvBankerPositionWest.setVisibility(View.VISIBLE);
+				tvBankerPositionNorth.setVisibility(View.GONE);
+				break;
+			case 0x04:
+				tvBankerPositionEast.setVisibility(View.GONE);
+				tvBankerPositionSouth.setVisibility(View.GONE);
+				tvBankerPositionWest.setVisibility(View.GONE);
+				tvBankerPositionNorth.setVisibility(View.VISIBLE);
+				break;
+			default:
+				break;
+		}
 
-				int myPosition = copyRecvData[4];
-				switch (myPosition) {
-					case 0x00:
-						tvMyPositionEast.setVisibility(View.GONE);
-						tvMyPositionSouth.setVisibility(View.GONE);
-						tvMyPositionWest.setVisibility(View.GONE);
-						tvMyPositionNorth.setVisibility(View.GONE);
-						break;
-					case 0x01:
-						tvMyPositionEast.setVisibility(View.VISIBLE);
-						tvMyPositionSouth.setVisibility(View.GONE);
-						tvMyPositionWest.setVisibility(View.GONE);
-						tvMyPositionNorth.setVisibility(View.GONE);
-						break;
-					case 0x02:
-						tvMyPositionEast.setVisibility(View.GONE);
-						tvMyPositionSouth.setVisibility(View.VISIBLE);
-						tvMyPositionWest.setVisibility(View.GONE);
-						tvMyPositionNorth.setVisibility(View.GONE);
-						break;
-					case 0x03:
-						tvMyPositionEast.setVisibility(View.GONE);
-						tvMyPositionSouth.setVisibility(View.GONE);
-						tvMyPositionWest.setVisibility(View.VISIBLE);
-						tvMyPositionNorth.setVisibility(View.GONE);
-						break;
-					case 0x04:
-						tvMyPositionEast.setVisibility(View.GONE);
-						tvMyPositionSouth.setVisibility(View.GONE);
-						tvMyPositionWest.setVisibility(View.GONE);
-						tvMyPositionNorth.setVisibility(View.VISIBLE);
-						break;
-					default:
-						break;
-				}
+		int myPosition = recvData[4];
+		switch (myPosition) {
+			case 0x00:
+				tvMyPositionEast.setVisibility(View.GONE);
+				tvMyPositionSouth.setVisibility(View.GONE);
+				tvMyPositionWest.setVisibility(View.GONE);
+				tvMyPositionNorth.setVisibility(View.GONE);
+				break;
+			case 0x01:
+				tvMyPositionEast.setVisibility(View.VISIBLE);
+				tvMyPositionSouth.setVisibility(View.GONE);
+				tvMyPositionWest.setVisibility(View.GONE);
+				tvMyPositionNorth.setVisibility(View.GONE);
+				break;
+			case 0x02:
+				tvMyPositionEast.setVisibility(View.GONE);
+				tvMyPositionSouth.setVisibility(View.VISIBLE);
+				tvMyPositionWest.setVisibility(View.GONE);
+				tvMyPositionNorth.setVisibility(View.GONE);
+				break;
+			case 0x03:
+				tvMyPositionEast.setVisibility(View.GONE);
+				tvMyPositionSouth.setVisibility(View.GONE);
+				tvMyPositionWest.setVisibility(View.VISIBLE);
+				tvMyPositionNorth.setVisibility(View.GONE);
+				break;
+			case 0x04:
+				tvMyPositionEast.setVisibility(View.GONE);
+				tvMyPositionSouth.setVisibility(View.GONE);
+				tvMyPositionWest.setVisibility(View.GONE);
+				tvMyPositionNorth.setVisibility(View.VISIBLE);
+				break;
+			default:
+				break;
+		}
 
-				ImageView[] ivDiceArr = new ImageView[] {
-						ivRedDiceEast, ivBlueDiceEast,
-						ivRedDiceSouth, ivBlueDiceSouth,
-						ivRedDiceWest, ivBlueDiceWest,
-						ivRedDiceNorth, ivBlueDiceNorth,
-						ivRedDiceEast2, ivBlueDiceEast2,
-						ivRedDiceSouth2, ivBlueDiceSouth2,
-						ivRedDiceWest2, ivBlueDiceWest2,
-						ivRedDiceNorth2, ivBlueDiceNorth2,
-						ivRedDiceEast3, ivBlueDiceEast3,
-						ivRedDiceSouth3, ivBlueDiceSouth3,
-						ivRedDiceWest3, ivBlueDiceWest3,
-						ivRedDiceNorth3, ivBlueDiceNorth3
-				};
-				int diceResId;
-				int redBlueFlag;
-				for (int i=0; i<ivDiceArr.length; i++) {
-					if ((i & 0x01) == 0) {
-						// 偶数
-						redBlueFlag = RED_DICE;
-					} else {
-						// 奇数
-						redBlueFlag = BLUE_DICE;
-					}
-					diceResId = getDiceImageResource(copyRecvData[5 + i], redBlueFlag);
-					if (diceResId != -1) {
-						ivDiceArr[i].setImageResource(diceResId);
-						ivDiceArr[i].setVisibility(View.VISIBLE);
-					} else {
-						ivDiceArr[i].setVisibility(View.GONE);
-					}
-				}
+		ImageView[] ivDiceArr = new ImageView[] {
+				ivRedDiceEast, ivBlueDiceEast,
+				ivRedDiceSouth, ivBlueDiceSouth,
+				ivRedDiceWest, ivBlueDiceWest,
+				ivRedDiceNorth, ivBlueDiceNorth,
+				ivRedDiceEast2, ivBlueDiceEast2,
+				ivRedDiceSouth2, ivBlueDiceSouth2,
+				ivRedDiceWest2, ivBlueDiceWest2,
+				ivRedDiceNorth2, ivBlueDiceNorth2,
+				ivRedDiceEast3, ivBlueDiceEast3,
+				ivRedDiceSouth3, ivBlueDiceSouth3,
+				ivRedDiceWest3, ivBlueDiceWest3,
+				ivRedDiceNorth3, ivBlueDiceNorth3
+		};
+		int diceResId;
+		int redBlueFlag;
+		for (int i=0; i<ivDiceArr.length; i++) {
+			if ((i & 0x01) == 0) {
+				// 偶数
+				redBlueFlag = RED_DICE;
+			} else {
+				// 奇数
+				redBlueFlag = BLUE_DICE;
 			}
-		});
+			diceResId = getDiceImageResource(recvData[5 + i], redBlueFlag);
+			if (diceResId != -1) {
+				ivDiceArr[i].setImageResource(diceResId);
+				ivDiceArr[i].setVisibility(View.VISIBLE);
+			} else {
+				ivDiceArr[i].setVisibility(View.GONE);
+			}
+		}
 	}
 
 	private int getDiceImageResource(byte flag, int color) {
@@ -671,107 +657,102 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 
 			// 故障显示
 			case 0xe0:
-				runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						final int msgIndex = 2;
-						int majiangRes;
+				final int msgIndex = 2;
+				int majiangRes;
 
-						/*
-						多牌
-						 */
-						int moreNum = CalculateUtil.byteToInt(recvData[msgIndex]);
-						if (moreNum > 4) { // 最多4张牌，超过则认为出错，忽略此条报文
-							return;
-						} else if (moreNum > 0) {
-							linearMoreMajiang.setVisibility(View.VISIBLE);
-						} else {
-							linearMoreMajiang.setVisibility(View.GONE);
-						}
-						ImageView[] ivMoreMajiangArr = new ImageView[]{
-								ivMoreMajiang1, ivMoreMajiang2,
-								ivMoreMajiang3, ivMoreMajiang4
-						};
-						setMajiangInvisible(ivMoreMajiangArr);
-						for (int i = 0; i < moreNum; i++) {
-							majiangRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[msgIndex + 1 + i]));
-							if (majiangRes != ProjectConstants.INVISIBLE_MAJIANG) {
-								ivMoreMajiangArr[i].setImageResource(majiangRes);
-								ivMoreMajiangArr[i].setVisibility(View.VISIBLE);
-							} else {
-								ivMoreMajiangArr[i].setVisibility(View.INVISIBLE);
-							}
-						}
-
-						/*
-						少牌
-						 */
-						int lessNum = CalculateUtil.byteToInt(recvData[msgIndex + 5]);
-						if (lessNum > 4) { // 最多4张牌，超过则认为出错，忽略此条报文
-							return;
-						} else if (lessNum > 0) {
-							linearLessMajiang.setVisibility(View.VISIBLE);
-						} else {
-							linearLessMajiang.setVisibility(View.GONE);
-						}
-						ImageView[] ivLessMajiangArr = new ImageView[]{
-								ivLessMajiang1, ivLessMajiang2,
-								ivLessMajiang3, ivLessMajiang4
-						};
-						setMajiangInvisible(ivLessMajiangArr);
-						for (int i = 0; i < lessNum; i++) {
-							majiangRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[msgIndex + 6 + i]));
-							if (majiangRes != ProjectConstants.INVISIBLE_MAJIANG) {
-								ivLessMajiangArr[i].setImageResource(majiangRes);
-								ivLessMajiangArr[i].setVisibility(View.VISIBLE);
-							} else {
-								ivLessMajiangArr[i].setVisibility(View.INVISIBLE);
-							}
-						}
-
-						// 错牌数量
-						int wrongNum = CalculateUtil.byteToInt(recvData[msgIndex + 10]);
-						if (wrongNum > 0) {
-							tvWrongNum.setText(String.format("%02d", wrongNum) + "张");
-							linearWrongNum.setVisibility(View.VISIBLE);
-						} else {
-							tvWrongNum.setText("");
-							linearWrongNum.setVisibility(View.GONE);
-						}
-
-						// 故障提示
-						if (CalculateUtil.byteToInt(recvData[msgIndex + 11]) == 1) {
-							tvErrorTip.setText("请检查牌" + String.format("%02d",
-									CalculateUtil.byteToInt(recvData[msgIndex + 12])));
-							tvErrorTip.setVisibility(View.VISIBLE);
-						} else {
-							tvErrorTip.setText("");
-							tvErrorTip.setVisibility(View.GONE);
-						}
-
-						// 麻将牌颜色
-						int color = CalculateUtil.byteToInt(recvData[msgIndex + 13]);
-						switch (color) {
-							case 0x00:
-								tvMajiangColor.setText("");
-								tvMajiangColor.setVisibility(View.GONE);
-								break;
-
-							case 0x01:
-								tvMajiangColor.setText("蓝牌");
-								tvMajiangColor.setVisibility(View.VISIBLE);
-								break;
-
-							case 0x02:
-								tvMajiangColor.setText("绿牌");
-								tvMajiangColor.setVisibility(View.VISIBLE);
-								break;
-
-							default:
-								break;
-						}
+				/*
+				多牌
+				 */
+				int moreNum = CalculateUtil.byteToInt(recvData[msgIndex]);
+				if (moreNum > 4) { // 最多4张牌，超过则认为出错，忽略此条报文
+					return;
+				} else if (moreNum > 0) {
+					linearMoreMajiang.setVisibility(View.VISIBLE);
+				} else {
+					linearMoreMajiang.setVisibility(View.GONE);
+				}
+				ImageView[] ivMoreMajiangArr = new ImageView[]{
+						ivMoreMajiang1, ivMoreMajiang2,
+						ivMoreMajiang3, ivMoreMajiang4
+				};
+				setMajiangInvisible(ivMoreMajiangArr);
+				for (int i = 0; i < moreNum; i++) {
+					majiangRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[msgIndex + 1 + i]));
+					if (majiangRes != ProjectConstants.INVISIBLE_MAJIANG) {
+						ivMoreMajiangArr[i].setImageResource(majiangRes);
+						ivMoreMajiangArr[i].setVisibility(View.VISIBLE);
+					} else {
+						ivMoreMajiangArr[i].setVisibility(View.INVISIBLE);
 					}
-				});
+				}
+
+				/*
+				少牌
+				 */
+				int lessNum = CalculateUtil.byteToInt(recvData[msgIndex + 5]);
+				if (lessNum > 4) { // 最多4张牌，超过则认为出错，忽略此条报文
+					return;
+				} else if (lessNum > 0) {
+					linearLessMajiang.setVisibility(View.VISIBLE);
+				} else {
+					linearLessMajiang.setVisibility(View.GONE);
+				}
+				ImageView[] ivLessMajiangArr = new ImageView[]{
+						ivLessMajiang1, ivLessMajiang2,
+						ivLessMajiang3, ivLessMajiang4
+				};
+				setMajiangInvisible(ivLessMajiangArr);
+				for (int i = 0; i < lessNum; i++) {
+					majiangRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[msgIndex + 6 + i]));
+					if (majiangRes != ProjectConstants.INVISIBLE_MAJIANG) {
+						ivLessMajiangArr[i].setImageResource(majiangRes);
+						ivLessMajiangArr[i].setVisibility(View.VISIBLE);
+					} else {
+						ivLessMajiangArr[i].setVisibility(View.INVISIBLE);
+					}
+				}
+
+				// 错牌数量
+				int wrongNum = CalculateUtil.byteToInt(recvData[msgIndex + 10]);
+				if (wrongNum > 0) {
+					tvWrongNum.setText(String.format("%02d", wrongNum) + "张");
+					linearWrongNum.setVisibility(View.VISIBLE);
+				} else {
+					tvWrongNum.setText("");
+					linearWrongNum.setVisibility(View.GONE);
+				}
+
+				// 故障提示
+				if (CalculateUtil.byteToInt(recvData[msgIndex + 11]) == 1) {
+					tvErrorTip.setText("请检查牌" + String.format("%02d",
+							CalculateUtil.byteToInt(recvData[msgIndex + 12])));
+					tvErrorTip.setVisibility(View.VISIBLE);
+				} else {
+					tvErrorTip.setText("");
+					tvErrorTip.setVisibility(View.GONE);
+				}
+
+				// 麻将牌颜色
+				int color = CalculateUtil.byteToInt(recvData[msgIndex + 13]);
+				switch (color) {
+					case 0x00:
+						tvMajiangColor.setText("");
+						tvMajiangColor.setVisibility(View.GONE);
+						break;
+
+					case 0x01:
+						tvMajiangColor.setText("蓝牌");
+						tvMajiangColor.setVisibility(View.VISIBLE);
+						break;
+
+					case 0x02:
+						tvMajiangColor.setText("绿牌");
+						tvMajiangColor.setVisibility(View.VISIBLE);
+						break;
+
+					default:
+						break;
+				}
 				break;
 
 			default:

@@ -13,7 +13,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.wzp.majiang.R;
@@ -21,8 +20,6 @@ import com.wzp.majiang.activity.base.BluetoothBaseActivity;
 import com.wzp.majiang.constant.ProjectConstants;
 import com.wzp.majiang.util.CalculateUtil;
 import com.wzp.majiang.widget.MyApplication;
-
-import java.util.Arrays;
 
 public class ShowMajiangActivity extends BluetoothBaseActivity {
 
@@ -64,7 +61,6 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 	private TextView tvErrorTip;
 
 	private PopupMenu pmSelectDirection;
-	private PopupWindow pwSelectDirection;
 
 	private boolean isAboveTable; // 是否为桌面牌（true：桌面牌；false：台下牌）
 
@@ -325,120 +321,115 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 	 * @param recvData
 	 */
 	private void updateMajiang(byte[] recvData) {
-		final byte[] copyRecvData = Arrays.copyOf(recvData, recvData.length);
-		runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				int num = CalculateUtil.byteToInt(copyRecvData[2]);
-				// num必须小于设置的数量，还需要根据不同方位进一步判断
-				// num最多不能超过36
-				if (num > 36) {
-					Log.e(LOG_TAG, "麻将牌数目异常：" + num);
-					return;
-				}
+		int num = CalculateUtil.byteToInt(recvData[2]);
+		// num必须小于设置的数量，还需要根据不同方位进一步判断
+		// num最多不能超过36
+		if (num > 36) {
+			Log.e(LOG_TAG, "麻将牌数目异常：" + num);
+			return;
+		}
 
-				LinearLayout linearTop = null;
-				LinearLayout linearBottom = null;
-				Bitmap majiangBitmap = null;
-				Matrix matrix = new Matrix();
-				TextView tvBlockNum = null;
-				switch (CalculateUtil.byteToInt(copyRecvData[1])) {
-					// 东
-					case 0xe1:
-					case 0xe5:
-						matrix.setRotate(-90);
+		LinearLayout linearTop = null;
+		LinearLayout linearBottom = null;
+		Bitmap majiangBitmap = null;
+		Matrix matrix = new Matrix();
+		TextView tvBlockNum = null;
+		switch (CalculateUtil.byteToInt(recvData[1])) {
+			// 东
+			case 0xe1:
+			case 0xe5:
+				matrix.setRotate(-90);
 
-						linearTop = linearEastTop;
-						linearBottom = linearEastBottom;
-						tvBlockNum = tvBlockNumEast;
-						break;
+				linearTop = linearEastTop;
+				linearBottom = linearEastBottom;
+				tvBlockNum = tvBlockNumEast;
+				break;
 
-					// 南
-					case 0xe2:
-					case 0xe6:
-						linearTop = linearSouthTop;
-						linearBottom = linearSouthBottom;
-						tvBlockNum = tvBlockNumSouth;
-						break;
+			// 南
+			case 0xe2:
+			case 0xe6:
+				linearTop = linearSouthTop;
+				linearBottom = linearSouthBottom;
+				tvBlockNum = tvBlockNumSouth;
+				break;
 
-					// 西
-					case 0xe3:
-					case 0xe7:
-						matrix.setRotate(90);
+			// 西
+			case 0xe3:
+			case 0xe7:
+				matrix.setRotate(90);
 
-						linearTop = linearWestTop;
-						linearBottom = linearWestBottom;
-						tvBlockNum = tvBlockNumWest;
-						break;
+				linearTop = linearWestTop;
+				linearBottom = linearWestBottom;
+				tvBlockNum = tvBlockNumWest;
+				break;
 
-					// 北
-					case 0xe4:
-					case 0xe8:
-						linearTop = linearNorthTop;
-						linearBottom = linearNorthBottom;
-						tvBlockNum = tvBlockNumNorth;
-						break;
+			// 北
+			case 0xe4:
+			case 0xe8:
+				linearTop = linearNorthTop;
+				linearBottom = linearNorthBottom;
+				tvBlockNum = tvBlockNumNorth;
+				break;
 
-					default:
-						break;
-				}
+			default:
+				break;
+		}
 
-				for (int i = 0; i < linearTop.getChildCount(); i++) {
-					linearTop.getChildAt(i).setVisibility(View.INVISIBLE);
-				}
-				for (int i = 0; i < linearBottom.getChildCount(); i++) {
-					linearBottom.getChildAt(i).setVisibility(View.INVISIBLE);
-				}
+		for (int i = 0; i < linearTop.getChildCount(); i++) {
+			linearTop.getChildAt(i).setVisibility(View.INVISIBLE);
+		}
+		for (int i = 0; i < linearBottom.getChildCount(); i++) {
+			linearBottom.getChildAt(i).setVisibility(View.INVISIBLE);
+		}
 
-				int index; // ImageView在父容器中的索引
-				int oddEven; // 奇偶
-				int imageId; // 麻将图片的资源ID
-				for (int i = 0; i < num; i++) {
-					if (CalculateUtil.byteToInt(copyRecvData[1]) == 0xe1
-							|| CalculateUtil.byteToInt(copyRecvData[1]) == 0xe5
-							|| CalculateUtil.byteToInt(copyRecvData[1]) == 0xe4
-							|| CalculateUtil.byteToInt(copyRecvData[1]) == 0xe8) {
-						// 东方位先后顺序为，从下至上
-						// 北方位先后顺序为，从右至左
-						// 最多36张牌，上下分别为18张，index范围：0~17
-						index = 17 - i / 2;
-					} else {
-						index = i / 2;
-					}
-					oddEven = i & 0x01;
-
-					imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(copyRecvData[3 + i]));
-					if (imageId != -1) {
-						// 正常显示麻将图片
-						majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
-						majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
-								majiangBitmap.getWidth(), majiangBitmap.getHeight(),
-								matrix, true);
-						if (oddEven == 1) {
-							// 奇数（上-linearTop）
-							((ImageView) linearTop.getChildAt(index)).setImageBitmap(majiangBitmap);
-							linearTop.getChildAt(index).setVisibility(View.VISIBLE);
-						} else {
-							// 偶数（下-linearBottom）
-							((ImageView) linearBottom.getChildAt(index)).setImageBitmap(majiangBitmap);
-							linearBottom.getChildAt(index).setVisibility(View.VISIBLE);
-						}
-					} else {
-						// 当前位置不显示麻将
-						if (oddEven == 1) {
-							// 奇数（上-linearTop）
-							linearTop.getChildAt(index).setVisibility(View.INVISIBLE);
-						} else {
-							// 偶数（下-linearBottom）
-							linearBottom.getChildAt(index).setVisibility(View.INVISIBLE);
-						}
-					}
-				}
-
-				int blockNum = (int) Math.ceil(num / 2.0);
-				tvBlockNum.setText(String.valueOf(blockNum));
+		int index; // ImageView在父容器中的索引
+		int oddEven; // 奇偶
+		int imageId; // 麻将图片的资源ID
+		for (int i = 0; i < num; i++) {
+			if (CalculateUtil.byteToInt(recvData[1]) == 0xe1
+					|| CalculateUtil.byteToInt(recvData[1]) == 0xe5
+					|| CalculateUtil.byteToInt(recvData[1]) == 0xe4
+					|| CalculateUtil.byteToInt(recvData[1]) == 0xe8) {
+				// 东方位先后顺序为，从下至上
+				// 北方位先后顺序为，从右至左
+				// 最多36张牌，上下分别为18张，index范围：0~17
+				index = 17 - i / 2;
+			} else {
+				index = i / 2;
 			}
-		});
+			oddEven = i & 0x01;
+
+			imageId = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[3 + i]));
+			if (imageId != -1) {
+				// 正常显示麻将图片
+				majiangBitmap = BitmapFactory.decodeResource(getResources(), imageId);
+				majiangBitmap = Bitmap.createBitmap(majiangBitmap, 0, 0,
+						majiangBitmap.getWidth(), majiangBitmap.getHeight(),
+						matrix, true);
+				if (oddEven == 1) {
+					// 奇数（上-linearTop）
+					((ImageView) linearTop.getChildAt(index)).setImageBitmap(majiangBitmap);
+					linearTop.getChildAt(index).setVisibility(View.VISIBLE);
+				} else {
+					// 偶数（下-linearBottom）
+					((ImageView) linearBottom.getChildAt(index)).setImageBitmap(majiangBitmap);
+					linearBottom.getChildAt(index).setVisibility(View.VISIBLE);
+				}
+			} else {
+				// 当前位置不显示麻将
+				if (oddEven == 1) {
+					// 奇数（上-linearTop）
+					linearTop.getChildAt(index).setVisibility(View.INVISIBLE);
+				} else {
+					// 偶数（下-linearBottom）
+					linearBottom.getChildAt(index).setVisibility(View.INVISIBLE);
+				}
+			}
+		}
+
+		int blockNum = (int) Math.ceil(num / 2.0);
+		tvBlockNum.setText(String.valueOf(blockNum));
+
 	}
 
 	@Override
@@ -481,112 +472,107 @@ public class ShowMajiangActivity extends BluetoothBaseActivity {
 
 		switch (CalculateUtil.byteToInt(recvData[1])) {
 			case 0xe0:
-				runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						final int msgIndex;
-						if (isAboveTable) {
-							msgIndex = 2;
-						} else {
-							msgIndex = 16;
-						}
+				final int msgIndex;
+				if (isAboveTable) {
+					msgIndex = 2;
+				} else {
+					msgIndex = 16;
+				}
 
-						int majiangRes;
-						/*
-						多牌
-						 */
-						int moreNum = CalculateUtil.byteToInt(recvData[msgIndex]);
-						if (moreNum > 4) { // 最多4张牌，超过则认为出错，忽略此条报文
-							return;
-						} else if (moreNum > 0) {
-							linearMoreMajiang.setVisibility(View.VISIBLE);
-						} else {
-							linearMoreMajiang.setVisibility(View.GONE);
-						}
-						ImageView[] ivMoreMajiangArr = new ImageView[]{
-								ivMoreMajiang1, ivMoreMajiang2,
-								ivMoreMajiang3, ivMoreMajiang4
-						};
-						setMajiangInvisible(ivMoreMajiangArr);
-						for (int i = 0; i < moreNum; i++) {
-							majiangRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[msgIndex + 1 + i]));
-							if (majiangRes != ProjectConstants.INVISIBLE_MAJIANG) {
-								ivMoreMajiangArr[i].setImageResource(majiangRes);
-								ivMoreMajiangArr[i].setVisibility(View.VISIBLE);
-							} else {
-								ivMoreMajiangArr[i].setVisibility(View.INVISIBLE);
-							}
-						}
-
-						/*
-						少牌
-						 */
-						int lessNum = CalculateUtil.byteToInt(recvData[msgIndex + 5]);
-						if (lessNum > 4) { // 最多4张牌，超过则认为出错，忽略此条报文
-							return;
-						} else if (lessNum > 0) {
-							linearLessMajiang.setVisibility(View.VISIBLE);
-						} else {
-							linearLessMajiang.setVisibility(View.GONE);
-						}
-						ImageView[] ivLessMajiangArr = new ImageView[]{
-								ivLessMajiang1, ivLessMajiang2,
-								ivLessMajiang3, ivLessMajiang4
-						};
-						setMajiangInvisible(ivLessMajiangArr);
-						for (int i = 0; i < lessNum; i++) {
-							majiangRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[msgIndex + 6 + i]));
-							if (majiangRes != ProjectConstants.INVISIBLE_MAJIANG) {
-								ivLessMajiangArr[i].setImageResource(majiangRes);
-								ivLessMajiangArr[i].setVisibility(View.VISIBLE);
-							} else {
-								ivLessMajiangArr[i].setVisibility(View.INVISIBLE);
-							}
-						}
-
-						// 错牌数量
-						int wrongNum = CalculateUtil.byteToInt(recvData[msgIndex + 10]);
-						if (wrongNum > 0) {
-							tvWrongNum.setText(String.format("%02d", wrongNum) + "张");
-							linearWrongNum.setVisibility(View.VISIBLE);
-						} else {
-							tvWrongNum.setText("");
-							linearWrongNum.setVisibility(View.GONE);
-						}
-
-						// 故障提示
-						if (CalculateUtil.byteToInt(recvData[msgIndex + 11]) == 1) {
-							tvErrorTip.setText("请检查牌" + String.format("%02d",
-									CalculateUtil.byteToInt(recvData[msgIndex + 12])));
-							tvErrorTip.setVisibility(View.VISIBLE);
-						} else {
-							tvErrorTip.setText("");
-							tvErrorTip.setVisibility(View.GONE);
-						}
-
-						// 麻将牌颜色
-						int color = CalculateUtil.byteToInt(recvData[msgIndex + 13]);
-						switch (color) {
-							case 0x00:
-								tvMajiangColor.setText("");
-								tvMajiangColor.setVisibility(View.GONE);
-							break;
-
-							case 0x01:
-								tvMajiangColor.setText("蓝牌");
-								tvMajiangColor.setVisibility(View.VISIBLE);
-								break;
-
-							case 0x02:
-								tvMajiangColor.setText("绿牌");
-								tvMajiangColor.setVisibility(View.VISIBLE);
-								break;
-
-							default:
-								break;
-						}
+				int majiangRes;
+				/*
+				多牌
+				 */
+				int moreNum = CalculateUtil.byteToInt(recvData[msgIndex]);
+				if (moreNum > 4) { // 最多4张牌，超过则认为出错，忽略此条报文
+					return;
+				} else if (moreNum > 0) {
+					linearMoreMajiang.setVisibility(View.VISIBLE);
+				} else {
+					linearMoreMajiang.setVisibility(View.GONE);
+				}
+				ImageView[] ivMoreMajiangArr = new ImageView[]{
+						ivMoreMajiang1, ivMoreMajiang2,
+						ivMoreMajiang3, ivMoreMajiang4
+				};
+				setMajiangInvisible(ivMoreMajiangArr);
+				for (int i = 0; i < moreNum; i++) {
+					majiangRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[msgIndex + 1 + i]));
+					if (majiangRes != ProjectConstants.INVISIBLE_MAJIANG) {
+						ivMoreMajiangArr[i].setImageResource(majiangRes);
+						ivMoreMajiangArr[i].setVisibility(View.VISIBLE);
+					} else {
+						ivMoreMajiangArr[i].setVisibility(View.INVISIBLE);
 					}
-				});
+				}
+
+				/*
+				少牌
+				 */
+				int lessNum = CalculateUtil.byteToInt(recvData[msgIndex + 5]);
+				if (lessNum > 4) { // 最多4张牌，超过则认为出错，忽略此条报文
+					return;
+				} else if (lessNum > 0) {
+					linearLessMajiang.setVisibility(View.VISIBLE);
+				} else {
+					linearLessMajiang.setVisibility(View.GONE);
+				}
+				ImageView[] ivLessMajiangArr = new ImageView[]{
+						ivLessMajiang1, ivLessMajiang2,
+						ivLessMajiang3, ivLessMajiang4
+				};
+				setMajiangInvisible(ivLessMajiangArr);
+				for (int i = 0; i < lessNum; i++) {
+					majiangRes = CalculateUtil.getMajiangImage(CalculateUtil.byteToInt(recvData[msgIndex + 6 + i]));
+					if (majiangRes != ProjectConstants.INVISIBLE_MAJIANG) {
+						ivLessMajiangArr[i].setImageResource(majiangRes);
+						ivLessMajiangArr[i].setVisibility(View.VISIBLE);
+					} else {
+						ivLessMajiangArr[i].setVisibility(View.INVISIBLE);
+					}
+				}
+
+				// 错牌数量
+				int wrongNum = CalculateUtil.byteToInt(recvData[msgIndex + 10]);
+				if (wrongNum > 0) {
+					tvWrongNum.setText(String.format("%02d", wrongNum) + "张");
+					linearWrongNum.setVisibility(View.VISIBLE);
+				} else {
+					tvWrongNum.setText("");
+					linearWrongNum.setVisibility(View.GONE);
+				}
+
+				// 故障提示
+				if (CalculateUtil.byteToInt(recvData[msgIndex + 11]) == 1) {
+					tvErrorTip.setText("请检查牌" + String.format("%02d",
+							CalculateUtil.byteToInt(recvData[msgIndex + 12])));
+					tvErrorTip.setVisibility(View.VISIBLE);
+				} else {
+					tvErrorTip.setText("");
+					tvErrorTip.setVisibility(View.GONE);
+				}
+
+				// 麻将牌颜色
+				int color = CalculateUtil.byteToInt(recvData[msgIndex + 13]);
+				switch (color) {
+					case 0x00:
+						tvMajiangColor.setText("");
+						tvMajiangColor.setVisibility(View.GONE);
+					break;
+
+					case 0x01:
+						tvMajiangColor.setText("蓝牌");
+						tvMajiangColor.setVisibility(View.VISIBLE);
+						break;
+
+					case 0x02:
+						tvMajiangColor.setText("绿牌");
+						tvMajiangColor.setVisibility(View.VISIBLE);
+						break;
+
+					default:
+						break;
+				}
 				break;
 
 			default:

@@ -1,6 +1,8 @@
 package com.wzp.majiang.entity;
 
-import java.util.ArrayList;
+import com.wzp.majiang.util.CommonUtil;
+
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -40,7 +42,13 @@ public class ChooseCardMethod implements Cloneable {
     public Object clone() throws CloneNotSupportedException {
         ChooseCardMethod chooseCardMethod;
         chooseCardMethod = (ChooseCardMethod) super.clone();
-        chooseCardMethod.methods = (ArrayList) ((ArrayList) methods).clone();
+        try {
+            chooseCardMethod.methods = CommonUtil.deepCopy(methods);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         return chooseCardMethod;
     }
 }

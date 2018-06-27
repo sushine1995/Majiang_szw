@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.List;
-
 import com.wzp.majiang.R;
+
+import java.util.List;
 
 public class BluetoothDeviceAdapter extends ArrayAdapter<BluetoothDevice> {
 	

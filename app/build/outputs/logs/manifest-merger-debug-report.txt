@@ -1,0 +1,239 @@
+-- Merging decision tree log ---
+manifest
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:2:1-120:12
+	package
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:3:5-30
+		INJECTED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml
+		INJECTED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml
+		INJECTED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml
+		INJECTED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:6:5-74
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:6:22-71
+uses-permission#android.permission.BLUETOOTH
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:7:5-68
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:7:22-65
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:8:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:11:5-80
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:11:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:12:5-79
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:12:22-77
+uses-permission#android.permission.VIBRATE
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:14:5-66
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:14:22-63
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:18:5-97
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:18:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:20:5-95
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:20:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:24:5-92
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:24:22-73
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:26:5-92
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:26:22-73
+uses-permission#android.permission.INTERNET
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:28:5-83
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:28:22-64
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:30:5-91
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:30:22-72
+uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:34:5-105
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:34:22-86
+application
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:37:5-118:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\su823\.android\build-cache\a3f37dacc5969386e652b8ce08bdb8b9f4417af3\output\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:design:25.3.1] C:\Users\su823\.android\build-cache\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\su823\.android\build-cache\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\su823\.android\build-cache\774fecbe763d2320408c94d07a156d26b8022f5a\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\su823\.android\build-cache\8f622b99997a0e8dc954911b99b20109312fb233\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:transition:25.3.1] C:\Users\su823\.android\build-cache\c375fbf75da971c64ac65a7927f9e54efa10818b\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\su823\.android\build-cache\2444ee88170c53db777ac25a3b66feab13e599df\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\su823\.android\build-cache\bc70f3bd6e468f6267d522547b538a045a21215b\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\su823\.android\build-cache\0a4f97ad95394fdc68741af2d537840c615fb974\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\su823\.android\build-cache\02dd64bfc087959f10ff7cfdcf0e663d9bb609fe\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\su823\.android\build-cache\f2c5cd6ad8da0e3151ae2ad2f9b1bd86229a27a1\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\su823\.android\build-cache\985ef2ab75f269f79b5442b8877d4e9a485e2eb1\output\AndroidManifest.xml:29:5-20
+	android:label
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:41:9-41
+	android:supportsRtl
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:42:9-35
+	android:allowBackup
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:39:9-35
+	android:icon
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:40:9-37
+	android:theme
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:43:9-45
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:38:9-45
+activity#com.wzp.majiang.activity.DailActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:44:9-50:20
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:44:19-56
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:45:13-49:29
+action#android.intent.action.MAIN
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:46:17-68
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:46:25-66
+category#android.intent.category.LAUNCHER
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:48:17-76
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:48:27-74
+activity#com.wzp.majiang.activity.MainActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:52:9-53:20
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:52:19-56
+activity#com.wzp.majiang.activity.ShowMajiangActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:55:9-56:20
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:55:19-63
+activity#com.wzp.majiang.activity.ShowHandMajiangActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:58:9-59:20
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:58:19-67
+activity#com.wzp.majiang.activity.ShowBaopaiActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:61:9-62:20
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:61:19-62
+activity#com.wzp.majiang.activity.RecognizeDirectionActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:64:9-65:20
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:64:19-70
+activity#com.wzp.majiang.activity.SettingActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:67:9-68:20
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:67:19-59
+activity#com.wzp.majiang.activity.DeviceListActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:70:9-74:20
+	android:launchMode
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:73:13-43
+	android:theme
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:72:13-51
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:71:13-56
+activity#com.wzp.majiang.activity.ShowPlayMethodActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:76:9-77:20
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:76:19-66
+activity#com.wzp.majiang.activity.EditChooseCardMethodActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:80:9-81:20
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:80:19-72
+activity#com.wzp.majiang.activity.EditPlayMethodActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:83:9-69
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:83:19-66
+activity#com.wzp.majiang.activity.ReceiveSendFileActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:85:9-70
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:85:19-67
+activity#com.wzp.majiang.activity.ChooseFunctionActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:87:9-69
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:87:19-66
+activity#com.wzp.majiang.activity.DailManualActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:89:9-65
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:89:19-62
+activity#com.wzp.majiang.activity.StudyTestActivity
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:91:9-64
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:91:19-61
+provider#android.support.v4.content.FileProvider
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:93:9-101:20
+	android:authorities
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:95:13-63
+	android:grantUriPermissions
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:97:13-47
+	android:exported
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:96:13-37
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:94:13-67
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:98:13-100:54
+	android:resource
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:100:17-51
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:99:17-67
+meta-data#com.amap.api.v2.apikey
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:107:9-108:21
+	android:value
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:107:58-106
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:107:20-57
+service#com.amap.api.location.APSService
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:114:9-76
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:114:18-65
+service#com.wzp.majiang.activity.update.DownloadApkService
+ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:115:9-117:39
+	android:exported
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:117:13-36
+	android:name
+		ADDED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml:116:13-78
+uses-sdk
+INJECTED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\su823\.android\build-cache\a3f37dacc5969386e652b8ce08bdb8b9f4417af3\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:design:25.3.1] C:\Users\su823\.android\build-cache\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\su823\.android\build-cache\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\su823\.android\build-cache\774fecbe763d2320408c94d07a156d26b8022f5a\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\su823\.android\build-cache\8f622b99997a0e8dc954911b99b20109312fb233\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.3.1] C:\Users\su823\.android\build-cache\c375fbf75da971c64ac65a7927f9e54efa10818b\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\su823\.android\build-cache\2444ee88170c53db777ac25a3b66feab13e599df\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\su823\.android\build-cache\bc70f3bd6e468f6267d522547b538a045a21215b\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\su823\.android\build-cache\0a4f97ad95394fdc68741af2d537840c615fb974\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\su823\.android\build-cache\02dd64bfc087959f10ff7cfdcf0e663d9bb609fe\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\su823\.android\build-cache\c1beede88229a0fa0d3617c1571116cd08f1c654\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\su823\.android\build-cache\f2c5cd6ad8da0e3151ae2ad2f9b1bd86229a27a1\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\su823\.android\build-cache\985ef2ab75f269f79b5442b8877d4e9a485e2eb1\output\AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.3.1] C:\Users\su823\.android\build-cache\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\output\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml
+		INJECTED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml
+		INJECTED from F:\androidexercise\Majiang0627\Majiang\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:25.3.1] C:\Users\su823\.android\build-cache\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\su823\.android\build-cache\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\su823\.android\build-cache\774fecbe763d2320408c94d07a156d26b8022f5a\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\su823\.android\build-cache\8f622b99997a0e8dc954911b99b20109312fb233\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:transition:25.3.1] C:\Users\su823\.android\build-cache\c375fbf75da971c64ac65a7927f9e54efa10818b\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\su823\.android\build-cache\2444ee88170c53db777ac25a3b66feab13e599df\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\su823\.android\build-cache\bc70f3bd6e468f6267d522547b538a045a21215b\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\su823\.android\build-cache\0a4f97ad95394fdc68741af2d537840c615fb974\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\su823\.android\build-cache\02dd64bfc087959f10ff7cfdcf0e663d9bb609fe\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\su823\.android\build-cache\c1beede88229a0fa0d3617c1571116cd08f1c654\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\su823\.android\build-cache\f2c5cd6ad8da0e3151ae2ad2f9b1bd86229a27a1\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\su823\.android\build-cache\985ef2ab75f269f79b5442b8877d4e9a485e2eb1\output\AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:design:25.3.1] C:\Users\su823\.android\build-cache\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\output\AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:design:25.3.1] C:\Users\su823\.android\build-cache\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\output\AndroidManifest.xml:26:9-47

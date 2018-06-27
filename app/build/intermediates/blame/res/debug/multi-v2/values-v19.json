@@ -1,0 +1,52 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\andriodpro\\Majiang\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v19\\values-v19.xml",
+            "map": [
+                {
+                    "source": "D:\\andriodpro\\Majiang\\app\\src\\main\\res\\values-v19\\styles.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endLines": "3",
+                        "endColumns": "12",
+                        "endOffsets": "143"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "179"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "H:\\XMU\\Majiang\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v19\\values-v19.xml",
+            "map": [
+                {
+                    "source": "H:\\XMU\\Majiang\\app\\src\\main\\res\\values-v19\\styles.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endLines": "3",
+                        "endColumns": "12",
+                        "endOffsets": "143"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "179"
+                    }
+                }
+            ]
+        }
+    ]
+}

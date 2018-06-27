@@ -23,6 +23,7 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.wzp.majiang.R;
 import com.wzp.majiang.activity.base.BluetoothBaseActivity;
+import com.wzp.majiang.activity.update.CheckVersionInfoTask;
 import com.wzp.majiang.constant.BluetoothState;
 import com.wzp.majiang.constant.ProjectConstants;
 import com.wzp.majiang.util.BluetoothClientHelper;
@@ -147,6 +148,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 			initParam();
 			initWidget();
 		}
+		new CheckVersionInfoTask(ChooseFunctionActivity.this, true).execute();
 	}
 
 	@Override
@@ -161,6 +163,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 			locationClient.startLocation();
 			Log.d(LOG_TAG, "onStart---startLocation");
 		}
+
 	}
 
 	@Override

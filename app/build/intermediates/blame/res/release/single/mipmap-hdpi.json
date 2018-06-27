@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\mipmap-hdpi\\phone.png",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\mipmap-hdpi\\phone.png"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\mipmap-hdpi\\majiang.png",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\mipmap-hdpi\\majiang.png"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\mipmap-hdpi\\ic_launcher.png",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    }
+]

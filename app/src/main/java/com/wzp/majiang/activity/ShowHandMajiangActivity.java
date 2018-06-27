@@ -727,7 +727,24 @@ public class ShowHandMajiangActivity extends BluetoothBaseActivity {
 					tvErrorTip.setText("请检查牌" + String.format("%02d",
 							CalculateUtil.byteToInt(recvData[msgIndex + 12])));
 					tvErrorTip.setVisibility(View.VISIBLE);
-				} else {
+				}
+				else if (CalculateUtil.byteToInt(recvData[msgIndex + 11]) == 2) {
+				tvErrorTip.setText("程序关闭");
+				tvErrorTip.setVisibility(View.VISIBLE);
+			}
+				else if (CalculateUtil.byteToInt(recvData[msgIndex + 11]) == 3) {
+					tvErrorTip.setText("总次数到" );
+					tvErrorTip.setVisibility(View.VISIBLE);
+				}
+				else if (CalculateUtil.byteToInt(recvData[msgIndex + 11]) == 4) {
+					tvErrorTip.setText("连续工作次数到" );
+					tvErrorTip.setVisibility(View.VISIBLE);
+				}
+				else if (CalculateUtil.byteToInt(recvData[msgIndex + 11]) == 5) {
+					tvErrorTip.setText("开机次数到" );
+					tvErrorTip.setVisibility(View.VISIBLE);
+				}
+			else {
 					tvErrorTip.setText("");
 					tvErrorTip.setVisibility(View.GONE);
 				}

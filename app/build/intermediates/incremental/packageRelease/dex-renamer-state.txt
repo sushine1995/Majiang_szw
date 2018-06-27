@@ -1,0 +1,4 @@
+#Wed Jun 27 12:48:00 CST 2018
+base.0=F\:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\transforms\\dex\\release\\folders\\1000\\1f\\main
+renamed.0=classes.dex
+file.0=F\:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\transforms\\dex\\release\\folders\\1000\\1f\\main\\classes.dex

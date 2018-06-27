@@ -1,0 +1,370 @@
+[
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_dail.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_dail.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\select_dialog_item_material.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_layout_snackbar.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_navigation_item_header.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_navigation_item_header.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\pop_win_recv_send_method.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\pop_win_recv_send_method.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\pop_win_list.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\pop_win_list.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_receive_send_file.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_receive_send_file.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\listitem_show_remote_file.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\listitem_show_remote_file.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_layout_tab_icon.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_expanded_menu_layout.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\fragment_choose_majiang_method.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\fragment_choose_majiang_method.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\listitem_checked_choose_card_play_method.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\listitem_checked_choose_card_play_method.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\listitem_choose_card_play_method.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\listitem_choose_card_play_method.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_list_menu_item_icon.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\listitem_param.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\listitem_param.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\listitem_show_choose_card_method.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\listitem_show_choose_card_method.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_screen_content_include.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_setting.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_setting.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_menu_item_layout.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_mode_bar.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\pop_win_more_fun.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\pop_win_more_fun.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_select_dialog_material.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\listitem_show_file.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\listitem_show_file.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\listitem_device_info.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\listitem_device_info.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_edit_choose_card_method.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_edit_choose_card_method.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_layout_snackbar_include.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\widget_add_sub.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\widget_add_sub.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\fragment_set_dice.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\fragment_set_dice.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\pop_win_show_fun_tip.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\pop_win_show_fun_tip.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\dialog_progress.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\dialog_progress.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\pop_win_select_direction.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\pop_win_select_direction.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\select_dialog_multichoice_material.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_bottom_navigation_item.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_bottom_navigation_item.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\fragment_basic_method.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\fragment_basic_method.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_screen_toolbar.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_device_list.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_device_list.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_choose_function.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_choose_function.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\notification_action.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_list_menu_item_layout.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_show_majiang.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_show_majiang.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_alert_dialog_material.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_navigation_menu.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_navigation_item_separator.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_layout_tab_text.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_navigation_item.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_navigation_item.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_navigation_item_subheader.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\dialog_show_remote_file.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\dialog_show_remote_file.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\dialog_save_as.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\dialog_save_as.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\listitem_pw_list.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\listitem_pw_list.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_dail_manual.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_dail_manual.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_show_baopai.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_show_baopai.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_show_hand_majiang.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_show_hand_majiang.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\listitem_edit_choose_card_method.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\listitem_edit_choose_card_method.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_recognize_direction.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_recognize_direction.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_alert_dialog_title_material.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_search_view.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\header_choose_card_play_method.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\header_choose_card_play_method.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_main.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_edit_play_method.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_edit_play_method.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_navigation_menu_item.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_study_test.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_study_test.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\view_add_data.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\view_add_data.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_menu_item_action_area.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_screen_simple.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\fragment_show_play_method.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\fragment_show_play_method.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_show_play_method.xml",
+        "source": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\src\\main\\res\\layout\\activity_show_play_method.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_text_input_password_icon.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\776ee217743cb790ee1d6e97d5d1f45a3efa67b6\\output\\res\\layout\\design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "F:\\androidexercise\\Majiang0627\\Majiang\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\su823\\.android\\build-cache\\a71e58a483760838b000bfc8829f1ef5b6a3ed7d\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    }
+]

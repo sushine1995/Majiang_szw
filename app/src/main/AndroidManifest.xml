@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wzp.majiang">
-
+    android:versionCode="1"
+    android:versionName="1.1">
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -100,15 +101,20 @@
         </provider>
 
         <!--my laptop-->
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="50fc740ce3ee52336c8467582197f991">
-        </meta-data>
+        <!--<meta-data android:name="com.amap.api.v2.apikey" android:value="938282921ea338c2cbe81954a1478e12">-->
+        <!--</meta-data>-->
 
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="0814edea19cae2c8fd3f9de5cdf6c624">
+        </meta-data>
         <!--DSJYJY-->
         <!--<meta-data android:name="com.amap.api.v2.apikey" android:value="e13047494605a848a8ff389d313d7298">
         </meta-data>-->
 
 
         <service android:name="com.amap.api.location.APSService"></service>
+        <service
+            android:name="com.wzp.majiang.activity.update.DownloadApkService"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Phone</string>
 
+    <string name="check_new_version">正在检测版本</string>
+    <string name="there_no_new_version">当前已经是最新版本了哦</string>
+    <string name="dialog_choose_update_title">发现了新版本</string>
+    <string name="dialog_choose_update_content">升级</string>
+    <string name="dialog_btn_confirm_download">升级</string>
+    <string name="dialog_btn_cancel_download">忽略</string>
+
     <string name="notifyTitle">提示</string>
     <string name="notifyMsg">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。</string>
     <string name="setting">设置</string>
@@ -599,7 +606,7 @@
         <item>S:穷胡-东北</item>
         <item>T:二八杠</item>
         <item>U:牛牛</item>
-        <item>V</item>
+        <item>V换三张</item>
         <item>W</item>
         <item>X</item>
         <item>Y</item>

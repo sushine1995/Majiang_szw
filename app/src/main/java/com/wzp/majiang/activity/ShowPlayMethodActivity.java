@@ -562,6 +562,10 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                 showToast("参数设置成功");
                 dlgProgress.dismiss();
                 break;
+            case 0x02:
+                showToast("显示区域错误");
+                dlgProgress.dismiss();
+                break;
         }
     }
 

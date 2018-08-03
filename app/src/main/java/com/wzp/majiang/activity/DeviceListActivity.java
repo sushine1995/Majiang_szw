@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.wzp.majiang.R;
 import com.wzp.majiang.adapter.BluetoothDeviceAdapter;
 import com.wzp.majiang.constant.ProjectConstants;
+import com.wzp.majiang.widget.MyApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -151,7 +152,17 @@ public class DeviceListActivity extends Activity {
 		// If we're already discovering, stop it
 		if (mBtAdapter.isDiscovering()) {
 			mBtAdapter.cancelDiscovery();
+		}else if(mBtAdapter.getState()==BluetoothAdapter.STATE_ON)
+		{
+			Log.e(TAG,"is connecting");
+			MyApplication.btClientHelper.stop();
+			Log.e("DailActivity", " MyApplication.btClientHelper.stop();");
 		}
+
+
+		//TODO
+		//mBtAdapter.
+		//else if(mBtAdapter.startDiscovery()
 
 		// Request discover from BluetoothAdapter
 		mBtAdapter.startDiscovery();

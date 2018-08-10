@@ -178,7 +178,7 @@ public class CheckVersionInfoTask extends AsyncTask<Void,Void,String> {
 
             //取得已经安装在手机的APP的版本号 versionCode
             int versionCode = getCurrentVersionCode();
-
+            //String versionName = getCurrentVersionName();
             //对比版本号判断是否需要更新
             if (apkCode > versionCode) {
 
@@ -187,7 +187,6 @@ public class CheckVersionInfoTask extends AsyncTask<Void,Void,String> {
             } else if (mShowProgressDialog) {
                 Toast.makeText(mContext, mContext.getString(R.string.there_no_new_version), Toast.LENGTH_SHORT).show();
             }
-
         } catch (JSONException e) {
             Log.e(TAG, "parse json error");
         }
@@ -200,6 +199,31 @@ public class CheckVersionInfoTask extends AsyncTask<Void,Void,String> {
         }
         return 0;
     }
+
+    public  String getCurrentVersionName() {
+
+
+        try {
+            return mContext.getPackageManager().getPackageInfo(mContext.getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+        return null;
+        /*
+        String version = null;
+        try {
+            // 获取packagemanager的实例
+            PackageManager packageManager = mContext.getPackageManager();
+            // getPackageName()是你当前类的包名，0代表是获取版本信息
+            PackageInfo packInfo = packageManager.getPackageInfo(mContext.getPackageName(), 0);
+            version = packInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        */
+        //return version;
+
+    }
+
     /**
      * 显示对话框提示用户有新版本，并且让用户选择是否更新版本
      * @param content
@@ -207,7 +231,9 @@ public class CheckVersionInfoTask extends AsyncTask<Void,Void,String> {
      */
     public void showDialog(String content, final String downloadUrl) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setTitle(R.string.dialog_choose_update_title);
+        int versionCode = getCurrentVersionCode();
+        String versionName = getCurrentVersionName();
+        builder.setTitle("发现新版本,当前版本:"+ versionName );
         builder.setMessage(Html.fromHtml(content))
                 .setPositiveButton(R.string.dialog_btn_confirm_download, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -226,6 +252,39 @@ public class CheckVersionInfoTask extends AsyncTask<Void,Void,String> {
         dialog.show();
     }
 
+    //TODO
+    //ProgressDialog下载的进度框
+    /*
+    public void progressDiaLog(){
+
+        final ProgressDialog dialog = new ProgressDialog(mContext);
+        dialog.setTitle("温馨提示");
+        dialog.setMessage("正在下载...");
+        dialog.setProgressStyle(dialog.STYLE_HORIZONTAL);
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                while (true){
+                    if (bar < 100){
+                        bar++;
+                        dialog.setProgress(bar);
+                        try {
+                            sleep(50);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }else{
+                        dialog.dismiss();
+                        bar = 0;
+                        break;
+                    }
+                }
+            }
+        }.start();
+        dialog.show();
+    }
+*/
 
     /**
      * 用intent启用DownloadService服务去下载AKP文件

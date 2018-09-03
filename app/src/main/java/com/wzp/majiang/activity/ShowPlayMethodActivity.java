@@ -25,9 +25,9 @@ import com.wzp.majiang.constant.ProjectConstants;
 import com.wzp.majiang.entity.BasicParameter;
 import com.wzp.majiang.entity.ChooseCardMethod;
 import com.wzp.majiang.entity.ChooseCardParameter;
+import com.wzp.majiang.entity.ChooseCardPlayMethod;
 import com.wzp.majiang.entity.DiceParameter;
 import com.wzp.majiang.entity.PlayMethodParameter;
-import com.wzp.majiang.entity.ChooseCardPlayMethod;
 import com.wzp.majiang.fragment.ShowPlayMethodFragment;
 import com.wzp.majiang.util.CRC16;
 import com.wzp.majiang.util.CalculateUtil;
@@ -43,7 +43,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -111,6 +110,7 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
+                                /*
                                 // 发送区域码
                                 byte[] msgArr = new byte[ProjectConstants.DATA_LENGTH];
                                 int[] districtCodeArr = parseDistrictCode();
@@ -136,7 +136,7 @@ public class ShowPlayMethodActivity extends BluetoothBaseActivity {
                                     Log.e(LOG_TAG, Log.getStackTraceString(e));
                                     showToast("线程异常，数据发送失败");
                                 }
-
+*/
                                 // 待发送的字节数组的index
                                 int i;
                                 // 玩法参数

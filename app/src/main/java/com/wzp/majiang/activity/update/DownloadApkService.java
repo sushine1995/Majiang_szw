@@ -79,7 +79,10 @@ public class DownloadApkService extends IntentService {
             in = urlConnection.getInputStream();
             //File dir = StorageUtils.getCacheDirectory(this); //取得应用缓存目录
             String mSavePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Majiang" +File.separator;
+
             File dir = new File(mSavePath);
+            //先判断目录是否存在，不存在则创建
+            isFolderExists(mSavePath);
             String apkName = urlStr.substring(urlStr.lastIndexOf("/") + 1, urlStr.length());//取得apK文件名
             File apkFile = new File(dir, apkName);
             Log.e(TAG,mSavePath);
@@ -241,5 +244,20 @@ public class DownloadApkService extends IntentService {
             startActivity(intent);
         }
 
+    }
+    private boolean isFolderExists(String strFolder)
+    {
+        File file = new File(strFolder);
+
+        if (!file.exists())
+        {
+            if (file.mkdir())
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        return true;
     }
 }

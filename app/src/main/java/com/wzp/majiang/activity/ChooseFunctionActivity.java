@@ -3,12 +3,14 @@ package com.wzp.majiang.activity;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -27,12 +29,15 @@ import com.wzp.majiang.activity.update.CheckVersionInfoTask;
 import com.wzp.majiang.constant.BluetoothState;
 import com.wzp.majiang.constant.ProjectConstants;
 import com.wzp.majiang.util.BluetoothClientHelper;
+import com.wzp.majiang.util.CRC16;
+import com.wzp.majiang.util.CalculateUtil;
 import com.wzp.majiang.widget.MyApplication;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
@@ -44,9 +49,11 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	private Button btnDesignPlayMethod;
 	private Button btnShowCard;
 	private Button btnStudyTest;
+	//private Button btnSendHexUpdate;
 
 	private static final int REQUEST_ENABLE_BT = 0x00; // 请求打开蓝牙
 	private static final int REQUEST_CONNECT_DEVICE_SECURE = 0x01; // 请求安全连接蓝牙设备
+
 
 	private BluetoothAdapter bluetoothAdapter;
 
@@ -60,7 +67,13 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	private AMapLocationClient locationClient;
 	private AMapLocationClientOption locationOption;
 
+	private ProgressDialog dialog;
+
 	private String districtCode; // 区域码
+
+	private boolean isGetLocationReback = false;	//是否收到区域码的返回信息
+	private boolean isSendLocation = false;			//是否发送了区域确认信息
+	int delayTimeLimit = 10;			//等待次数限制，每次等待1s。最多10s
 
 	private View.OnClickListener listener = new View.OnClickListener() {
 		@Override
@@ -76,23 +89,193 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 					break;
 
 				case R.id.btn_designPlayMethod:
-					ShowPlayMethodActivity.myStartActivity(ChooseFunctionActivity.this, districtCode);
+					/*
+					if (isLocationRight())
+						ShowPlayMethodActivity.myStartActivity(ChooseFunctionActivity.this, districtCode);
+						*/
+					isLocationRight(1);
 					break;
 
 				case R.id.btn_showCard:
-					MainActivity.myStartActivity(ChooseFunctionActivity.this);
+					/*
+					if (isLocationRight())
+						MainActivity.myStartActivity(ChooseFunctionActivity.this);
+						*/
+					isLocationRight(2);
 					break;
 
 				case R.id.btn_studyTest:
+					/*
+					if (isLocationRight())
+						StudyTestActivity.myStartActivity(ChooseFunctionActivity.this);
+						*/
+					isLocationRight(3);
+					break;
+/*
+				case R.id.btn_sendHexUpdate:
+
+					//this.getResources().
+					if (MyApplication.btClientHelper.isBluetoothConnected()) {
+						Log.d(LOG_TAG, "准备发送文件 " );
+						showToast("准备发送文件");
+						new Thread(new Runnable() {
+							@Override
+							public void run() {
+								// 发送区域码
+								AssetManager manager = getResources().getAssets();
+								Log.d(LOG_TAG, "开启线程 " );
+								//getContesources().getAssets();
+								//getContext
+                                    try{
+                                        InputStream inputStream = manager.open("jiami.bin");
+										Log.d(LOG_TAG, "读取文件 " );
+                                        int length = inputStream.available();
+                                        byte[] buffer = new byte[length];
+
+
+
+                                        //buffer = FileTobyteUtil.binToByte(ChooseFunctionActivity.this,buffer);
+                                        Log.d(LOG_TAG, "文件大小： " + length);
+                                        inputStream.read(buffer);
+                                        MyApplication.btClientHelper.write(buffer);
+
+                                    }catch (IOException e) {
+                                        e.printStackTrace();
+                                        showToast("数据发送异常");
+                                    }
+							}
+						}, "download thread").start();
+						showToast("发送完成");
+						Log.d(LOG_TAG, "发送完成" );
+					} else {
+						showToast("蓝牙尚未连接，发送文件失败！");
+					}
+
+					break;
+					*/
+
+			}
+		}
+
+
+	};
+
+
+	private android.os.Handler mHandler = new android.os.Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			Log.e(LOG_TAG,"id,Handle:"+Integer.toString(msg.what));
+			switch (msg.what){
+				case 1 :
+					dialog.dismiss();
+					ShowPlayMethodActivity.myStartActivity(ChooseFunctionActivity.this, districtCode);
+					break;
+				case 2:
+					dialog.dismiss();
+					MainActivity.myStartActivity(ChooseFunctionActivity.this);
+					break;
+				case 3:
+					dialog.dismiss();
 					StudyTestActivity.myStartActivity(ChooseFunctionActivity.this);
 					break;
-
-				default:
+				case 10:		//用于更新ui
+					dialog.setMessage("正在确认区域信息");
+					dialog.show();
 					break;
+				case 11:
+					dialog.dismiss();
+					break;
+
+
 			}
 		}
 	};
 
+	/**
+	 *区域检测
+	 *
+	 */
+
+	private void isLocationRight(int activityId){
+		isGetLocationReback = false;
+		/*
+		dlgProgress = new MyProgressDialog(this);
+		dialog.setMessage("正在确认区域信息");
+		dialog.show();
+		*/
+		if (MyApplication.btClientHelper.isBluetoothConnected()) {
+
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					// 发送区域码
+					Log.i(LOG_TAG,"当前进程id："+Integer.toString(android.os.Process.myPid()));
+					showToast("开启进程确认区域是否正确");
+					mHandler.sendEmptyMessage(10);
+					byte[] msgArr = new byte[ProjectConstants.DATA_LENGTH];
+					int[] districtCodeArr = parseDistrictCode();
+					msgArr[0] = (byte) 0xfe;
+					msgArr[1] = (byte) 0xa9;
+					if (districtCodeArr != null) {
+						msgArr[2] = (byte) districtCodeArr[0];
+						msgArr[3] = (byte) districtCodeArr[1];
+						msgArr[4] = (byte) districtCodeArr[2];
+					} else {
+						msgArr[2] = (byte) 0xff;
+						msgArr[3] = (byte) 0xff;
+						msgArr[4] = (byte) 0xff;
+					}
+					CalculateUtil.analyseMessage(msgArr);
+					CRC16.check(msgArr);
+
+					MyApplication.btClientHelper.write(msgArr);
+					isSendLocation = true;
+
+					while(delayTimeLimit>0) {
+						Log.i(LOG_TAG,"waitingid"+delayTimeLimit);
+						if (isGetLocationReback) {
+							delayTimeLimit = 10;
+							isGetLocationReback=false;
+							if (isLocationRight == 1)      mHandler.sendEmptyMessage(1);
+							else if (isLocationRight == 2) showToast("区域错误");
+							else if (isLocationRight == 0) showToast("未知错误");
+
+
+
+							break;
+						}
+						try {
+							TimeUnit.SECONDS.sleep(1);
+						} catch (InterruptedException e) {
+							Log.e(LOG_TAG, Log.getStackTraceString(e));
+							showToast("线程异常，数据发送失败");
+						}
+						/*
+						try {
+							Thread.currentThread();
+							Thread.sleep(50,0);//阻断0.2秒
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						*/
+						delayTimeLimit--;
+						if (delayTimeLimit == 0) {
+							delayTimeLimit = 10;
+							Log.w(LOG_TAG, "delayTimeLimit,等待超时");
+							showToast("等待超时");
+						}
+
+					}
+					mHandler.sendEmptyMessage(11);		//去掉dialog
+				}
+			}, "download thread").start();
+
+		}else {
+			showToast("蓝牙尚未连接，发送数据失败！");
+		}
+		//dialog.dismiss();
+
+	}
 	/**
 	 * 定位监听
 	 */
@@ -133,6 +316,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		setContentView(R.layout.activity_choose_function);
 
 		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+		dialog = new ProgressDialog(this);
 		if (bluetoothAdapter == null) {
 			Toast.makeText(this, "当前设备不具备蓝牙功能！",
 					Toast.LENGTH_LONG).show();
@@ -207,6 +391,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		if (permissions == null || permissions.length == 0) {
 			return;
 		}
+
 
 		super.onRequestPermissionsResult(requestCode, permissions, paramArrayOfInt);
 		if (requestCode == PERMISSON_REQUEST_CODE) {
@@ -291,12 +476,14 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		btnDesignPlayMethod = (Button) findViewById(R.id.btn_designPlayMethod);
 		btnShowCard = (Button) findViewById(R.id.btn_showCard);
 		btnStudyTest = (Button) findViewById(R.id.btn_studyTest);
+		//btnSendHexUpdate = (Button) findViewById(R.id.btn_sendHexUpdate);
 
 		ibtnBack.setOnClickListener(listener);
 		ibtnSearch.setOnClickListener(listener);
 		btnDesignPlayMethod.setOnClickListener(listener);
 		btnShowCard.setOnClickListener(listener);
 		btnStudyTest.setOnClickListener(listener);
+		//btnSendHexUpdate.setOnClickListener(listener);
 
 		if (MyApplication.btClientHelper != null && MyApplication.btClientHelper.isBluetoothConnected()) {
 			tvBtState.setText("已连接: " + MyApplication.btClientHelper.getRemoteDevName());
@@ -322,7 +509,29 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	}
 
 	@Override
-	protected void onBluetoothDataReceived(byte[] recvData) {}
+
+	protected void onBluetoothDataReceived(byte[] recvData) {
+		//在发送区域确认信息后，得到的信息才有效
+		if(isSendLocation){
+			isGetLocationReback = true;
+			isSendLocation = false;
+		}
+
+		//showToast("区域正确");
+		switch (CalculateUtil.byteToInt(recvData[2])) {
+			case 0x01:
+				showToast("区域正确");
+				//dlgProgress.dismiss();
+				isLocationRight = 1;
+				break;
+			case 0x02:
+				showToast("区域错误");
+				//dlgProgress.dismiss();
+				isLocationRight = 2;
+				break;
+		}
+
+	}
 
 	private boolean verifyPermissions(String[] permissions, int[] paramArrayOfInt) {
 		Map<String, Integer> map = new HashMap<>();
@@ -353,6 +562,38 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		// 设置定位监听
 		locationClient.setLocationListener(locationListener);
 	}
+
+	/**
+	 * 将区域码解析成整型数组，如123456解析成{12, 34, 56}
+	 *
+	 * @return
+	 */
+	private int[] parseDistrictCode() {
+		if (districtCode == null) {
+			return null;
+		}
+		int dCode = Integer.parseInt(districtCode);
+		int[] resArr = new int[3];
+		resArr[0] = dCode / 10000;
+		resArr[1] = dCode % 10000 / 100;
+		resArr[2] = dCode % 100;
+		return resArr;
+	}
+
+	/*
+	protected void onBluetoothDataReceived(byte[] recvData) {
+		switch (CalculateUtil.byteToInt(recvData[1])) {
+			case 0x01:
+				showToast("参数设置成功");
+				dlgProgress.dismiss();
+				break;
+			case 0x02:
+				showToast("区域错误");
+				dlgProgress.dismiss();
+				break;
+		}
+	}
+*/
 	/**
 	 * 默认的定位参数
 	 * @since 2.8.0
@@ -364,7 +605,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
 		mOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
 		mOption.setHttpTimeOut(30000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
-		mOption.setInterval(5000);//可选，设置定位间隔。默认为2秒
+		mOption.setInterval(10000);//可选，设置定位间隔。默认为2秒
 		mOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
 		mOption.setOnceLocation(false);//可选，设置是否单次定位。默认是false
 		mOption.setOnceLocationLatest(false);//可选，设置是否等待wifi刷新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用

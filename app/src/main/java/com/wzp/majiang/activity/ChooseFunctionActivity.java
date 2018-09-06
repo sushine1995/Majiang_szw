@@ -46,6 +46,8 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	private ImageButton ibtnSearch;
 
 	private TextView tvLocation;
+	private TextView tvDistricBackInfo;
+
 	private Button btnDesignPlayMethod;
 	private Button btnShowCard;
 	private Button btnStudyTest;
@@ -70,10 +72,12 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	private ProgressDialog dialog;
 
 	private String districtCode; // 区域码
+	private byte[] districtBack = new byte[2];	//B4-B5，用于显示区域判断的代码
+
 
 	private boolean isGetLocationReback = false;	//是否收到区域码的返回信息
 	private boolean isSendLocation = false;			//是否发送了区域确认信息
-	int delayTimeLimit = 10;			//等待次数限制，每次等待1s。最多10s
+	int delayTimeLimit = 100;			//等待次数限制，每次等待0.1s。最多10s
 
 	private View.OnClickListener listener = new View.OnClickListener() {
 		@Override
@@ -165,6 +169,12 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		@Override
 		public void handleMessage(Message msg) {
 			Log.e(LOG_TAG,"id,Handle:"+Integer.toString(msg.what));
+			if (isLocationRight==1){
+				//tvDistricBackInfo.setText("区域正确( "+CalculateUtil.bytes2HexString(districtBack)+" )");
+				tvDistricBackInfo.setText("区域正确( "+String.format("%02x", districtBack[0])+"-"+String.format("%02x", districtBack[1])+" )");
+			}
+			else if(isLocationRight==2) tvDistricBackInfo.setText("区域错误( "+String.format("%02x", districtBack[0])+"-"+String.format("%02x", districtBack[1])+" )");
+			else if(isLocationRight==0 && isGetLocationReback) tvDistricBackInfo.setText("获取区域失败( "+String.format("%02x", districtBack[0])+"-"+String.format("%02x", districtBack[1])+" )");
 			switch (msg.what){
 				case 1 :
 					dialog.dismiss();
@@ -182,10 +192,9 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 					dialog.setMessage("正在确认区域信息");
 					dialog.show();
 					break;
-				case 11:
+				case 11:		//
 					dialog.dismiss();
 					break;
-
 
 			}
 		}
@@ -196,15 +205,10 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 	 *
 	 */
 
-	private void isLocationRight(int activityId){
+	private void isLocationRight(final int activityId){
 		isGetLocationReback = false;
-		/*
-		dlgProgress = new MyProgressDialog(this);
-		dialog.setMessage("正在确认区域信息");
-		dialog.show();
-		*/
-		if (MyApplication.btClientHelper.isBluetoothConnected()) {
 
+		if (MyApplication.btClientHelper.isBluetoothConnected()) {
 			new Thread(new Runnable() {
 				@Override
 				public void run() {
@@ -232,37 +236,32 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 					isSendLocation = true;
 
 					while(delayTimeLimit>0) {
-						Log.i(LOG_TAG,"waitingid"+delayTimeLimit);
+						if(delayTimeLimit%10==0) Log.i(LOG_TAG,"waitingId："+delayTimeLimit);		//每等待1s
 						if (isGetLocationReback) {
-							delayTimeLimit = 10;
+							delayTimeLimit = 100;
 							isGetLocationReback=false;
-							if (isLocationRight == 1)      mHandler.sendEmptyMessage(1);
-							else if (isLocationRight == 2) showToast("区域错误");
+							if (isLocationRight == 1)      {
+								showToast("区域正确( "+String.format("%02x", districtBack[0])+"-"+String.format("%02x", districtBack[1])+" )");
+								mHandler.sendEmptyMessage(activityId);
+							}
+							else if (isLocationRight == 2) showToast("区域错误( "+String.format("%02x", districtBack[0])+"-"+String.format("%02x", districtBack[1])+" )");
 							else if (isLocationRight == 0) showToast("未知错误");
-
-
-
 							break;
 						}
 						try {
-							TimeUnit.SECONDS.sleep(1);
+							TimeUnit.MILLISECONDS.sleep(100);
 						} catch (InterruptedException e) {
 							Log.e(LOG_TAG, Log.getStackTraceString(e));
 							showToast("线程异常，数据发送失败");
 						}
-						/*
-						try {
-							Thread.currentThread();
-							Thread.sleep(50,0);//阻断0.2秒
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-						*/
+
 						delayTimeLimit--;
 						if (delayTimeLimit == 0) {
-							delayTimeLimit = 10;
+							delayTimeLimit = 100;
+							isLocationRight = 0;
 							Log.w(LOG_TAG, "delayTimeLimit,等待超时");
 							showToast("等待超时");
+							break;
 						}
 
 					}
@@ -271,9 +270,9 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 			}, "download thread").start();
 
 		}else {
-			showToast("蓝牙尚未连接，发送数据失败！");
+			showToast("蓝牙尚未连接，获取定位数据失败！");
 		}
-		//dialog.dismiss();
+
 
 	}
 	/**
@@ -470,6 +469,7 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 
 	private void initWidget() {
 		tvBtState = (TextView) findViewById(R.id.tv_btState);
+		tvDistricBackInfo = (TextView) findViewById(R.id.tv_districtBackInfo);
 		ibtnBack = (ImageButton) findViewById(R.id.ibtn_back);
 		ibtnSearch = (ImageButton) findViewById(R.id.ibtn_search);
 		tvLocation = (TextView) findViewById(R.id.tv_location);
@@ -515,21 +515,23 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		if(isSendLocation){
 			isGetLocationReback = true;
 			isSendLocation = false;
-		}
+			districtBack[0] = recvData[3];
+			districtBack[1] = recvData[4];
 
-		//showToast("区域正确");
-		switch (CalculateUtil.byteToInt(recvData[2])) {
-			case 0x01:
-				showToast("区域正确");
-				//dlgProgress.dismiss();
-				isLocationRight = 1;
-				break;
-			case 0x02:
-				showToast("区域错误");
-				//dlgProgress.dismiss();
-				isLocationRight = 2;
-				break;
+			Log.i(LOG_TAG,String.format("%02x", districtBack[0])+"-"+String.format("%02x", districtBack[1]));
+			switch (CalculateUtil.byteToInt(recvData[2])) {
+				case 0x01:
+					//showToast("区域正确( "+String.format("%02x", districtBack[0])+"-"+String.format("%02x", districtBack[1])+" )");
+					isLocationRight = 1;
+					break;
+				case 0x02:
+					//showToast("区域错误( "+String.format("%02x", districtBack[0])+"-"+String.format("%02x", districtBack[1])+" )");
+					isLocationRight = 2;
+					break;
+			}
 		}
+		//byte[] analyseRecvData = recvData.clone();
+		//CalculateUtil.analyseMessage(analyseRecvData);
 
 	}
 
@@ -580,20 +582,6 @@ public class ChooseFunctionActivity extends BluetoothBaseActivity {
 		return resArr;
 	}
 
-	/*
-	protected void onBluetoothDataReceived(byte[] recvData) {
-		switch (CalculateUtil.byteToInt(recvData[1])) {
-			case 0x01:
-				showToast("参数设置成功");
-				dlgProgress.dismiss();
-				break;
-			case 0x02:
-				showToast("区域错误");
-				dlgProgress.dismiss();
-				break;
-		}
-	}
-*/
 	/**
 	 * 默认的定位参数
 	 * @since 2.8.0
